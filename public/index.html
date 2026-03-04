@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Find the best Indian credit cards - LTF and premium cards with airport lounge, railway lounge, golf, cashback and more benefits. Filter by bank, compare cards.">
+  <title>CardRadar — Indian Credit Card Guide</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>💳</text></svg>">
+</head>
+<body>
+
+  <!-- Animated Background -->
+  <div class="bg-pattern"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="#" class="navbar-brand">
+      <div class="logo-icon">CR</div>
+      <div class="brand-text">
+        <span class="brand-name">CardRadar</span>
+        <span class="brand-sub">Indian Credit Card Guide</span>
+      </div>
+    </a>
+    <div class="navbar-actions">
+      <span class="navbar-tagline">Compare • Filter • Apply</span>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1 class="hero-title">
+        Find Your Perfect <span class="gradient-text">Credit Card</span>
+      </h1>
+      <p class="hero-subtitle">
+        Discover the best LTF &amp; premium credit cards in India — compare lounge access, golf perks, cashbacks, forex benefits and apply directly with your bank.
+      </p>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar" id="statsBar">
+      <div class="stat-item">
+        <div class="stat-value" id="statTotal">—</div>
+        <div class="stat-label">Total Cards</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="statLTF">—</div>
+        <div class="stat-label">LTF Cards</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="statLounge">—</div>
+        <div class="stat-label">With Lounge</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="statGolf">—</div>
+        <div class="stat-label">With Golf</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="statCashback">—</div>
+        <div class="stat-label">Cashback</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="statBanks">—</div>
+        <div class="stat-label">Banks</div>
+      </div>
+    </div>
+
+    <!-- Bank Filter Section -->
+    <section class="bank-filter-section" id="bankFilterSection">
+      <div class="bank-filter-header">
+        <h2 class="bank-filter-title">🏦 Browse by Bank</h2>
+        <p class="bank-filter-subtitle">Select a bank to see their credit card offerings</p>
+      </div>
+      <div class="bank-chips-container" id="bankChips">
+        <!-- Bank chips will be rendered here -->
+      </div>
+    </section>
+
+    <!-- Filter Section -->
+    <div class="filter-section">
+      <div class="filter-bar">
+        <div class="search-box">
+          <span class="search-icon">🔎</span>
+          <input type="text" id="searchInput" placeholder="Search cards, banks, benefits..." oninput="handleSearch()">
+        </div>
+        <div class="filter-chips" id="filterChips">
+          <button class="chip active" data-filter="all" onclick="setFilter('all', this)">
+            <span class="chip-icon">📋</span> All
+          </button>
+          <button class="chip" data-filter="ltf" onclick="setFilter('ltf', this)">
+            <span class="chip-icon">✨</span> LTF
+          </button>
+          <button class="chip" data-filter="non-ltf" onclick="setFilter('non-ltf', this)">
+            <span class="chip-icon">👑</span> Premium
+          </button>
+          <button class="chip" data-filter="lounge" onclick="setFilter('lounge', this)">
+            <span class="chip-icon">✈️</span> Lounge
+          </button>
+          <button class="chip" data-filter="railway" onclick="setFilter('railway', this)">
+            <span class="chip-icon">🚂</span> Railway
+          </button>
+          <button class="chip" data-filter="golf" onclick="setFilter('golf', this)">
+            <span class="chip-icon">⛳</span> Golf
+          </button>
+          <button class="chip" data-filter="cashback" onclick="setFilter('cashback', this)">
+            <span class="chip-icon">💰</span> Cashback
+          </button>
+          <button class="chip" data-filter="forex" onclick="setFilter('forex', this)">
+            <span class="chip-icon">🌍</span> Zero Forex
+          </button>
+        </div>
+        <select class="sort-select" id="sortSelect" onchange="handleSort()">
+          <option value="popularity">⭐ Popularity</option>
+          <option value="fee-low">💸 Fee: Low → High</option>
+          <option value="fee-high">💰 Fee: High → Low</option>
+          <option value="bank">🏦 Bank A-Z</option>
+          <option value="name">🔤 Name A-Z</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Cards Section -->
+    <section class="section" id="cardsSection">
+      <div class="section-header">
+        <div class="section-icon all">📊</div>
+        <h2 class="section-title" id="sectionTitle">All Credit Cards</h2>
+        <span class="section-count" id="sectionCount">Loading...</span>
+      </div>
+      <div class="card-grid" id="cardGrid">
+        <!-- Skeleton loaders -->
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Card Detail Modal -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal" id="modalContent" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-card-name" id="modalCardName"></h2>
+          <p class="modal-card-bank" id="modalCardBank"></p>
+        </div>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>CardRadar — Indian Credit Card Guide</p>
+    <p>Data sourced from official bank websites • Built with ❤️</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
