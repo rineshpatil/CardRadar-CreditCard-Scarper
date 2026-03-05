@@ -15,9 +15,34 @@ let currentBank = '';
 // ===== INITIALIZATION =====
 
 document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
   fetchBanks();
   fetchCards();
 });
+
+// ===== THEME TOGGLE =====
+
+function initTheme() {
+  const saved = localStorage.getItem('cardradar-theme');
+  if (saved === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
+}
+
+function toggleTheme() {
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  if (isLight) {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('cardradar-theme', 'dark');
+    showToast('Dark mode enabled', 'info');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem('cardradar-theme', 'light');
+    showToast('Light mode enabled', 'info');
+  }
+}
 
 // ===== DATA FETCHING =====
 
