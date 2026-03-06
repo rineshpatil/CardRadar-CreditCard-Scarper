@@ -6,12 +6,13 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+require('dotenv').config();
 const { categorizeCards, generateStats } = require('./analyzer');
 const { getAllCards, getUniqueBanks, getCardsSummaryForLLM } = require('./knowledgebase');
 const OpenAI = require('openai');
 
 // ===== OPENAI (NVIDIA NIM) SETUP =====
-const API_KEY = process.env.API_KEY || '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';
+const API_KEY = process.env.API_KEY;
 let openaiClient = null;
 try {
     openaiClient = new OpenAI({
