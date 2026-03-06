@@ -7,7 +7,21 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const { categorizeCards, generateStats } = require('./analyzer');
-const { getAllCards, getUniqueBanks } = require('./knowledgebase');
+const { getAllCards, getUniqueBanks, getCardsSummaryForLLM } = require('./knowledgebase');
+const OpenAI = require('openai');
+
+// ===== OPENAI (NVIDIA NIM) SETUP =====
+const API_KEY = process.env.API_KEY || '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';
+let openaiClient = null;
+try {
+    openaiClient = new OpenAI({
+        apiKey: API_KEY,
+        baseURL: 'https://integrate.api.nvidia.com/v1',
+    });
+    console.log('✅ OpenAI Client (NVIDIA NIM) loaded');
+} catch (err) {
+    console.warn('⚠️ OpenAI Client not available:', err.message);
+}
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -128,6 +142,77 @@ app.get('/api/banks', (req, res) => {
  */
 app.get('/api/stats', (req, res) => {
     res.json(generateStats(cachedCards));
+});
+
+// ===== CHAT API =====
+
+/**
+ * POST /api/chat - AI chatbot for credit card queries
+ */
+app.post('/api/chat', async (req, res) => {
+    const { message, history } = req.body;
+
+    if (!message) {
+        return res.status(400).json({ error: 'Message is required' });
+    }
+
+    if (!openaiClient) {
+        return res.status(503).json({
+            reply: 'AI assistant is not configured properly.'
+        });
+    }
+
+    try {
+        const cardData = getCardsSummaryForLLM();
+
+        const systemPrompt = `You are CardRadar AI — a friendly, knowledgeable credit card advisor for Indian credit cards. You ONLY answer questions related to the credit cards listed on the CardRadar website.
+
+Here is the COMPLETE database of credit cards available on CardRadar:
+
+${cardData}
+
+RULES:
+1. ONLY answer questions about the credit cards listed above.
+2. If the user asks about a card NOT in the database, say "That card is not currently listed on CardRadar."
+3. If the user asks something unrelated to credit cards, politely redirect them: "I'm CardRadar AI — I specialize in Indian credit cards! Ask me about card benefits, fees, eligibility, lounge access, cashback, or which card is best for you."
+4. When recommending cards, consider the user's needs (salary/income, spending habits, travel frequency, etc.).
+5. Be concise but thorough. Use bullet points and emojis to make responses easy to read.
+6. Always mention the card name and bank.
+7. If a card has an apply URL, mention the user can find the apply link on CardRadar.
+8. For salary-based recommendations: match the user's income against the minIncome eligibility of cards.
+9. Format currency in Indian Rupees (₹).`;
+
+        // Build conversation history for OpenAI
+        const chatMessages = [
+            { role: 'system', content: systemPrompt },
+            { role: 'assistant', content: 'Understood! I am CardRadar AI, ready to help with Indian credit card queries based on the CardRadar database. How can I help you?' }
+        ];
+
+        if (history && history.length > 0) {
+            history.forEach(msg => {
+                chatMessages.push({
+                    role: msg.role === 'user' ? 'user' : 'assistant',
+                    content: msg.content
+                });
+            });
+        }
+
+        chatMessages.push({ role: 'user', content: message });
+
+        const completion = await openaiClient.chat.completions.create({
+            model: "moonshotai/kimi-k2.5",
+            messages: chatMessages,
+            temperature: 0.2,
+            max_tokens: 1024,
+        });
+
+        const reply = completion.choices[0].message.content;
+
+        res.json({ reply });
+    } catch (err) {
+        console.error('Chat API error:', err);
+        res.status(500).json({ reply: 'Sorry, I encountered an error. Please try again.' });
+    }
 });
 
 // Fallback to index.html for SPA

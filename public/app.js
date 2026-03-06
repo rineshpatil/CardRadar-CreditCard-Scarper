@@ -557,3 +557,130 @@ function showToast(message, type = 'info') {
     toast.remove();
   }, 3500);
 }
+
+// ===== CHATBOT LOGIC =====
+
+let chatHistory = [];
+let isChatbotOpen = false;
+let isWaitingForResponse = false;
+
+function toggleChat() {
+  const panel = document.getElementById('chatbotPanel');
+  const fabPulse = document.querySelector('.chatbot-fab-pulse');
+
+  isChatbotOpen = !isChatbotOpen;
+
+  if (isChatbotOpen) {
+    panel.classList.add('active');
+    if (fabPulse) fabPulse.style.display = 'none'; // Stop pulsing once opened
+    document.getElementById('chatbotInput').focus();
+  } else {
+    panel.classList.remove('active');
+  }
+}
+
+function handleSuggestedQuestion(btnEl) {
+  const question = btnEl.textContent.replace(/^[\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF]\s*/g, ''); // Remove emoji
+  document.getElementById('chatbotInput').value = question;
+  sendChatMessage();
+}
+
+async function sendChatMessage() {
+  if (isWaitingForResponse) return;
+
+  const inputEl = document.getElementById('chatbotInput');
+  const message = inputEl.value.trim();
+
+  if (!message) return;
+
+  // Add user message to UI
+  addMessageToUI('user', message);
+  inputEl.value = '';
+
+  // Hide suggestions if they are visible
+  const suggestions = document.getElementById('chatbotSuggestions');
+  if (suggestions) suggestions.style.display = 'none';
+
+  isWaitingForResponse = true;
+  document.getElementById('chatbotSend').disabled = true;
+
+  // Show typing indicator
+  const typingId = showTypingIndicator();
+
+  try {
+    const res = await fetch(`${API_BASE}/api/chat`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ message, history: chatHistory })
+    });
+
+    const data = await res.json();
+
+    // Remove typing indicator
+    document.getElementById(typingId)?.remove();
+
+    if (res.ok) {
+      addMessageToUI('bot', data.reply);
+      // Save history
+      chatHistory.push({ role: 'user', content: message });
+      chatHistory.push({ role: 'bot', content: data.reply });
+    } else {
+      addMessageToUI('bot', data.reply || 'Sorry, something went wrong.');
+    }
+  } catch (err) {
+    console.error('Chat error:', err);
+    document.getElementById(typingId)?.remove();
+    addMessageToUI('bot', 'Network error. Please try again later.');
+  } finally {
+    isWaitingForResponse = false;
+    document.getElementById('chatbotSend').disabled = false;
+    inputEl.focus();
+  }
+}
+
+function addMessageToUI(sender, text) {
+  const messagesEl = document.getElementById('chatbotMessages');
+  const bubble = document.createElement('div');
+  bubble.className = `chat-bubble ${sender}`;
+
+  if (sender === 'bot') {
+    // Simple markdown formatting for bold and lists
+    let formattedText = text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/\n\s*-\s+(.*)/g, '<li>$1</li>');
+
+    if (formattedText.includes('<li>')) {
+      formattedText = formattedText.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+    }
+
+    // Convert newlines to br
+    formattedText = formattedText.replace(/\n(?!<ul|<\/ul>|<li>)/g, '<br>');
+    bubble.innerHTML = formattedText;
+  } else {
+    bubble.textContent = text;
+  }
+
+  messagesEl.appendChild(bubble);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+
+function showTypingIndicator() {
+  const messagesEl = document.getElementById('chatbotMessages');
+  const id = 'typing-' + Date.now();
+
+  const div = document.createElement('div');
+  div.id = id;
+  div.className = 'chat-bubble bot typing-indicator';
+  div.innerHTML = `
+    <div class="typing-dot"></div>
+    <div class="typing-dot"></div>
+    <div class="typing-dot"></div>
+  `;
+
+  messagesEl.appendChild(div);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+  return id;
+}

@@ -172,6 +172,54 @@
     <p>Data sourced from official bank websites • Built with ❤️</p>
   </footer>
 
+  <!-- CardRadar AI Chatbot -->
+  <button class="chatbot-fab" id="chatbotFab" onclick="toggleChat()" aria-label="Open CardRadar AI Chat">
+    <img src="logo.svg" alt="CardRadar AI" class="chatbot-fab-logo">
+    <span class="chatbot-fab-pulse"></span>
+  </button>
+
+  <div class="chatbot-panel" id="chatbotPanel">
+    <div class="chatbot-header">
+      <div class="chatbot-header-info">
+        <img src="logo.svg" alt="CardRadar" class="chatbot-header-logo">
+        <div>
+          <div class="chatbot-header-title">CardRadar AI</div>
+          <div class="chatbot-header-subtitle">Credit Card Expert</div>
+        </div>
+      </div>
+      <button class="chatbot-close" onclick="toggleChat()" aria-label="Close chat">&times;</button>
+    </div>
+
+    <div class="chatbot-messages" id="chatbotMessages">
+      <div class="chatbot-welcome">
+        <div class="chatbot-welcome-icon">🤖</div>
+        <p class="chatbot-welcome-text">Hi! I'm <strong>CardRadar AI</strong> — your personal credit card advisor. Ask
+          me anything about Indian credit cards!</p>
+      </div>
+      <div class="chatbot-suggestions" id="chatbotSuggestions">
+        <p class="chatbot-suggestions-label">Try asking:</p>
+        <button class="chatbot-suggestion-chip" onclick="handleSuggestedQuestion(this)">💰 What is your salary
+          range?</button>
+        <button class="chatbot-suggestion-chip" onclick="handleSuggestedQuestion(this)">🎯 What are you looking for in a
+          card?</button>
+        <button class="chatbot-suggestion-chip" onclick="handleSuggestedQuestion(this)">🌍 Which cards have zero forex
+          markup?</button>
+        <button class="chatbot-suggestion-chip" onclick="handleSuggestedQuestion(this)">✈️ Best LTF cards with lounge
+          access?</button>
+        <button class="chatbot-suggestion-chip" onclick="handleSuggestedQuestion(this)">🛒 Best cashback card for online
+          shopping?</button>
+      </div>
+    </div>
+
+    <div class="chatbot-input-area">
+      <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Ask about credit cards..."
+        onkeydown="if(event.key==='Enter')sendChatMessage()">
+      <button class="chatbot-send" id="chatbotSend" onclick="sendChatMessage()" aria-label="Send message">
+        ➤
+      </button>
+    </div>
+  </div>
+
   <script src="app.js"></script>
 </body>
 
