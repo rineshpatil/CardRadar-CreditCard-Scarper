@@ -1,2 +1,12 @@
 node_modules/
 .env
+
+# Data & Docs
+*.xlsx
+*.pdf
+
+# MCP Configs and Logs
+testsprite_tests/
+.testsprite/
+testsprite-error.log
+.stitch/

@@ -14,11 +14,59 @@ let currentBank = '';
 
 // ===== INITIALIZATION =====
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  // Auth-gate: redirect to login if not authenticated
+  try {
+    const res = await fetch('/api/auth/user');
+    if (!res.ok) {
+      window.location.href = '/login.html';
+      return;
+    }
+    const data = await res.json();
+    // Show user profile
+    const loginBtn = document.getElementById('loginBtn');
+    const userProfile = document.getElementById('userProfile');
+    if (loginBtn) loginBtn.style.display = 'none';
+    if (userProfile) userProfile.style.display = 'flex';
+    const nameDisplay = document.getElementById('userNameDisplay');
+    if (nameDisplay) nameDisplay.textContent = data.user.name || data.user.email.split('@')[0];
+  } catch (err) {
+    window.location.href = '/login.html';
+    return;
+  }
+
   initTheme();
   fetchBanks();
   fetchCards();
 });
+
+// ===== AUTH =====
+async function checkAuth() {
+  try {
+    const res = await fetch('/api/auth/user');
+    if (res.ok) {
+      const data = await res.json();
+      const loginBtn = document.getElementById('loginBtn');
+      const userProfile = document.getElementById('userProfile');
+      if (loginBtn) loginBtn.style.display = 'none';
+      if (userProfile) userProfile.style.display = 'flex';
+      const nameDisplay = document.getElementById('userNameDisplay');
+      if (nameDisplay) nameDisplay.textContent = data.user.name || data.user.email.split('@')[0];
+    }
+  } catch (err) {
+    console.error('Auth check error', err);
+  }
+}
+
+async function handleLogout() {
+  try {
+    await fetch('/api/auth/logout', { method: 'POST' });
+    window.location.reload();
+  } catch(err) {
+    console.error('Logout error', err);
+  }
+}
+
 
 // ===== THEME TOGGLE =====
 
@@ -81,19 +129,50 @@ async function fetchBanks() {
 // ===== RENDERING =====
 
 function renderCards(cards) {
-  const grid = document.getElementById('cardGrid');
+  const standardGrid = document.getElementById('cardGrid');
+  const cobrandedGrid = document.getElementById('cobrandedGrid');
+  const cobrandedSection = document.getElementById('cobrandedCardsSection');
+  const standardCount = document.getElementById('sectionCount');
+  const cobrandedCount = document.getElementById('cobrandedCount');
 
   if (!cards || cards.length === 0) {
-    grid.innerHTML = `
+    standardGrid.innerHTML = `
       <div class="empty-state" style="grid-column: 1 / -1;">
         <div class="empty-icon">🔍</div>
         <h3>No cards found</h3>
         <p>Try adjusting your filters or search terms</p>
       </div>`;
+    cobrandedSection.style.display = 'none';
     return;
   }
 
-  grid.innerHTML = cards.map(card => renderCardHTML(card)).join('');
+  // Split cards based on isCoBranded flag
+  const standardCards = cards.filter(c => !c.isCoBranded);
+  const cobrandedCardsArray = cards.filter(c => c.isCoBranded);
+
+  // Render Standard Cards
+  if (standardCards.length > 0) {
+    standardGrid.innerHTML = standardCards.map(card => renderCardHTML(card)).join('');
+  } else {
+    standardGrid.innerHTML = `
+      <div class="empty-state" style="grid-column: 1 / -1;">
+        <div class="empty-icon">💳</div>
+        <h3>No standard cards found</h3>
+      </div>`;
+  }
+  
+  if (standardCount && document.getElementById('sectionTitle').textContent !== 'All Credit Cards') {
+    // Only override count if it's already updated by updateSectionHeader
+  }
+
+  // Render Co-Branded Cards
+  if (cobrandedCardsArray.length > 0) {
+    cobrandedSection.style.display = 'block';
+    cobrandedGrid.innerHTML = cobrandedCardsArray.map(card => renderCardHTML(card)).join('');
+    if (cobrandedCount) cobrandedCount.textContent = `${cobrandedCardsArray.length} cards`;
+  } else {
+    cobrandedSection.style.display = 'none';
+  }
 }
 
 function renderCardHTML(card) {
@@ -556,4 +635,131 @@ function showToast(message, type = 'info') {
   setTimeout(() => {
     toast.remove();
   }, 3500);
+}
+
+// ===== CHATBOT LOGIC =====
+
+let chatHistory = [];
+let isChatbotOpen = false;
+let isWaitingForResponse = false;
+
+function toggleChat() {
+  const panel = document.getElementById('chatbotPanel');
+  const fabPulse = document.querySelector('.chatbot-fab-pulse');
+
+  isChatbotOpen = !isChatbotOpen;
+
+  if (isChatbotOpen) {
+    panel.classList.add('active');
+    if (fabPulse) fabPulse.style.display = 'none'; // Stop pulsing once opened
+    document.getElementById('chatbotInput').focus();
+  } else {
+    panel.classList.remove('active');
+  }
+}
+
+function handleSuggestedQuestion(btnEl) {
+  const question = btnEl.textContent.replace(/^[\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF]\s*/g, ''); // Remove emoji
+  document.getElementById('chatbotInput').value = question;
+  sendChatMessage();
+}
+
+async function sendChatMessage() {
+  if (isWaitingForResponse) return;
+
+  const inputEl = document.getElementById('chatbotInput');
+  const message = inputEl.value.trim();
+
+  if (!message) return;
+
+  // Add user message to UI
+  addMessageToUI('user', message);
+  inputEl.value = '';
+
+  // Hide suggestions if they are visible
+  const suggestions = document.getElementById('chatbotSuggestions');
+  if (suggestions) suggestions.style.display = 'none';
+
+  isWaitingForResponse = true;
+  document.getElementById('chatbotSend').disabled = true;
+
+  // Show typing indicator
+  const typingId = showTypingIndicator();
+
+  try {
+    const res = await fetch(`${API_BASE}/api/chat`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ message, history: chatHistory })
+    });
+
+    const data = await res.json();
+
+    // Remove typing indicator
+    document.getElementById(typingId)?.remove();
+
+    if (res.ok) {
+      addMessageToUI('bot', data.reply);
+      // Save history
+      chatHistory.push({ role: 'user', content: message });
+      chatHistory.push({ role: 'bot', content: data.reply });
+    } else {
+      addMessageToUI('bot', data.reply || 'Sorry, something went wrong.');
+    }
+  } catch (err) {
+    console.error('Chat error:', err);
+    document.getElementById(typingId)?.remove();
+    addMessageToUI('bot', 'Network error. Please try again later.');
+  } finally {
+    isWaitingForResponse = false;
+    document.getElementById('chatbotSend').disabled = false;
+    inputEl.focus();
+  }
+}
+
+function addMessageToUI(sender, text) {
+  const messagesEl = document.getElementById('chatbotMessages');
+  const bubble = document.createElement('div');
+  bubble.className = `chat-bubble ${sender}`;
+
+  if (sender === 'bot') {
+    // Simple markdown formatting for bold and lists
+    let formattedText = text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/\n\s*-\s+(.*)/g, '<li>$1</li>');
+
+    if (formattedText.includes('<li>')) {
+      formattedText = formattedText.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+    }
+
+    // Convert newlines to br
+    formattedText = formattedText.replace(/\n(?!<ul|<\/ul>|<li>)/g, '<br>');
+    bubble.innerHTML = formattedText;
+  } else {
+    bubble.textContent = text;
+  }
+
+  messagesEl.appendChild(bubble);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+
+function showTypingIndicator() {
+  const messagesEl = document.getElementById('chatbotMessages');
+  const id = 'typing-' + Date.now();
+
+  const div = document.createElement('div');
+  div.id = id;
+  div.className = 'chat-bubble bot typing-indicator';
+  div.innerHTML = `
+    <div class="typing-dot"></div>
+    <div class="typing-dot"></div>
+    <div class="typing-dot"></div>
+  `;
+
+  messagesEl.appendChild(div);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+  return id;
 }

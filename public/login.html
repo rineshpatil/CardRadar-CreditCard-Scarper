@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — CardRadar</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <style>
+    .auth-container {
+      max-width: 400px;
+      margin: 80px auto;
+      padding: 2rem;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-color);
+      text-align: center;
+    }
+    .auth-title {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-base);
+    }
+    .auth-subtitle {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .auth-input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      background: var(--bg-color);
+      color: var(--text-base);
+      font-size: 1rem;
+    }
+    .auth-btn {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.8rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: opacity 0.2s;
+    }
+    .auth-btn:hover {
+      opacity: 0.9;
+    }
+    .google-btn {
+      background: #fff;
+      color: #3c4043;
+      border: 1px solid #dadce0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .google-btn:hover {
+      background: #f8f9fa;
+      opacity: 1;
+    }
+    .google-icon {
+      width: 18px;
+      height: 18px;
+    }
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 1.5rem 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .auth-divider::before,
+    .auth-divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .auth-divider:not(:empty)::before {
+      margin-right: .5em;
+    }
+    .auth-divider:not(:empty)::after {
+      margin-left: .5em;
+    }
+    .auth-switch {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .auth-switch a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .auth-switch a:hover {
+      text-decoration: underline;
+    }
+    #errorMsg {
+      color: var(--danger-color, #ef4444);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+  </style>
+</head>
+<body class="dark-theme">
+
+  <div class="bg-pattern"></div>
+
+  <nav class="navbar">
+    <a href="/" class="navbar-brand">
+      <img src="logo.svg" alt="CardRadar Logo" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-name">CardRadar</span>
+        <span class="brand-sub">Indian Credit Card Guide</span>
+      </div>
+    </a>
+  </nav>
+
+  <main class="main-content">
+    <div class="auth-container">
+      <h1 class="auth-title" id="authTitle">Welcome Back</h1>
+      <p class="auth-subtitle" id="authSubtitle">Login to continue to CardRadar</p>
+
+      <div id="errorMsg"></div>
+
+      <form class="auth-form" id="authForm" onsubmit="handleAuth(event)">
+        <input type="text" id="nameInput" class="auth-input" placeholder="Full Name" style="display: none;">
+        <input type="email" id="emailInput" class="auth-input" placeholder="Email Address" required>
+        <input type="password" id="passwordInput" class="auth-input" placeholder="Password" required>
+        <button type="submit" class="auth-btn" id="submitBtn">Log In</button>
+      </form>
+
+      <div class="auth-divider">OR</div>
+
+      <button class="auth-btn google-btn" onclick="window.location.href='/api/auth/google'">
+        <svg class="google-icon" viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+        </svg>
+        Continue with Google
+      </button>
+
+      <div class="auth-switch" id="authSwitch">
+        Don't have an account? <a href="#" onclick="toggleMode(event)">Sign up</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="login.js"></script>
+</body>
+</html>
