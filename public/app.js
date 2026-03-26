@@ -14,11 +14,59 @@ let currentBank = '';
 
 // ===== INITIALIZATION =====
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  // Auth-gate: redirect to login if not authenticated
+  try {
+    const res = await fetch('/api/auth/user');
+    if (!res.ok) {
+      window.location.href = '/login.html';
+      return;
+    }
+    const data = await res.json();
+    // Show user profile
+    const loginBtn = document.getElementById('loginBtn');
+    const userProfile = document.getElementById('userProfile');
+    if (loginBtn) loginBtn.style.display = 'none';
+    if (userProfile) userProfile.style.display = 'flex';
+    const nameDisplay = document.getElementById('userNameDisplay');
+    if (nameDisplay) nameDisplay.textContent = data.user.name || data.user.email.split('@')[0];
+  } catch (err) {
+    window.location.href = '/login.html';
+    return;
+  }
+
   initTheme();
   fetchBanks();
   fetchCards();
 });
+
+// ===== AUTH =====
+async function checkAuth() {
+  try {
+    const res = await fetch('/api/auth/user');
+    if (res.ok) {
+      const data = await res.json();
+      const loginBtn = document.getElementById('loginBtn');
+      const userProfile = document.getElementById('userProfile');
+      if (loginBtn) loginBtn.style.display = 'none';
+      if (userProfile) userProfile.style.display = 'flex';
+      const nameDisplay = document.getElementById('userNameDisplay');
+      if (nameDisplay) nameDisplay.textContent = data.user.name || data.user.email.split('@')[0];
+    }
+  } catch (err) {
+    console.error('Auth check error', err);
+  }
+}
+
+async function handleLogout() {
+  try {
+    await fetch('/api/auth/logout', { method: 'POST' });
+    window.location.reload();
+  } catch(err) {
+    console.error('Logout error', err);
+  }
+}
+
 
 // ===== THEME TOGGLE =====
 
@@ -81,19 +129,50 @@ async function fetchBanks() {
 // ===== RENDERING =====
 
 function renderCards(cards) {
-  const grid = document.getElementById('cardGrid');
+  const standardGrid = document.getElementById('cardGrid');
+  const cobrandedGrid = document.getElementById('cobrandedGrid');
+  const cobrandedSection = document.getElementById('cobrandedCardsSection');
+  const standardCount = document.getElementById('sectionCount');
+  const cobrandedCount = document.getElementById('cobrandedCount');
 
   if (!cards || cards.length === 0) {
-    grid.innerHTML = `
+    standardGrid.innerHTML = `
       <div class="empty-state" style="grid-column: 1 / -1;">
         <div class="empty-icon">🔍</div>
         <h3>No cards found</h3>
         <p>Try adjusting your filters or search terms</p>
       </div>`;
+    cobrandedSection.style.display = 'none';
     return;
   }
 
-  grid.innerHTML = cards.map(card => renderCardHTML(card)).join('');
+  // Split cards based on isCoBranded flag
+  const standardCards = cards.filter(c => !c.isCoBranded);
+  const cobrandedCardsArray = cards.filter(c => c.isCoBranded);
+
+  // Render Standard Cards
+  if (standardCards.length > 0) {
+    standardGrid.innerHTML = standardCards.map(card => renderCardHTML(card)).join('');
+  } else {
+    standardGrid.innerHTML = `
+      <div class="empty-state" style="grid-column: 1 / -1;">
+        <div class="empty-icon">💳</div>
+        <h3>No standard cards found</h3>
+      </div>`;
+  }
+  
+  if (standardCount && document.getElementById('sectionTitle').textContent !== 'All Credit Cards') {
+    // Only override count if it's already updated by updateSectionHeader
+  }
+
+  // Render Co-Branded Cards
+  if (cobrandedCardsArray.length > 0) {
+    cobrandedSection.style.display = 'block';
+    cobrandedGrid.innerHTML = cobrandedCardsArray.map(card => renderCardHTML(card)).join('');
+    if (cobrandedCount) cobrandedCount.textContent = `${cobrandedCardsArray.length} cards`;
+  } else {
+    cobrandedSection.style.display = 'none';
+  }
 }
 
 function renderCardHTML(card) {

@@ -1,24 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Find the best Indian credit cards - LTF and premium cards with airport lounge, railway lounge, golf, cashback and more benefits. Filter by bank, compare cards.">
+  <meta name="description" content="Find the best Indian credit cards - LTF and premium cards with airport lounge, railway lounge, golf, cashback and more benefits.">
   <title>CardRadar — Indian Credit Card Guide</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/svg+xml" href="logo.svg">
 </head>
+<body class="landing-body dark-theme has-splash">
 
-<body>
+  <!-- Splash Screen -->
+  <div id="splashScreen" class="splash-screen">
+    <img src="cardradarlogo.gif" alt="CardRadar Loading" class="splash-logo">
+  </div>
 
   <!-- Animated Background -->
   <div class="bg-pattern"></div>
 
+  <!-- 3D Floating Perk Icons -->
+  <div class="perks-3d-container" aria-hidden="true">
+    <div class="perk-float perk-1">
+      <svg viewBox="0 0 64 64" width="48" height="48"><rect x="8" y="18" width="48" height="28" rx="4" fill="#0056D2" opacity="0.8"/><rect x="14" y="24" width="10" height="8" rx="2" fill="#FFD700"/><rect x="8" y="34" width="48" height="6" fill="#003FA3"/><text x="32" y="56" text-anchor="middle" font-size="10" fill="#82B1FF">✈️</text></svg>
+      <span class="perk-label">Lounge Access</span>
+    </div>
+    <div class="perk-float perk-2">
+      <svg viewBox="0 0 64 64" width="44" height="44"><circle cx="32" cy="28" r="18" fill="#FFD700" opacity="0.85"/><text x="32" y="34" text-anchor="middle" font-size="20" fill="#0a0a0f">₹</text><text x="32" y="56" text-anchor="middle" font-size="10" fill="#FFD700">★★★</text></svg>
+      <span class="perk-label">Reward Points</span>
+    </div>
+    <div class="perk-float perk-3">
+      <svg viewBox="0 0 64 64" width="42" height="42"><circle cx="32" cy="26" r="14" fill="#10b981" opacity="0.8"/><text x="32" y="32" text-anchor="middle" font-size="18" fill="white">⛳</text><rect x="18" y="46" width="28" height="4" rx="2" fill="#10b981" opacity="0.5"/></svg>
+      <span class="perk-label">Golf Benefits</span>
+    </div>
+    <div class="perk-float perk-4">
+      <svg viewBox="0 0 64 64" width="46" height="46"><rect x="12" y="12" width="40" height="30" rx="3" fill="#a26fff" opacity="0.8"/><rect x="16" y="16" width="32" height="22" rx="2" fill="#1a1a2e"/><text x="32" y="30" text-anchor="middle" font-size="14" fill="white">🎬</text><rect x="22" y="46" width="20" height="4" rx="2" fill="#a26fff" opacity="0.5"/></svg>
+      <span class="perk-label">Movie Tickets</span>
+    </div>
+    <div class="perk-float perk-5">
+      <svg viewBox="0 0 64 64" width="44" height="44"><circle cx="32" cy="28" r="16" fill="#ff6b6b" opacity="0.8"/><text x="32" y="34" text-anchor="middle" font-size="16" fill="white">%</text><rect x="20" y="48" width="24" height="4" rx="2" fill="#ff6b6b" opacity="0.5"/></svg>
+      <span class="perk-label">Cashback</span>
+    </div>
+    <div class="perk-float perk-6">
+      <svg viewBox="0 0 64 64" width="40" height="40"><circle cx="32" cy="26" r="14" fill="#4da6ff" opacity="0.8"/><text x="32" y="32" text-anchor="middle" font-size="16" fill="white">🌍</text><rect x="18" y="46" width="28" height="4" rx="2" fill="#4da6ff" opacity="0.5"/></svg>
+      <span class="perk-label">Zero Forex</span>
+    </div>
+  </div>
+
   <!-- Navbar -->
-  <nav class="navbar">
-    <a href="#" class="navbar-brand">
+  <nav class="navbar landing-nav">
+    <a href="/" class="navbar-brand">
       <img src="logo.svg" alt="CardRadar Logo" class="brand-logo">
       <div class="brand-text">
         <span class="brand-name">CardRadar</span>
@@ -26,147 +56,130 @@
       </div>
     </a>
     <div class="navbar-actions">
-      <span class="navbar-tagline">Compare • Filter • Apply</span>
-      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">
-        <span class="theme-icon-dark">🌙</span>
-        <span class="theme-icon-light">☀️</span>
-      </button>
+      <a href="/login.html" class="btn btn-primary" id="loginBtnLanding" style="padding: 0.4rem 1rem; font-size: 0.8rem;">Log In</a>
+      <div id="userProfileLanding" style="display: none; align-items: center; gap: 1rem;">
+        <span id="userNameLanding" style="font-weight: 600; color: var(--text-primary); font-size: 0.9rem;"></span>
+        <a href="/dashboard.html" class="btn btn-primary" style="padding: 0.4rem 1rem; font-size: 0.8rem;">Dashboard</a>
+      </div>
     </div>
   </nav>
 
-  <!-- Main Content -->
-  <main class="main-content">
-
-    <!-- Hero -->
-    <section class="hero">
-      <h1 class="hero-title">
-        Find Your Perfect <span class="gradient-text">Credit Card</span>
-      </h1>
-      <p class="hero-subtitle">
-        Discover the best LTF &amp; premium credit cards in India — compare lounge access, golf perks, cashbacks, forex
-        benefits and apply directly with your bank.
-      </p>
-    </section>
-
-    <!-- Stats Bar -->
-    <div class="stats-bar" id="statsBar">
-      <div class="stat-item">
-        <div class="stat-value" id="statTotal">—</div>
-        <div class="stat-label">Total Cards</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value" id="statLTF">—</div>
-        <div class="stat-label">LTF Cards</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value" id="statLounge">—</div>
-        <div class="stat-label">With Lounge</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value" id="statGolf">—</div>
-        <div class="stat-label">With Golf</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value" id="statCashback">—</div>
-        <div class="stat-label">Cashback</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value" id="statBanks">—</div>
-        <div class="stat-label">Banks</div>
-      </div>
-    </div>
-
-    <!-- Bank Filter Section -->
-    <section class="bank-filter-section" id="bankFilterSection">
-      <div class="bank-filter-header">
-        <h2 class="bank-filter-title">🏦 Browse by Bank</h2>
-        <p class="bank-filter-subtitle">Select a bank to see their credit card offerings</p>
-      </div>
-      <div class="bank-chips-container" id="bankChips">
-        <!-- Bank chips will be rendered here -->
-      </div>
-    </section>
-
-    <!-- Filter Section -->
-    <div class="filter-section">
-      <div class="filter-bar">
-        <div class="search-box">
-          <span class="search-icon">🔎</span>
-          <input type="text" id="searchInput" placeholder="Search cards, banks, benefits..." oninput="handleSearch()">
+  <main class="main-content landing-main">
+    
+    <!-- Hero Section -->
+    <section class="landing-hero fade-section">
+      <div class="hero-content">
+        <div class="hero-badge">✨ Your Gateway to Premium Benefits</div>
+        <h1 class="hero-title">
+          Master Your Finances with <span class="gradient-text blue-accent">CardRadar</span>
+        </h1>
+        <p class="hero-subtitle">
+          The ultimate guide to Indian credit cards. Compare lifetime free cards, luxury travel perks, zero forex deals, and maximize your rewards in one place.
+        </p>
+        <div class="hero-actions">
+          <a href="/dashboard.html" class="btn btn-primary btn-large">Explore Cards Now</a>
         </div>
-        <div class="filter-chips" id="filterChips">
-          <button class="chip active" data-filter="all" onclick="setFilter('all', this)">
-            <span class="chip-icon">📋</span> All
-          </button>
-          <button class="chip" data-filter="ltf" onclick="setFilter('ltf', this)">
-            <span class="chip-icon">✨</span> LTF
-          </button>
-          <button class="chip" data-filter="non-ltf" onclick="setFilter('non-ltf', this)">
-            <span class="chip-icon">👑</span> Premium
-          </button>
-          <button class="chip" data-filter="lounge" onclick="setFilter('lounge', this)">
-            <span class="chip-icon">✈️</span> Lounge
-          </button>
-          <button class="chip" data-filter="railway" onclick="setFilter('railway', this)">
-            <span class="chip-icon">🚂</span> Railway
-          </button>
-          <button class="chip" data-filter="golf" onclick="setFilter('golf', this)">
-            <span class="chip-icon">⛳</span> Golf
-          </button>
-          <button class="chip" data-filter="cashback" onclick="setFilter('cashback', this)">
-            <span class="chip-icon">💰</span> Cashback
-          </button>
-          <button class="chip" data-filter="forex" onclick="setFilter('forex', this)">
-            <span class="chip-icon">🌍</span> Zero Forex
-          </button>
-        </div>
-        <select class="sort-select" id="sortSelect" onchange="handleSort()">
-          <option value="popularity">⭐ Popularity</option>
-          <option value="fee-low">💸 Fee: Low → High</option>
-          <option value="fee-high">💰 Fee: High → Low</option>
-          <option value="bank">🏦 Bank A-Z</option>
-          <option value="name">🔤 Name A-Z</option>
-        </select>
       </div>
-    </div>
-
-    <!-- Cards Section -->
-    <section class="section" id="cardsSection">
-      <div class="section-header">
-        <div class="section-icon all">📊</div>
-        <h2 class="section-title" id="sectionTitle">All Credit Cards</h2>
-        <span class="section-count" id="sectionCount">Loading...</span>
-      </div>
-      <div class="card-grid" id="cardGrid">
-        <!-- Skeleton loaders -->
-        <div class="skeleton skeleton-card"></div>
-        <div class="skeleton skeleton-card"></div>
-        <div class="skeleton skeleton-card"></div>
-        <div class="skeleton skeleton-card"></div>
-        <div class="skeleton skeleton-card"></div>
-        <div class="skeleton skeleton-card"></div>
+      <div class="hero-visual">
+         <!-- Geometric shapes to act as a visual backdrop for cards -->
+         <div class="floating-card card-1"></div>
+         <div class="floating-card card-2"></div>
+         <div class="floating-card card-3"></div>
       </div>
     </section>
+
+    <!-- What is CardRadar Section -->
+    <section class="landing-about fade-section delayed">
+      <div class="about-grid">
+        <div class="about-text">
+          <h2 class="section-title">What is CardRadar?</h2>
+          <p class="section-desc">
+            Navigating the complex world of Indian credit cards can be overwhelming. CardRadar simplifies your journey by analyzing hundreds of cards from top banks. 
+          </p>
+          <ul class="feature-list">
+            <li><span class="check-icon">✓</span> Unbiased comparisons</li>
+            <li><span class="check-icon">✓</span> Comprehensive feature breakdowns</li>
+            <li><span class="check-icon">✓</span> Personalized discovery</li>
+          </ul>
+        </div>
+        <div class="about-image">
+           <div class="radar-scan"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LTF vs Non-LTF Section -->
+    <section class="landing-compare fade-section">
+      <div class="compare-header">
+        <h2 class="section-title text-center">Lifetime Free vs Premium Cards</h2>
+        <p class="section-desc text-center">Find the right fit for your lifestyle and spending habits.</p>
+      </div>
+      
+      <div class="compare-container">
+        <!-- LTF Card -->
+        <div class="compare-box ltf-box">
+          <div class="box-icon">✨</div>
+          <h3 class="box-title">Lifetime Free (LTF)</h3>
+          <p class="box-desc">Zero joining and annual fees forever. Perfect for beginners and light spenders.</p>
+          <ul class="box-features">
+            <li>No annual maintenance fees</li>
+            <li>Basic rewards &amp; cashback</li>
+            <li>Easy approval criteria</li>
+            <li>Great for building credit score</li>
+          </ul>
+        </div>
+        
+        <div class="vs-badge">VS</div>
+
+        <!-- Non-LTF Card -->
+        <div class="compare-box premium-box">
+          <div class="box-icon">👑</div>
+          <h3 class="box-title">Premium (Non-LTF)</h3>
+          <p class="box-desc">Annual fee cards with luxurious perks like unlimited lounge access and high rewards.</p>
+          <ul class="box-features">
+            <li>Welcome bonuses &amp; milestone rewards</li>
+            <li>Airport &amp; railway lounge access</li>
+            <li>Complimentary golf rounds</li>
+            <li>Higher reward rates &amp; zero forex</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Assistant Section -->
+    <section class="landing-ai fade-section">
+      <div class="ai-grid">
+        <div class="ai-visual">
+          <div class="chatbot-mockup">
+            <div class="mock-header">
+              <img src="logo.svg" alt="AI">
+              <span>CardRadar AI</span>
+            </div>
+            <div class="mock-body">
+              <div class="mock-msg bot">Hi! How can I help you find the perfect card?</div>
+              <div class="mock-msg user">Which card is best for dining and movies?</div>
+              <div class="mock-msg bot">I recommend the Swiggy HDFC or the Axis My Zone! Both offer great dining and movie perks.</div>
+            </div>
+          </div>
+        </div>
+        <div class="ai-text">
+          <div class="ai-badge">SMART CHATBOT</div>
+          <h2 class="section-title">Your Personal <span class="blue-text">AI Assistant</span></h2>
+          <p class="section-desc">
+            Available post-login, our intelligent chatbot is ready to answer your questions instantly. 
+          </p>
+          <ul class="feature-list">
+            <li><span class="bot-icon">🤖</span> <strong>Card Comparisons:</strong> Ask it to compare any two cards head-to-head.</li>
+            <li><span class="bot-icon">🎯</span> <strong>Smart Recommendations:</strong> Get card suggestions based on your highest spend categories.</li>
+            <li><span class="bot-icon">⚡</span> <strong>Live Data:</strong> Pulls real-time accuracy directly from the CardRadar database.</li>
+          </ul>
+          <a href="/dashboard.html" class="btn btn-primary" style="margin-top:20px;">Try the AI Assistant</a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Card Detail Modal -->
-  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
-    <div class="modal" id="modalContent" onclick="event.stopPropagation()">
-      <div class="modal-header">
-        <div>
-          <h2 class="modal-card-name" id="modalCardName"></h2>
-          <p class="modal-card-bank" id="modalCardBank"></p>
-        </div>
-        <button class="modal-close" onclick="closeModal()">&times;</button>
-      </div>
-      <div class="modal-body" id="modalBody"></div>
-    </div>
-  </div>
-
-  <!-- Toast Container -->
-  <div class="toast-container" id="toastContainer"></div>
-
-  <!-- Footer -->
   <footer class="footer">
     <p>CardRadar — Indian Credit Card Guide</p>
     <p>Data sourced from official bank websites • Built with ❤️</p>
@@ -221,6 +234,6 @@
   </div>
 
   <script src="app.js"></script>
+  <script src="landing.js"></script>
 </body>
-
 </html>

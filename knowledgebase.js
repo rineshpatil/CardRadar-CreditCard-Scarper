@@ -18,6 +18,7 @@ const auCards = require('./cards/au');
 const indusindCards = require('./cards/indusind');
 const rblCards = require('./cards/rbl');
 const idbiCards = require('./cards/idbi');
+const cobrandedCards = require('./cards/cobranded');
 
 // Combine all bank cards into a single array
 const CREDIT_CARDS = [
@@ -32,7 +33,8 @@ const CREDIT_CARDS = [
     ...auCards,
     ...indusindCards,
     ...rblCards,
-    ...idbiCards
+    ...idbiCards,
+    ...cobrandedCards
 ];
 
 // ===== HELPER FUNCTIONS =====

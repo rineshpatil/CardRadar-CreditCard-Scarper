@@ -10,6 +10,11 @@ require('dotenv').config();
 const { categorizeCards, generateStats } = require('./analyzer');
 const { getAllCards, getUniqueBanks, getCardsSummaryForLLM } = require('./knowledgebase');
 const OpenAI = require('openai');
+const session = require('express-session');
+const pgSession = require('connect-pg-simple')(session);
+const passport = require('./auth');
+const { pool, initDB } = require('./db');
+const bcrypt = require('bcryptjs');
 
 // ===== OPENAI (NVIDIA NIM) SETUP =====
 const API_KEY = process.env.API_KEY;
@@ -26,11 +31,6 @@ try {
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
-// Middleware
-app.use(cors());
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
 
 // In-memory cache
 let cachedCards = null;
@@ -58,9 +58,98 @@ function initializeCards() {
     cachedCards = cards;
 }
 
-initializeCards();
+// ===== BOOTSTRAP: await DB before middleware =====
+(async () => {
+  // Initialize Database FIRST (creates tables)
+  await initDB();
 
-// ===== API ROUTES =====
+  // Middleware
+  app.use(cors());
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
+  app.use(express.static(path.join(__dirname, 'public')));
+
+  // Session configuration (safe now — DB tables exist)
+  app.use(session({
+    store: new pgSession({
+      pool: pool,
+      tableName: 'session',
+      createTableIfMissing: true
+    }),
+    secret: process.env.SESSION_SECRET || 'cardradar-super-secret-key',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
+  }));
+
+  // Initialize Passport
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  // Initialize cards cache
+  initializeCards();
+
+  // ===== API ROUTES =====
+
+// ===== AUTH ROUTES =====
+app.post('/api/auth/register', async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+    if (!name || !email || !password) {
+      return res.status(400).json({ error: 'All fields are required' });
+    }
+    
+    const existing = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+    if (existing.rows.length > 0) {
+      return res.status(400).json({ error: 'Email already exists' });
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    const newUser = await pool.query(
+      'INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING id, name, email',
+      [name, email, hashedPassword]
+    );
+
+    req.login(newUser.rows[0], (err) => {
+      if (err) return res.status(500).json({ error: 'Login error' });
+      return res.json({ message: 'Registration successful', user: newUser.rows[0] });
+    });
+  } catch (error) {
+    console.error('Registration error:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+app.post('/api/auth/login', passport.authenticate('local', { failureMessage: true }), (req, res) => {
+  res.json({ message: 'Login successful', user: { id: req.user.id, name: req.user.name, email: req.user.email } });
+});
+
+app.get('/api/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+app.get('/api/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/login.html?error=google' }),
+  (req, res) => {
+    res.redirect('/dashboard.html');
+  }
+);
+
+app.get('/api/auth/user', (req, res) => {
+  if (req.isAuthenticated()) {
+    res.json({ user: { id: req.user.id, name: req.user.name, email: req.user.email } });
+  } else {
+    res.status(401).json({ error: 'Not authenticated' });
+  }
+});
+
+app.post('/api/auth/logout', (req, res, next) => {
+  req.logout((err) => {
+    if (err) { return next(err); }
+    res.json({ message: 'Logout successful' });
+  });
+});
+
 
 /**
  * GET /api/cards - Get all cards (optionally filtered)
@@ -222,9 +311,10 @@ app.get('*', (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
-    console.log(`\n🚀 CardRadar — Indian Credit Card Guide running at http://localhost:${PORT}`);
-    console.log(`📊 Dashboard: http://localhost:${PORT}`);
-    console.log(`📡 API: http://localhost:${PORT}/api/cards`);
-    console.log(`🏦 Banks: http://localhost:${PORT}/api/banks\n`);
-});
+  app.listen(PORT, () => {
+      console.log(`\n🚀 CardRadar — Indian Credit Card Guide running at http://localhost:${PORT}`);
+      console.log(`📊 Dashboard: http://localhost:${PORT}`);
+      console.log(`📡 API: http://localhost:${PORT}/api/cards`);
+      console.log(`🏦 Banks: http://localhost:${PORT}/api/banks\n`);
+  });
+})();
