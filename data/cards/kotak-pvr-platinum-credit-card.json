@@ -6,7 +6,7 @@
   "category": "Movies",
   "tier": "entry",
   "isLTF": false,
-  "isCoBranded": false,
+  "isCoBranded": true,
   "annualFee": 499,
   "joiningFee": null,
   "rewardRate": null,

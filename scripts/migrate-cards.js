@@ -18,8 +18,13 @@ const DUPLICATES = new Set([
   'american-express-membership-rewards-credit-card', 'indusind-legend-credit-card',
   'rbl-bank-shoprite-credit-card', 'cashback-sbi-card',
 ]);
-// Co-branded sheet rows not to add: discontinued, or already present under another name.
-const SKIP_ROWS = new Set(['Paytm SBI Credit Card SELECT', 'Kiwi-YES Bank RuPay Credit Card', 'PVR Kotak Credit Card']);
+// Co-branded sheet rows that are an existing card under another name.
+const SAME_CARD = {
+  'Kiwi-YES Bank RuPay Credit Card': 'kiwi-credit-card-yes-bank-rupay',
+  'PVR Kotak Credit Card': 'kotak-pvr-platinum-credit-card',
+};
+// Co-branded sheet rows for cards that are no longer issued.
+const DISCONTINUED = new Set(['Paytm SBI Credit Card SELECT']);
 // Apply links that point at a generic card listing rather than the card's own page.
 const NO_SOURCE = new Set(['axis-olympus-credit-card', 'practo-axis-bank-credit-card']);
 // Ordering hint carried over from server.js (not shown to users).
@@ -97,9 +102,9 @@ const byWords = new Map(kept.map((c) => [words(c.name), c.id]));
 const coBrandedIds = new Set();
 const added = [];
 for (const row of sheet) {
-  const existing = byWords.get(words(row['Card Name']));
+  const existing = byWords.get(words(row['Card Name'])) || SAME_CARD[row['Card Name']];
   if (existing) { coBrandedIds.add(existing); continue; }
-  if (SKIP_ROWS.has(row['Card Name'])) continue;
+  if (DISCONTINUED.has(row['Card Name'])) continue;
   const isLTF = row['LTF?'] === 'Yes';
   const card = {
     id: slug(row['Card Name']), name: row['Card Name'], bank: row.Bank, network: row.Network,

@@ -6,7 +6,7 @@
   "category": "UPI/Cashback",
   "tier": "entry",
   "isLTF": true,
-  "isCoBranded": false,
+  "isCoBranded": true,
   "annualFee": 0,
   "joiningFee": null,
   "rewardRate": null,
