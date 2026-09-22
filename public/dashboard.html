@@ -27,11 +27,6 @@
     </a>
     <div class="navbar-actions">
       <span class="navbar-tagline">Compare • Filter • Apply</span>
-      <a href="/login.html" class="btn btn-primary" id="loginBtn" style="padding: 0.4rem 1rem; font-size: 0.8rem;">Log In</a>
-      <div id="userProfile" style="display: none; align-items: center; gap: 1rem;">
-        <span id="userNameDisplay" style="font-weight: 600; color: var(--text-primary); font-size: 0.9rem;"></span>
-        <button onclick="handleLogout()" class="btn" style="background: var(--bg-glass-light); border: 1px solid var(--border-subtle); color: var(--text-secondary); padding: 0.4rem 1rem; font-size: 0.8rem;">Log Out</button>
-      </div>
       <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">
         <span class="theme-icon-dark">🌙</span>
         <span class="theme-icon-light">☀️</span>
@@ -132,6 +127,17 @@
           <option value="bank">🏦 Bank A-Z</option>
           <option value="name">🔤 Name A-Z</option>
         </select>
+        <select class="sort-select" id="tierSelect" onchange="setTier(this.value)" aria-label="Card tier">
+          <option value="">🎚️ All tiers</option>
+          <option value="entry">Entry</option>
+          <option value="mid">Mid-range</option>
+          <option value="premium">Premium</option>
+          <option value="super_premium">Super premium</option>
+          <option value="private">Invite only</option>
+        </select>
+        <label class="verified-toggle">
+          <input type="checkbox" id="verifiedOnly" onchange="setVerifiedOnly(this.checked)"> Verified only
+        </label>
       </div>
     </div>
 
@@ -186,7 +192,7 @@
   <!-- Footer -->
   <footer class="footer">
     <p>CardRadar — Indian Credit Card Guide</p>
-    <p>Data sourced from official bank websites • Built with ❤️</p>
+    <p class="disclaimer">Card details are checked against official bank pages but can change at any time. CardRadar is not a bank and this is not financial advice — confirm on the bank's website before you apply.</p>
   </footer>
 
   <!-- CardRadar AI Chatbot -->
@@ -237,6 +243,7 @@
     </div>
   </div>
 
+  <script src="lib.js"></script>
   <script src="app.js"></script>
 </body>
 

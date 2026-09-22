@@ -2602,3 +2602,57 @@ body.has-splash:not(.splash-cleared) {
     display: none;
   }
 }
+/* ===== Verification labels ===== */
+.badge-verified {
+  background: rgba(0, 212, 170, 0.15);
+  color: var(--accent-secondary);
+  border: 1px solid rgba(0, 212, 170, 0.3);
+}
+
+.badge-outdated {
+  background: rgba(255, 170, 0, 0.12);
+  color: #ffaa00;
+  border: 1px solid rgba(255, 170, 0, 0.3);
+}
+
+.badge-unverified {
+  background: var(--bg-glass-light);
+  color: var(--text-muted);
+  border: 1px dashed var(--border-subtle);
+}
+
+.benefits-pending,
+.verify-note p,
+.quote {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.verify-note {
+  border-left: 3px solid var(--border-subtle);
+  padding-left: 0.8rem;
+}
+
+.verify-note.verify-verified { border-left-color: var(--accent-secondary); }
+.verify-note.verify-outdated { border-left-color: #ffaa00; }
+.verify-note p { margin: 0.35rem 0; }
+
+.quote { margin-top: 0.3rem; }
+.quote summary { cursor: pointer; }
+
+.verified-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.footer .disclaimer {
+  max-width: 720px;
+  margin: 0.4rem auto 0;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}

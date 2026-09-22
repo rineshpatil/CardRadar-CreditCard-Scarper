@@ -5,68 +5,21 @@
 const API_BASE = '';
 
 // State
-let allCards = [];
-let allBanks = [];
+let allCardsData = []; // every card from /data/cards.json
+let allCards = [];     // cards matching the current filters
 let currentFilter = 'all';
 let currentSort = 'popularity';
 let currentSearch = '';
 let currentBank = '';
+let currentTier = '';
+let verifiedOnly = false;
 
 // ===== INITIALIZATION =====
 
-document.addEventListener('DOMContentLoaded', async () => {
-  // Auth-gate: redirect to login if not authenticated
-  try {
-    const res = await fetch('/api/auth/user');
-    if (!res.ok) {
-      window.location.href = '/login.html';
-      return;
-    }
-    const data = await res.json();
-    // Show user profile
-    const loginBtn = document.getElementById('loginBtn');
-    const userProfile = document.getElementById('userProfile');
-    if (loginBtn) loginBtn.style.display = 'none';
-    if (userProfile) userProfile.style.display = 'flex';
-    const nameDisplay = document.getElementById('userNameDisplay');
-    if (nameDisplay) nameDisplay.textContent = data.user.name || data.user.email.split('@')[0];
-  } catch (err) {
-    window.location.href = '/login.html';
-    return;
-  }
-
+document.addEventListener('DOMContentLoaded', () => {
   initTheme();
-  fetchBanks();
-  fetchCards();
+  if (document.getElementById('cardGrid')) loadCards();
 });
-
-// ===== AUTH =====
-async function checkAuth() {
-  try {
-    const res = await fetch('/api/auth/user');
-    if (res.ok) {
-      const data = await res.json();
-      const loginBtn = document.getElementById('loginBtn');
-      const userProfile = document.getElementById('userProfile');
-      if (loginBtn) loginBtn.style.display = 'none';
-      if (userProfile) userProfile.style.display = 'flex';
-      const nameDisplay = document.getElementById('userNameDisplay');
-      if (nameDisplay) nameDisplay.textContent = data.user.name || data.user.email.split('@')[0];
-    }
-  } catch (err) {
-    console.error('Auth check error', err);
-  }
-}
-
-async function handleLogout() {
-  try {
-    await fetch('/api/auth/logout', { method: 'POST' });
-    window.location.reload();
-  } catch(err) {
-    console.error('Logout error', err);
-  }
-}
-
 
 // ===== THEME TOGGLE =====
 
@@ -94,36 +47,26 @@ function toggleTheme() {
 
 // ===== DATA FETCHING =====
 
-async function fetchCards() {
+async function loadCards() {
   try {
-    const params = new URLSearchParams();
-    if (currentFilter !== 'all') params.set('filter', currentFilter);
-    if (currentSort) params.set('sort', currentSort);
-    if (currentSearch) params.set('search', currentSearch);
-    if (currentBank) params.set('bank', currentBank);
-
-    const res = await fetch(`${API_BASE}/api/cards?${params}`);
-    const data = await res.json();
-
-    allCards = data.cards;
-    updateStats(data.stats);
-    renderCards(data.cards);
-    updateSectionHeader();
+    const res = await fetch('/data/cards.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    allCardsData = await res.json();
+    updateStats(computeStats(allCardsData));
+    renderBankChips(bankCounts(allCardsData));
+    applyQuery();
   } catch (err) {
-    console.error('Failed to fetch cards:', err);
+    console.error('Failed to load cards:', err);
     showToast('Failed to load card data', 'error');
   }
 }
 
-async function fetchBanks() {
-  try {
-    const res = await fetch(`${API_BASE}/api/banks`);
-    const banks = await res.json();
-    allBanks = banks;
-    renderBankChips(banks);
-  } catch (err) {
-    console.error('Failed to fetch banks:', err);
-  }
+function applyQuery() {
+  allCards = queryCards(allCardsData, {
+    filter: currentFilter, bank: currentBank, search: currentSearch, sort: currentSort, tier: currentTier, verifiedOnly,
+  });
+  renderCards(allCards);
+  updateSectionHeader();
 }
 
 // ===== RENDERING =====
@@ -176,106 +119,45 @@ function renderCards(cards) {
 }
 
 function renderCardHTML(card) {
-  const isLTF = card.isLTF;
-  const cardClass = isLTF ? 'ltf-card' : 'premium-card';
-  const feeText = isLTF
+  const b = card.benefits;
+  const badge = verificationBadge(card);
+  const feeText = card.isLTF
     ? '<strong>Lifetime Free</strong> — ₹0 Annual Fee'
-    : `Annual Fee: <span class="fee-amount">₹${card.annualFee.toLocaleString()}</span>`;
-
-  const benefitIcons = [
-    {
-      icon: '✈️',
-      key: 'airport',
-      available: card.benefits.lounges.airport.domestic !== 0 || card.benefits.lounges.airport.international !== 0,
-      tip: card.benefits.lounges.airport.description
-    },
-    {
-      icon: '🚂',
-      key: 'railway',
-      available: card.benefits.lounges.railway.count !== 0,
-      tip: card.benefits.lounges.railway.description
-    },
-    {
-      icon: '⛳',
-      key: 'golf',
-      available: card.benefits.golf.available,
-      tip: card.benefits.golf.description
-    },
-    {
-      icon: '💰',
-      key: 'cashback',
-      available: true,
-      tip: card.benefits.cashback.description
-    },
-    {
-      icon: '🌍',
-      key: 'forex',
-      available: card.benefits.forex.markupFee === '0%',
-      tip: card.benefits.forex.description
-    },
-    {
-      icon: '⛽',
-      key: 'fuel',
-      available: card.benefits.fuel && card.benefits.fuel.surchargeWaiver,
-      tip: card.benefits.fuel ? card.benefits.fuel.description : 'No fuel benefits'
-    },
-    {
-      icon: '🍽️',
-      key: 'dining',
-      available: card.benefits.dining && card.benefits.dining.available,
-      tip: card.benefits.dining ? card.benefits.dining.description || 'Dining offers available' : 'No dining benefits'
-    },
-    {
-      icon: '🎬',
-      key: 'movies',
-      available: card.benefits.movies && card.benefits.movies.available,
-      tip: card.benefits.movies ? card.benefits.movies.description || 'Movie benefits available' : 'No movie benefits'
-    }
-  ];
-
-  const maxPopularity = 100;
-  const popPercent = Math.min((card.popularityScore / maxPopularity) * 100, 100);
+    : `Annual Fee: <span class="fee-amount">₹${card.annualFee.toLocaleString('en-IN')}</span>`;
+  const icons = b ? [
+    { icon: '✈️', on: FILTERS.lounge(card), tip: b.lounges?.airport?.description || 'Airport lounge access' },
+    { icon: '🚂', on: FILTERS.railway(card), tip: b.lounges?.railway?.description || 'Railway lounge access' },
+    { icon: '⛳', on: FILTERS.golf(card), tip: b.golf?.description || 'Golf' },
+    { icon: '💰', on: Boolean(b.cashback), tip: b.cashback?.description || 'Rewards' },
+    { icon: '🌍', on: FILTERS.forex(card), tip: b.forex?.description || `Forex markup: ${b.forex?.markupFee || 'not verified'}` },
+    { icon: '⛽', on: Boolean(b.fuel?.surchargeWaiver), tip: b.fuel?.description || 'No fuel benefit listed' },
+    { icon: '🍽️', on: Boolean(b.dining?.available), tip: b.dining?.description || 'No dining benefit listed' },
+    { icon: '🎬', on: Boolean(b.movies?.available), tip: b.movies?.description || 'No movie benefit listed' },
+  ] : [];
 
   return `
-    <div class="credit-card ${cardClass}" onclick="openModal('${card.id}')">
+    <div class="credit-card ${card.isLTF ? 'ltf-card' : 'premium-card'}" onclick="openModal('${card.id}')">
       <div class="card-accent"></div>
       <div class="card-body">
         <div class="card-top">
-          <span class="card-bank">${card.bank}</span>
+          <span class="card-bank">${escapeHtml(card.bank)}</span>
           <div class="card-badges">
-            ${isLTF ? '<span class="badge badge-ltf">LTF</span>' : '<span class="badge badge-premium">Premium</span>'}
-            <span class="badge badge-network">${card.network}</span>
+            ${card.isLTF ? '<span class="badge badge-ltf">LTF</span>' : '<span class="badge badge-premium">Premium</span>'}
+            <span class="badge badge-network">${escapeHtml(card.network)}</span>
+            <span class="badge badge-${badge.kind}">${escapeHtml(badge.text)}</span>
           </div>
         </div>
-        <h3 class="card-name">${card.name}</h3>
+        <h3 class="card-name">${escapeHtml(card.name)}</h3>
         <p class="card-fee">${feeText}</p>
-        <div class="benefit-icons">
-          ${benefitIcons.map(b => `
-            <div class="benefit-icon ${b.available ? 'available' : 'unavailable'}">
-              ${b.icon}
-              <span class="tooltip">${b.tip}</span>
-            </div>
-          `).join('')}
-        </div>
+        ${b ? `<div class="benefit-icons">${icons.map((i) => `
+          <div class="benefit-icon ${i.on ? 'available' : 'unavailable'}">${i.icon}<span class="tooltip">${escapeHtml(i.tip)}</span></div>`).join('')}
+        </div>` : '<p class="benefits-pending">Benefits not verified yet — see the bank\'s page.</p>'}
         <div class="card-highlights">
-          ${card.highlights.slice(0, 3).map(h => `<span class="highlight-tag">${h}</span>`).join('')}
+          ${card.highlights.slice(0, 3).map((h) => `<span class="highlight-tag">${escapeHtml(h)}</span>`).join('')}
         </div>
         <div class="card-meta">
-          <div class="meta-item">
-            <span class="meta-icon">🏷️</span>
-            <span>${card.category}</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-icon">⭐</span>
-            <span>Rewards: ${card.rewardRate}</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-icon">📊</span>
-            <span>Score: ${card.popularityScore}</span>
-          </div>
-        </div>
-        <div class="popularity-bar">
-          <div class="fill" style="width: ${popPercent}%"></div>
+          <div class="meta-item"><span class="meta-icon">🏷️</span><span>${escapeHtml(card.category)}</span></div>
+          <div class="meta-item"><span class="meta-icon">⭐</span><span>Rewards: ${escapeHtml(card.rewardRate || 'not verified')}</span></div>
         </div>
       </div>
     </div>
@@ -284,37 +166,24 @@ function renderCardHTML(card) {
 
 // ===== BANK CHIPS =====
 
+const BANK_ICONS = {
+  'HDFC Bank': '🔵', 'ICICI Bank': '🟠', 'Axis Bank': '🟣',
+  'IDFC FIRST Bank': '🔴', 'SBI Card': '🔷', 'HSBC': '🔺',
+  'American Express': '🟢', 'Federal Bank': '🟡', 'AU Small Finance Bank': '🟤',
+  'IndusInd Bank': '🟦', 'RBL Bank': '🟥', 'IDBI Bank': '🟧',
+};
+
 function renderBankChips(banks) {
   const container = document.getElementById('bankChips');
   if (!container) return;
-
-  let html = `
-    <button class="bank-chip ${currentBank === '' ? 'active' : ''}" onclick="setBank('', this)">
-      <span class="bank-chip-icon">🏦</span>
-      <span class="bank-chip-name">All Banks</span>
-      <span class="bank-chip-count">${banks.reduce((sum, b) => sum + b.cardCount, 0)}</span>
-    </button>
-  `;
-
-  const bankIcons = {
-    'HDFC Bank': '🔵', 'ICICI Bank': '🟠', 'Axis Bank': '🟣',
-    'IDFC FIRST Bank': '🔴', 'SBI Card': '🔷', 'HSBC': '🔺',
-    'American Express': '🟢', 'Federal Bank': '🟡', 'AU Small Finance Bank': '🟤',
-    'IndusInd Bank': '🟦', 'RBL Bank': '🟥', 'IDBI Bank': '🟧'
-  };
-
-  for (const bank of banks) {
-    const icon = bankIcons[bank.name] || '🏛️';
-    html += `
-      <button class="bank-chip ${currentBank === bank.name ? 'active' : ''}" onclick="setBank('${bank.name.replace(/'/g, "\\'")}', this)">
-        <span class="bank-chip-icon">${icon}</span>
-        <span class="bank-chip-name">${bank.name}</span>
-        <span class="bank-chip-count">${bank.cardCount}</span>
-      </button>
-    `;
-  }
-
-  container.innerHTML = html;
+  const chip = (value, label, count, icon) => `
+    <button class="bank-chip ${currentBank === value ? 'active' : ''}" data-bank="${escapeHtml(value)}" onclick="setBank(this.dataset.bank, this)">
+      <span class="bank-chip-icon">${icon}</span>
+      <span class="bank-chip-name">${escapeHtml(label)}</span>
+      <span class="bank-chip-count">${count}</span>
+    </button>`;
+  container.innerHTML = chip('', 'All Banks', banks.reduce((sum, b) => sum + b.cardCount, 0), '🏦')
+    + banks.map((b) => chip(b.name, b.name, b.cardCount, BANK_ICONS[b.name] || '🏛️')).join('');
 }
 
 // ===== STATS =====
@@ -353,36 +222,37 @@ function animateNumber(elementId, target) {
 
 function setFilter(filter, chipEl) {
   currentFilter = filter;
-
-  // Update active chip
-  document.querySelectorAll('.filter-chips .chip').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.filter-chips .chip').forEach((c) => c.classList.remove('active'));
   if (chipEl) chipEl.classList.add('active');
-
-  fetchCards();
+  applyQuery();
 }
 
 function setBank(bank, chipEl) {
   currentBank = bank;
-
-  // Update active bank chip
-  document.querySelectorAll('.bank-chip').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.bank-chip').forEach((c) => c.classList.remove('active'));
   if (chipEl) chipEl.classList.add('active');
+  applyQuery();
+}
 
-  fetchCards();
+function setTier(tier) {
+  currentTier = tier;
+  applyQuery();
+}
+
+function setVerifiedOnly(checked) {
+  verifiedOnly = checked;
+  applyQuery();
 }
 
 function handleSearch() {
-  const input = document.getElementById('searchInput');
-  currentSearch = input.value.trim();
-
-  // Debounce
+  currentSearch = document.getElementById('searchInput').value.trim();
   clearTimeout(window._searchTimeout);
-  window._searchTimeout = setTimeout(() => fetchCards(), 300);
+  window._searchTimeout = setTimeout(applyQuery, 300);
 }
 
 function handleSort() {
   currentSort = document.getElementById('sortSelect').value;
-  fetchCards();
+  applyQuery();
 }
 
 function updateSectionHeader() {
@@ -417,7 +287,7 @@ function updateSectionHeader() {
 // ===== MODAL =====
 
 function openModal(cardId) {
-  const card = allCards.find(c => c.id === cardId);
+  const card = allCardsData.find((c) => c.id === cardId);
   if (!card) return;
 
   document.getElementById('modalCardName').textContent = card.name;
@@ -442,179 +312,81 @@ document.addEventListener('keydown', (e) => {
 });
 
 function renderModalContent(card) {
-  const isLTF = card.isLTF;
+  const b = card.benefits;
+  const v = card.verification || {};
+  const badge = verificationBadge(card);
+  const apply = safeUrl(card.applyUrl);
+  const sourceLinks = card.sources.map((s) => safeUrl(s.url)).filter(Boolean);
+  const rupees = (n) => (n == null ? 'Not verified yet' : `₹${n.toLocaleString('en-IN')}`);
+  const visits = (n) => (n === -1 ? 'Unlimited' : n ? `${n} visits/year` : 'None');
+  const yesNo = (on) => (on ? '✅ Available' : '❌ None');
+  // One tile; "field" links it to the verification quote for that value, if any.
+  const item = (label, value, cls = '', field = '') => `
+    <div class="detail-item">
+      <div class="detail-item-label">${escapeHtml(label)}</div>
+      <div class="detail-item-value ${cls}">${escapeHtml(value)}</div>
+      ${field && v[field] ? `<details class="quote"><summary>ⓘ Source</summary>“${escapeHtml(v[field].quote)}” — checked ${escapeHtml(v[field].verifiedAt)}</details>` : ''}
+    </div>`;
+  const section = (title, body) => `<div class="detail-section"><div class="detail-section-title">${title}</div>${body}</div>`;
 
-  let html = '';
+  let html = `
+    <div class="detail-section verify-note verify-${badge.kind}">
+      <strong>${escapeHtml(badge.text)}</strong>${card.lastCheckedAt ? ` · page last checked ${escapeHtml(card.lastCheckedAt.slice(0, 10))}` : ''}
+      <p>${badge.kind === 'verified'
+        ? 'Every fee, rate and benefit marked ⓘ is quoted from the bank\'s own page.'
+        : 'Some details on this card have not been checked against the bank\'s page yet.'}
+        Always confirm on the bank's website before you apply.</p>
+      ${sourceLinks.map((u) => `<a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer">Official card page ↗</a>`).join(' ')}
+    </div>`;
 
-  // Apply Now Button
-  if (card.applyUrl) {
+  if (apply) {
     html += `
     <div class="detail-section" style="text-align: center;">
-      <a href="${card.applyUrl}" target="_blank" rel="noopener noreferrer" class="apply-btn">
-        🚀 Apply Now on ${card.bank}
-      </a>
-    </div>
-    `;
+      <a href="${escapeHtml(apply)}" target="_blank" rel="noopener noreferrer" class="apply-btn">🚀 Apply on ${escapeHtml(card.bank)}'s site</a>
+    </div>`;
   }
 
-  // Fee & Basics
-  html += `
-    <div class="detail-section">
-      <div class="detail-section-title">💳 Card Overview</div>
-      <div class="detail-grid">
-        <div class="detail-item">
-          <div class="detail-item-label">Type</div>
-          <div class="detail-item-value ${isLTF ? 'green' : 'gold'}">${isLTF ? 'Lifetime Free' : 'Annual Fee Card'}</div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-item-label">Annual Fee</div>
-          <div class="detail-item-value ${isLTF ? 'green' : 'gold'}">₹${card.annualFee.toLocaleString()}</div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-item-label">Joining Fee</div>
-          <div class="detail-item-value">₹${card.joiningFee.toLocaleString()}</div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-item-label">Reward Rate</div>
-          <div class="detail-item-value green">${card.rewardRate}</div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-item-label">Network</div>
-          <div class="detail-item-value">${card.network}</div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-item-label">Category</div>
-          <div class="detail-item-value">${card.category}</div>
-        </div>
-      </div>
-    </div>
-  `;
+  html += section('💳 Card Overview', `<div class="detail-grid">
+    ${item('Type', card.isLTF ? 'Lifetime Free' : 'Annual Fee Card', card.isLTF ? 'green' : 'gold')}
+    ${item('Annual Fee', rupees(card.annualFee), card.isLTF ? 'green' : 'gold', 'annualFee')}
+    ${item('Joining Fee', rupees(card.joiningFee), '', 'joiningFee')}
+    ${item('Reward Rate', card.rewardRate || 'Not verified yet', 'green', 'rewardRate')}
+    ${item('Network', card.network)}
+    ${item('Category', card.category)}
+  </div>`);
 
-  // Cashback / Rewards
-  html += `
-    <div class="detail-section">
-      <div class="detail-section-title">💰 Cashback & Rewards</div>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">${card.benefits.cashback.description}</p>
-      <ul class="detail-list">
-        ${card.benefits.cashback.details.map(d => `<li>${d}</li>`).join('')}
-      </ul>
-    </div>
-  `;
-
-  // Lounge Access
-  const lounge = card.benefits.lounges;
-  html += `
-    <div class="detail-section">
-      <div class="detail-section-title">✈️ Lounge Access</div>
-      <div class="detail-grid">
-        <div class="detail-item">
-          <div class="detail-item-label">Domestic Airport</div>
-          <div class="detail-item-value ${lounge.airport.domestic !== 0 ? 'green' : 'red'}">
-            ${lounge.airport.domestic === -1 ? 'Unlimited' : lounge.airport.domestic === 0 ? 'None' : `${lounge.airport.domestic} visits${lounge.airport.perQuarter ? '/quarter' : lounge.airport.perYear ? '/year' : ''}`}
-          </div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-item-label">International Airport</div>
-          <div class="detail-item-value ${lounge.airport.international !== 0 ? 'green' : 'red'}">
-            ${lounge.airport.international === -1 ? 'Unlimited' : lounge.airport.international === 0 ? 'None' : `${lounge.airport.international} visits${lounge.airport.perQuarter ? '/quarter' : lounge.airport.perYear ? '/year' : ''}`}
-          </div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-item-label">Railway Lounge</div>
-          <div class="detail-item-value ${lounge.railway.count !== 0 ? 'green' : 'red'}">
-            ${lounge.railway.count === 0 ? 'None' : `${lounge.railway.count} visits${lounge.railway.perQuarter ? '/quarter' : '/year'}`}
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-
-  // Golf
-  html += `
-    <div class="detail-section">
-      <div class="detail-section-title">⛳ Golf Benefits</div>
-      <div class="detail-item">
-        <div class="detail-item-label">Golf Access</div>
-        <div class="detail-item-value ${card.benefits.golf.available ? 'green' : 'red'}">
-          ${card.benefits.golf.available ? '✅ Available' : '❌ Not Available'}
-        </div>
-        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.3rem;">${card.benefits.golf.description}</p>
-      </div>
-    </div>
-  `;
-
-  // Other Benefits
-  html += `
-    <div class="detail-section">
-      <div class="detail-section-title">🎁 Additional Benefits</div>
-      <div class="detail-grid">
-        <div class="detail-item">
-          <div class="detail-item-label">Forex Markup</div>
-          <div class="detail-item-value ${card.benefits.forex.markupFee === '0%' ? 'green' : ''}">${card.benefits.forex.markupFee}</div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-item-label">Fuel Benefit</div>
-          <div class="detail-item-value ${card.benefits.fuel?.surchargeWaiver ? 'green' : 'red'}">
-            ${card.benefits.fuel?.surchargeWaiver ? '✅ Surcharge Waiver' : '❌ None'}
-          </div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-item-label">Dining</div>
-          <div class="detail-item-value ${card.benefits.dining?.available ? 'green' : 'red'}">
-            ${card.benefits.dining?.available ? '✅ Available' : '❌ None'}
-          </div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-item-label">Movies</div>
-          <div class="detail-item-value ${card.benefits.movies?.available ? 'green' : 'red'}">
-            ${card.benefits.movies?.available ? '✅ Available' : '❌ None'}
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-
-  // Other notes
-  if (card.benefits.other && card.benefits.other.length > 0) {
-    html += `
-      <div class="detail-section">
-        <div class="detail-section-title">📌 Key Highlights</div>
-        <ul class="detail-list">
-          ${card.benefits.other.map(o => `<li>${o}</li>`).join('')}
-        </ul>
-      </div>
-    `;
+  if (!b) {
+    html += section('🎁 Benefits', '<p class="benefits-pending">Benefits for this card have not been verified yet. Check the bank\'s page for current rewards and perks.</p>');
+  } else {
+    if (b.cashback) {
+      html += section('💰 Cashback & Rewards', `
+        <p class="detail-text">${escapeHtml(b.cashback.description || '')}</p>
+        <ul class="detail-list">${(b.cashback.details || []).map((d) => `<li>${escapeHtml(d)}</li>`).join('')}</ul>`);
+    }
+    const air = b.lounges?.airport || {};
+    const rail = b.lounges?.railway || {};
+    html += section('✈️ Lounge Access', `<div class="detail-grid">
+      ${item('Domestic Airport', visits(air.domestic), air.domestic ? 'green' : 'red', 'loungeDomestic')}
+      ${item('International Airport', visits(air.international), air.international ? 'green' : 'red', 'loungeInternational')}
+      ${item('Railway Lounge', visits(rail.count), rail.count ? 'green' : 'red')}
+    </div>`);
+    html += section('🎁 Other Benefits', `<div class="detail-grid">
+      ${item('Golf', yesNo(b.golf?.available), b.golf?.available ? 'green' : 'red', 'golf')}
+      ${item('Forex Markup', b.forex?.markupFee || 'Not verified yet', b.forex?.markupFee === '0%' ? 'green' : '', 'forexMarkup')}
+      ${item('Fuel', b.fuel?.surchargeWaiver ? '✅ Surcharge waiver' : '❌ None', b.fuel?.surchargeWaiver ? 'green' : 'red')}
+      ${item('Dining', yesNo(b.dining?.available), b.dining?.available ? 'green' : 'red')}
+      ${item('Movies', yesNo(b.movies?.available), b.movies?.available ? 'green' : 'red')}
+    </div>`);
+    if (b.other?.length) {
+      html += section('📌 Key Highlights', `<ul class="detail-list">${b.other.map((o) => `<li>${escapeHtml(o)}</li>`).join('')}</ul>`);
+    }
   }
 
-  // Eligibility
-  if (card.eligibility) {
-    html += `
-      <div class="detail-section">
-        <div class="detail-section-title">📋 Eligibility</div>
-        <div class="detail-grid">
-          <div class="detail-item">
-            <div class="detail-item-label">Min. Annual Income</div>
-            <div class="detail-item-value">₹${card.eligibility.minIncome.toLocaleString()}</div>
-          </div>
-          <div class="detail-item">
-            <div class="detail-item-label">Min. Age</div>
-            <div class="detail-item-value">${card.eligibility.minAge} years</div>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  // Apply Button at bottom too
-  if (card.applyUrl) {
-    html += `
-    <div class="detail-section" style="text-align: center; padding-top: 0.5rem;">
-      <a href="${card.applyUrl}" target="_blank" rel="noopener noreferrer" class="apply-btn apply-btn-outline">
-        🌐 Visit Official ${card.bank} Page
-      </a>
-    </div>
-    `;
-  }
+  const e = card.eligibility || {};
+  html += section('📋 Eligibility', `<div class="detail-grid">
+    ${item('Min. Annual Income', rupees(e.minIncome), '', 'minIncome')}
+    ${item('Min. Age', e.minAge == null ? 'Not verified yet' : `${e.minAge} years`, '', 'minAge')}
+  </div>`);
 
   return html;
 }
@@ -725,19 +497,7 @@ function addMessageToUI(sender, text) {
   bubble.className = `chat-bubble ${sender}`;
 
   if (sender === 'bot') {
-    // Simple markdown formatting for bold and lists
-    let formattedText = text
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.*?)\*/g, '<em>$1</em>')
-      .replace(/\n\s*-\s+(.*)/g, '<li>$1</li>');
-
-    if (formattedText.includes('<li>')) {
-      formattedText = formattedText.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
-    }
-
-    // Convert newlines to br
-    formattedText = formattedText.replace(/\n(?!<ul|<\/ul>|<li>)/g, '<br>');
-    bubble.innerHTML = formattedText;
+    bubble.innerHTML = renderMarkdown(text); // escapes the reply before formatting
   } else {
     bubble.textContent = text;
   }

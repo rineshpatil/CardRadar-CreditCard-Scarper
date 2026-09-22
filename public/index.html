@@ -56,11 +56,7 @@
       </div>
     </a>
     <div class="navbar-actions">
-      <a href="/login.html" class="btn btn-primary" id="loginBtnLanding" style="padding: 0.4rem 1rem; font-size: 0.8rem;">Log In</a>
-      <div id="userProfileLanding" style="display: none; align-items: center; gap: 1rem;">
-        <span id="userNameLanding" style="font-weight: 600; color: var(--text-primary); font-size: 0.9rem;"></span>
-        <a href="/dashboard.html" class="btn btn-primary" style="padding: 0.4rem 1rem; font-size: 0.8rem;">Dashboard</a>
-      </div>
+      <a href="/dashboard.html" class="btn btn-primary" style="padding: 0.4rem 1rem; font-size: 0.8rem;">Browse Cards</a>
     </div>
   </nav>
 
@@ -166,12 +162,12 @@
           <div class="ai-badge">SMART CHATBOT</div>
           <h2 class="section-title">Your Personal <span class="blue-text">AI Assistant</span></h2>
           <p class="section-desc">
-            Available post-login, our intelligent chatbot is ready to answer your questions instantly. 
+            Ask anything about Indian credit cards — no sign-up needed. 
           </p>
           <ul class="feature-list">
             <li><span class="bot-icon">🤖</span> <strong>Card Comparisons:</strong> Ask it to compare any two cards head-to-head.</li>
             <li><span class="bot-icon">🎯</span> <strong>Smart Recommendations:</strong> Get card suggestions based on your highest spend categories.</li>
-            <li><span class="bot-icon">⚡</span> <strong>Live Data:</strong> Pulls real-time accuracy directly from the CardRadar database.</li>
+            <li><span class="bot-icon">⚡</span> <strong>Honest Data:</strong> Answers from the CardRadar card list and tells you when a card's details haven't been verified yet.</li>
           </ul>
           <a href="/dashboard.html" class="btn btn-primary" style="margin-top:20px;">Try the AI Assistant</a>
         </div>
@@ -182,7 +178,7 @@
 
   <footer class="footer">
     <p>CardRadar — Indian Credit Card Guide</p>
-    <p>Data sourced from official bank websites • Built with ❤️</p>
+    <p class="disclaimer">Card details are checked against official bank pages but can change at any time. CardRadar is not a bank and this is not financial advice — confirm on the bank's website before you apply.</p>
   </footer>
 
   <!-- CardRadar AI Chatbot -->
@@ -233,6 +229,7 @@
     </div>
   </div>
 
+  <script src="lib.js"></script>
   <script src="app.js"></script>
   <script src="landing.js"></script>
 </body>

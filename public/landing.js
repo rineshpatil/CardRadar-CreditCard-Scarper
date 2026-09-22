@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
 function initLanding() {
   handleSplashScreen();
   setupScrollAnimations();
-  checkAuthForLanding();
 }
 
 function handleSplashScreen() {
@@ -45,23 +44,4 @@ function setupScrollAnimations() {
   faders.forEach(fader => {
     appearOnScroll.observe(fader);
   });
-}
-
-async function checkAuthForLanding() {
-  try {
-    const res = await fetch('/api/auth/user');
-    if (res.ok) {
-      const data = await res.json();
-      const loginBtn = document.getElementById('loginBtnLanding');
-      const userProfile = document.getElementById('userProfileLanding');
-      
-      if (loginBtn) loginBtn.style.display = 'none';
-      if (userProfile) userProfile.style.display = 'flex';
-      
-      const nameDisplay = document.getElementById('userNameLanding');
-      if (nameDisplay) nameDisplay.textContent = data.user.name || data.user.email.split('@')[0];
-    }
-  } catch (err) {
-    console.error('Auth check error on landing', err);
-  }
 }
