@@ -1,0 +1,28 @@
+{
+  "id": "bpcl-sbi-card-octane",
+  "name": "BPCL SBI Card Octane",
+  "bank": "SBI Card",
+  "network": "Visa",
+  "category": "Fuel",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 1499,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.sbicard.com/en/personal/credit-cards/travel-and-fuel/bpcl-sbi-card-octane.page",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/travel-and-fuel/bpcl-sbi-card-octane.page"
+    }
+  ],
+  "verification": {}
+}

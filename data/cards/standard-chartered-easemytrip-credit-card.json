@@ -1,0 +1,28 @@
+{
+  "id": "standard-chartered-easemytrip-credit-card",
+  "name": "Standard Chartered EaseMyTrip Credit Card",
+  "bank": "Standard Chartered Bank",
+  "network": "Visa",
+  "category": "Travel Co-brand",
+  "tier": "entry",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 350,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://apply.standardchartered.co.in/easemytrip-credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://apply.standardchartered.co.in/easemytrip-credit-card"
+    }
+  ],
+  "verification": {}
+}

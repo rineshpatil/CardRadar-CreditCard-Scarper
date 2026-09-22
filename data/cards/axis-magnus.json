@@ -1,0 +1,79 @@
+{
+  "id": "axis-magnus",
+  "name": "Axis Bank Magnus Credit Card",
+  "bank": "Axis Bank",
+  "network": "Visa",
+  "category": "Super Premium",
+  "tier": "super_premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 12500,
+  "joiningFee": 12500,
+  "rewardRate": "12-35 pts/₹200",
+  "applyUrl": "https://www.axisbank.com/retail/cards/credit-card/axis-bank-magnus-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "35 EDGE points per ₹200 on travel, 12 on others",
+      "details": [
+        "35 EDGE REWARD points per ₹200 on travel",
+        "12 EDGE REWARD points per ₹200 on all other spends",
+        "Points transferable to airline miles",
+        "Welcome bonus of 25,000 EDGE points"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": -1,
+        "international": -1,
+        "description": "Unlimited domestic + international lounge access via Priority Pass"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": true,
+      "description": "Complimentary golf at premium courses"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "Dining Delights premium program"
+    },
+    "movies": {
+      "available": true,
+      "description": "Buy 1 Get 1 on BookMyShow"
+    },
+    "forex": {
+      "markupFee": "0%",
+      "description": "Zero forex markup"
+    },
+    "other": [
+      "Top-tier Axis card",
+      "Unlimited lounge",
+      "Zero forex + golf",
+      "Fee waived on ₹25L spend"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 2400000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Unlimited lounge access",
+    "Zero forex markup",
+    "Golf + 35X travel points"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.axisbank.com/retail/cards/credit-card/axis-bank-magnus-credit-card"
+    }
+  ],
+  "verification": {}
+}

@@ -1,0 +1,28 @@
+{
+  "id": "standard-chartered-digismart-credit-card",
+  "name": "Standard Chartered DigiSmart Credit Card",
+  "bank": "Standard Chartered Bank",
+  "network": "Mastercard",
+  "category": "Digital Lifestyle",
+  "tier": "entry",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 49,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.sc.com/in/credit-cards/digismart-credit-card/",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.sc.com/in/credit-cards/digismart-credit-card/"
+    }
+  ],
+  "verification": {}
+}

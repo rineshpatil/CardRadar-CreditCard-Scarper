@@ -1,0 +1,28 @@
+{
+  "id": "kotak-white-credit-card",
+  "name": "Kotak White Credit Card",
+  "bank": "Kotak Mahindra Bank",
+  "network": "Visa",
+  "category": "Premium",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 3000,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.kotak.com/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html"
+    }
+  ],
+  "verification": {}
+}

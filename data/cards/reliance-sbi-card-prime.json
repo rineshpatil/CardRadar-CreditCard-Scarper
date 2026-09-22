@@ -1,0 +1,30 @@
+{
+  "id": "reliance-sbi-card-prime",
+  "name": "Reliance SBI Card PRIME",
+  "bank": "SBI Card",
+  "network": "Visa Signature",
+  "category": "Co-branded",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 2999,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.sbicard.com/en/personal/credit-cards/shopping/reliance-sbi-card-prime.page",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [
+    "Co-branded with Reliance Retail"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/shopping/reliance-sbi-card-prime.page"
+    }
+  ],
+  "verification": {}
+}

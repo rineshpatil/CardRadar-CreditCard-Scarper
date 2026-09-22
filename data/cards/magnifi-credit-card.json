@@ -1,0 +1,28 @@
+{
+  "id": "magnifi-credit-card",
+  "name": "MagniFi Credit Card",
+  "bank": "Federal Bank / AU Small Finance Bank",
+  "network": "Visa",
+  "category": "Weekend Lifestyle",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": true,
+  "annualFee": 0,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.magnifi.app/",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.magnifi.app/"
+    }
+  ],
+  "verification": {}
+}

@@ -1,0 +1,30 @@
+{
+  "id": "lifestyle-home-centre-hdfc-bank-credit-card",
+  "name": "Lifestyle Home Centre HDFC Bank Credit Card",
+  "bank": "HDFC Bank",
+  "network": "Visa",
+  "category": "Co-branded",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 1000,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.hdfcbank.com/content/bbp/repositories/723fb80a-2dde-42a3-9793-7ae1be57c87f/?folderPath=/OLM/Cards/lifestyle/&fileName=Lifestyle-HDFC-Bank-Credit-Card.html",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [
+    "Co-branded with Lifestyle Retail"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.hdfcbank.com/content/bbp/repositories/723fb80a-2dde-42a3-9793-7ae1be57c87f/?folderPath=/OLM/Cards/lifestyle/&fileName=Lifestyle-HDFC-Bank-Credit-Card.html"
+    }
+  ],
+  "verification": {}
+}

@@ -1,0 +1,30 @@
+{
+  "id": "irctc-bank-of-baroda-rupay-credit-card",
+  "name": "IRCTC Bank of Baroda RuPay Credit Card",
+  "bank": "Bank of Baroda",
+  "network": "RuPay",
+  "category": "Co-branded",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 500,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.bankofbaroda.in/personal-banking/cards/credit-cards/bob-irctc-rupay-credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [
+    "Co-branded with IRCTC"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.bankofbaroda.in/personal-banking/cards/credit-cards/bob-irctc-rupay-credit-card"
+    }
+  ],
+  "verification": {}
+}

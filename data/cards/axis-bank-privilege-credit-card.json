@@ -1,0 +1,28 @@
+{
+  "id": "axis-bank-privilege-credit-card",
+  "name": "Axis Bank Privilege Credit Card",
+  "bank": "Axis Bank",
+  "network": "Visa",
+  "category": "Lifestyle",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 1500,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.axisbank.com/retail/cards/credit-card/privilege-credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.axisbank.com/retail/cards/credit-card/privilege-credit-card"
+    }
+  ],
+  "verification": {}
+}

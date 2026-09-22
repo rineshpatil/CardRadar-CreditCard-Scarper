@@ -1,0 +1,28 @@
+{
+  "id": "fi-money-federal-bank-credit-card",
+  "name": "Fi Money Federal Bank Credit Card",
+  "bank": "Federal Bank (Fi)",
+  "network": "Visa",
+  "category": "Digital/Cashback",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": false,
+  "annualFee": 0,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://fi.money/credit-card/",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://fi.money/credit-card/"
+    }
+  ],
+  "verification": {}
+}

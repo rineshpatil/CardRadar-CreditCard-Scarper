@@ -1,0 +1,77 @@
+{
+  "id": "axis-ace",
+  "name": "Axis Bank ACE Credit Card",
+  "bank": "Axis Bank",
+  "network": "Visa",
+  "category": "Cashback",
+  "tier": "entry",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 499,
+  "joiningFee": 499,
+  "rewardRate": "1-5%",
+  "applyUrl": "https://www.axisbank.com/retail/cards/credit-card/ace-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "5% on bill payments via Google Pay, 4% on Swiggy/Zomato, 1.5% on all",
+      "details": [
+        "5% cashback on bill payments via Google Pay",
+        "4% cashback on Swiggy and Zomato",
+        "2% cashback on all online spends",
+        "1.5% cashback on all other spends"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 4,
+        "international": 0,
+        "description": "4 domestic airport lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "4% cashback on Swiggy and Zomato"
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "Best for bill payments",
+      "Google Pay integration",
+      "Fee waived on ₹2L spend"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 300000,
+    "minAge": 21
+  },
+  "highlights": [
+    "5% on Google Pay bills",
+    "4% on Swiggy/Zomato",
+    "High cashback"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.axisbank.com/retail/cards/credit-card/ace-credit-card"
+    }
+  ],
+  "verification": {}
+}

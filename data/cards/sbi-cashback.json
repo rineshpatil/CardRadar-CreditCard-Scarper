@@ -1,0 +1,76 @@
+{
+  "id": "sbi-cashback",
+  "name": "SBI Cashback Credit Card",
+  "bank": "SBI Card",
+  "network": "Visa",
+  "category": "Cashback",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 999,
+  "joiningFee": 999,
+  "rewardRate": "1-5%",
+  "applyUrl": "https://www.sbicard.com/en/personal/credit-cards/cashback/sbi-card-cashback.page",
+  "benefits": {
+    "cashback": {
+      "description": "5% cashback on online spends, 1% on others",
+      "details": [
+        "5% cashback on online spends (cap ₹5000/month)",
+        "1% cashback on offline spends",
+        "No minimum redemption threshold",
+        "Cashback auto-credited"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 4,
+        "international": 0,
+        "description": "4 domestic airport lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": false
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "High online cashback rate",
+      "Auto-credited cashback",
+      "No redemption hassle"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 400000,
+    "minAge": 21
+  },
+  "highlights": [
+    "5% online cashback",
+    "Auto-credit cashback",
+    "Simple & effective"
+  ],
+  "popularityScore": 40,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/cashback/sbi-card-cashback.page"
+    }
+  ],
+  "verification": {}
+}

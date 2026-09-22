@@ -1,0 +1,76 @@
+{
+  "id": "hsbc-live-plus",
+  "name": "HSBC Live+ Credit Card",
+  "bank": "HSBC",
+  "network": "Visa",
+  "category": "Cashback",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 999,
+  "joiningFee": 750,
+  "rewardRate": "1.5% cashback",
+  "applyUrl": "https://www.hsbc.co.in/credit-cards/products/live-plus/",
+  "benefits": {
+    "cashback": {
+      "description": "1.5% cashback on all online spends",
+      "details": [
+        "1.5% cashback on all online transactions",
+        "Cashback on telecom, OTT, food delivery",
+        "Auto-credited to statement",
+        "No minimum spend required"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 0,
+        "international": 0,
+        "description": "No lounge access"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": false
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "Designed for digital millennials",
+      "Cashback on OTT subscriptions",
+      "Easy online application"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 300000,
+    "minAge": 21
+  },
+  "highlights": [
+    "1.5% online cashback",
+    "OTT subscription rewards",
+    "Low annual fee"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.hsbc.co.in/credit-cards/products/live-plus/"
+    }
+  ],
+  "verification": {}
+}

@@ -1,0 +1,78 @@
+{
+  "id": "amex-gold",
+  "name": "American Express Membership Rewards Card",
+  "bank": "American Express",
+  "network": "American Express",
+  "category": "Rewards",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 1000,
+  "joiningFee": 1000,
+  "rewardRate": "1 MR/₹50",
+  "applyUrl": "https://www.americanexpress.com/in/credit-cards/gold-card/",
+  "benefits": {
+    "cashback": {
+      "description": "1 MR point per ₹50 spent",
+      "details": [
+        "1 MR point per ₹50 on all spends",
+        "1000 bonus MR points on spending ₹20,000 in first 90 days",
+        "18 Karat Gold (MR) collection benefits",
+        "Points transferable to airlines"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 4,
+        "international": 0,
+        "description": "4 domestic airport lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "Fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "Dining offers at partner restaurants"
+    },
+    "movies": {
+      "available": true,
+      "description": "Buy 1 Get 1 on movie tickets"
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "Affordable Amex card",
+      "Transferable MR points",
+      "Movie BOGO"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 600000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Affordable Amex entry",
+    "Transferable MR points",
+    "Movie BOGO"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.americanexpress.com/in/credit-cards/gold-card/"
+    }
+  ],
+  "verification": {}
+}

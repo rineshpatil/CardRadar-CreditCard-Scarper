@@ -1,0 +1,28 @@
+{
+  "id": "standard-chartered-smart-credit-card",
+  "name": "Standard Chartered Smart Credit Card",
+  "bank": "Standard Chartered Bank",
+  "network": "Mastercard",
+  "category": "Cashback",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": false,
+  "annualFee": 0,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.sc.com/in/credit-cards/smart-credit-card/",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.sc.com/in/credit-cards/smart-credit-card/"
+    }
+  ],
+  "verification": {}
+}

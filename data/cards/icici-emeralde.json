@@ -1,0 +1,78 @@
+{
+  "id": "icici-emeralde",
+  "name": "ICICI Emeralde Private Metal Credit Card",
+  "bank": "ICICI Bank",
+  "network": "Visa",
+  "category": "Super Premium",
+  "tier": "super_premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 12000,
+  "joiningFee": 12000,
+  "rewardRate": "2-3.5%",
+  "applyUrl": "https://www.icicibank.com/card/credit-cards/emeralde-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "4 reward points per ₹100, enhanced on travel",
+      "details": [
+        "4 reward points per ₹100 on all spends",
+        "2X points on international spends",
+        "Points worth up to 3.5% on flight redemptions",
+        "Welcome bonus of 25,000 points"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": -1,
+        "international": -1,
+        "description": "Unlimited domestic and international lounge access via Priority Pass"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": true,
+      "description": "Unlimited golf via Golflan at 100+ courses"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "Culinary Treats - BOGO at premium restaurants"
+    },
+    "movies": {
+      "available": true,
+      "description": "Buy 1 Get 1 on BookMyShow"
+    },
+    "forex": {
+      "markupFee": "2%",
+      "description": "2% forex markup"
+    },
+    "other": [
+      "Metal card",
+      "Unlimited golf via Golftrip",
+      "Unlimited lounge"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 2000000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Metal card",
+    "Unlimited golf via Golftripz",
+    "Unlimited lounge"
+  ],
+  "popularityScore": 80,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.icicibank.com/card/credit-cards/emeralde-credit-card"
+    }
+  ],
+  "verification": {}
+}

@@ -1,0 +1,78 @@
+{
+  "id": "idfc-first-wealth",
+  "name": "IDFC FIRST Wealth Credit Card",
+  "bank": "IDFC FIRST Bank",
+  "network": "Visa",
+  "category": "Premium",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 2500,
+  "joiningFee": 2500,
+  "rewardRate": "6-10X",
+  "applyUrl": "https://www.idfcfirstbank.com/credit-card/wealth",
+  "benefits": {
+    "cashback": {
+      "description": "10X rewards on online, 6X on offline",
+      "details": [
+        "10X rewards on online spending",
+        "6X on offline spending",
+        "Never-expiring rewards",
+        "Milestone benefits on ₹5L spend"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 8,
+        "international": 4,
+        "description": "8 domestic + 4 international lounge visits per year"
+      },
+      "railway": {
+        "count": 16,
+        "description": "4 railway lounge visits per quarter"
+      }
+    },
+    "golf": {
+      "available": true,
+      "description": "Complimentary golf sessions"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "Premium dining benefits"
+    },
+    "movies": {
+      "available": true,
+      "description": "Buy 1 Get 1 on BookMyShow"
+    },
+    "forex": {
+      "markupFee": "0%",
+      "description": "Zero forex markup"
+    },
+    "other": [
+      "Premium tier of IDFC FIRST",
+      "6X minimum multiplier",
+      "Zero forex"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 800000,
+    "minAge": 21
+  },
+  "highlights": [
+    "6X rewards minimum",
+    "Zero forex markup",
+    "Golf access"
+  ],
+  "popularityScore": 78,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.idfcfirstbank.com/credit-card/wealth"
+    }
+  ],
+  "verification": {}
+}

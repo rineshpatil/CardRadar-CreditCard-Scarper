@@ -1,0 +1,78 @@
+{
+  "id": "hdfc-regalia",
+  "name": "HDFC Regalia Credit Card",
+  "bank": "HDFC Bank",
+  "network": "Visa",
+  "category": "Premium",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 2500,
+  "joiningFee": 2500,
+  "rewardRate": "1.3%",
+  "applyUrl": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/regalia-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "4 reward points per ₹150 spend",
+      "details": [
+        "4 RPs per ₹150 on all retail spends",
+        "2X points on travel bookings",
+        "SmartBuy redemption at best rates",
+        "Welcome bonus included"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 8,
+        "international": 4,
+        "description": "8 domestic + 4 international airport lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "Dining offers at partner restaurants"
+    },
+    "movies": {
+      "available": true,
+      "description": "Discounts on BookMyShow"
+    },
+    "forex": {
+      "markupFee": "2%",
+      "description": "2% forex markup"
+    },
+    "other": [
+      "Complimentary insurance cover",
+      "Annual fee waived on ₹3L spend",
+      "Travel concierge"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 900000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Popular mid-premium card",
+    "8 domestic lounge visits",
+    "Fee waiver at ₹3L spend"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/regalia-credit-card"
+    }
+  ],
+  "verification": {}
+}

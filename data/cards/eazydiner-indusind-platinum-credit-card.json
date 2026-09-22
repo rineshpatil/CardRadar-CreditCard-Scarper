@@ -1,0 +1,28 @@
+{
+  "id": "eazydiner-indusind-platinum-credit-card",
+  "name": "EazyDiner IndusInd Platinum Credit Card",
+  "bank": "IndusInd Bank",
+  "network": "Mastercard",
+  "category": "Dining",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": true,
+  "annualFee": 0,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.indusind.com/in/en/personal/cards/credit-cards/eazydiner-indusind-bank-platinum-credit-card.html",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.indusind.com/in/en/personal/cards/credit-cards/eazydiner-indusind-bank-platinum-credit-card.html"
+    }
+  ],
+  "verification": {}
+}

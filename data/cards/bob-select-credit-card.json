@@ -1,0 +1,28 @@
+{
+  "id": "bob-select-credit-card",
+  "name": "BoB Select Credit Card",
+  "bank": "Bank of Baroda",
+  "network": "Visa",
+  "category": "Lifestyle",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 1000,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.bankofbaroda.in/personal-banking/cards/credit-cards",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.bankofbaroda.in/personal-banking/cards/credit-cards"
+    }
+  ],
+  "verification": {}
+}

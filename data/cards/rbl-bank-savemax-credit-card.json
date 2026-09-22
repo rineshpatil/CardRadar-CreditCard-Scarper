@@ -1,0 +1,28 @@
+{
+  "id": "rbl-bank-savemax-credit-card",
+  "name": "RBL Bank SaveMax Credit Card",
+  "bank": "RBL Bank",
+  "network": "Mastercard",
+  "category": "Cashback/Grocery",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": false,
+  "annualFee": 0,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.rblbank.com/personal/cards/credit-cards/savemax-credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.rblbank.com/personal/cards/credit-cards/savemax-credit-card"
+    }
+  ],
+  "verification": {}
+}

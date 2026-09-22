@@ -1,0 +1,28 @@
+{
+  "id": "onecard-credit-card",
+  "name": "OneCard Credit Card",
+  "bank": "Federal Bank / SBM Bank",
+  "network": "Visa/Mastercard",
+  "category": "Metal/Rewards",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": true,
+  "annualFee": 0,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.getonecard.app/",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.getonecard.app/"
+    }
+  ],
+  "verification": {}
+}

@@ -1,0 +1,28 @@
+{
+  "id": "slice-credit-card",
+  "name": "Slice Credit Card",
+  "bank": "SBM Bank",
+  "network": "Visa",
+  "category": "Entry Level/Fintech",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": false,
+  "annualFee": 0,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.sliceit.com/",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.sliceit.com/"
+    }
+  ],
+  "verification": {}
+}

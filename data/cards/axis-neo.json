@@ -1,0 +1,77 @@
+{
+  "id": "axis-neo",
+  "name": "Axis Bank Neo Credit Card",
+  "bank": "Axis Bank",
+  "network": "Visa",
+  "category": "Cashback",
+  "tier": "entry",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 250,
+  "joiningFee": 250,
+  "rewardRate": "1-2%",
+  "applyUrl": "https://www.axisbank.com/retail/cards/credit-card/neo-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "Cashback on partner brands and all spends",
+      "details": [
+        "2% cashback at partner brands (Swiggy, Zomato, BigBasket, Blinkit)",
+        "1% cashback on all other spends",
+        "₹200 welcome voucher",
+        "No minimum spend for cashback"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 4,
+        "international": 0,
+        "description": "4 domestic lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "2% cashback on Swiggy and Zomato"
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "Great value card",
+      "Cashback on popular apps",
+      "Low annual fee"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 300000,
+    "minAge": 21
+  },
+  "highlights": [
+    "₹250 annual fee",
+    "2% on food delivery apps",
+    "Good starter card"
+  ],
+  "popularityScore": 48,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.axisbank.com/retail/cards/credit-card/neo-credit-card"
+    }
+  ],
+  "verification": {}
+}

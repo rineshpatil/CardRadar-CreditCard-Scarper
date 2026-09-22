@@ -1,0 +1,28 @@
+{
+  "id": "ixigo-au-credit-card",
+  "name": "ixigo AU Credit Card",
+  "bank": "AU Small Finance Bank",
+  "network": "RuPay",
+  "category": "Travel",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": true,
+  "annualFee": 0,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.aubank.in/personal/credit-cards/ixigo-au-bank-credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.aubank.in/personal/credit-cards/ixigo-au-bank-credit-card"
+    }
+  ],
+  "verification": {}
+}

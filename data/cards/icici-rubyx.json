@@ -1,0 +1,78 @@
+{
+  "id": "icici-rubyx",
+  "name": "ICICI Bank Rubyx Credit Card",
+  "bank": "ICICI Bank",
+  "network": "Visa",
+  "category": "Premium",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 3000,
+  "joiningFee": 3000,
+  "rewardRate": "2 pts/₹100",
+  "applyUrl": "https://www.icicibank.com/card/credit-cards/icici-bank-rubyx-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "2 PAYBACK points per ₹100 spent",
+      "details": [
+        "2 PAYBACK points per ₹100 on all spends",
+        "Bonus points on dining and entertainment",
+        "Points redeemable for flights, hotels, merchandise",
+        "Welcome bonus on first spend"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 4,
+        "international": 0,
+        "description": "4 domestic airport lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "Dining discounts at partner restaurants"
+    },
+    "movies": {
+      "available": true,
+      "description": "BOGO on BookMyShow"
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "Good mid-range premium card",
+      "Annual fee waived on ₹2.5L spend",
+      "Movie and dining benefits"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 600000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Mid-range premium card",
+    "Movie BOGO",
+    "Dining discounts"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.icicibank.com/card/credit-cards/icici-bank-rubyx-credit-card"
+    }
+  ],
+  "verification": {}
+}

@@ -1,0 +1,28 @@
+{
+  "id": "hdfc-business-moneyback-credit-card",
+  "name": "HDFC Business MoneyBack Credit Card",
+  "bank": "HDFC Bank",
+  "network": "Mastercard",
+  "category": "Business",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 500,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.hdfcbank.com/content/bbp/repositories/723fb80a-2dde-42a3-9793-7ae1be57c87f/?folderPath=/OLM/Cards/business-moneyback/&fileName=Business-MoneyBack-Credit-Card.html",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.hdfcbank.com/content/bbp/repositories/723fb80a-2dde-42a3-9793-7ae1be57c87f/?folderPath=/OLM/Cards/business-moneyback/&fileName=Business-MoneyBack-Credit-Card.html"
+    }
+  ],
+  "verification": {}
+}

@@ -1,0 +1,76 @@
+{
+  "id": "idfc-first-wow",
+  "name": "IDFC FIRST WOW Credit Card",
+  "bank": "IDFC FIRST Bank",
+  "network": "RuPay",
+  "category": "Entry Level",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": false,
+  "annualFee": 0,
+  "joiningFee": 0,
+  "rewardRate": "5X rewards",
+  "applyUrl": "https://www.idfcfirstbank.com/credit-card/wow",
+  "benefits": {
+    "cashback": {
+      "description": "5X rewards on categories of your choice",
+      "details": [
+        "5X reward points on selected spending categories",
+        "Categories can be changed monthly",
+        "Never-expiring rewards",
+        "Zero joining and annual fee"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 0,
+        "international": 0,
+        "description": "No lounge access"
+      },
+      "railway": {
+        "count": 8,
+        "description": "2 railway lounge visits per quarter via RuPay"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": false
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "0%",
+      "description": "Zero forex markup"
+    },
+    "other": [
+      "Choose your reward categories",
+      "Railway lounge via RuPay",
+      "Truly no-fee card"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 200000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Choose reward categories",
+    "Railway lounge access",
+    "True LTF"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.idfcfirstbank.com/credit-card/wow"
+    }
+  ],
+  "verification": {}
+}

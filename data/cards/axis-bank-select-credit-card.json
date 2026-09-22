@@ -1,0 +1,28 @@
+{
+  "id": "axis-bank-select-credit-card",
+  "name": "Axis Bank Select Credit Card",
+  "bank": "Axis Bank",
+  "network": "Visa Signature",
+  "category": "Premium Lifestyle",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 3000,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.axisbank.com/retail/cards/credit-card/select-credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.axisbank.com/retail/cards/credit-card/select-credit-card"
+    }
+  ],
+  "verification": {}
+}

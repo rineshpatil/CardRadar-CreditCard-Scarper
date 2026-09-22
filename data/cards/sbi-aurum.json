@@ -1,0 +1,78 @@
+{
+  "id": "sbi-aurum",
+  "name": "SBI Card AURUM",
+  "bank": "SBI Card",
+  "network": "Visa",
+  "category": "Super Premium",
+  "tier": "super_premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 9999,
+  "joiningFee": 9999,
+  "rewardRate": "3-8%",
+  "applyUrl": "https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-aurum.page",
+  "benefits": {
+    "cashback": {
+      "description": "8X reward points on dining and international spends",
+      "details": [
+        "8X reward points on dining spends",
+        "8X reward points on international transactions",
+        "3X reward points on all other spends",
+        "Welcome bonus of 10,000 reward points"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": -1,
+        "international": 6,
+        "description": "Unlimited domestic + 6 international lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": true,
+      "description": "Complimentary golf at premium courses"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "8X rewards on all dining"
+    },
+    "movies": {
+      "available": true,
+      "description": "Premium movie experiences"
+    },
+    "forex": {
+      "markupFee": "1.99%",
+      "description": "1.99% forex markup"
+    },
+    "other": [
+      "Top-tier SBI Card",
+      "8X on dining + international",
+      "Metal card"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 2000000,
+    "minAge": 21
+  },
+  "highlights": [
+    "8X on dining & international",
+    "Unlimited domestic lounge",
+    "Metal card"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-aurum.page"
+    }
+  ],
+  "verification": {}
+}

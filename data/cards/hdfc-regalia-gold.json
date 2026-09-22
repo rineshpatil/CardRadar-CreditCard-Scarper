@@ -1,0 +1,77 @@
+{
+  "id": "hdfc-regalia-gold",
+  "name": "HDFC Regalia Gold Credit Card",
+  "bank": "HDFC Bank",
+  "network": "Visa",
+  "category": "Premium",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 2500,
+  "joiningFee": 2500,
+  "rewardRate": "1.3%",
+  "applyUrl": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/regalia-gold-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "4 reward points per ₹150 spend",
+      "details": [
+        "4 RPs per ₹150 on retail",
+        "2X points on travel, dining",
+        "Points redeemable on SmartBuy",
+        "Welcome bonus of 2500 RPs"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 12,
+        "international": 6,
+        "description": "12 domestic + 6 international lounge visits/year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": true,
+      "description": "2 complimentary golf rounds per quarter"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "Good Food Trail - dining offers at premium restaurants"
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "2%",
+      "description": "2% forex markup"
+    },
+    "other": [
+      "Lower entry barrier than Infinia",
+      "Good travel benefits",
+      "Milestone rewards"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 1200000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Affordable premium card",
+    "Golf access",
+    "12 domestic lounge visits"
+  ],
+  "popularityScore": 53,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/regalia-gold-credit-card"
+    }
+  ],
+  "verification": {}
+}

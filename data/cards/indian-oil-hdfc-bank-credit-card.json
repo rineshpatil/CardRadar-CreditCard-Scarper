@@ -1,0 +1,30 @@
+{
+  "id": "indian-oil-hdfc-bank-credit-card",
+  "name": "Indian Oil HDFC Bank Credit Card",
+  "bank": "HDFC Bank",
+  "network": "Visa",
+  "category": "Co-branded",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 500,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.hdfcbank.com/content/bbp/repositories/723fb80a-2dde-42a3-9793-7ae1be57c87f/?folderPath=/OLM/Cards/indianoil/&fileName=IndianOil-HDFC-Bank-Credit-Card.html",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [
+    "Co-branded with Indian Oil (IOCL)"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.hdfcbank.com/content/bbp/repositories/723fb80a-2dde-42a3-9793-7ae1be57c87f/?folderPath=/OLM/Cards/indianoil/&fileName=IndianOil-HDFC-Bank-Credit-Card.html"
+    }
+  ],
+  "verification": {}
+}

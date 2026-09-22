@@ -1,0 +1,76 @@
+{
+  "id": "hsbc-cashback",
+  "name": "HSBC Cashback Credit Card",
+  "bank": "HSBC",
+  "network": "Visa",
+  "category": "Cashback",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": false,
+  "annualFee": 0,
+  "joiningFee": 0,
+  "rewardRate": "1.5%",
+  "applyUrl": "https://www.hsbc.co.in/credit-cards/products/cashback/",
+  "benefits": {
+    "cashback": {
+      "description": "1.5% unlimited cashback on all spends",
+      "details": [
+        "1.5% cashback on all online spends",
+        "1.5% cashback on all offline spends",
+        "No cap on cashback",
+        "Cashback auto-credited to statement"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 4,
+        "international": 0,
+        "description": "4 domestic airport lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": false
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "True LTF - unconditional",
+      "Unlimited cashback with no cap",
+      "Simplest cashback card"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 400000,
+    "minAge": 21
+  },
+  "highlights": [
+    "1.5% unlimited cashback",
+    "True LTF",
+    "No cap on rewards"
+  ],
+  "popularityScore": 68,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.hsbc.co.in/credit-cards/products/cashback/"
+    }
+  ],
+  "verification": {}
+}

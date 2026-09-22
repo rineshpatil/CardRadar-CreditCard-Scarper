@@ -1,0 +1,78 @@
+{
+  "id": "rbl-icon",
+  "name": "RBL Icon Credit Card",
+  "bank": "RBL Bank",
+  "network": "Mastercard",
+  "category": "Premium",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 3500,
+  "joiningFee": 3500,
+  "rewardRate": "6X rewards",
+  "applyUrl": "https://www.rblbank.com/credit-cards/icon",
+  "benefits": {
+    "cashback": {
+      "description": "6X reward points on all online spends",
+      "details": [
+        "6X reward points on all online transactions",
+        "2X reward points on all offline spends",
+        "Points redeemable for flights, hotels, vouchers",
+        "Welcome bonus of 8000 points"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 4,
+        "international": 2,
+        "description": "4 domestic + 2 international lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": true,
+      "description": "Complimentary golf at select courses"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "Dining Delights program"
+    },
+    "movies": {
+      "available": true,
+      "description": "Buy 1 Get 1 on movies"
+    },
+    "forex": {
+      "markupFee": "2%",
+      "description": "2% forex markup"
+    },
+    "other": [
+      "RBL's premium card",
+      "6X on online",
+      "Golf + lounge access"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 900000,
+    "minAge": 21
+  },
+  "highlights": [
+    "6X online rewards",
+    "Golf access",
+    "6 lounge visits/year"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.rblbank.com/credit-cards/icon"
+    }
+  ],
+  "verification": {}
+}

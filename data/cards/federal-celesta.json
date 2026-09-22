@@ -1,0 +1,78 @@
+{
+  "id": "federal-celesta",
+  "name": "Federal Bank Celesta Credit Card",
+  "bank": "Federal Bank",
+  "network": "Visa",
+  "category": "Premium",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 2499,
+  "joiningFee": 1499,
+  "rewardRate": "4X rewards",
+  "applyUrl": "https://www.federalbank.co.in/credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "4X reward points on dining, travel, and entertainment",
+      "details": [
+        "4X reward points on dining, travel, and entertainment",
+        "1X reward points on all other spends",
+        "Welcome bonus of 5000 reward points",
+        "Milestone bonus at ₹2L spend"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 4,
+        "international": 2,
+        "description": "4 domestic + 2 international lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "4X rewards on dining"
+    },
+    "movies": {
+      "available": true,
+      "description": "4X rewards on entertainment"
+    },
+    "forex": {
+      "markupFee": "2.5%",
+      "description": "2.5% forex markup"
+    },
+    "other": [
+      "Federal Bank's premium offering",
+      "4X on lifestyle categories",
+      "Good lounge access"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 600000,
+    "minAge": 21
+  },
+  "highlights": [
+    "4X on dining & travel",
+    "6 lounge visits/year",
+    "Federal Bank premium"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.federalbank.co.in/credit-card"
+    }
+  ],
+  "verification": {}
+}

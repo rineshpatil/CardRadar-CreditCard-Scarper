@@ -1,0 +1,28 @@
+{
+  "id": "standard-chartered-manhattan-platinum-credit-card",
+  "name": "Standard Chartered Manhattan Platinum Credit Card",
+  "bank": "Standard Chartered Bank",
+  "network": "Mastercard Platinum",
+  "category": "Cashback/Grocery",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 999,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.sc.com/in/credit-cards/manhattan-platinum-credit-card/",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.sc.com/in/credit-cards/manhattan-platinum-credit-card/"
+    }
+  ],
+  "verification": {}
+}

@@ -1,0 +1,77 @@
+{
+  "id": "idbi-euphoria",
+  "name": "IDBI Euphoria Credit Card",
+  "bank": "IDBI Bank",
+  "network": "Visa",
+  "category": "Cashback",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": false,
+  "annualFee": 0,
+  "joiningFee": 0,
+  "rewardRate": "1-10%",
+  "applyUrl": "https://www.idbibank.in/credit-card.aspx",
+  "benefits": {
+    "cashback": {
+      "description": "10% on dining, 5% on travel, 1% on all other spends",
+      "details": [
+        "10% cashback on dining (up to ₹500/month)",
+        "5% cashback on travel bookings",
+        "1% cashback on all other spends",
+        "No joining or annual fee ever"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 4,
+        "international": 0,
+        "description": "4 domestic airport lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "10% cashback on dining"
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "True LTF card",
+      "High dining cashback",
+      "Good for food lovers"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 300000,
+    "minAge": 21
+  },
+  "highlights": [
+    "10% dining cashback",
+    "True LTF",
+    "5% on travel"
+  ],
+  "popularityScore": 43,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.idbibank.in/credit-card.aspx"
+    }
+  ],
+  "verification": {}
+}

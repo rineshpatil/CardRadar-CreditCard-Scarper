@@ -1,0 +1,78 @@
+{
+  "id": "sbi-elite",
+  "name": "SBI Card ELITE",
+  "bank": "SBI Card",
+  "network": "Visa",
+  "category": "Premium",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 4999,
+  "joiningFee": 4999,
+  "rewardRate": "2-5X",
+  "applyUrl": "https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-elite.page",
+  "benefits": {
+    "cashback": {
+      "description": "5X reward points on dining and departmental stores",
+      "details": [
+        "5X reward points on dining",
+        "5X reward points on departmental stores and grocery",
+        "1X on all other spends",
+        "Welcome gift worth ₹5000"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 4,
+        "international": 2,
+        "description": "4 domestic + 2 international lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": true,
+      "description": "Complimentary golf rounds at select courses"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "5X rewards on dining + GIRF (Great Indian Restaurant Festival) benefits"
+    },
+    "movies": {
+      "available": true,
+      "description": "Complimentary movie tickets via BookMyShow"
+    },
+    "forex": {
+      "markupFee": "1.99%",
+      "description": "1.99% forex markup"
+    },
+    "other": [
+      "5X on dining and grocery",
+      "Premium insurance cover",
+      "Club Vistara Silver tier included"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 1200000,
+    "minAge": 21
+  },
+  "highlights": [
+    "5X on dining & grocery",
+    "Club Vistara Silver",
+    "Low forex markup"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-elite.page"
+    }
+  ],
+  "verification": {}
+}

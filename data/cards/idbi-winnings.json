@@ -1,0 +1,76 @@
+{
+  "id": "idbi-winnings",
+  "name": "IDBI Bank Winnings Credit Card",
+  "bank": "IDBI Bank",
+  "network": "Visa",
+  "category": "Entry Level",
+  "tier": "entry",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 499,
+  "joiningFee": 99,
+  "rewardRate": "2X rewards",
+  "applyUrl": "https://www.idbibank.in/credit-card.aspx",
+  "benefits": {
+    "cashback": {
+      "description": "2X reward points on online and apparel spends",
+      "details": [
+        "2X reward points on online transactions",
+        "2X reward points on apparel shopping",
+        "1X reward points on all other spends",
+        "Welcome voucher on activation"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 0,
+        "international": 0,
+        "description": "No lounge access"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": false
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "Entry-level IDBI card",
+      "2X online rewards",
+      "Low joining fee of ₹99"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 200000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Just ₹99 joining fee",
+    "2X online rewards",
+    "Entry-level card"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.idbibank.in/credit-card.aspx"
+    }
+  ],
+  "verification": {}
+}

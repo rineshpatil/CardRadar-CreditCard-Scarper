@@ -1,0 +1,78 @@
+{
+  "id": "sbi-prime",
+  "name": "SBI Card PRIME",
+  "bank": "SBI Card",
+  "network": "Visa",
+  "category": "Premium",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 2999,
+  "joiningFee": 2999,
+  "rewardRate": "2-10X",
+  "applyUrl": "https://www.sbicard.com/en/personal/credit-cards/travel-fuel/sbi-card-prime.page",
+  "benefits": {
+    "cashback": {
+      "description": "10X reward points on dining, 5X on grocery, 1X elsewhere",
+      "details": [
+        "10X reward points on dining",
+        "5X reward points on grocery and departmental stores",
+        "1X reward points on all other spends",
+        "Tripmoney welcome benefit of ₹500"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 8,
+        "international": 0,
+        "description": "8 domestic airport lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "10X rewards on dining"
+    },
+    "movies": {
+      "available": true,
+      "description": "Buy 1 Get 1 on movie tickets"
+    },
+    "forex": {
+      "markupFee": "1.99%",
+      "description": "1.99% forex markup"
+    },
+    "other": [
+      "10X on dining",
+      "TripMoney benefits",
+      "Annual fee waiver on ₹3L spend"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 600000,
+    "minAge": 21
+  },
+  "highlights": [
+    "10X on dining",
+    "8 lounge visits",
+    "Low forex markup"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/travel-fuel/sbi-card-prime.page"
+    }
+  ],
+  "verification": {}
+}

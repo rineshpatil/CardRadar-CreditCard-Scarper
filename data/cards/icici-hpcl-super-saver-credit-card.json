@@ -1,0 +1,28 @@
+{
+  "id": "icici-hpcl-super-saver-credit-card",
+  "name": "ICICI HPCL Super Saver Credit Card",
+  "bank": "ICICI Bank",
+  "network": "Visa",
+  "category": "Fuel",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 500,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.icicibank.com/card/hpcl-super-saver-credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.icicibank.com/card/hpcl-super-saver-credit-card"
+    }
+  ],
+  "verification": {}
+}

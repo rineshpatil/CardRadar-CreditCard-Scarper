@@ -1,0 +1,28 @@
+{
+  "id": "axis-bank-myzone-credit-card",
+  "name": "Axis Bank MyZone Credit Card",
+  "bank": "Axis Bank",
+  "network": "Visa/Mastercard",
+  "category": "Youth/Lifestyle",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 500,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.axisbank.com/retail/cards/credit-card/myzone-credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.axisbank.com/retail/cards/credit-card/myzone-credit-card"
+    }
+  ],
+  "verification": {}
+}

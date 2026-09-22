@@ -1,0 +1,76 @@
+{
+  "id": "amex-plat-travel",
+  "name": "American Express Platinum Travel Card",
+  "bank": "American Express",
+  "network": "American Express",
+  "category": "Travel",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 3500,
+  "joiningFee": 3500,
+  "rewardRate": "5X on travel",
+  "applyUrl": "https://www.americanexpress.com/in/credit-cards/platinum-travel-card/",
+  "benefits": {
+    "cashback": {
+      "description": "5X MR points on domestic airlines and hotels",
+      "details": [
+        "5X MR points on domestic airline tickets",
+        "5X MR points on domestic hotel bookings",
+        "1X MR points on all other spends",
+        "Welcome bonus of 5000 MR points on ₹10K spend"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 16,
+        "international": 0,
+        "description": "4 domestic airport lounge visits per quarter"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "Fuel surcharge waiver"
+    },
+    "dining": {
+      "available": false
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "Best for domestic travel",
+      "16 annual lounge visits",
+      "Travel insurance included"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 800000,
+    "minAge": 21
+  },
+  "highlights": [
+    "5X on domestic travel",
+    "16 lounge visits/year",
+    "Travel insurance"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.americanexpress.com/in/credit-cards/platinum-travel-card/"
+    }
+  ],
+  "verification": {}
+}

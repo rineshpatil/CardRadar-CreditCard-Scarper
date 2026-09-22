@@ -1,0 +1,77 @@
+{
+  "id": "hdfc-tata-neu-infinity",
+  "name": "HDFC Tata Neu Infinity Credit Card",
+  "bank": "HDFC Bank",
+  "network": "Visa",
+  "category": "Cashback",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 1499,
+  "joiningFee": 1499,
+  "rewardRate": "1.5-5%",
+  "applyUrl": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/tata-neu-infinity-hdfc-bank-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "Up to 5% NeuCoins on Tata brands, 1.5% on others",
+      "details": [
+        "5% NeuCoins on Tata Neu app (Croma, BigBasket, 1mg, etc.)",
+        "1.5% NeuCoins on all other spends",
+        "1 NeuCoin = ₹1 on Tata Neu",
+        "7500 welcome NeuCoins on first spend"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 4,
+        "international": 0,
+        "description": "4 domestic lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "Discounts on Tata Neu dining partners"
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "5% on Tata ecosystem",
+      "Good for BigBasket/Croma users",
+      "Fee waiver on ₹2L spend"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 400000,
+    "minAge": 21
+  },
+  "highlights": [
+    "5% on Tata brands",
+    "BigBasket, Croma rewards",
+    "Welcome NeuCoins"
+  ],
+  "popularityScore": 45,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/tata-neu-infinity-hdfc-bank-credit-card"
+    }
+  ],
+  "verification": {}
+}

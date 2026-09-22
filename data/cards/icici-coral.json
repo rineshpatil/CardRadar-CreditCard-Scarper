@@ -1,0 +1,78 @@
+{
+  "id": "icici-coral",
+  "name": "ICICI Bank Coral Credit Card",
+  "bank": "ICICI Bank",
+  "network": "Visa",
+  "category": "Lifestyle",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 500,
+  "joiningFee": 500,
+  "rewardRate": "2 pts/₹100",
+  "applyUrl": "https://www.icicibank.com/card/credit-cards/icici-bank-coral-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "2 PAYBACK points per ₹100 on all spends",
+      "details": [
+        "2 PAYBACK points per ₹100 on all spends",
+        "Bonus points on dining and movies",
+        "Redeem for vouchers and merchandise",
+        "Welcome bonus on card activation"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 4,
+        "international": 0,
+        "description": "1 domestic airport lounge visit per quarter"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "Culinary Treats dining offers"
+    },
+    "movies": {
+      "available": true,
+      "description": "Buy 1 Get 1 on BookMyShow (once/month)"
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "Great entry-level card",
+      "Monthly movie BOGO",
+      "Low annual fee"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 300000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Entry-level ICICI card",
+    "Monthly movie BOGO",
+    "Low ₹500 fee"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.icicibank.com/card/credit-cards/icici-bank-coral-credit-card"
+    }
+  ],
+  "verification": {}
+}

@@ -1,0 +1,28 @@
+{
+  "id": "american-express-gold-card",
+  "name": "American Express Gold Card",
+  "bank": "American Express",
+  "network": "Amex",
+  "category": "Premium Dining/Rewards",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 4500,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.americanexpress.com/in/credit-cards/gold-card/",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.americanexpress.com/in/credit-cards/gold-card/"
+    }
+  ],
+  "verification": {}
+}

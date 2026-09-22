@@ -1,0 +1,77 @@
+{
+  "id": "amex-smartearn",
+  "name": "American Express SmartEarn Credit Card",
+  "bank": "American Express",
+  "network": "American Express",
+  "category": "Cashback",
+  "tier": "entry",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 495,
+  "joiningFee": 495,
+  "rewardRate": "10X on partners",
+  "applyUrl": "https://www.americanexpress.com/in/credit-cards/smartearn-credit-card/",
+  "benefits": {
+    "cashback": {
+      "description": "10X MR points on Flipkart, Uber, BookMyShow, Amazon",
+      "details": [
+        "10X MR points on Flipkart and Amazon",
+        "10X MR points on Uber and BookMyShow",
+        "5X MR points on other online spends",
+        "1X MR points on all else"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 0,
+        "international": 0,
+        "description": "No lounge access"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "Fuel surcharge waiver"
+    },
+    "dining": {
+      "available": false
+    },
+    "movies": {
+      "available": true,
+      "description": "10X rewards on BookMyShow"
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "Entry-level Amex card",
+      "10X on popular platforms",
+      "Low fee waived on ₹40K spend"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 300000,
+    "minAge": 21
+  },
+  "highlights": [
+    "10X on Amazon/Flipkart",
+    "Entry-level Amex",
+    "Low annual fee"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.americanexpress.com/in/credit-cards/smartearn-credit-card/"
+    }
+  ],
+  "verification": {}
+}

@@ -1,0 +1,30 @@
+{
+  "id": "tanishq-sbi-credit-card",
+  "name": "Tanishq SBI Credit Card",
+  "bank": "SBI Card",
+  "network": "Visa",
+  "category": "Co-branded",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 1499,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.sbicard.com/en/personal/credit-cards/shopping/tanishq-sbi-card.page",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [
+    "Co-branded with Tanishq (Tata)"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/shopping/tanishq-sbi-card.page"
+    }
+  ],
+  "verification": {}
+}

@@ -1,0 +1,28 @@
+{
+  "id": "jupiter-edge-csb-rupay-credit-card",
+  "name": "Jupiter Edge+ CSB RuPay Credit Card",
+  "bank": "CSB Bank (Jupiter)",
+  "network": "RuPay",
+  "category": "Shopping/UPI",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": true,
+  "annualFee": 0,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://jupiter.money/credit-card/",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://jupiter.money/credit-card/"
+    }
+  ],
+  "verification": {}
+}

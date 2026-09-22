@@ -1,0 +1,77 @@
+{
+  "id": "hdfc-millennia",
+  "name": "HDFC Millennia Credit Card",
+  "bank": "HDFC Bank",
+  "network": "Mastercard",
+  "category": "Cashback",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 1000,
+  "joiningFee": 1000,
+  "rewardRate": "1-5%",
+  "applyUrl": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/millennia-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "5% cashback on Amazon, Flipkart, Swiggy via SmartBuy; 1% on all other spends",
+      "details": [
+        "5% cashback on Amazon, Flipkart, Myntra via SmartBuy",
+        "2.5% cashback on all online spends",
+        "1% cashback on all offline spends",
+        "Max cashback ₹1000/month"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 8,
+        "international": 0,
+        "description": "8 domestic airport lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": false
+    },
+    "movies": {
+      "available": true,
+      "description": "BookMyShow offers"
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "Great for online shoppers",
+      "Fee waived on ₹1L annual spend",
+      "EMI options available"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 400000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Best for online shopping",
+    "5% on Amazon/Flipkart",
+    "Low annual fee"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/millennia-credit-card"
+    }
+  ],
+  "verification": {}
+}

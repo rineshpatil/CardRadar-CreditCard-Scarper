@@ -1,0 +1,77 @@
+{
+  "id": "axis-atlas",
+  "name": "Axis Bank Atlas Credit Card",
+  "bank": "Axis Bank",
+  "network": "Visa",
+  "category": "Travel",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 5000,
+  "joiningFee": 5000,
+  "rewardRate": "2-5%",
+  "applyUrl": "https://www.axisbank.com/retail/cards/credit-card/atlas-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "5 EDGE MILES per ₹200 on travel, 2 on others",
+      "details": [
+        "5 EDGE MILES per ₹200 on travel merchants",
+        "2 EDGE MILES per ₹200 on all other spends",
+        "EDGE MILES transferable to 15+ airlines",
+        "Welcome bonus 5000 EDGE MILES"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 8,
+        "international": 8,
+        "description": "8 domestic + 8 international lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": true,
+      "description": "Complimentary golf via PGA partnership"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "Dining Delights program"
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "0%",
+      "description": "Zero forex markup on international spends"
+    },
+    "other": [
+      "Best travel card",
+      "No spend criteria for lounge",
+      "Transferable miles"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 1500000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Best travel card",
+    "No spend criteria for lounge",
+    "Transferable miles"
+  ],
+  "popularityScore": 83,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.axisbank.com/retail/cards/credit-card/atlas-credit-card"
+    }
+  ],
+  "verification": {}
+}

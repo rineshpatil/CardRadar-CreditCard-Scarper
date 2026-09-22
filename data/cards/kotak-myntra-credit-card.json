@@ -1,0 +1,28 @@
+{
+  "id": "kotak-myntra-credit-card",
+  "name": "Kotak Myntra Credit Card",
+  "bank": "Kotak Mahindra Bank",
+  "network": "Mastercard",
+  "category": "Fashion Shopping",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 500,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.kotak.com/en/personal-banking/cards/credit-cards/myntra-credit-card.html",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards/myntra-credit-card.html"
+    }
+  ],
+  "verification": {}
+}

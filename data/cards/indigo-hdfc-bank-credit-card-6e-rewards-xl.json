@@ -1,0 +1,30 @@
+{
+  "id": "indigo-hdfc-bank-credit-card-6e-rewards-xl",
+  "name": "IndiGo HDFC Bank Credit Card (6E Rewards XL)",
+  "bank": "HDFC Bank",
+  "network": "Visa",
+  "category": "Co-branded",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 2500,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.hdfcbank.com/content/bbp/repositories/723fb80a-2dde-42a3-9793-7ae1be57c87f/?folderPath=/OLM/Cards/indigo/&fileName=Indigo-6E-Rewards-XL-HDFC-Bank-Credit-Card.html",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [
+    "Co-branded with IndiGo"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.hdfcbank.com/content/bbp/repositories/723fb80a-2dde-42a3-9793-7ae1be57c87f/?folderPath=/OLM/Cards/indigo/&fileName=Indigo-6E-Rewards-XL-HDFC-Bank-Credit-Card.html"
+    }
+  ],
+  "verification": {}
+}

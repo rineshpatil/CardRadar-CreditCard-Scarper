@@ -1,0 +1,79 @@
+{
+  "id": "indusind-legend",
+  "name": "IndusInd Bank Legend Credit Card",
+  "bank": "IndusInd Bank",
+  "network": "Visa",
+  "category": "Super Premium",
+  "tier": "super_premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 10000,
+  "joiningFee": 10000,
+  "rewardRate": "1.5-3%",
+  "applyUrl": "https://www.indusind.com/in/en/personal/cards/credit-card/legend-credit-card.html",
+  "benefits": {
+    "cashback": {
+      "description": "3X reward points on travel, 1.5X on all spends",
+      "details": [
+        "3X reward points on airline and hotel bookings",
+        "1.5X reward points on all other spends",
+        "Points transferable to InterMiles",
+        "Welcome bonus of 15,000 reward points"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": -1,
+        "international": 6,
+        "description": "Unlimited domestic + 6 international lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": true,
+      "description": "Complimentary golf via premium golf program"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "Premium dining privileges"
+    },
+    "movies": {
+      "available": true,
+      "description": "Premium movie experiences"
+    },
+    "forex": {
+      "markupFee": "1.8%",
+      "description": "1.8% forex markup"
+    },
+    "other": [
+      "IndusInd's top card",
+      "Unlimited domestic lounge",
+      "InterMiles transfer",
+      "Golf access"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 1800000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Unlimited domestic lounge",
+    "Golf access",
+    "InterMiles transfer"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.indusind.com/in/en/personal/cards/credit-card/legend-credit-card.html"
+    }
+  ],
+  "verification": {}
+}

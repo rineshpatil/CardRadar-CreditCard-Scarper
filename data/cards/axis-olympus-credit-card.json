@@ -1,0 +1,23 @@
+{
+  "id": "axis-olympus-credit-card",
+  "name": "Axis Olympus Credit Card",
+  "bank": "Axis Bank",
+  "network": "Mastercard",
+  "category": "Super Premium (Limited)",
+  "tier": "super_premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 9999,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.axisbank.com/retail/cards/credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [],
+  "verification": {}
+}

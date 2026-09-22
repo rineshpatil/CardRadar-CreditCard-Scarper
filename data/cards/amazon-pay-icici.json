@@ -1,0 +1,75 @@
+{
+  "id": "amazon-pay-icici",
+  "name": "Amazon Pay ICICI Bank Credit Card",
+  "bank": "ICICI Bank",
+  "network": "Visa",
+  "category": "Cashback",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": true,
+  "annualFee": 0,
+  "joiningFee": 0,
+  "rewardRate": "1-5%",
+  "applyUrl": "https://www.icicibank.com/card/credit-cards/amazon-pay-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "Up to 5% cashback on Amazon with Prime, 2% on Amazon without Prime, 1% on all other spends",
+      "details": [
+        "5% cashback on Amazon.in for Prime members",
+        "3% cashback on Amazon.in for non-Prime",
+        "2% cashback on paying through Amazon Pay at partner merchants",
+        "1% cashback on all other spends"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 0,
+        "international": 0,
+        "description": "No lounge access"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge access"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver across all fuel stations"
+    },
+    "dining": {
+      "available": false
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "No minimum spend requirement for cashback",
+      "Cashback auto-credited as Amazon Pay balance"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 300000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Best for Amazon shoppers",
+    "True LTF - no conditions",
+    "Instant cashback"
+  ],
+  "popularityScore": 88,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.icicibank.com/card/credit-cards/amazon-pay-credit-card"
+    }
+  ],
+  "verification": {}
+}

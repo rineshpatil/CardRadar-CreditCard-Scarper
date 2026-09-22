@@ -1,0 +1,77 @@
+{
+  "id": "marriott-bonvoy-hdfc",
+  "name": "Marriott Bonvoy HDFC Bank Credit Card",
+  "bank": "HDFC Bank",
+  "network": "Visa",
+  "category": "Travel",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 3000,
+  "joiningFee": 3000,
+  "rewardRate": "8 Bonvoy pts/₹150",
+  "applyUrl": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/marriott-bonvoy-hdfc-bank-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "Earn Marriott Bonvoy points on every spend",
+      "details": [
+        "8 Bonvoy points per ₹150 at Marriott properties",
+        "4 Bonvoy points per ₹150 on all other spends",
+        "1 free night award (up to 15K points) on annual renewal",
+        "Points transferable to 40+ airline partners"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 8,
+        "international": 2,
+        "description": "8 domestic + 2 international lounge visits/year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "Marriott dining privileges"
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "2%",
+      "description": "2% forex markup"
+    },
+    "other": [
+      "Complimentary Marriott Bonvoy Silver Elite status",
+      "Free night on renewal",
+      "Best for hotel loyalists"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 600000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Earn Marriott Bonvoy points",
+    "Free night on renewal",
+    "Silver Elite status"
+  ],
+  "popularityScore": 50,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/marriott-bonvoy-hdfc-bank-credit-card"
+    }
+  ],
+  "verification": {}
+}

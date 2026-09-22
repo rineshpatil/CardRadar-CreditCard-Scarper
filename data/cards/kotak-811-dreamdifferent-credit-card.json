@@ -1,0 +1,28 @@
+{
+  "id": "kotak-811-dreamdifferent-credit-card",
+  "name": "Kotak 811 #DreamDifferent Credit Card",
+  "bank": "Kotak Mahindra Bank",
+  "network": "Visa",
+  "category": "Entry Level/Secured",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": false,
+  "annualFee": 0,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.kotak.com/en/personal-banking/cards/credit-cards/811-dreamdifferent-credit-card.html",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards/811-dreamdifferent-credit-card.html"
+    }
+  ],
+  "verification": {}
+}

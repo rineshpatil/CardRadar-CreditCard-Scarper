@@ -1,0 +1,79 @@
+{
+  "id": "amex-platinum",
+  "name": "American Express Platinum Card",
+  "bank": "American Express",
+  "network": "American Express",
+  "category": "Ultra Premium",
+  "tier": "super_premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 60000,
+  "joiningFee": 60000,
+  "rewardRate": "1 MR/₹50",
+  "applyUrl": "https://www.americanexpress.com/in/credit-cards/platinum-card/",
+  "benefits": {
+    "cashback": {
+      "description": "1 Membership Rewards point per ₹50, transferable to airlines",
+      "details": [
+        "1 MR point per ₹50 on all spends",
+        "Transfer to 15+ airline and hotel partners",
+        "5X MR points on travel booked with Amex Travel",
+        "Welcome bonus of 25,000 MR points"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": -1,
+        "international": -1,
+        "description": "Unlimited lounge access via Priority Pass + Amex Centurion lounges"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": true,
+      "description": "Access to premium golf courses worldwide"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "Fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "Global Dining Collection - exclusive dining experiences"
+    },
+    "movies": {
+      "available": true,
+      "description": "Premium entertainment access"
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "Metal card",
+      "Access to Centurion lounges",
+      "Taj Group privileges",
+      "Entertainment access"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 5000000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Centurion lounge access",
+    "Metal card",
+    "Taj Group privileges"
+  ],
+  "popularityScore": 55,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.americanexpress.com/in/credit-cards/platinum-card/"
+    }
+  ],
+  "verification": {}
+}

@@ -1,0 +1,76 @@
+{
+  "id": "scapia-federal",
+  "name": "Scapia Federal Bank Credit Card",
+  "bank": "Federal Bank",
+  "network": "Visa",
+  "category": "Travel",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": true,
+  "annualFee": 0,
+  "joiningFee": 0,
+  "rewardRate": "1-10%",
+  "applyUrl": "https://www.scapia.com/",
+  "benefits": {
+    "cashback": {
+      "description": "Up to 10% on travel bookings, 1% on all other spends",
+      "details": [
+        "Up to 10% savings on flights via Scapia app",
+        "Up to 10% on hotels via Scapia app",
+        "1% cashback on all other spends",
+        "No cap on travel rewards"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 16,
+        "international": 16,
+        "description": "4 domestic + 4 international lounge visits per quarter"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": false
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "0%",
+      "description": "Zero forex markup on international spends"
+    },
+    "other": [
+      "True LTF travel card",
+      "Zero forex markup",
+      "Generous lounge access"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 300000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Zero forex markup",
+    "32 lounge visits/year",
+    "True LTF travel card"
+  ],
+  "popularityScore": 75,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.scapia.com/"
+    }
+  ],
+  "verification": {}
+}

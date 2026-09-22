@@ -1,0 +1,30 @@
+{
+  "id": "bookmyshow-axis-bank-credit-card",
+  "name": "BookMyShow Axis Bank Credit Card",
+  "bank": "Axis Bank",
+  "network": "Visa",
+  "category": "Co-branded",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 500,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.axisbank.com/retail/cards/credit-card/bookmyshow-axis-bank-credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [
+    "Co-branded with BookMyShow"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.axisbank.com/retail/cards/credit-card/bookmyshow-axis-bank-credit-card"
+    }
+  ],
+  "verification": {}
+}

@@ -1,0 +1,28 @@
+{
+  "id": "kotak-league-platinum-credit-card",
+  "name": "Kotak League Platinum Credit Card",
+  "bank": "Kotak Mahindra Bank",
+  "network": "Visa Platinum",
+  "category": "Entry Rewards",
+  "tier": "entry",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 499,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.kotak.com/en/personal-banking/cards/credit-cards/league-platinum-credit-card.html",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards/league-platinum-credit-card.html"
+    }
+  ],
+  "verification": {}
+}

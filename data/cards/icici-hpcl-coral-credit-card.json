@@ -1,0 +1,30 @@
+{
+  "id": "icici-hpcl-coral-credit-card",
+  "name": "ICICI HPCL Coral Credit Card",
+  "bank": "ICICI Bank",
+  "network": "Visa",
+  "category": "Co-branded",
+  "tier": "entry",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 199,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.icicibank.com/card/hpcl-coral-credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [
+    "Co-branded with HPCL"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.icicibank.com/card/hpcl-coral-credit-card"
+    }
+  ],
+  "verification": {}
+}

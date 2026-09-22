@@ -1,0 +1,28 @@
+{
+  "id": "indusind-bank-crest-credit-card",
+  "name": "IndusInd Bank Crest Credit Card",
+  "bank": "IndusInd Bank",
+  "network": "Visa Infinite",
+  "category": "Ultra Premium",
+  "tier": "super_premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 40000,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.indusind.com/in/en/personal/cards/credit-cards/crest-credit-card.html",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.indusind.com/in/en/personal/cards/credit-cards/crest-credit-card.html"
+    }
+  ],
+  "verification": {}
+}

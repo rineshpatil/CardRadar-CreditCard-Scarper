@@ -1,0 +1,30 @@
+{
+  "id": "tata-neu-plus-hdfc-bank-credit-card",
+  "name": "Tata Neu Plus HDFC Bank Credit Card",
+  "bank": "HDFC Bank",
+  "network": "RuPay",
+  "category": "Co-branded",
+  "tier": "entry",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 499,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.hdfcbank.com/content/bbp/repositories/723fb80a-2dde-42a3-9793-7ae1be57c87f/?folderPath=/OLM/Cards/tata-neu-plus/&fileName=Tata-Neu-Plus-HDFC-Bank-Credit-Card.html",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [
+    "Co-branded with Tata Neu / NeuPass"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.hdfcbank.com/content/bbp/repositories/723fb80a-2dde-42a3-9793-7ae1be57c87f/?folderPath=/OLM/Cards/tata-neu-plus/&fileName=Tata-Neu-Plus-HDFC-Bank-Credit-Card.html"
+    }
+  ],
+  "verification": {}
+}

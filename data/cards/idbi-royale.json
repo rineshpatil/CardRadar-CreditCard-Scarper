@@ -1,0 +1,78 @@
+{
+  "id": "idbi-royale",
+  "name": "IDBI Bank Royale Credit Card",
+  "bank": "IDBI Bank",
+  "network": "Visa",
+  "category": "Premium",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 2500,
+  "joiningFee": 2500,
+  "rewardRate": "2-5X",
+  "applyUrl": "https://www.idbibank.in/credit-card.aspx",
+  "benefits": {
+    "cashback": {
+      "description": "5X reward points on travel, 2X on all other spends",
+      "details": [
+        "5X reward points on airline and hotel bookings",
+        "2X reward points on all other spends",
+        "Welcome bonus of 5000 reward points",
+        "Milestone bonus at ₹3L annual spend"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 4,
+        "international": 2,
+        "description": "4 domestic + 2 international lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "Dining offers at partner restaurants"
+    },
+    "movies": {
+      "available": true,
+      "description": "Movie ticket discounts"
+    },
+    "forex": {
+      "markupFee": "2.5%",
+      "description": "2.5% forex markup"
+    },
+    "other": [
+      "IDBI's premium offering",
+      "5X on travel",
+      "Good lounge access"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 600000,
+    "minAge": 21
+  },
+  "highlights": [
+    "5X travel rewards",
+    "6 lounge visits/year",
+    "IDBI premium card"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.idbibank.in/credit-card.aspx"
+    }
+  ],
+  "verification": {}
+}

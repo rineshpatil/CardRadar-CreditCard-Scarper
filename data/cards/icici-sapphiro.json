@@ -1,0 +1,78 @@
+{
+  "id": "icici-sapphiro",
+  "name": "ICICI Sapphiro Credit Card",
+  "bank": "ICICI Bank",
+  "network": "Visa",
+  "category": "Premium",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 6500,
+  "joiningFee": 6500,
+  "rewardRate": "2-4%",
+  "applyUrl": "https://www.icicibank.com/card/credit-cards/icici-bank-sapphiro-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "2 reward points per ₹100, 4 points on travel",
+      "details": [
+        "2 reward points per ₹100 on all spends",
+        "4 reward points per ₹100 on travel bookings",
+        "Welcome bonus of 5000 points",
+        "Milestone bonus at ₹3L spend"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 16,
+        "international": 16,
+        "description": "4 domestic + 4 international lounge visits per quarter"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": true,
+      "description": "Complimentary golf via Golflan partnership"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "Culinary Treats dining program"
+    },
+    "movies": {
+      "available": true,
+      "description": "Buy 1 Get 1 on BookMyShow"
+    },
+    "forex": {
+      "markupFee": "2%",
+      "description": "2% forex markup"
+    },
+    "other": [
+      "Good premium card",
+      "Generous lounge access",
+      "Fee waived on ₹6L spend"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 1200000,
+    "minAge": 21
+  },
+  "highlights": [
+    "16 lounge visits/quarter",
+    "Golf access",
+    "Culinary Treats"
+  ],
+  "popularityScore": 60,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.icicibank.com/card/credit-cards/icici-bank-sapphiro-credit-card"
+    }
+  ],
+  "verification": {}
+}

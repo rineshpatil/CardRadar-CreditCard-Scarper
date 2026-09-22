@@ -1,0 +1,25 @@
+{
+  "id": "practo-axis-bank-credit-card",
+  "name": "Practo Axis Bank Credit Card",
+  "bank": "Axis Bank",
+  "network": "Visa",
+  "category": "Co-branded",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 1000,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.axisbank.com/retail/cards/credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [
+    "Co-branded with Practo"
+  ],
+  "popularityScore": 30,
+  "sources": [],
+  "verification": {}
+}

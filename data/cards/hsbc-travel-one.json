@@ -1,0 +1,77 @@
+{
+  "id": "hsbc-travel-one",
+  "name": "HSBC TravelOne Credit Card",
+  "bank": "HSBC",
+  "network": "Visa",
+  "category": "Travel",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 2500,
+  "joiningFee": 1500,
+  "rewardRate": "2-5%",
+  "applyUrl": "https://www.hsbc.co.in/credit-cards/products/travelone/",
+  "benefits": {
+    "cashback": {
+      "description": "5% TravelOne points on travel, 2% on all spends",
+      "details": [
+        "5% TravelOne points on all travel bookings",
+        "2% TravelOne points on all other spends",
+        "Points redeemable on any airline/hotel worldwide",
+        "No blackout dates for redemption"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 8,
+        "international": 4,
+        "description": "8 domestic + 4 international lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "Dining offers at partner restaurants"
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "0%",
+      "description": "Zero forex markup on international spends"
+    },
+    "other": [
+      "Zero forex markup",
+      "Flexible travel redemption",
+      "No blackout dates"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 800000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Zero forex markup",
+    "5% on travel",
+    "Flexible redemptions"
+  ],
+  "popularityScore": 58,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.hsbc.co.in/credit-cards/products/travelone/"
+    }
+  ],
+  "verification": {}
+}

@@ -1,0 +1,78 @@
+{
+  "id": "hdfc-diners-black",
+  "name": "HDFC Diners Club Black Credit Card",
+  "bank": "HDFC Bank",
+  "network": "Diners Club",
+  "category": "Super Premium",
+  "tier": "super_premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 10000,
+  "joiningFee": 10000,
+  "rewardRate": "3.3%",
+  "applyUrl": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/diners-club-black",
+  "benefits": {
+    "cashback": {
+      "description": "5 reward points per ₹150, 10X on SmartBuy",
+      "details": [
+        "5 reward points per ₹150 on all spends",
+        "10X on HDFC SmartBuy portal",
+        "Reward rate matches Infinia",
+        "Points never expire"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": -1,
+        "international": -1,
+        "description": "Unlimited lounge access worldwide"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": true,
+      "description": "Complimentary golf via Club Marriott"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "ITC Culinaire dining program"
+    },
+    "movies": {
+      "available": true,
+      "description": "Buy 1 Get 1 on BookMyShow"
+    },
+    "forex": {
+      "markupFee": "2%",
+      "description": "2% forex markup"
+    },
+    "other": [
+      "Infinia-level rewards",
+      "Fee waived at ₹5L spend",
+      "Golf + Unlimited lounge"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 1500000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Infinia-level rewards",
+    "Fee waived at ₹5L spend",
+    "Golf + Unlimited lounge"
+  ],
+  "popularityScore": 90,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/diners-club-black"
+    }
+  ],
+  "verification": {}
+}

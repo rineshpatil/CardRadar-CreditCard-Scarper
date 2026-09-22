@@ -1,0 +1,77 @@
+{
+  "id": "indusind-platinum-aura",
+  "name": "IndusInd Platinum Aura Edge Credit Card",
+  "bank": "IndusInd Bank",
+  "network": "Visa",
+  "category": "Rewards",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 699,
+  "joiningFee": 699,
+  "rewardRate": "2X rewards",
+  "applyUrl": "https://www.indusind.com/in/en/personal/cards/credit-card/platinum-aura-edge.html",
+  "benefits": {
+    "cashback": {
+      "description": "2X reward points on weekend spends",
+      "details": [
+        "2X reward points on all weekend spends",
+        "1X reward points on weekday spends",
+        "Points convertible to InterMiles",
+        "No cap on weekend bonus"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 2,
+        "international": 0,
+        "description": "2 domestic airport lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": false
+    },
+    "movies": {
+      "available": true,
+      "description": "Movie offers on weekends"
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "Weekend rewards card",
+      "InterMiles conversion",
+      "Affordable mid-tier"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 300000,
+    "minAge": 21
+  },
+  "highlights": [
+    "2X weekend rewards",
+    "InterMiles eligible",
+    "₹699 annual fee"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.indusind.com/in/en/personal/cards/credit-card/platinum-aura-edge.html"
+    }
+  ],
+  "verification": {}
+}

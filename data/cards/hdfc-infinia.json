@@ -1,0 +1,78 @@
+{
+  "id": "hdfc-infinia",
+  "name": "HDFC Bank Infinia Credit Card",
+  "bank": "HDFC Bank",
+  "network": "Visa",
+  "category": "Super Premium",
+  "tier": "super_premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 12500,
+  "joiningFee": 12500,
+  "rewardRate": "3.3%",
+  "applyUrl": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/infinia-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "5 reward points per ₹150 spend = 3.3% reward rate",
+      "details": [
+        "5 reward points per ₹150 on all spends",
+        "10X points on SmartBuy portal (up to 33% reward rate)",
+        "Points redeemable for flights, hotels at excellent rates",
+        "1 point = ₹1 on SmartBuy"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": -1,
+        "international": -1,
+        "description": "Unlimited domestic & international lounge access via Priority Pass"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": true,
+      "description": "Complimentary golf games at premium courses in India and abroad"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "Dining privileges at ITC hotels and partner restaurants"
+    },
+    "movies": {
+      "available": true,
+      "description": "Complimentary movie tickets"
+    },
+    "forex": {
+      "markupFee": "2%",
+      "description": "2% forex markup on international transactions"
+    },
+    "other": [
+      "Concierge services 24/7",
+      "Annual fee waived on ₹10L spend",
+      "Travel insurance up to ₹2 Cr"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 1800000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Best overall card in India",
+    "Unlimited lounge access",
+    "Golf"
+  ],
+  "popularityScore": 95,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/infinia-credit-card"
+    }
+  ],
+  "verification": {}
+}

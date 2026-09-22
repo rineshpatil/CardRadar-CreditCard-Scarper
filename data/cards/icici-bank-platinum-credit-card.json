@@ -1,0 +1,28 @@
+{
+  "id": "icici-bank-platinum-credit-card",
+  "name": "ICICI Bank Platinum Credit Card",
+  "bank": "ICICI Bank",
+  "network": "Visa/Mastercard",
+  "category": "Entry Level",
+  "tier": "entry",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 199,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.icicibank.com/card/platinum-chip-credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.icicibank.com/card/platinum-chip-credit-card"
+    }
+  ],
+  "verification": {}
+}

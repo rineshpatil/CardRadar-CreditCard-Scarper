@@ -1,0 +1,78 @@
+{
+  "id": "au-lit",
+  "name": "AU Bank LIT Credit Card",
+  "bank": "AU Small Finance Bank",
+  "network": "RuPay / Visa / Mastercard",
+  "category": "Customizable",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": false,
+  "annualFee": 0,
+  "joiningFee": 0,
+  "rewardRate": "1-5%",
+  "applyUrl": "https://www.aubank.in/credit-card/lit-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "Customize your benefits - choose 3 of 7 features",
+      "details": [
+        "Choose from: Cashback, Lounge, Movie, OTT, Dining, Travel, Shopping",
+        "Up to 5% cashback when cashback feature is selected",
+        "1% base cashback on all spends",
+        "Change features every 3 months"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 16,
+        "international": 0,
+        "description": "4 domestic lounge visits per quarter (if Lounge feature selected)"
+      },
+      "railway": {
+        "count": 8,
+        "description": "2 railway lounge visits per quarter via RuPay"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "25% off up to ₹200 on Swiggy, Zomato (if Dining selected)"
+    },
+    "movies": {
+      "available": true,
+      "description": "Buy 1 Get 1 on BookMyShow (if Movie selected)"
+    },
+    "forex": {
+      "markupFee": "2.5%",
+      "description": "2.5% forex markup"
+    },
+    "other": [
+      "India's first customizable card",
+      "Choose your own benefits",
+      "True LTF - zero fees"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 200000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Choose your benefits",
+    "India's 1st customizable card",
+    "True LTF"
+  ],
+  "popularityScore": 70,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.aubank.in/credit-card/lit-credit-card"
+    }
+  ],
+  "verification": {}
+}

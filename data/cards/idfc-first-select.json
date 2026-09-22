@@ -1,0 +1,77 @@
+{
+  "id": "idfc-first-select",
+  "name": "IDFC FIRST Select Credit Card",
+  "bank": "IDFC FIRST Bank",
+  "network": "Visa",
+  "category": "Rewards",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": false,
+  "annualFee": 0,
+  "joiningFee": 0,
+  "rewardRate": "3-10X",
+  "applyUrl": "https://www.idfcfirstbank.com/credit-card/select",
+  "benefits": {
+    "cashback": {
+      "description": "10X reward points on online spends, 3X on offline",
+      "details": [
+        "10X rewards on online spending (up to ₹20,000/month)",
+        "3X reward points on in-store spending",
+        "Never-expiring reward points",
+        "0.25% reward rate on base, up to 2.5% with multipliers"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 16,
+        "international": 0,
+        "description": "4 complimentary domestic airport lounge visits per quarter"
+      },
+      "railway": {
+        "count": 16,
+        "description": "4 railway lounge visits per quarter via RuPay"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": false
+    },
+    "movies": {
+      "available": true,
+      "description": "Buy 1 Get 1 on BookMyShow"
+    },
+    "forex": {
+      "markupFee": "0%",
+      "description": "Zero forex markup on international spends"
+    },
+    "other": [
+      "Zero annual/joining fee forever",
+      "Low interest rate (0.75% per month)",
+      "EMI on call"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 400000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Zero forex markup",
+    "Never-expiring rewards",
+    "Railway + Airport lounge access"
+  ],
+  "popularityScore": 85,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.idfcfirstbank.com/credit-card/select"
+    }
+  ],
+  "verification": {}
+}

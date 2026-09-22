@@ -1,0 +1,30 @@
+{
+  "id": "zomato-rbl-bank-credit-card",
+  "name": "Zomato RBL Bank Credit Card",
+  "bank": "RBL Bank",
+  "network": "Mastercard",
+  "category": "Co-branded",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 500,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.rblbank.com/personal/cards/credit-cards/zomato-rbl-bank-edition-credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [
+    "Co-branded with Zomato"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.rblbank.com/personal/cards/credit-cards/zomato-rbl-bank-edition-credit-card"
+    }
+  ],
+  "verification": {}
+}

@@ -1,0 +1,77 @@
+{
+  "id": "idfc-first-millennia",
+  "name": "IDFC FIRST Millennia Credit Card",
+  "bank": "IDFC FIRST Bank",
+  "network": "Visa",
+  "category": "Rewards",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": false,
+  "annualFee": 0,
+  "joiningFee": 0,
+  "rewardRate": "3-10X",
+  "applyUrl": "https://www.idfcfirstbank.com/credit-card/millennia",
+  "benefits": {
+    "cashback": {
+      "description": "10X rewards on online, 3X on offline",
+      "details": [
+        "10X rewards on online spending",
+        "3X on offline spending",
+        "Never-expiring rewards",
+        "Monthly milestone bonus points"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 8,
+        "international": 0,
+        "description": "2 domestic lounge visits per quarter"
+      },
+      "railway": {
+        "count": 8,
+        "description": "2 railway lounge visits per quarter"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": false
+    },
+    "movies": {
+      "available": true,
+      "description": "Buy 1 Get 1 on BookMyShow"
+    },
+    "forex": {
+      "markupFee": "0%",
+      "description": "Zero forex markup"
+    },
+    "other": [
+      "True LTF",
+      "Zero forex markup",
+      "Good starter card"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 300000,
+    "minAge": 21
+  },
+  "highlights": [
+    "True LTF no conditions",
+    "Zero forex markup",
+    "Good starter card"
+  ],
+  "popularityScore": 73,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.idfcfirstbank.com/credit-card/millennia"
+    }
+  ],
+  "verification": {}
+}

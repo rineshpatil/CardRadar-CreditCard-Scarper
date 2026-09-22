@@ -1,0 +1,76 @@
+{
+  "id": "icici-mmtblack",
+  "name": "ICICI Bank MakeMyTrip Credit Card",
+  "bank": "ICICI Bank",
+  "network": "Visa",
+  "category": "Travel",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 500,
+  "joiningFee": 500,
+  "rewardRate": "1-10%",
+  "applyUrl": "https://www.icicibank.com/card/credit-cards/makemytrip-icici-bank-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "Up to 10% on MakeMyTrip, 1.5% on all other spends",
+      "details": [
+        "10% MyCash back on MakeMyTrip hotel bookings",
+        "5% MyCash back on MakeMyTrip flights",
+        "1.5% MyCash on all other spends",
+        "₹500 MyCash on first transaction"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 4,
+        "international": 0,
+        "description": "4 domestic airport lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": false
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "Best for MakeMyTrip users",
+      "Earn MyCash on all spends",
+      "Fee waived at ₹2L spend"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 400000,
+    "minAge": 21
+  },
+  "highlights": [
+    "10% on MakeMyTrip hotels",
+    "Travel rewards card",
+    "₹500 welcome MyCash"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.icicibank.com/card/credit-cards/makemytrip-icici-bank-credit-card"
+    }
+  ],
+  "verification": {}
+}

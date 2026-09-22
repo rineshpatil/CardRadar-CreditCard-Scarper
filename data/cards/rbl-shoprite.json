@@ -1,0 +1,77 @@
+{
+  "id": "rbl-shoprite",
+  "name": "RBL Shoprite Credit Card",
+  "bank": "RBL Bank",
+  "network": "Mastercard",
+  "category": "Cashback",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": false,
+  "annualFee": 0,
+  "joiningFee": 0,
+  "rewardRate": "1.5-5%",
+  "applyUrl": "https://www.rblbank.com/credit-cards/shoprite",
+  "benefits": {
+    "cashback": {
+      "description": "5% cashback on grocery and departmental stores, 1.5% on all else",
+      "details": [
+        "5% cashback on grocery stores (up to ₹200/month)",
+        "5% cashback on departmental stores",
+        "1.5% cashback on all other spends",
+        "No minimum spend for cashback"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 2,
+        "international": 0,
+        "description": "2 domestic airport lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": false
+    },
+    "movies": {
+      "available": true,
+      "description": "Movie ticket offers"
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "Best for grocery shopping",
+      "True LTF",
+      "5% on groceries"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 200000,
+    "minAge": 21
+  },
+  "highlights": [
+    "5% on groceries",
+    "True LTF",
+    "Best for daily shopping"
+  ],
+  "popularityScore": 38,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.rblbank.com/credit-cards/shoprite"
+    }
+  ],
+  "verification": {}
+}

@@ -1,0 +1,28 @@
+{
+  "id": "paisabazaar-step-up-credit-card",
+  "name": "Paisabazaar Step UP Credit Card",
+  "bank": "SBM Bank",
+  "network": "Visa",
+  "category": "Secured/Credit Builder",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": false,
+  "annualFee": 0,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.paisabazaar.com/credit-card/step-up-credit-card/",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.paisabazaar.com/credit-card/step-up-credit-card/"
+    }
+  ],
+  "verification": {}
+}

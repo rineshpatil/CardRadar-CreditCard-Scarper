@@ -1,0 +1,28 @@
+{
+  "id": "pnb-pride-rupay-select-credit-card",
+  "name": "PNB Pride RuPay Select Credit Card",
+  "bank": "Punjab National Bank",
+  "network": "RuPay",
+  "category": "Entry Level",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 500,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.pnbcard.in/",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.pnbcard.in/"
+    }
+  ],
+  "verification": {}
+}

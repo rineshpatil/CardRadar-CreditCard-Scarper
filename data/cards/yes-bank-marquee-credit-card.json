@@ -1,0 +1,28 @@
+{
+  "id": "yes-bank-marquee-credit-card",
+  "name": "YES BANK Marquee Credit Card",
+  "bank": "YES Bank",
+  "network": "Mastercard World",
+  "category": "Super Premium",
+  "tier": "super_premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 9999,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.yesbank.in/personal-banking/yes-individual/cards/credit-cards/marquee-credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.yesbank.in/personal-banking/yes-individual/cards/credit-cards/marquee-credit-card"
+    }
+  ],
+  "verification": {}
+}

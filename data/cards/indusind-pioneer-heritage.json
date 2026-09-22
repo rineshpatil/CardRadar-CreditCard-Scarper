@@ -1,0 +1,78 @@
+{
+  "id": "indusind-pioneer-heritage",
+  "name": "IndusInd Bank Pioneer Heritage Credit Card",
+  "bank": "IndusInd Bank",
+  "network": "Mastercard",
+  "category": "Premium",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 2499,
+  "joiningFee": 2499,
+  "rewardRate": "2%",
+  "applyUrl": "https://www.indusind.com/in/en/personal/cards/credit-card/pioneer-heritage-credit-card.html",
+  "benefits": {
+    "cashback": {
+      "description": "2% rewards on all categories",
+      "details": [
+        "2% reward value on travel bookings",
+        "2% reward value on dining spends",
+        "2% on all other transactions",
+        "Welcome bonus of 5000 reward points"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 4,
+        "international": 2,
+        "description": "4 domestic + 2 international lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": true,
+      "description": "Complimentary golf at select courses"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "Dining Delights program"
+    },
+    "movies": {
+      "available": true,
+      "description": "Buy 1 Get 1 on movies"
+    },
+    "forex": {
+      "markupFee": "2%",
+      "description": "2% forex markup"
+    },
+    "other": [
+      "Premium heritage card",
+      "Flat 2% on everything",
+      "Golf access"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 800000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Flat 2% on all spends",
+    "Golf access",
+    "6 lounge visits/year"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.indusind.com/in/en/personal/cards/credit-card/pioneer-heritage-credit-card.html"
+    }
+  ],
+  "verification": {}
+}

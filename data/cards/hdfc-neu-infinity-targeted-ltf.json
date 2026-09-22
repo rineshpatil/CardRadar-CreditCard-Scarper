@@ -1,0 +1,28 @@
+{
+  "id": "hdfc-neu-infinity-targeted-ltf",
+  "name": "HDFC Neu Infinity (Targeted LTF)",
+  "bank": "HDFC Bank",
+  "network": "RuPay",
+  "category": "UPI/Tata Neu",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": false,
+  "annualFee": 0,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.hdfcbank.com/content/bbp/repositories/723fb80a-2dde-42a3-9793-7ae1be57c87f/?folderPath=/OLM/Cards/tata-neu-infinity/&fileName=Tata-Neu-Infinity-HDFC-Bank-Credit-Card.html",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.hdfcbank.com/content/bbp/repositories/723fb80a-2dde-42a3-9793-7ae1be57c87f/?folderPath=/OLM/Cards/tata-neu-infinity/&fileName=Tata-Neu-Infinity-HDFC-Bank-Credit-Card.html"
+    }
+  ],
+  "verification": {}
+}

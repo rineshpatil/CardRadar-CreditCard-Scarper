@@ -1,0 +1,77 @@
+{
+  "id": "au-altura",
+  "name": "AU Bank Altura Credit Card",
+  "bank": "AU Small Finance Bank",
+  "network": "Visa",
+  "category": "Entry Level",
+  "tier": "entry",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 499,
+  "joiningFee": 199,
+  "rewardRate": "2X rewards",
+  "applyUrl": "https://www.aubank.in/credit-card/altura-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "2X reward points on weekend dining and grocery",
+      "details": [
+        "2X reward points on weekend dining spends",
+        "2X reward points on groceries",
+        "1X reward points on all other spends",
+        "Welcome bonus of 500 points"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 2,
+        "international": 0,
+        "description": "2 domestic airport lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "2X on weekend dining"
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "Good entry-level card",
+      "Weekend dining rewards",
+      "Low joining fee"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 200000,
+    "minAge": 21
+  },
+  "highlights": [
+    "2X weekend dining",
+    "Low fee ₹499",
+    "Easy approval"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.aubank.in/credit-card/altura-credit-card"
+    }
+  ],
+  "verification": {}
+}

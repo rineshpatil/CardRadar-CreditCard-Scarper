@@ -1,0 +1,30 @@
+{
+  "id": "air-india-sbi-signature-credit-card",
+  "name": "Air India SBI Signature Credit Card",
+  "bank": "SBI Card",
+  "network": "Visa Signature",
+  "category": "Co-branded",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 4999,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.sbicard.com/en/personal/credit-cards/travel-and-fuel/air-india-sbi-signature-card.page",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [
+    "Co-branded with Air India"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/travel-and-fuel/air-india-sbi-signature-card.page"
+    }
+  ],
+  "verification": {}
+}

@@ -1,0 +1,30 @@
+{
+  "id": "phonepe-sbi-card-select",
+  "name": "PhonePe SBI Card SELECT",
+  "bank": "SBI Card",
+  "network": "RuPay",
+  "category": "Co-branded",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 1499,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.sbicard.com/en/personal/credit-cards/shopping/phonepe-sbi-card-select.page",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [
+    "Co-branded with PhonePe"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/shopping/phonepe-sbi-card-select.page"
+    }
+  ],
+  "verification": {}
+}

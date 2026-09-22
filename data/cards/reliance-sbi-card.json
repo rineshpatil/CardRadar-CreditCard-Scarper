@@ -1,0 +1,30 @@
+{
+  "id": "reliance-sbi-card",
+  "name": "Reliance SBI Card",
+  "bank": "SBI Card",
+  "network": "Visa",
+  "category": "Co-branded",
+  "tier": "entry",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 499,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.sbicard.com/en/personal/credit-cards/shopping/reliance-sbi-card.page",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [
+    "Co-branded with Reliance Retail"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/shopping/reliance-sbi-card.page"
+    }
+  ],
+  "verification": {}
+}

@@ -1,0 +1,78 @@
+{
+  "id": "rbl-fun-plus",
+  "name": "RBL Fun Plus Credit Card",
+  "bank": "RBL Bank",
+  "network": "Mastercard",
+  "category": "Entertainment",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 500,
+  "joiningFee": 500,
+  "rewardRate": "2-5%",
+  "applyUrl": "https://www.rblbank.com/credit-cards/fun-plus",
+  "benefits": {
+    "cashback": {
+      "description": "5% on entertainment, 2% on all other spends",
+      "details": [
+        "5% cashback on movie tickets and OTT subscriptions",
+        "5% cashback on dining out",
+        "2% cashback on all other spends",
+        "Monthly cashback credit"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 2,
+        "international": 0,
+        "description": "2 domestic airport lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "5% cashback on dining"
+    },
+    "movies": {
+      "available": true,
+      "description": "5% cashback on movies and OTT"
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "Great for entertainment spends",
+      "5% on movies and dining",
+      "Low annual fee"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 300000,
+    "minAge": 21
+  },
+  "highlights": [
+    "5% on movies & OTT",
+    "5% on dining",
+    "Entertainment focused"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.rblbank.com/credit-cards/fun-plus"
+    }
+  ],
+  "verification": {}
+}

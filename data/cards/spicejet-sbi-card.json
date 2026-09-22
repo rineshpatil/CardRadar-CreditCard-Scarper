@@ -1,0 +1,30 @@
+{
+  "id": "spicejet-sbi-card",
+  "name": "SpiceJet SBI Card",
+  "bank": "SBI Card",
+  "network": "Mastercard",
+  "category": "Co-branded",
+  "tier": "entry",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 499,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.sbicard.com/en/personal/credit-cards/travel-and-fuel/spicejet-sbi-card.page",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [
+    "Co-branded with SpiceJet"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/travel-and-fuel/spicejet-sbi-card.page"
+    }
+  ],
+  "verification": {}
+}

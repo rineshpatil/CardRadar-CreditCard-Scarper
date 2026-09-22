@@ -1,0 +1,28 @@
+{
+  "id": "axis-bank-magnus-burgundy-credit-card",
+  "name": "Axis Bank Magnus Burgundy Credit Card",
+  "bank": "Axis Bank",
+  "network": "Mastercard World",
+  "category": "Invite Only/Premium",
+  "tier": "private",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 0,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.axisbank.com/retail/cards/credit-card/magnus-credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.axisbank.com/retail/cards/credit-card/magnus-credit-card"
+    }
+  ],
+  "verification": {}
+}

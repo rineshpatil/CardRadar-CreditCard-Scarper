@@ -1,0 +1,79 @@
+{
+  "id": "au-zenith-plus",
+  "name": "AU Bank Zenith+ Credit Card",
+  "bank": "AU Small Finance Bank",
+  "network": "Visa",
+  "category": "Premium",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 5999,
+  "joiningFee": 2999,
+  "rewardRate": "4-8X",
+  "applyUrl": "https://www.aubank.in/credit-card/zenith-plus-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "8X reward points on dining and international spends",
+      "details": [
+        "8X reward points on dining",
+        "8X reward points on international transactions",
+        "4X reward points on all other categories",
+        "Welcome bonus of 10,000 points"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 8,
+        "international": 4,
+        "description": "8 domestic + 4 international lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": true,
+      "description": "Complimentary golf sessions at select courses"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "8X rewards + dining offers"
+    },
+    "movies": {
+      "available": true,
+      "description": "Premium movie benefits"
+    },
+    "forex": {
+      "markupFee": "2%",
+      "description": "2% forex markup"
+    },
+    "other": [
+      "AU Bank's premium card",
+      "8X on dining + intl",
+      "Golf access",
+      "Low forex markup"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 1200000,
+    "minAge": 21
+  },
+  "highlights": [
+    "8X on dining & international",
+    "Golf access",
+    "12 lounge visits/year"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.aubank.in/credit-card/zenith-plus-credit-card"
+    }
+  ],
+  "verification": {}
+}

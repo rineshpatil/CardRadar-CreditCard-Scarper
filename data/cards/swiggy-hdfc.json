@@ -1,0 +1,77 @@
+{
+  "id": "swiggy-hdfc",
+  "name": "Swiggy HDFC Bank Credit Card",
+  "bank": "HDFC Bank",
+  "network": "Mastercard",
+  "category": "Cashback",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 500,
+  "joiningFee": 500,
+  "rewardRate": "1-10%",
+  "applyUrl": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/swiggy-hdfc-bank-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "10% cashback on Swiggy, 5% on online, 1% on others",
+      "details": [
+        "10% cashback on Swiggy orders (up to ₹1500/month)",
+        "5% cashback on online spends",
+        "1% on offline spends",
+        "Swiggy One membership included"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 4,
+        "international": 0,
+        "description": "4 domestic lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": true,
+      "description": "12 golf lessons/year via Golflan"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "Swiggy One membership with free delivery"
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "Free Swiggy One membership",
+      "Great for food lovers",
+      "12 golf lessons per year"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 300000,
+    "minAge": 21
+  },
+  "highlights": [
+    "10% Swiggy cashback",
+    "12 golf lessons/year",
+    "Affordable"
+  ],
+  "popularityScore": 65,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/swiggy-hdfc-bank-credit-card"
+    }
+  ],
+  "verification": {}
+}

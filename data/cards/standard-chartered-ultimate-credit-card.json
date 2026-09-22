@@ -1,0 +1,28 @@
+{
+  "id": "standard-chartered-ultimate-credit-card",
+  "name": "Standard Chartered Ultimate Credit Card",
+  "bank": "Standard Chartered Bank",
+  "network": "Visa Infinite",
+  "category": "Super Premium",
+  "tier": "super_premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 5000,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.sc.com/in/credit-cards/ultimate-credit-card/",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.sc.com/in/credit-cards/ultimate-credit-card/"
+    }
+  ],
+  "verification": {}
+}

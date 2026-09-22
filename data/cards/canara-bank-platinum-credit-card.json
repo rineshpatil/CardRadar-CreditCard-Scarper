@@ -1,0 +1,28 @@
+{
+  "id": "canara-bank-platinum-credit-card",
+  "name": "Canara Bank Platinum Credit Card",
+  "bank": "Canara Bank",
+  "network": "Visa Platinum",
+  "category": "Entry-Premium",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 500,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://canarabank.com/creditcards",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://canarabank.com/creditcards"
+    }
+  ],
+  "verification": {}
+}

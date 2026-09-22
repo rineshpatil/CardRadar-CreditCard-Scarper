@@ -1,0 +1,30 @@
+{
+  "id": "indianoil-rbl-bank-xtra-credit-card",
+  "name": "IndianOil RBL Bank XTRA Credit Card",
+  "bank": "RBL Bank",
+  "network": "Mastercard",
+  "category": "Co-branded",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 500,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.rblbank.com/personal/cards/credit-cards/indianoil-rbl-bank-xtra-credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [
+    "Co-branded with Indian Oil"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.rblbank.com/personal/cards/credit-cards/indianoil-rbl-bank-xtra-credit-card"
+    }
+  ],
+  "verification": {}
+}

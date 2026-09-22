@@ -1,0 +1,28 @@
+{
+  "id": "icici-bank-insta-platinum-credit-card",
+  "name": "ICICI Bank Insta Platinum Credit Card",
+  "bank": "ICICI Bank",
+  "network": "Visa",
+  "category": "Secured/Entry Level",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": false,
+  "annualFee": 0,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.icicibank.com/card/insta-platinum-credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.icicibank.com/card/insta-platinum-credit-card"
+    }
+  ],
+  "verification": {}
+}

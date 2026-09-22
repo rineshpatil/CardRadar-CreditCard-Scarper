@@ -1,0 +1,28 @@
+{
+  "id": "rbl-bank-platinum-maxima-credit-card",
+  "name": "RBL Bank Platinum Maxima Credit Card",
+  "bank": "RBL Bank",
+  "network": "Mastercard",
+  "category": "Rewards/Lifestyle",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 2000,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.rblbank.com/personal/cards/credit-cards/rbl-bank-platinum-maxima-credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.rblbank.com/personal/cards/credit-cards/rbl-bank-platinum-maxima-credit-card"
+    }
+  ],
+  "verification": {}
+}

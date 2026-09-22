@@ -1,0 +1,28 @@
+{
+  "id": "bpcl-sbi-card",
+  "name": "BPCL SBI Card",
+  "bank": "SBI Card",
+  "network": "Visa",
+  "category": "Fuel",
+  "tier": "entry",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 499,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.sbicard.com/en/personal/credit-cards/travel-and-fuel/bpcl-sbi-card.page",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/travel-and-fuel/bpcl-sbi-card.page"
+    }
+  ],
+  "verification": {}
+}

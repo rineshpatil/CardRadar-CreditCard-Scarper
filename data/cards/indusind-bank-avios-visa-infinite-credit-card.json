@@ -1,0 +1,28 @@
+{
+  "id": "indusind-bank-avios-visa-infinite-credit-card",
+  "name": "IndusInd Bank Avios Visa Infinite Credit Card",
+  "bank": "IndusInd Bank",
+  "network": "Visa Infinite",
+  "category": "Airline/Travel",
+  "tier": "super_premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 10000,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.indusind.com/in/en/personal/cards/credit-cards/avios-visa-infinite-credit-card.html",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.indusind.com/in/en/personal/cards/credit-cards/avios-visa-infinite-credit-card.html"
+    }
+  ],
+  "verification": {}
+}

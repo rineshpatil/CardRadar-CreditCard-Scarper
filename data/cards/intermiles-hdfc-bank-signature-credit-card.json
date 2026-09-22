@@ -1,0 +1,30 @@
+{
+  "id": "intermiles-hdfc-bank-signature-credit-card",
+  "name": "InterMiles HDFC Bank Signature Credit Card",
+  "bank": "HDFC Bank",
+  "network": "Visa Signature",
+  "category": "Co-branded",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 2500,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.hdfcbank.com/content/bbp/repositories/723fb80a-2dde-42a3-9793-7ae1be57c87f/?folderPath=/OLM/Cards/intermiles/&fileName=InterMiles-HDFC-Bank-Signature-Credit-Card.html",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [
+    "Co-branded with InterMiles"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.hdfcbank.com/content/bbp/repositories/723fb80a-2dde-42a3-9793-7ae1be57c87f/?folderPath=/OLM/Cards/intermiles/&fileName=InterMiles-HDFC-Bank-Signature-Credit-Card.html"
+    }
+  ],
+  "verification": {}
+}

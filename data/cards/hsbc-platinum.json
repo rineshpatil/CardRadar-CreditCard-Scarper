@@ -1,0 +1,78 @@
+{
+  "id": "hsbc-platinum",
+  "name": "HSBC Platinum Credit Card",
+  "bank": "HSBC",
+  "network": "Visa",
+  "category": "Rewards",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 1500,
+  "joiningFee": 750,
+  "rewardRate": "2X on online",
+  "applyUrl": "https://www.hsbc.co.in/credit-cards/products/platinum/",
+  "benefits": {
+    "cashback": {
+      "description": "2X reward points on online spends",
+      "details": [
+        "2X reward points on online shopping",
+        "1X reward points on all other spends",
+        "Redeem for flights, hotel stays, and merchandise",
+        "Welcome bonus reward points"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 8,
+        "international": 0,
+        "description": "2 domestic lounge visits per quarter"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "Dining offers at partner restaurants"
+    },
+    "movies": {
+      "available": true,
+      "description": "Movie ticket offers"
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "Good mid-tier card",
+      "2X online rewards",
+      "Affordable annual fee"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 400000,
+    "minAge": 21
+  },
+  "highlights": [
+    "2X online shopping rewards",
+    "8 lounge visits/year",
+    "Affordable premium"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.hsbc.co.in/credit-cards/products/platinum/"
+    }
+  ],
+  "verification": {}
+}

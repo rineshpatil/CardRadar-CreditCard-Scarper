@@ -1,0 +1,30 @@
+{
+  "id": "indian-oil-kotak-credit-card",
+  "name": "Indian Oil Kotak Credit Card",
+  "bank": "Kotak Mahindra Bank",
+  "network": "RuPay",
+  "category": "Co-branded",
+  "tier": "entry",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 449,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.kotak.com/en/personal-banking/cards/credit-cards/indian-oil-kotak-credit-card.html",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [
+    "Co-branded with Indian Oil (IOCL)"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.kotak.com/en/personal-banking/cards/credit-cards/indian-oil-kotak-credit-card.html"
+    }
+  ],
+  "verification": {}
+}

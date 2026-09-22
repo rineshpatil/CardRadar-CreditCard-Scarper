@@ -1,0 +1,28 @@
+{
+  "id": "icici-times-black-credit-card",
+  "name": "ICICI Times Black Credit Card",
+  "bank": "ICICI Bank",
+  "network": "Mastercard",
+  "category": "Premium Lifestyle",
+  "tier": "super_premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 10000,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.icicibank.com/card/times-black-credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.icicibank.com/card/times-black-credit-card"
+    }
+  ],
+  "verification": {}
+}

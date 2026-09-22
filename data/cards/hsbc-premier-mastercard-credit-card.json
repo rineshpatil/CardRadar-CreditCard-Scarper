@@ -1,0 +1,28 @@
+{
+  "id": "hsbc-premier-mastercard-credit-card",
+  "name": "HSBC Premier MasterCard Credit Card",
+  "bank": "HSBC Bank",
+  "network": "Mastercard World",
+  "category": "Premium (Invite Only)",
+  "tier": "private",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 0,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.hsbc.co.in/credit-cards/products/premier/",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.hsbc.co.in/credit-cards/products/premier/"
+    }
+  ],
+  "verification": {}
+}

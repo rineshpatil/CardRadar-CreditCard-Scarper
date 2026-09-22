@@ -1,0 +1,78 @@
+{
+  "id": "au-altura-plus",
+  "name": "AU Bank Altura Plus Credit Card",
+  "bank": "AU Small Finance Bank",
+  "network": "Visa",
+  "category": "Rewards",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 999,
+  "joiningFee": 499,
+  "rewardRate": "4X rewards",
+  "applyUrl": "https://www.aubank.in/credit-card/altura-plus-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "4X reward points on dining, travel and entertainment",
+      "details": [
+        "4X reward points on dining spends",
+        "4X reward points on travel bookings",
+        "4X reward points on entertainment",
+        "1X reward points on all other spends"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 4,
+        "international": 0,
+        "description": "4 domestic airport lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": true,
+      "description": "4X on dining"
+    },
+    "movies": {
+      "available": true,
+      "description": "4X on entertainment"
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "Mid-tier AU card",
+      "4X on lifestyle categories",
+      "Upgraded from Altura"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 400000,
+    "minAge": 21
+  },
+  "highlights": [
+    "4X on dining & travel",
+    "4 lounge visits/year",
+    "Good mid-range card"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.aubank.in/credit-card/altura-plus-credit-card"
+    }
+  ],
+  "verification": {}
+}

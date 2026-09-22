@@ -1,0 +1,28 @@
+{
+  "id": "hsbc-liv-credit-card",
+  "name": "HSBC Liv+ Credit Card",
+  "bank": "HSBC Bank",
+  "network": "Mastercard",
+  "category": "Dining/Grocery",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 1500,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.hsbc.co.in/credit-cards/products/livplus/",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.hsbc.co.in/credit-cards/products/livplus/"
+    }
+  ],
+  "verification": {}
+}

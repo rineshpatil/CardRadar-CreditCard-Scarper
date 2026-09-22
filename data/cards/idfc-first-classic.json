@@ -1,0 +1,76 @@
+{
+  "id": "idfc-first-classic",
+  "name": "IDFC FIRST Classic Credit Card",
+  "bank": "IDFC FIRST Bank",
+  "network": "Visa",
+  "category": "Entry Level",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": false,
+  "annualFee": 0,
+  "joiningFee": 0,
+  "rewardRate": "2-6X",
+  "applyUrl": "https://www.idfcfirstbank.com/credit-card/classic",
+  "benefits": {
+    "cashback": {
+      "description": "6X rewards on online, 2X on offline",
+      "details": [
+        "6X rewards on online spending",
+        "2X on offline spending",
+        "Never-expiring rewards",
+        "Easy approval process"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 0,
+        "international": 0,
+        "description": "No lounge access"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": false
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "0%",
+      "description": "Zero forex markup"
+    },
+    "other": [
+      "Entry-level LTF card",
+      "Zero forex",
+      "Good for building credit"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 200000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Easiest LTF to get",
+    "Zero forex markup",
+    "Build credit history"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.idfcfirstbank.com/credit-card/classic"
+    }
+  ],
+  "verification": {}
+}

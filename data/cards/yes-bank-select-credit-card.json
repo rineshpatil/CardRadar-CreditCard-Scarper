@@ -1,0 +1,28 @@
+{
+  "id": "yes-bank-select-credit-card",
+  "name": "YES BANK SELECT Credit Card",
+  "bank": "YES Bank",
+  "network": "Mastercard Platinum",
+  "category": "Lifestyle",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 999,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.yesbank.in/personal-banking/yes-individual/cards/credit-cards/select-credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.yesbank.in/personal-banking/yes-individual/cards/credit-cards/select-credit-card"
+    }
+  ],
+  "verification": {}
+}

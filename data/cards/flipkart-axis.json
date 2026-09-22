@@ -1,0 +1,76 @@
+{
+  "id": "flipkart-axis",
+  "name": "Flipkart Axis Bank Credit Card",
+  "bank": "Axis Bank",
+  "network": "Visa",
+  "category": "Cashback",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 500,
+  "joiningFee": 500,
+  "rewardRate": "1.5-5%",
+  "applyUrl": "https://www.axisbank.com/retail/cards/credit-card/flipkart-axis-bank-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "5% on Flipkart, 4% on preferred partners, 1.5% on all else",
+      "details": [
+        "5% unlimited cashback on Flipkart, Myntra, Cleartrip",
+        "4% cashback on preferred partner merchants",
+        "1.5% cashback on all other spends (no cap)",
+        "Welcome vouchers worth ₹500"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 4,
+        "international": 0,
+        "description": "4 domestic airport lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": false
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "Best for Flipkart shoppers",
+      "Unlimited 5% on Flipkart",
+      "Fee waived on ₹2L spend"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 300000,
+    "minAge": 21
+  },
+  "highlights": [
+    "5% on Flipkart/Myntra",
+    "Unlimited cashback",
+    "No cap on rewards"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.axisbank.com/retail/cards/credit-card/flipkart-axis-bank-credit-card"
+    }
+  ],
+  "verification": {}
+}

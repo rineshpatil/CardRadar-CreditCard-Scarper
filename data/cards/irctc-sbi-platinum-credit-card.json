@@ -1,0 +1,30 @@
+{
+  "id": "irctc-sbi-platinum-credit-card",
+  "name": "IRCTC SBI Platinum Credit Card",
+  "bank": "SBI Card",
+  "network": "Visa",
+  "category": "Co-branded",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 500,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.sbicard.com/en/personal/credit-cards/travel-and-fuel/irctc-sbi-platinum-card.page",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [
+    "Co-branded with IRCTC"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/travel-and-fuel/irctc-sbi-platinum-card.page"
+    }
+  ],
+  "verification": {}
+}

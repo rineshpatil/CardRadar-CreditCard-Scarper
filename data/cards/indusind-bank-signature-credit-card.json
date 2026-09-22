@@ -1,0 +1,28 @@
+{
+  "id": "indusind-bank-signature-credit-card",
+  "name": "IndusInd Bank Signature Credit Card",
+  "bank": "IndusInd Bank",
+  "network": "Visa Signature",
+  "category": "Premium",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 2999,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.indusind.com/in/en/personal/cards/credit-cards/signature-credit-card.html",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.indusind.com/in/en/personal/cards/credit-cards/signature-credit-card.html"
+    }
+  ],
+  "verification": {}
+}

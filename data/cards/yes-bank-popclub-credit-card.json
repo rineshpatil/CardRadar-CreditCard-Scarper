@@ -1,0 +1,28 @@
+{
+  "id": "yes-bank-popclub-credit-card",
+  "name": "YES BANK POP-CLUB Credit Card",
+  "bank": "YES Bank",
+  "network": "RuPay",
+  "category": "Rewards",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": false,
+  "annualFee": 0,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.yesbank.in/personal-banking/yes-individual/cards/credit-cards/pop-club-credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.yesbank.in/personal-banking/yes-individual/cards/credit-cards/pop-club-credit-card"
+    }
+  ],
+  "verification": {}
+}

@@ -1,0 +1,76 @@
+{
+  "id": "federal-signet",
+  "name": "Federal Bank Signet Credit Card",
+  "bank": "Federal Bank",
+  "network": "Visa",
+  "category": "Cashback",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 999,
+  "joiningFee": 499,
+  "rewardRate": "2X online",
+  "applyUrl": "https://www.federalbank.co.in/credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "2X reward points on online spends",
+      "details": [
+        "2X reward points on all online transactions",
+        "1X reward points on all offline spends",
+        "Welcome voucher on activation",
+        "Quarterly milestone benefits"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 2,
+        "international": 0,
+        "description": "2 domestic airport lounge visits per year"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": false
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "Good mid-range card",
+      "2X online rewards",
+      "Affordable annual fee"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 300000,
+    "minAge": 21
+  },
+  "highlights": [
+    "2X online rewards",
+    "Low annual fee",
+    "Entry-level Federal"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.federalbank.co.in/credit-card"
+    }
+  ],
+  "verification": {}
+}

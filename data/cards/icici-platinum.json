@@ -1,0 +1,76 @@
+{
+  "id": "icici-platinum",
+  "name": "ICICI Bank Platinum Chip Credit Card",
+  "bank": "ICICI Bank",
+  "network": "Visa",
+  "category": "Entry Level",
+  "tier": "entry",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 199,
+  "joiningFee": 199,
+  "rewardRate": "2 pts/₹100",
+  "applyUrl": "https://www.icicibank.com/card/credit-cards/icici-bank-platinum-credit-card",
+  "benefits": {
+    "cashback": {
+      "description": "2 PAYBACK points per ₹100 on all spends",
+      "details": [
+        "2 PAYBACK points per ₹100",
+        "Welcome gift voucher",
+        "Redeem points for cashback or vouchers",
+        "No annual fee for first year"
+      ]
+    },
+    "lounges": {
+      "airport": {
+        "domestic": 0,
+        "international": 0,
+        "description": "No lounge access"
+      },
+      "railway": {
+        "count": 0,
+        "description": "No railway lounge"
+      }
+    },
+    "golf": {
+      "available": false,
+      "description": "No golf benefits"
+    },
+    "fuel": {
+      "surchargeWaiver": true,
+      "description": "1% fuel surcharge waiver"
+    },
+    "dining": {
+      "available": false
+    },
+    "movies": {
+      "available": false
+    },
+    "forex": {
+      "markupFee": "3.5%",
+      "description": "3.5% forex markup"
+    },
+    "other": [
+      "Lowest fee ICICI card",
+      "Good for building credit",
+      "Easy approval"
+    ]
+  },
+  "eligibility": {
+    "minIncome": 200000,
+    "minAge": 21
+  },
+  "highlights": [
+    "Entry-level card",
+    "Just ₹199 fee",
+    "Build credit history"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.icicibank.com/card/credit-cards/icici-bank-platinum-credit-card"
+    }
+  ],
+  "verification": {}
+}

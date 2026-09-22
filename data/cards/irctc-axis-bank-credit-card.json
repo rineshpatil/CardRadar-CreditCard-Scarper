@@ -1,0 +1,30 @@
+{
+  "id": "irctc-axis-bank-credit-card",
+  "name": "IRCTC Axis Bank Credit Card",
+  "bank": "Axis Bank",
+  "network": "RuPay",
+  "category": "Co-branded",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 500,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.axisbank.com/retail/cards/credit-card/irctc-axis-bank-credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [
+    "Co-branded with IRCTC"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.axisbank.com/retail/cards/credit-card/irctc-axis-bank-credit-card"
+    }
+  ],
+  "verification": {}
+}

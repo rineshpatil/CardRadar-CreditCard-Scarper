@@ -1,0 +1,28 @@
+{
+  "id": "kiwi-credit-card-yes-bank-rupay",
+  "name": "Kiwi Credit Card (Yes Bank RuPay)",
+  "bank": "YES Bank (Kiwi Fintech)",
+  "network": "RuPay",
+  "category": "UPI/Cashback",
+  "tier": "entry",
+  "isLTF": true,
+  "isCoBranded": false,
+  "annualFee": 0,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.kiwi.money/",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.kiwi.money/"
+    }
+  ],
+  "verification": {}
+}

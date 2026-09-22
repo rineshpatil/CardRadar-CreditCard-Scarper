@@ -1,0 +1,28 @@
+{
+  "id": "au-bank-zenith-credit-card",
+  "name": "AU Bank Zenith Credit Card",
+  "bank": "AU Small Finance Bank",
+  "network": "Visa Infinite",
+  "category": "Premium",
+  "tier": "premium",
+  "isLTF": false,
+  "isCoBranded": false,
+  "annualFee": 4999,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.aubank.in/personal/credit-cards/zenith-credit-card",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.aubank.in/personal/credit-cards/zenith-credit-card"
+    }
+  ],
+  "verification": {}
+}

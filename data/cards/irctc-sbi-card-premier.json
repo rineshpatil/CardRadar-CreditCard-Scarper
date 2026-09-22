@@ -1,0 +1,30 @@
+{
+  "id": "irctc-sbi-card-premier",
+  "name": "IRCTC SBI Card Premier",
+  "bank": "SBI Card",
+  "network": "Visa Signature",
+  "category": "Co-branded",
+  "tier": "mid",
+  "isLTF": false,
+  "isCoBranded": true,
+  "annualFee": 1499,
+  "joiningFee": null,
+  "rewardRate": null,
+  "applyUrl": "https://www.sbicard.com/en/personal/credit-cards/travel-and-fuel/irctc-sbi-card-premier.page",
+  "benefits": null,
+  "eligibility": {
+    "minIncome": null,
+    "minAge": null
+  },
+  "highlights": [
+    "Co-branded with IRCTC"
+  ],
+  "popularityScore": 30,
+  "sources": [
+    {
+      "kind": "product_page",
+      "url": "https://www.sbicard.com/en/personal/credit-cards/travel-and-fuel/irctc-sbi-card-premier.page"
+    }
+  ],
+  "verification": {}
+}
