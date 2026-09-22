@@ -128,6 +128,7 @@ function build({ root = ROOT, now = Date.now() } = {}) {
   }
   const sourceOwners = new Map();
   for (const card of cards) {
+    if (!Array.isArray(card.sources)) continue; // validateCard already reported this; don't crash here
     for (const source of card.sources) {
       const owner = sourceOwners.get(source.url);
       if (owner) errors.push(`${card.id}.json: source url is already used by ${owner}.json — a crawl source must belong to one card`);

@@ -110,4 +110,7 @@ test('build writes the site files and refuses bad card data', () => {
 
   fs.writeFileSync(path.join(root, 'data', 'cards', 'hdfc-test.json'), JSON.stringify(card({ tier: 'gold' })));
   assert.throws(() => build({ root, now: NOW }), /tier must be one of/);
+
+  fs.writeFileSync(path.join(root, 'data', 'cards', 'hdfc-test.json'), JSON.stringify(card({ sources: null })));
+  assert.throws(() => build({ root, now: NOW }), /sources must be a list/, 'a malformed sources field is reported, not a crash');
 });

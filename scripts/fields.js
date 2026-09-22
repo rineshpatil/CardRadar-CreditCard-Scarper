@@ -13,6 +13,13 @@ const FIELDS = {
 
 const getPath = (obj, path) => path.split('.').reduce((o, key) => (o == null ? undefined : o[key]), obj);
 
+// Creates missing (or null) parent objects on the way, e.g. benefits: null -> { lounges: { airport: {...} } }.
+function setPath(obj, path, value) {
+  const keys = path.split('.');
+  const last = keys.pop();
+  keys.reduce((o, key) => (o[key] ??= {}), obj)[last] = value;
+}
+
 // True when the site presents the value as a fact about the card, so it needs a source quote.
 // "No lounge" / "no golf" are absences, not claims: bank pages rarely state them.
 function isClaim(field, value) {
@@ -22,4 +29,4 @@ function isClaim(field, value) {
   return true;
 }
 
-module.exports = { FIELDS, getPath, isClaim };
+module.exports = { FIELDS, getPath, setPath, isClaim };
