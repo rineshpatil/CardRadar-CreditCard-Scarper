@@ -1,0 +1,88 @@
+name: Intake crawl results
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: Crawl run id (the crawler pushes branch crawl/<run_id>)
+        required: true
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  actions: write
+
+concurrency: intake
+
+jobs:
+  intake:
+    runs-on: ubuntu-latest
+    env:
+      RUN_ID: ${{ inputs.run_id }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Check run id
+        run: |
+          [[ "$RUN_ID" =~ ^[0-9]{8}-[0-9]{4}$ ]] || { echo "Bad run id: $RUN_ID"; exit 1; }
+          echo "OUT=$RUNNER_TEMP/out" >> "$GITHUB_ENV"
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Fetch crawl results
+        run: |
+          git fetch origin "crawl/$RUN_ID"
+          git archive FETCH_HEAD "crawl/$RUN_ID" | tar -x -C "$RUNNER_TEMP"
+      - name: List cards that already have an open refresh pull request
+        run: |
+          gh label create card-refresh --color 0e8a16 --description "Card data proposed by the weekly crawl" --force
+          gh pr list --label card-refresh --state open --limit 500 --json headRefName \
+            --jq '.[].headRefName | ltrimstr("refresh/")' > "$RUNNER_TEMP/open-prs.txt"
+      - name: Build proposals
+        run: node scripts/intake.js "$RUNNER_TEMP/crawl/$RUN_ID" "$OUT" "$RUNNER_TEMP/open-prs.txt"
+      - name: Open or update one pull request per card
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for file in "$OUT"/proposals/*.json; do
+            [ -e "$file" ] || continue
+            id=$(basename "$file" .json)
+            branch="refresh/$id"
+            git checkout -B "$branch" origin/main
+            cp "$file" "data/cards/$id.json"
+            git add "data/cards/$id.json"
+            git commit -m "refresh($id): changes found by crawl $RUN_ID"
+            git push --force origin "$branch"
+            pr=$(gh pr list --head "$branch" --state open --json number --jq '.[0].number')
+            if [ -n "$pr" ]; then
+              gh pr edit "$pr" --body-file "$OUT/proposals/$id.md"
+            else
+              gh pr create --base main --head "$branch" --label card-refresh \
+                --title "Card refresh: $id" --body-file "$OUT/proposals/$id.md"
+            fi
+            sleep 2 # stay under GitHub's content-creation rate limit
+          done
+      - name: Save crawl status
+        run: |
+          git checkout main
+          git pull --rebase origin main
+          cp "$OUT/status.json" data/status.json
+          git add data/status.json
+          if git commit -m "chore: crawl status $RUN_ID"; then git push origin main; fi
+      - name: Post run report
+        run: |
+          gh label create crawl-report --color 1d76db --description "Weekly crawl summaries" --force
+          issue=$(gh issue list --label crawl-report --state open --json number --jq '.[0].number')
+          if [ -z "$issue" ]; then
+            issue=$(gh issue create --title "Weekly crawl reports" --label crawl-report \
+              --body "Each weekly crawl posts its summary here." | grep -o '[0-9]*$')
+          fi
+          gh issue comment "$issue" --body-file "$OUT/report.md"
+      - name: Delete crawl branch and redeploy
+        run: |
+          git push origin --delete "crawl/$RUN_ID"
+          gh workflow run deploy.yml --ref main
