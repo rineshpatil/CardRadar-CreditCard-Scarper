@@ -1,0 +1,43 @@
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency: deploy
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Test and build card data
+        run: npm test
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ap-south-1
+      - name: Upload site
+        env:
+          BUCKET: ${{ vars.SITE_BUCKET }}
+        run: |
+          aws s3 sync public/ "s3://$BUCKET" --delete --exclude "data/*"
+          aws s3 sync public/data/ "s3://$BUCKET/data/" --delete --cache-control "max-age=300"
+      - name: Update chat function
+        env:
+          FUNCTION: ${{ vars.CHAT_FUNCTION }}
+        run: |
+          (cd lambda/chat && zip -qr ../../chat.zip .)
+          aws lambda update-function-code --function-name "$FUNCTION" --zip-file fileb://chat.zip > /dev/null
+      - name: Refresh CDN cache
+        env:
+          DISTRIBUTION: ${{ vars.DISTRIBUTION_ID }}
+        run: aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION" --paths "/*" > /dev/null
