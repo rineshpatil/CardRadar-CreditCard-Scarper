@@ -28,6 +28,7 @@ test('empty and oversized messages are rejected before calling the LLM', async (
   const fetchMock = t.mock.method(global, 'fetch', async () => { throw new Error('should not be called'); });
   assert.equal((await handler(event({ message: '  ' }))).statusCode, 400);
   assert.equal((await handler(event({ message: 'x'.repeat(501) }))).statusCode, 400);
+  assert.equal((await handler(event(null))).statusCode, 400);
   assert.equal(fetchMock.mock.callCount(), 0);
 });
 
@@ -50,6 +51,8 @@ test('LLM failures return a friendly 502', async (t) => {
   const res = await handler(event({ message: 'hello' }));
   assert.equal(res.statusCode, 502);
   assert.match(replyOf(res), /try again/);
+  t.mock.method(global, 'fetch', async () => ({ ok: true, json: async () => ({ choices: [{ message: { content: '' } }] }) }));
+  assert.equal((await handler(event({ message: 'hello' }))).statusCode, 502, 'an empty answer is a failure, not a blank reply');
 });
 
 test('cardsSummary marks cards without verified benefits', () => {

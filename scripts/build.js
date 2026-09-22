@@ -40,7 +40,21 @@ function validateCard(card, fileName) {
   if (!orNull(wholeNumber)(card.joiningFee)) bad('joiningFee must be a whole number of rupees or null');
   if (!orNull((v) => typeof v === 'string')(card.rewardRate)) bad('rewardRate must be text or null');
   if (!isAllowedUrl(card.applyUrl)) bad(`applyUrl must be an https link on a domain in config/allowed-domains.json: ${card.applyUrl}`);
-  if (typeof card.benefits !== 'object') bad('benefits must be an object or null');
+  if (card.benefits !== null) {
+    if (typeof card.benefits !== 'object' || Array.isArray(card.benefits)) bad('benefits must be an object or null');
+    else {
+      const b = card.benefits;
+      const loungeCount = (v) => v === undefined || (Number.isInteger(v) && v >= -1);
+      if (!loungeCount(b.lounges?.airport?.domestic) || !loungeCount(b.lounges?.airport?.international) || !loungeCount(b.lounges?.railway?.count)) {
+        bad('lounge counts must be whole numbers per year (-1 means unlimited)');
+      }
+      if (b.golf?.available !== undefined && typeof b.golf.available !== 'boolean') bad('benefits.golf.available must be true or false');
+      if (b.forex?.markupFee !== undefined && !/^\d+(\.\d+)?%$/.test(b.forex.markupFee)) bad('benefits.forex.markupFee must look like "3.5%"');
+      for (const [name, list] of [['cashback.details', b.cashback?.details], ['other', b.other]]) {
+        if (list !== undefined && (!Array.isArray(list) || list.some((item) => typeof item !== 'string'))) bad(`benefits.${name} must be a list of text`);
+      }
+    }
+  }
   const e = card.eligibility;
   if (!e || !orNull(wholeNumber)(e.minIncome) || !orNull((v) => wholeNumber(v, 18))(e.minAge)) {
     bad('eligibility needs minIncome and minAge (whole numbers or null)');
@@ -88,7 +102,8 @@ function describe(card, status, now) {
     verificationStatus: everVerified && (failing || unchecked) ? 'stale' : allQuoted ? 'verified' : 'unverified',
     lastVerifiedAt: allQuoted ? quoted.map((f) => card.verification[f].verifiedAt).sort()[0] : null,
     lastCheckedAt,
-    hasPendingChanges: Boolean(pendingSince && newest < pendingSince),
+    // Only a card that was verified before can become "may be outdated"; an unverified card stays unverified.
+    hasPendingChanges: Boolean(everVerified && pendingSince && newest < pendingSince),
   };
 }
 
@@ -109,6 +124,14 @@ function build({ root = ROOT, now = Date.now() } = {}) {
       cards.push(card);
     } catch (err) {
       errors.push(`${file}: not valid JSON (${err.message})`);
+    }
+  }
+  const sourceOwners = new Map();
+  for (const card of cards) {
+    for (const source of card.sources) {
+      const owner = sourceOwners.get(source.url);
+      if (owner) errors.push(`${card.id}.json: source url is already used by ${owner}.json — a crawl source must belong to one card`);
+      else sourceOwners.set(source.url, card.id);
     }
   }
   if (errors.length) throw new Error(`Card data has ${errors.length} problem(s):\n${errors.join('\n')}`);

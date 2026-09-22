@@ -71,6 +71,7 @@ exports.handler = async (event) => {
   } catch {
     return reply(400, 'Invalid request.');
   }
+  if (!body || typeof body !== 'object') return reply(400, 'Invalid request.');
   const message = typeof body.message === 'string' ? body.message.trim() : '';
   if (!message || message.length > MAX_MESSAGE) return reply(400, `Please ask a question of 1–${MAX_MESSAGE} characters.`);
   const history = (Array.isArray(body.history) ? body.history : [])
@@ -92,7 +93,9 @@ exports.handler = async (event) => {
     });
     if (!res.ok) throw new Error(`LLM returned ${res.status}`);
     const data = await res.json();
-    return reply(200, data.choices[0].message.content);
+    const answer = data.choices?.[0]?.message?.content;
+    if (!answer) throw new Error('LLM returned an empty answer');
+    return reply(200, answer);
   } catch (err) {
     console.error('chat failed:', err.message);
     return reply(502, 'Sorry, I could not answer right now. Please try again in a minute.');

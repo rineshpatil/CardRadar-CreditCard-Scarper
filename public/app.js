@@ -75,7 +75,6 @@ function renderCards(cards) {
   const standardGrid = document.getElementById('cardGrid');
   const cobrandedGrid = document.getElementById('cobrandedGrid');
   const cobrandedSection = document.getElementById('cobrandedCardsSection');
-  const standardCount = document.getElementById('sectionCount');
   const cobrandedCount = document.getElementById('cobrandedCount');
 
   if (!cards || cards.length === 0) {
@@ -102,10 +101,6 @@ function renderCards(cards) {
         <div class="empty-icon">💳</div>
         <h3>No standard cards found</h3>
       </div>`;
-  }
-  
-  if (standardCount && document.getElementById('sectionTitle').textContent !== 'All Credit Cards') {
-    // Only override count if it's already updated by updateSectionHeader
   }
 
   // Render Co-Branded Cards
@@ -334,7 +329,9 @@ function renderModalContent(card) {
       <strong>${escapeHtml(badge.text)}</strong>${card.lastCheckedAt ? ` · page last checked ${escapeHtml(card.lastCheckedAt.slice(0, 10))}` : ''}
       <p>${badge.kind === 'verified'
         ? 'Every fee, rate and benefit marked ⓘ is quoted from the bank\'s own page.'
-        : 'Some details on this card have not been checked against the bank\'s page yet.'}
+        : badge.kind === 'outdated'
+          ? 'These details were checked against the bank\'s page before, but not recently — they may have changed.'
+          : 'Some details on this card have not been checked against the bank\'s page yet.'}
         Always confirm on the bank's website before you apply.</p>
       ${sourceLinks.map((u) => `<a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer">Official card page ↗</a>`).join(' ')}
     </div>`;

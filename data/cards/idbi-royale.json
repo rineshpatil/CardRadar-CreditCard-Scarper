@@ -68,11 +68,6 @@
     "IDBI premium card"
   ],
   "popularityScore": 30,
-  "sources": [
-    {
-      "kind": "product_page",
-      "url": "https://www.idbibank.in/credit-card.aspx"
-    }
-  ],
+  "sources": [],
   "verification": {}
 }

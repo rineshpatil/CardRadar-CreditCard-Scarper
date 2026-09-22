@@ -30,7 +30,16 @@ Leave `verification` empty for new values: the weekly crawl proposes verified va
 
 ## Deploy
 
-`main` deploys automatically through `.github/workflows/deploy.yml`. AWS resources live in `infra/cardradar.yml` and are updated by hand:
+`main` deploys automatically through `.github/workflows/deploy.yml` (and once a day, so stale data is labelled even if nothing is pushed). AWS resources live in `infra/cardradar.yml` and are updated by hand.
+
+First time only, in `ap-south-1`:
+
+1. `aws ssm put-parameter --region ap-south-1 --name /cardradar/llm-api-key --type SecureString --value "<LLM API key>"`.
+2. Check `aws lambda get-account-settings --region ap-south-1 --query AccountLimit.ConcurrentExecutions`; if it prints `10`, deploy with `ChatConcurrency=0`.
+3. Check `aws iam list-open-id-connect-providers`; if `token.actions.githubusercontent.com` is already there, deploy with `CreateGitHubOidcProvider=false`.
+4. After the stack exists, copy its outputs into the repository's Actions **variables**: `AWS_DEPLOY_ROLE_ARN`, `SITE_BUCKET`, `DISTRIBUTION_ID`, `CHAT_FUNCTION`.
+
+Deploy or update the stack with:
 
 ```bash
 aws cloudformation deploy --region ap-south-1 --stack-name cardradar --template-file infra/cardradar.yml --capabilities CAPABILITY_IAM

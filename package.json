@@ -10,6 +10,6 @@
     "dev": "node scripts/build.js && node --env-file-if-exists=.env scripts/dev.js"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=22.9"
   }
 }

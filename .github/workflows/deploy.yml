@@ -3,6 +3,9 @@ name: Deploy site
 on:
   push:
     branches: [main]
+  schedule:
+    # Rebuild daily so "verified" labels go stale on their own if the weekly crawl stops.
+    - cron: '30 1 * * *'
   workflow_dispatch:
 
 permissions:
@@ -14,6 +17,7 @@ concurrency: deploy
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -29,7 +33,7 @@ jobs:
         env:
           BUCKET: ${{ vars.SITE_BUCKET }}
         run: |
-          aws s3 sync public/ "s3://$BUCKET" --delete --exclude "data/*"
+          aws s3 sync public/ "s3://$BUCKET" --delete --exclude "data/*" --cache-control "no-cache"
           aws s3 sync public/data/ "s3://$BUCKET/data/" --delete --cache-control "max-age=300"
       - name: Update chat function
         env:

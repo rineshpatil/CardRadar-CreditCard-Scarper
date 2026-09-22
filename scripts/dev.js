@@ -12,26 +12,29 @@ const TYPES = {
 };
 
 http.createServer(async (req, res) => {
-  const { pathname } = new URL(req.url, 'http://localhost');
-  if (pathname === '/api/chat' && req.method === 'POST') {
-    let body = '';
-    for await (const chunk of req) body += chunk;
-    const { handler } = require('../lambda/chat');
-    const out = await handler({ headers: {}, body });
-    res.writeHead(out.statusCode, out.headers);
-    return res.end(out.body);
-  }
-  const file = path.join(PUBLIC, pathname === '/' ? 'index.html' : decodeURIComponent(pathname));
-  if (!file.startsWith(PUBLIC + path.sep)) {
-    res.writeHead(403);
-    return res.end('Forbidden');
-  }
-  fs.readFile(file, (err, data) => {
-    if (err) {
-      res.writeHead(404);
-      return res.end('Not found');
+  try {
+    const { pathname } = new URL(req.url, 'http://localhost');
+    if (pathname === '/api/chat' && req.method === 'POST') {
+      let body = '';
+      for await (const chunk of req) body += chunk;
+      const { handler } = require('../lambda/chat');
+      const out = await handler({ headers: {}, body });
+      res.writeHead(out.statusCode, out.headers);
+      return res.end(out.body);
     }
+    const file = path.join(PUBLIC, pathname === '/' ? 'index.html' : decodeURIComponent(pathname));
+    if (!file.startsWith(PUBLIC + path.sep)) {
+      res.writeHead(403);
+      return res.end('Forbidden');
+    }
+    const data = await fs.promises.readFile(file);
     res.writeHead(200, { 'content-type': TYPES[path.extname(file)] || 'application/octet-stream' });
     res.end(data);
-  });
-}).listen(PORT, () => console.log(`CardRadar preview: http://localhost:${PORT}`));
+  } catch (err) {
+    // A bad path, a missing file or a missing build must not take the preview down.
+    const missing = err.code === 'ENOENT';
+    if (!missing) console.error('preview error:', err.message);
+    res.writeHead(missing ? 404 : 500);
+    res.end(missing ? 'Not found' : 'Preview error — did you run npm run build?');
+  }
+}).listen(PORT, '127.0.0.1', () => console.log(`CardRadar preview: http://localhost:${PORT}`));

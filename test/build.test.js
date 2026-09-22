@@ -83,6 +83,7 @@ test('pending changes clear once a newer verification is merged', () => {
   const pending = { ...checked(), cards: { 'hdfc-test': { pendingSince: '2026-09-21' } } };
   assert.equal(describe(card({ verification: quoteAll(BASIC, '2026-09-01') }), pending, NOW).hasPendingChanges, true);
   assert.equal(describe(card({ verification: quoteAll(BASIC, '2026-09-21') }), pending, NOW).hasPendingChanges, false);
+  assert.equal(describe(card(), pending, NOW).hasPendingChanges, false, 'a card that was never verified stays unverified');
 });
 
 test('build writes the site files and refuses bad card data', () => {
@@ -95,6 +96,17 @@ test('build writes the site files and refuses bad card data', () => {
   const { sources } = JSON.parse(fs.readFileSync(path.join(root, 'public', 'data', 'sources.json'), 'utf8'));
   assert.deepEqual(sources, [{ id: 'hdfc-test-product_page', cardId: 'hdfc-test', cardName: 'HDFC Test Credit Card', url: URL, kind: 'product_page' }]);
   assert.ok(fs.existsSync(path.join(root, 'lambda', 'chat', 'cards.json')));
+
+  const status = { sources: { 'hdfc-test-product_page': { hash: 'abc', lastCheckedAt: '2026-09-21T03:00:00Z', consecutiveFailures: 0, lastError: null } }, cards: {} };
+  fs.writeFileSync(path.join(root, 'data', 'status.json'), JSON.stringify(status));
+  fs.writeFileSync(path.join(root, 'data', 'cards', 'hdfc-popular.json'), JSON.stringify(card({ id: 'hdfc-popular', name: 'HDFC Popular Credit Card', popularityScore: 90, applyUrl: `${URL}-2`, sources: [{ kind: 'product_page', url: `${URL}-2` }] })));
+  build({ root, now: NOW });
+  assert.deepEqual(JSON.parse(fs.readFileSync(path.join(root, 'public', 'data', 'status.json'), 'utf8')), status, 'crawl state is published for the crawler');
+  assert.deepEqual(JSON.parse(fs.readFileSync(path.join(root, 'public', 'data', 'cards.json'), 'utf8')).map((c) => c.id), ['hdfc-popular', 'hdfc-test'], 'cards are ordered by popularity');
+
+  fs.writeFileSync(path.join(root, 'data', 'cards', 'hdfc-popular.json'), JSON.stringify(card({ id: 'hdfc-popular', name: 'HDFC Popular Credit Card' })));
+  assert.throws(() => build({ root, now: NOW }), /already used by/, 'two cards may not share a crawl source');
+  fs.rmSync(path.join(root, 'data', 'cards', 'hdfc-popular.json'));
 
   fs.writeFileSync(path.join(root, 'data', 'cards', 'hdfc-test.json'), JSON.stringify(card({ tier: 'gold' })));
   assert.throws(() => build({ root, now: NOW }), /tier must be one of/);
