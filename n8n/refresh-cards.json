@@ -1,0 +1,732 @@
+{
+  "id": "cardradarRefresh",
+  "name": "CardRadar weekly refresh",
+  "active": false,
+  "nodes": [
+    {
+      "name": "Start",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "parameters": {},
+      "id": "a6122a65-eaa6-76f7-00ae-68d393054a37",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Run setup",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const now = new Date().toISOString();\nreturn [{ json: { runId: now.slice(0, 16).replace(/[-:]/g, '').replace('T', '-'), startedAt: now } }];"
+      },
+      "id": "b4abcf7c-4419-8601-ace7-14b6ff021711",
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "name": "Get status",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "parameters": {
+        "options": {},
+        "url": "={{ $env.SITE_URL }}/data/status.json"
+      },
+      "onError": "continueRegularOutput",
+      "alwaysOutputData": true,
+      "id": "1de25014-a78a-f737-6e7d-35235586fd6c",
+      "position": [
+        440,
+        0
+      ]
+    },
+    {
+      "name": "Get sources",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "parameters": {
+        "options": {},
+        "url": "={{ $env.SITE_URL }}/data/sources.json"
+      },
+      "id": "29754965-372a-7ce7-8f01-38df7b5a2540",
+      "position": [
+        660,
+        0
+      ]
+    },
+    {
+      "name": "Get main ref",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "parameters": {
+        "options": {},
+        "url": "={{ $env.GITHUB_API }}/repos/{{ $env.GITHUB_REPO }}/git/ref/heads/main",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.GITHUB_TOKEN }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2022-11-28"
+            },
+            {
+              "name": "User-Agent",
+              "value": "cardradar-n8n"
+            }
+          ]
+        }
+      },
+      "id": "b9d73a26-9755-3aa0-446f-562a2f20c479",
+      "position": [
+        880,
+        0
+      ]
+    },
+    {
+      "name": "Create crawl branch",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "parameters": {
+        "options": {},
+        "method": "POST",
+        "url": "={{ $env.GITHUB_API }}/repos/{{ $env.GITHUB_REPO }}/git/refs",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.GITHUB_TOKEN }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2022-11-28"
+            },
+            {
+              "name": "User-Agent",
+              "value": "cardradar-n8n"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ ref: 'refs/heads/crawl/' + $('Run setup').first().json.runId, sha: $json.object.sha }) }}"
+      },
+      "id": "81b947ec-6c09-f2e9-1507-8e06622ba3f2",
+      "position": [
+        1100,
+        0
+      ]
+    },
+    {
+      "name": "Plan",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const { runId } = $('Run setup').first().json;\nconst status = $('Get status').first().json;\nconst prev = (status && status.sources) || {};\nreturn $('Get sources').first().json.sources.map((s) => ({\n  json: { sourceId: s.id, cardId: s.cardId, cardName: s.cardName, url: s.url, kind: s.kind, runId, prevHash: prev[s.id] ? prev[s.id].hash : null },\n}));"
+      },
+      "id": "0b6cbdf7-ad29-2807-8f16-00a3e8979485",
+      "position": [
+        1320,
+        0
+      ]
+    },
+    {
+      "name": "Loop sources",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "27bff591-f8aa-a239-fb5b-faa8ed09741a",
+      "position": [
+        1540,
+        0
+      ]
+    },
+    {
+      "name": "Throttle",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "parameters": {
+        "amount": 2
+      },
+      "id": "e8aa0585-ad36-d76c-5b79-4fef4fe88857",
+      "position": [
+        1760,
+        200
+      ]
+    },
+    {
+      "name": "Fetch page",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "parameters": {
+        "options": {
+          "timeout": 30000,
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        },
+        "url": "={{ $json.url }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36"
+            },
+            {
+              "name": "Accept-Language",
+              "value": "en-IN,en;q=0.9"
+            }
+          ]
+        }
+      },
+      "onError": "continueRegularOutput",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 5000,
+      "id": "1c52f659-7173-5552-c957-5fbdd5f614fa",
+      "position": [
+        1980,
+        200
+      ]
+    },
+    {
+      "name": "Clean and hash",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const src = $('Throttle').item.json;\nconst fetchedAt = new Date().toISOString();\nif ($json.error) {\n  return { json: { ...src, ok: false, changed: false, fetchedAt, error: String($json.error.message || $json.error) } };\n}\nconst decode = (s) => s\n  .replace(/&#(\\d+);/g, (_, n) => String.fromCodePoint(Number(n)))\n  .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))\n  .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')\n  .replace(/&quot;/g, '\"').replace(/&#39;|&apos;/g, \"'\").replace(/&[a-z]+;/gi, ' ');\nconst text = decode(String($json.data || '')\n  .replace(/<(script|style|noscript|svg|iframe|head|nav|footer)\\b[\\s\\S]*?<\\/\\1>/gi, ' ')\n  .replace(/<!--[\\s\\S]*?-->/g, ' ')\n  .replace(/<[^>]+>/g, ' '))\n  .replace(/\\s+/g, ' ')\n  .trim()\n  .slice(0, 60000);\nconst hash = require('crypto').createHash('sha256').update(text).digest('hex');\nreturn { json: { ...src, ok: true, fetchedAt, text, hash, changed: hash !== src.prevHash } };"
+      },
+      "id": "c32600ac-36b0-07f0-77cd-29223981fd6c",
+      "position": [
+        2200,
+        200
+      ]
+    },
+    {
+      "name": "Changed?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "changed",
+              "leftValue": "={{ $json.changed }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b028b171-76ab-3041-04b6-102a7dba448a",
+      "position": [
+        2420,
+        200
+      ]
+    },
+    {
+      "name": "Build LLM request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const SYSTEM = \"You read one Indian credit card web page and extract facts about ONE named card.\\nReturn ONLY a JSON object, no prose. For every field below that the page states for this card, return\\n{\\\"value\\\": <value>, \\\"quote\\\": \\\"<short exact text copied from the page that states it>\\\"}.\\nLeave a field out if the page does not state it. Never guess or use outside knowledge.\\nFields:\\n- annualFee: integer rupees per year after the first year, excluding GST; 0 if lifetime free\\n- joiningFee: integer rupees, excluding GST; 0 if none\\n- rewardRate: base reward rate on regular spends as a percentage string, e.g. \\\"3.3%\\\"\\n- loungeDomestic: domestic airport lounge visits per year as an integer; -1 if unlimited; 0 if none\\n- loungeInternational: international airport lounge visits per year as an integer; -1 if unlimited; 0 if none\\n- golf: true if complimentary golf games or lessons are offered, false if the page says there are none\\n- forexMarkup: foreign currency markup as a percentage string, e.g. \\\"3.5%\\\"\\n- minIncome: minimum annual income in rupees as an integer (salaried if both are given)\\n- minAge: minimum age in years as an integer\";\nreturn { json: { ...$json, llmBody: {\n  model: $env.LLM_MODEL,\n  temperature: 0,\n  max_tokens: 1500,\n  messages: [\n    { role: 'system', content: SYSTEM },\n    { role: 'user', content: 'Card: ' + $json.cardName + '\\nPage: ' + $json.url + '\\n\\n' + $json.text },\n  ],\n} } };"
+      },
+      "id": "8a95cb05-6a74-300a-810b-0daa4bf81e5f",
+      "position": [
+        2640,
+        100
+      ]
+    },
+    {
+      "name": "Extract with LLM",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "parameters": {
+        "options": {
+          "timeout": 120000
+        },
+        "method": "POST",
+        "url": "={{ $env.LLM_URL }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.LLM_API_KEY }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.llmBody) }}"
+      },
+      "onError": "continueRegularOutput",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 10000,
+      "id": "5212300e-3239-2462-e7ba-2fa7ad87a22c",
+      "position": [
+        2860,
+        100
+      ]
+    },
+    {
+      "name": "Parse LLM output",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const src = $('Build LLM request').item.json;\nlet extraction = null;\nlet extractError = null;\nif ($json.error) {\n  extractError = String($json.error.message || $json.error);\n} else {\n  try {\n    const content = $json.choices[0].message.content;\n    extraction = JSON.parse(content.slice(content.indexOf('{'), content.lastIndexOf('}') + 1));\n  } catch (e) {\n    extractError = 'Unparseable LLM output: ' + e.message;\n  }\n}\nconst file = { sourceId: src.sourceId, cardId: src.cardId, url: src.url, fetchedAt: src.fetchedAt, hash: src.hash, text: src.text, extraction, extractError };\nreturn { json: {\n  path: 'crawl/' + src.runId + '/' + src.sourceId + '.json',\n  content: Buffer.from(JSON.stringify(file, null, 1)).toString('base64'),\n  result: { sourceId: src.sourceId, ok: true, changed: true, hash: src.hash, fetchedAt: src.fetchedAt, extractError },\n} };"
+      },
+      "id": "b1514a44-3a39-d741-d3b3-4dc92f1b7763",
+      "position": [
+        3080,
+        100
+      ]
+    },
+    {
+      "name": "Commit crawl file",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "parameters": {
+        "options": {},
+        "method": "PUT",
+        "url": "={{ $env.GITHUB_API }}/repos/{{ $env.GITHUB_REPO }}/contents/{{ $json.path }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.GITHUB_TOKEN }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2022-11-28"
+            },
+            {
+              "name": "User-Agent",
+              "value": "cardradar-n8n"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ message: 'crawl: ' + $json.result.sourceId, content: $json.content, branch: 'crawl/' + $('Run setup').first().json.runId }) }}"
+      },
+      "onError": "continueRegularOutput",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 5000,
+      "id": "dac2c46b-368b-91e9-cfea-ea1a49e561a9",
+      "position": [
+        3300,
+        100
+      ]
+    },
+    {
+      "name": "Changed result",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const { result } = $('Parse LLM output').item.json;\nconst commitError = $json.error ? String($json.error.message || $json.error) : null;\nreturn { json: { ...result, committed: !commitError, commitError } };"
+      },
+      "id": "065f804d-167f-93e7-4a79-4e869c7c6c3d",
+      "position": [
+        3520,
+        100
+      ]
+    },
+    {
+      "name": "Unchanged result",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "return { json: { sourceId: $json.sourceId, ok: $json.ok, changed: false, hash: $json.hash || null, fetchedAt: $json.fetchedAt, error: $json.error || null } };"
+      },
+      "id": "04350859-3849-dd3f-5409-3c171dad03c3",
+      "position": [
+        2640,
+        340
+      ]
+    },
+    {
+      "name": "Run summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const { runId, startedAt } = $('Run setup').first().json;\nconst summary = { runId, startedAt, finishedAt: new Date().toISOString(), results: $input.all().map((i) => i.json) };\nreturn [{ json: { runId, total: summary.results.length, content: Buffer.from(JSON.stringify(summary, null, 1)).toString('base64') } }];"
+      },
+      "id": "cbc612cf-a70b-3396-9a81-4a283e5d9809",
+      "position": [
+        1760,
+        -220
+      ]
+    },
+    {
+      "name": "Commit run summary",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "parameters": {
+        "options": {},
+        "method": "PUT",
+        "url": "={{ $env.GITHUB_API }}/repos/{{ $env.GITHUB_REPO }}/contents/crawl/{{ $json.runId }}/_run.json",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.GITHUB_TOKEN }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2022-11-28"
+            },
+            {
+              "name": "User-Agent",
+              "value": "cardradar-n8n"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ message: 'crawl: run summary', content: $json.content, branch: 'crawl/' + $json.runId }) }}"
+      },
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 5000,
+      "id": "cd55ebdb-5c2e-0984-ce91-a699312754c9",
+      "position": [
+        1980,
+        -220
+      ]
+    },
+    {
+      "name": "Dispatch intake",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "parameters": {
+        "options": {},
+        "method": "POST",
+        "url": "={{ $env.GITHUB_API }}/repos/{{ $env.GITHUB_REPO }}/actions/workflows/intake.yml/dispatches",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.GITHUB_TOKEN }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2022-11-28"
+            },
+            {
+              "name": "User-Agent",
+              "value": "cardradar-n8n"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ ref: 'main', inputs: { run_id: $('Run setup').first().json.runId } }) }}"
+      },
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 5000,
+      "id": "ea04f56f-909b-2d7c-3a14-902bebb679a1",
+      "position": [
+        2200,
+        -220
+      ]
+    }
+  ],
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Run setup",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run setup": {
+      "main": [
+        [
+          {
+            "node": "Get status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get status": {
+      "main": [
+        [
+          {
+            "node": "Get sources",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get sources": {
+      "main": [
+        [
+          {
+            "node": "Get main ref",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get main ref": {
+      "main": [
+        [
+          {
+            "node": "Create crawl branch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create crawl branch": {
+      "main": [
+        [
+          {
+            "node": "Plan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Plan": {
+      "main": [
+        [
+          {
+            "node": "Loop sources",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop sources": {
+      "main": [
+        [
+          {
+            "node": "Run summary",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Throttle",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Throttle": {
+      "main": [
+        [
+          {
+            "node": "Fetch page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch page": {
+      "main": [
+        [
+          {
+            "node": "Clean and hash",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clean and hash": {
+      "main": [
+        [
+          {
+            "node": "Changed?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Changed?": {
+      "main": [
+        [
+          {
+            "node": "Build LLM request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Unchanged result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build LLM request": {
+      "main": [
+        [
+          {
+            "node": "Extract with LLM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract with LLM": {
+      "main": [
+        [
+          {
+            "node": "Parse LLM output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse LLM output": {
+      "main": [
+        [
+          {
+            "node": "Commit crawl file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Commit crawl file": {
+      "main": [
+        [
+          {
+            "node": "Changed result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Changed result": {
+      "main": [
+        [
+          {
+            "node": "Loop sources",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Unchanged result": {
+      "main": [
+        [
+          {
+            "node": "Loop sources",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run summary": {
+      "main": [
+        [
+          {
+            "node": "Commit run summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Commit run summary": {
+      "main": [
+        [
+          {
+            "node": "Dispatch intake",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
