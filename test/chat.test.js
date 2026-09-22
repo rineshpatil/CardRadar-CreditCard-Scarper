@@ -11,6 +11,17 @@ const replyOf = (res) => JSON.parse(res.body).reply;
 test('requests that did not come through CloudFront are refused', async () => {
   const res = await handler(event({ message: 'hi' }, {}));
   assert.equal(res.statusCode, 403);
+
+  // Inside Lambda a missing ORIGIN_SECRET must refuse requests, not let them through.
+  const saved = process.env.ORIGIN_SECRET;
+  delete process.env.ORIGIN_SECRET;
+  process.env.AWS_LAMBDA_FUNCTION_NAME = 'cardradar-chat';
+  try {
+    assert.equal((await handler(event({ message: 'hi' }, {}))).statusCode, 403);
+  } finally {
+    process.env.ORIGIN_SECRET = saved;
+    delete process.env.AWS_LAMBDA_FUNCTION_NAME;
+  }
 });
 
 test('empty and oversized messages are rejected before calling the LLM', async (t) => {

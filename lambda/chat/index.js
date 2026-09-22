@@ -59,7 +59,11 @@ const reply = (statusCode, text) => ({ statusCode, headers: { 'content-type': 'a
 
 exports.handler = async (event) => {
   // CloudFront adds this header; requests sent straight to the function URL are refused.
-  if (process.env.ORIGIN_SECRET && event.headers?.['x-origin-verify'] !== process.env.ORIGIN_SECRET) return reply(403, 'Forbidden');
+  // Inside Lambda a missing secret fails closed; locally (npm run dev) there is no secret to check.
+  const secret = process.env.ORIGIN_SECRET;
+  if ((secret || process.env.AWS_LAMBDA_FUNCTION_NAME) && (!secret || event.headers?.['x-origin-verify'] !== secret)) {
+    return reply(403, 'Forbidden');
+  }
 
   let body;
   try {
