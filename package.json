@@ -1,27 +1,15 @@
 {
-  "name": "cardradar-credit-card-guide",
-  "version": "2.0.0",
-  "description": "CardRadar — Indian Credit Card Guide with bank-based filtering, lounge access, golf, cashback and more benefits",
-  "main": "server.js",
+  "name": "cardradar",
+  "version": "3.0.0",
+  "private": true,
+  "description": "CardRadar — Indian credit card guide, a static site on AWS with a weekly n8n refresh",
+  "license": "MIT",
   "scripts": {
-    "start": "node server.js",
     "build": "node scripts/build.js",
     "test": "node scripts/build.js && node --test",
     "dev": "node scripts/build.js && node --env-file-if-exists=.env scripts/dev.js"
   },
-  "dependencies": {
-    "@google/generative-ai": "^0.21.0",
-    "bcryptjs": "^3.0.3",
-    "connect-pg-simple": "^10.0.0",
-    "cors": "^2.8.5",
-    "dotenv": "^17.3.1",
-    "express": "^4.18.2",
-    "express-session": "^1.19.0",
-    "openai": "^6.27.0",
-    "passport": "^0.7.0",
-    "passport-google-oauth20": "^2.0.0",
-    "passport-local": "^1.0.0",
-    "pg": "^8.20.0",
-    "xlsx": "^0.18.5"
+  "engines": {
+    "node": ">=22"
   }
 }

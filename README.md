@@ -1,102 +1,59 @@
 # 💳 CardRadar — Indian Credit Card Guide
 
-A sleek, dark-themed dashboard to discover, compare, and apply for the best credit cards in India. Filter by bank, benefits (lounge, golf, cashback, forex), and card type (LTF vs Premium).
+A free guide to Indian credit cards: fees, rewards, lounge access, eligibility and more, checked against each bank's own page.
+Every card shows whether its details are **verified**, **may be outdated**, or **unverified**.
 
-![Dashboard](https://img.shields.io/badge/Status-Live-brightgreen) ![Node.js](https://img.shields.io/badge/Node.js-v18+-green) ![Express](https://img.shields.io/badge/Express-4.x-blue)
+- **Site:** static HTML/CSS/JS on Amazon S3 + CloudFront (`ap-south-1`)
+- **Chat:** one AWS Lambda (`lambda/chat/`) behind CloudFront at `/api/chat`
+- **Data:** one JSON file per card in `data/cards/`, validated by `scripts/build.js`
+- **Weekly refresh:** an n8n workflow on AWS Fargate re-reads each card's page and opens a pull request when something changed ([docs/crawler.md](docs/crawler.md))
 
-## ✨ Features
+## Run it locally
 
-- **22+ Credit Cards** — Curated from official bank websites with accurate benefits
-- **Bank-Based Filtering** — Browse cards by bank (HDFC, ICICI, Axis, SBI, IDFC FIRST, etc.)
-- **Benefit Filters** — Filter by LTF, Lounge Access, Railway Lounge, Golf, Cashback, Zero Forex
-- **Smart Search** — Search across card names, banks, categories, and highlights
-- **Sorting** — Sort by popularity, fee, bank, or name
-- **Card Detail Modal** — View full benefits: rewards, lounge access, golf, dining, movies, forex, eligibility
-- **Apply Now** — Direct links to official bank application pages
-- **Responsive Design** — Works on desktop and mobile
-- **Dark Theme** — Premium glassmorphism UI with smooth animations
-
-## 🚀 Quick Start
+Requires Node.js 22 or newer. There are no npm dependencies.
 
 ```bash
-# Clone the repo
-git clone https://github.com/rineshpatil/CardRadar-CreditCard-Scarper.git
-cd CardRadar-CreditCard-Scarper
-
-# Install dependencies
-npm install
-
-# Start the server
-npm start
+npm test      # validates the card data, then runs the tests
+npm run dev   # http://localhost:3000
 ```
 
-Open **http://localhost:3000** in your browser.
+The chat needs an LLM key. Put `LLM_API_KEY=...` in a `.env` file (never commit it).
 
-## 📡 API Endpoints
+## Add or fix a card
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/cards` | GET | Get all cards (supports `filter`, `sort`, `search`, `bank` query params) |
-| `/api/cards/:id` | GET | Get a single card by ID |
-| `/api/banks` | GET | Get all banks with card counts |
-| `/api/stats` | GET | Get summary statistics |
+1. Create or edit `data/cards/<id>.json`. Copy an existing card; the file name must match `id`.
+2. Links must be `https:` on a domain listed in `config/allowed-domains.json`.
+3. Run `npm test`. It explains any problem with the file.
+4. Open a pull request. Merging to `main` deploys the site.
 
-### Query Parameters for `/api/cards`
+Leave `verification` empty for new values: the weekly crawl proposes verified values with quotes from the bank's page.
 
-| Param | Values | Example |
-|-------|--------|---------|
-| `filter` | `ltf`, `non-ltf`, `lounge`, `railway`, `golf`, `cashback`, `forex` | `?filter=ltf` |
-| `sort` | `popularity`, `fee-low`, `fee-high`, `bank`, `name` | `?sort=fee-low` |
-| `search` | Any text | `?search=hdfc` |
-| `bank` | Bank name | `?bank=HDFC%20Bank` |
+## Deploy
 
-## 🏗️ Tech Stack
+`main` deploys automatically through `.github/workflows/deploy.yml`. AWS resources live in `infra/cardradar.yml` and are updated by hand:
 
-- **Backend** — Node.js + Express
-- **Frontend** — Vanilla HTML/CSS/JS
-- **Styling** — Custom CSS with CSS variables, glassmorphism, Inter font
-- **Data** — Curated knowledge base from official bank websites
-
-## 📁 Project Structure
-
-```
-├── server.js              # Express server with API routes
-├── knowledgebase.js        # Credit card database (22+ cards)
-├── analyzer.js             # Card categorization and stats
-├── package.json
-├── .gitignore
-└── public/
-    ├── index.html          # Dashboard HTML
-    ├── app.js              # Frontend logic
-    └── styles.css          # Dark theme styles
+```bash
+aws cloudformation deploy --region ap-south-1 --stack-name cardradar --template-file infra/cardradar.yml --capabilities CAPABILITY_IAM
 ```
 
-## 🏦 Supported Banks
+## Project structure
 
-HDFC Bank • ICICI Bank • Axis Bank • IDFC FIRST Bank • SBI Card • HSBC • American Express • Federal Bank • AU Small Finance Bank • IndusInd Bank • RBL Bank • IDBI Bank
+```
+data/cards/         one JSON file per card (source of truth)
+data/status.json    weekly crawl state (written by the intake workflow)
+config/             allowed link domains
+public/             the website (public/data/ is generated)
+lambda/chat/        chat function
+scripts/            build, local preview, crawl intake
+n8n/                weekly crawl workflow and its container image
+infra/              CloudFormation template
+test/               node --test suites
+```
 
-## 📄 License
+## Disclaimer
 
-MIT License
+Card details can change at any time. CardRadar is not a bank and nothing here is financial advice; confirm on the bank's website before you apply.
 
-Copyright (c) 2025 Rinesh Patil
+## License
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-Built with ❤️ | Data sourced from official bank websites
+MIT, see [LICENSE](LICENSE).
