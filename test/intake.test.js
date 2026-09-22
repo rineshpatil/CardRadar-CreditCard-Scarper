@@ -43,6 +43,8 @@ test('verified fields are only proposed when the value changed, with warnings', 
   assert.deepEqual(same.proposals, []);
   const changed = diffCard(c, { annualFee: { value: 12500, quote: 'q' }, loungeDomestic: { value: 0, quote: 'q' } });
   assert.deepEqual(changed.proposals.map((p) => [p.field, p.kind, p.flags]), [['annualFee', 'change', ['large fee change']], ['loungeDomestic', 'change', ['benefit removed']]]);
+  const freeCard = card({ annualFee: 0, verification: { annualFee: verified() } });
+  assert.deepEqual(diffCard(freeCard, { annualFee: { value: 5000, quote: 'q' } }).proposals[0].flags, ['large fee change'], 'a lifetime-free card gaining a fee is flagged');
 });
 
 test('verified fields missing from the new extraction are reported, not removed', () => {

@@ -54,7 +54,9 @@ function validateExtraction(extraction, pageText) {
 function flagsFor(field, oldValue, newValue) {
   const flags = [];
   const fee = field === 'annualFee' || field === 'joiningFee';
-  if (fee && oldValue > 0 && (newValue === 0 || newValue > oldValue * 3 || newValue * 3 < oldValue)) flags.push('large fee change');
+  // A fee that trebles, disappears, or appears on a card that had none is what a reviewer must look at.
+  const feeJump = oldValue > 0 ? newValue === 0 || newValue > oldValue * 3 || newValue * 3 < oldValue : newValue > 0;
+  if (fee && Number.isInteger(oldValue) && feeJump) flags.push('large fee change');
   if ((field === 'loungeDomestic' || field === 'loungeInternational') && oldValue && newValue === 0) flags.push('benefit removed');
   if (field === 'golf' && oldValue === true && newValue === false) flags.push('benefit removed');
   return flags;
@@ -99,7 +101,7 @@ function prBody(card, proposals, missing, crawl) {
   const rows = proposals.map((p) => {
     const now = `${show(p.field, p.old)}${p.kind === 'confirm' ? ' _(not verified)_' : ''}`;
     const proposed = `**${show(p.field, p.value)}**${p.flags.length ? ` ⚠️ ${p.flags.join(', ')}` : ''}`;
-    return `| ${LABELS[p.field]} | ${now} | ${proposed} | "${cell(p.quote)}" |`;
+    return `| ${LABELS[p.field]} | ${cell(now)} | ${cell(proposed)} | "${cell(p.quote)}" |`;
   });
   return [
     `Proposed updates for **${card.name}** from the weekly crawl.`,
@@ -126,11 +128,11 @@ function reportMd(runId, counts, proposals, failed, rejected, notFound) {
   ];
   if (failed.length) {
     lines.push('', '### Pages that could not be checked', '', '| Source | Problem | Failures in a row |', '|---|---|---|');
-    failed.forEach((f) => lines.push(`| ${f.sourceId} | ${cell(f.error)} | ${f.failures} |`));
+    failed.forEach((f) => lines.push(`| ${cell(f.sourceId)} | ${cell(f.error)} | ${f.failures} |`));
   }
   if (rejected.length) {
     lines.push('', '### AI answers that were thrown away', '', '| Card | Field | Why |', '|---|---|---|');
-    rejected.forEach((r) => lines.push(`| ${r.cardId} | ${r.field} | ${cell(r.reason)} |`));
+    rejected.forEach((r) => lines.push(`| ${cell(r.cardId)} | ${cell(r.field)} | ${cell(r.reason)} |`));
   }
   if (notFound.length) {
     lines.push('', '### Verified values no longer found on a changed page', '');
