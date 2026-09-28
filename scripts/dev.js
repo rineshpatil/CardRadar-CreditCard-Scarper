@@ -1,4 +1,4 @@
-// Local preview: serves public/ and sends POST /api/chat to the chat Lambda handler.
+// Local preview: serves public/ and sends /api/* to the chat Lambda handler.
 // Run `npm run build` first so public/data/ and lambda/chat/cards.json exist.
 const http = require('http');
 const fs = require('fs');
@@ -8,17 +8,22 @@ const PUBLIC = path.join(__dirname, '..', 'public');
 const PORT = process.env.PORT || 3000;
 const TYPES = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8',
-  '.json': 'application/json', '.svg': 'image/svg+xml', '.gif': 'image/gif', '.png': 'image/png', '.ico': 'image/x-icon',
+  '.json': 'application/json', '.svg': 'image/svg+xml', '.gif': 'image/gif', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.ico': 'image/x-icon',
 };
 
-http.createServer(async (req, res) => {
+async function handle(req, res) {
   try {
     const { pathname } = new URL(req.url, 'http://localhost');
-    if (pathname === '/api/chat' && req.method === 'POST') {
+    if (pathname.startsWith('/api/')) {
       let body = '';
       for await (const chunk of req) body += chunk;
       const { handler } = require('../lambda/chat');
-      const out = await handler({ headers: {}, body });
+      const out = await handler({
+        rawPath: pathname,
+        requestContext: { http: { method: req.method } },
+        headers: { authorization: req.headers.authorization },
+        body,
+      });
       res.writeHead(out.statusCode, out.headers);
       return res.end(out.body);
     }
@@ -37,4 +42,8 @@ http.createServer(async (req, res) => {
     res.writeHead(missing ? 404 : 500);
     res.end(missing ? 'Not found' : 'Preview error — did you run npm run build?');
   }
-}).listen(PORT, '127.0.0.1', () => console.log(`CardRadar preview: http://localhost:${PORT}`));
+}
+
+// Loopback only, on both IPv4 and IPv6: "localhost" resolves to ::1 first on some machines.
+http.createServer(handle).listen(PORT, '127.0.0.1', () => console.log(`CardRadar preview: http://localhost:${PORT}`));
+http.createServer(handle).listen(PORT, '::1').on('error', () => {}); // no IPv6 loopback: IPv4 still serves

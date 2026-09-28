@@ -15,3 +15,9 @@ testsprite_tests/
 .testsprite/
 testsprite-error.log
 .stitch/
+
+# Local account store (sign-ins, subscriptions)
+.data/
+testsprite_tests.old-*/
+testsprite_tests/tmp/
+testsprite_tests/tmp/config.json
