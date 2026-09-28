@@ -11,6 +11,7 @@
   "joiningFee": 1500,
   "rewardRate": "2-5%",
   "applyUrl": "https://www.hsbc.co.in/credit-cards/products/travelone/",
+  "image": "img/cards/hsbc-travel-one.jpg",
   "benefits": {
     "cashback": {
       "description": "5% TravelOne points on travel, 2% on all spends",

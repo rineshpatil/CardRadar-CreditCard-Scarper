@@ -11,6 +11,7 @@
   "joiningFee": 2499,
   "rewardRate": "2%",
   "applyUrl": "https://www.indusind.com/in/en/personal/cards/credit-card/pioneer-heritage-credit-card.html",
+  "image": "img/cards/indusind-pioneer-heritage.png",
   "benefits": {
     "cashback": {
       "description": "2% rewards on all categories",

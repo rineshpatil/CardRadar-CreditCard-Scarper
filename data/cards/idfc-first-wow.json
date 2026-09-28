@@ -11,6 +11,7 @@
   "joiningFee": 0,
   "rewardRate": "5X rewards",
   "applyUrl": "https://www.idfcfirstbank.com/credit-card/wow",
+  "image": "img/cards/idfc-first-wow.webp",
   "benefits": {
     "cashback": {
       "description": "5X rewards on categories of your choice",

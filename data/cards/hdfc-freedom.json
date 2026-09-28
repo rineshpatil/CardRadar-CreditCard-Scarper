@@ -11,6 +11,7 @@
   "joiningFee": 500,
   "rewardRate": "5X dining",
   "applyUrl": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/freedom-credit-card",
+  "image": "img/cards/hdfc-freedom.webp",
   "benefits": {
     "cashback": {
       "description": "5X reward points on dining, groceries, movies",

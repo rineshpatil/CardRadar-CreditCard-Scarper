@@ -11,6 +11,7 @@
   "joiningFee": 500,
   "rewardRate": "1-10%",
   "applyUrl": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/swiggy-hdfc-bank-credit-card",
+  "image": "img/cards/swiggy-hdfc.webp",
   "benefits": {
     "cashback": {
       "description": "10% cashback on Swiggy, 5% on online, 1% on others",

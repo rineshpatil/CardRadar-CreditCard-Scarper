@@ -11,6 +11,7 @@
   "joiningFee": 1499,
   "rewardRate": "1.5-5%",
   "applyUrl": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/tata-neu-infinity-hdfc-bank-credit-card",
+  "image": "img/cards/hdfc-tata-neu-infinity.webp",
   "benefits": {
     "cashback": {
       "description": "Up to 5% NeuCoins on Tata brands, 1.5% on others",

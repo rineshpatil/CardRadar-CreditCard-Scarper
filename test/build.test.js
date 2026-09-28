@@ -45,6 +45,12 @@ test('links must be https on an allowed bank domain', () => {
   assert.match(validateCard(card({ applyUrl: 'http://www.hdfcbank.com/x' }), 'hdfc-test.json').join(), /applyUrl/);
 });
 
+test('image must be a local file under img/cards', () => {
+  assert.deepEqual(validateCard(card({ image: 'img/cards/hdfc-test.webp' }), 'hdfc-test.json'), []);
+  assert.equal(validateCard(card({ image: 'https://evil.example/x.png' }), 'hdfc-test.json').length, 1);
+  assert.equal(validateCard(card({ image: 'img/cards/../../x.png' }), 'hdfc-test.json').length, 1);
+});
+
 test('file name must match the card id', () => {
   assert.match(validateCard(card(), 'other.json').join(), /file name must be hdfc-test\.json/);
 });

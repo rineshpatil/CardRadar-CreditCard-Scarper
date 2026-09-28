@@ -11,6 +11,7 @@
   "joiningFee": 3500,
   "rewardRate": "5X on travel",
   "applyUrl": "https://www.americanexpress.com/in/credit-cards/platinum-travel-card/",
+  "image": "img/cards/amex-plat-travel.webp",
   "benefits": {
     "cashback": {
       "description": "5X MR points on domestic airlines and hotels",

@@ -11,6 +11,7 @@
   "joiningFee": 1000,
   "rewardRate": "1 MR/₹50",
   "applyUrl": "https://www.americanexpress.com/in/credit-cards/gold-card/",
+  "image": "img/cards/amex-gold.webp",
   "benefits": {
     "cashback": {
       "description": "1 MR point per ₹50 spent",

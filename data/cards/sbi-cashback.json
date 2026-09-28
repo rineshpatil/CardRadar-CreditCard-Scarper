@@ -11,6 +11,7 @@
   "joiningFee": 999,
   "rewardRate": "1-5%",
   "applyUrl": "https://www.sbicard.com/en/personal/credit-cards/cashback/sbi-card-cashback.page",
+  "image": "img/cards/sbi-cashback.png",
   "benefits": {
     "cashback": {
       "description": "5% cashback on online spends, 1% on others",

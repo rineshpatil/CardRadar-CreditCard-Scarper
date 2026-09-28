@@ -11,6 +11,7 @@
   "joiningFee": 2999,
   "rewardRate": "4-8X",
   "applyUrl": "https://www.aubank.in/credit-card/zenith-plus-credit-card",
+  "image": "img/cards/au-zenith-plus.webp",
   "benefits": {
     "cashback": {
       "description": "8X reward points on dining and international spends",

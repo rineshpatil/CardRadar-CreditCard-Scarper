@@ -11,6 +11,7 @@
   "joiningFee": 6500,
   "rewardRate": "2-4%",
   "applyUrl": "https://www.icicibank.com/card/credit-cards/icici-bank-sapphiro-credit-card",
+  "image": "img/cards/icici-sapphiro.webp",
   "benefits": {
     "cashback": {
       "description": "2 reward points per ₹100, 4 points on travel",

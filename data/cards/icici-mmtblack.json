@@ -11,6 +11,7 @@
   "joiningFee": 500,
   "rewardRate": "1-10%",
   "applyUrl": "https://www.icicibank.com/card/credit-cards/makemytrip-icici-bank-credit-card",
+  "image": "img/cards/icici-mmtblack.webp",
   "benefits": {
     "cashback": {
       "description": "Up to 10% on MakeMyTrip, 1.5% on all other spends",

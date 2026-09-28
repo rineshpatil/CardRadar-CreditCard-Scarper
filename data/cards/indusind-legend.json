@@ -11,6 +11,7 @@
   "joiningFee": 10000,
   "rewardRate": "1.5-3%",
   "applyUrl": "https://www.indusind.com/in/en/personal/cards/credit-card/legend-credit-card.html",
+  "image": "img/cards/indusind-legend.webp",
   "benefits": {
     "cashback": {
       "description": "3X reward points on travel, 1.5X on all spends",

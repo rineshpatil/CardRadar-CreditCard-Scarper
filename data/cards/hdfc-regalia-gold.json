@@ -11,6 +11,7 @@
   "joiningFee": 2500,
   "rewardRate": "1.3%",
   "applyUrl": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/regalia-gold-credit-card",
+  "image": "img/cards/hdfc-regalia-gold.webp",
   "benefits": {
     "cashback": {
       "description": "4 reward points per ₹150 spend",

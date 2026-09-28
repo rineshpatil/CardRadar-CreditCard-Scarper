@@ -40,6 +40,9 @@ function validateCard(card, fileName) {
   if (!orNull(wholeNumber)(card.joiningFee)) bad('joiningFee must be a whole number of rupees or null');
   if (!orNull((v) => typeof v === 'string')(card.rewardRate)) bad('rewardRate must be text or null');
   if (!isAllowedUrl(card.applyUrl)) bad(`applyUrl must be an https link on a domain in config/allowed-domains.json: ${card.applyUrl}`);
+  if (card.image !== undefined && !/^img\/cards\/[a-z0-9-]+\.(webp|png|jpg)$/.test(card.image)) {
+    bad('image must be a file in public/img/cards/ (webp, png or jpg)');
+  }
   if (card.benefits !== null) {
     if (typeof card.benefits !== 'object' || Array.isArray(card.benefits)) bad('benefits must be an object or null');
     else {
@@ -121,6 +124,7 @@ function build({ root = ROOT, now = Date.now() } = {}) {
     try {
       const card = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8'));
       errors.push(...validateCard(card, file));
+      if (typeof card.image === 'string' && !fs.existsSync(path.join(root, 'public', card.image))) errors.push(`${file}: image file public/${card.image} does not exist`);
       cards.push(card);
     } catch (err) {
       errors.push(`${file}: not valid JSON (${err.message})`);

@@ -11,6 +11,7 @@
   "joiningFee": 12000,
   "rewardRate": "2-3.5%",
   "applyUrl": "https://www.icicibank.com/card/credit-cards/emeralde-credit-card",
+  "image": "img/cards/icici-emeralde.webp",
   "benefits": {
     "cashback": {
       "description": "4 reward points per ₹100, enhanced on travel",

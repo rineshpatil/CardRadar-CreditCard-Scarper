@@ -11,6 +11,7 @@
   "joiningFee": 499,
   "rewardRate": "10X on categories",
   "applyUrl": "https://www.sbicard.com/en/personal/credit-cards/shopping/sbi-card-simplysave.page",
+  "image": "img/cards/sbi-simplysave.webp",
   "benefits": {
     "cashback": {
       "description": "10X rewards on dining, groceries, movies & departmental stores",

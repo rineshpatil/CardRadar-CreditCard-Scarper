@@ -11,6 +11,7 @@
   "joiningFee": 2500,
   "rewardRate": "6-10X",
   "applyUrl": "https://www.idfcfirstbank.com/credit-card/wealth",
+  "image": "img/cards/idfc-first-wealth.webp",
   "benefits": {
     "cashback": {
       "description": "10X rewards on online, 6X on offline",

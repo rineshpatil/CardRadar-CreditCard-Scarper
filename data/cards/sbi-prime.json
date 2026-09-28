@@ -11,6 +11,7 @@
   "joiningFee": 2999,
   "rewardRate": "2-10X",
   "applyUrl": "https://www.sbicard.com/en/personal/credit-cards/travel-fuel/sbi-card-prime.page",
+  "image": "img/cards/sbi-prime.png",
   "benefits": {
     "cashback": {
       "description": "10X reward points on dining, 5X on grocery, 1X elsewhere",

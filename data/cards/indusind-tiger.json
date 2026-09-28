@@ -11,6 +11,7 @@
   "joiningFee": 599,
   "rewardRate": "1.5%",
   "applyUrl": "https://www.indusind.com/in/en/personal/cards/credit-card/tiger-credit-card.html",
+  "image": "img/cards/indusind-tiger.webp",
   "benefits": {
     "cashback": {
       "description": "1.5% cashback on weekend dining and movies",

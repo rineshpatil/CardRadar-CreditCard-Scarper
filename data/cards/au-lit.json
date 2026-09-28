@@ -11,6 +11,7 @@
   "joiningFee": 0,
   "rewardRate": "1-5%",
   "applyUrl": "https://www.aubank.in/credit-card/lit-credit-card",
+  "image": "img/cards/au-lit.jpg",
   "benefits": {
     "cashback": {
       "description": "Customize your benefits - choose 3 of 7 features",

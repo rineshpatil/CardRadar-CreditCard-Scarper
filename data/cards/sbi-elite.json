@@ -11,6 +11,7 @@
   "joiningFee": 4999,
   "rewardRate": "2-5X",
   "applyUrl": "https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-elite.page",
+  "image": "img/cards/sbi-elite.png",
   "benefits": {
     "cashback": {
       "description": "5X reward points on dining and departmental stores",

@@ -11,6 +11,7 @@
   "joiningFee": 500,
   "rewardRate": "2 pts/₹100",
   "applyUrl": "https://www.icicibank.com/card/credit-cards/icici-bank-coral-credit-card",
+  "image": "img/cards/icici-coral.webp",
   "benefits": {
     "cashback": {
       "description": "2 PAYBACK points per ₹100 on all spends",

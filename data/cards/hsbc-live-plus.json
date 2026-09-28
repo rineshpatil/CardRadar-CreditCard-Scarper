@@ -11,6 +11,7 @@
   "joiningFee": 750,
   "rewardRate": "1.5% cashback",
   "applyUrl": "https://www.hsbc.co.in/credit-cards/products/live-plus/",
+  "image": "img/cards/hsbc-live-plus.jpg",
   "benefits": {
     "cashback": {
       "description": "1.5% cashback on all online spends",

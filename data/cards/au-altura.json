@@ -11,6 +11,7 @@
   "joiningFee": 199,
   "rewardRate": "2X rewards",
   "applyUrl": "https://www.aubank.in/credit-card/altura-credit-card",
+  "image": "img/cards/au-altura.webp",
   "benefits": {
     "cashback": {
       "description": "2X reward points on weekend dining and grocery",

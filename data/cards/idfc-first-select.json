@@ -11,6 +11,7 @@
   "joiningFee": 0,
   "rewardRate": "3-10X",
   "applyUrl": "https://www.idfcfirstbank.com/credit-card/select",
+  "image": "img/cards/idfc-first-select.webp",
   "benefits": {
     "cashback": {
       "description": "10X reward points on online spends, 3X on offline",

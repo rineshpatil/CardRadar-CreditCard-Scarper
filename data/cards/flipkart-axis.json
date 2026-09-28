@@ -11,6 +11,7 @@
   "joiningFee": 500,
   "rewardRate": "1.5-5%",
   "applyUrl": "https://www.axisbank.com/retail/cards/credit-card/flipkart-axis-bank-credit-card",
+  "image": "img/cards/flipkart-axis.webp",
   "benefits": {
     "cashback": {
       "description": "5% on Flipkart, 4% on preferred partners, 1.5% on all else",

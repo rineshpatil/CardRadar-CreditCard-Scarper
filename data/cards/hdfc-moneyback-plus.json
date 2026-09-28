@@ -11,6 +11,7 @@
   "joiningFee": 500,
   "rewardRate": "2%",
   "applyUrl": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/moneyback-plus-credit-card",
+  "image": "img/cards/hdfc-moneyback-plus.webp",
   "benefits": {
     "cashback": {
       "description": "2X reward points on online spends, 1X on others",

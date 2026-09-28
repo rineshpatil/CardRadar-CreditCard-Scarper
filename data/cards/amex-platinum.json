@@ -11,6 +11,7 @@
   "joiningFee": 60000,
   "rewardRate": "1 MR/₹50",
   "applyUrl": "https://www.americanexpress.com/in/credit-cards/platinum-card/",
+  "image": "img/cards/amex-platinum.webp",
   "benefits": {
     "cashback": {
       "description": "1 Membership Rewards point per ₹50, transferable to airlines",

@@ -11,6 +11,7 @@
   "joiningFee": 9999,
   "rewardRate": "3-8%",
   "applyUrl": "https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-aurum.page",
+  "image": "img/cards/sbi-aurum.png",
   "benefits": {
     "cashback": {
       "description": "8X reward points on dining and international spends",

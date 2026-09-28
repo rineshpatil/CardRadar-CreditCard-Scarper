@@ -11,6 +11,7 @@
   "joiningFee": 5000,
   "rewardRate": "2-5%",
   "applyUrl": "https://www.axisbank.com/retail/cards/credit-card/atlas-credit-card",
+  "image": "img/cards/axis-atlas.webp",
   "benefits": {
     "cashback": {
       "description": "5 EDGE MILES per ₹200 on travel, 2 on others",

@@ -11,6 +11,7 @@
   "joiningFee": 50000,
   "rewardRate": "1.5-3.5%",
   "applyUrl": "https://www.axisbank.com/retail/cards/credit-card/reserve-credit-card",
+  "image": "img/cards/axis-reserve.png",
   "benefits": {
     "cashback": {
       "description": "35 EDGE points per ₹200 on travel, 15 on others",

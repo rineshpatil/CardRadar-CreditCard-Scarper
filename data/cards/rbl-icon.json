@@ -11,6 +11,7 @@
   "joiningFee": 3500,
   "rewardRate": "6X rewards",
   "applyUrl": "https://www.rblbank.com/credit-cards/icon",
+  "image": "img/cards/rbl-icon.png",
   "benefits": {
     "cashback": {
       "description": "6X reward points on all online spends",

@@ -11,6 +11,7 @@
   "joiningFee": 0,
   "rewardRate": "1-5%",
   "applyUrl": "https://www.icicibank.com/card/credit-cards/amazon-pay-credit-card",
+  "image": "img/cards/amazon-pay-icici.webp",
   "benefits": {
     "cashback": {
       "description": "Up to 5% cashback on Amazon with Prime, 2% on Amazon without Prime, 1% on all other spends",

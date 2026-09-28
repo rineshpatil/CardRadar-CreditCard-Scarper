@@ -11,6 +11,7 @@
   "joiningFee": 0,
   "rewardRate": "1-10%",
   "applyUrl": "https://www.scapia.com/",
+  "image": "img/cards/scapia-federal.webp",
   "benefits": {
     "cashback": {
       "description": "Up to 10% on travel bookings, 1% on all other spends",

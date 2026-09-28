@@ -11,6 +11,7 @@
   "joiningFee": 250,
   "rewardRate": "1-2%",
   "applyUrl": "https://www.axisbank.com/retail/cards/credit-card/neo-credit-card",
+  "image": "img/cards/axis-neo.webp",
   "benefits": {
     "cashback": {
       "description": "Cashback on partner brands and all spends",

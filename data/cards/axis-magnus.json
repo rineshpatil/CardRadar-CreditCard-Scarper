@@ -11,6 +11,7 @@
   "joiningFee": 12500,
   "rewardRate": "12-35 pts/₹200",
   "applyUrl": "https://www.axisbank.com/retail/cards/credit-card/axis-bank-magnus-credit-card",
+  "image": "img/cards/axis-magnus.webp",
   "benefits": {
     "cashback": {
       "description": "35 EDGE points per ₹200 on travel, 12 on others",

@@ -11,6 +11,7 @@
   "joiningFee": 12500,
   "rewardRate": "3.3%",
   "applyUrl": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/infinia-credit-card",
+  "image": "img/cards/hdfc-infinia.webp",
   "benefits": {
     "cashback": {
       "description": "5 reward points per ₹150 spend = 3.3% reward rate",

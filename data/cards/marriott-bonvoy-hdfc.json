@@ -11,6 +11,7 @@
   "joiningFee": 3000,
   "rewardRate": "8 Bonvoy pts/₹150",
   "applyUrl": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/marriott-bonvoy-hdfc-bank-credit-card",
+  "image": "img/cards/marriott-bonvoy-hdfc.webp",
   "benefits": {
     "cashback": {
       "description": "Earn Marriott Bonvoy points on every spend",

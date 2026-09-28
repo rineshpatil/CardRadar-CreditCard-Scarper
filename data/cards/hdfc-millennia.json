@@ -11,6 +11,7 @@
   "joiningFee": 1000,
   "rewardRate": "1-5%",
   "applyUrl": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/millennia-credit-card",
+  "image": "img/cards/hdfc-millennia.webp",
   "benefits": {
     "cashback": {
       "description": "5% cashback on Amazon, Flipkart, Swiggy via SmartBuy; 1% on all other spends",

@@ -11,6 +11,7 @@
   "joiningFee": 500,
   "rewardRate": "4X on dining",
   "applyUrl": "https://www.axisbank.com/retail/cards/credit-card/my-zone-credit-card",
+  "image": "img/cards/axis-myzone.webp",
   "benefits": {
     "cashback": {
       "description": "4X eDGE reward points on dining, movies, shopping",

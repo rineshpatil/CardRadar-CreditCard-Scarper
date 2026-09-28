@@ -11,6 +11,7 @@
   "joiningFee": 499,
   "rewardRate": "1-5%",
   "applyUrl": "https://www.axisbank.com/retail/cards/credit-card/ace-credit-card",
+  "image": "img/cards/axis-ace.webp",
   "benefits": {
     "cashback": {
       "description": "5% on bill payments via Google Pay, 4% on Swiggy/Zomato, 1.5% on all",
