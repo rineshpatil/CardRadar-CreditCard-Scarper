@@ -1,0 +1,59 @@
+/* Sign-in / Go PRO / account dialog (account.js). Uses whichever token set the page defines. */
+
+/* No API behind this site (GitHub Pages): account.js sets data-no-server on <html>. */
+html[data-no-server] [data-needs-server] { display: none !important; }
+.acct-scrim {
+  --a-bg: var(--bg-solid, var(--bg2, #0a0c17));
+  --a-card: var(--bg-card, var(--card, #0d1020));
+  --a-text: var(--text-primary, var(--t1, #eef6ff));
+  --a-mute: var(--text-muted, var(--t3, #7482a6));
+  --a-soft: var(--text-secondary, var(--t2, #a3b1d1));
+  --a-accent: var(--accent-primary, var(--cyan, #00f0ff));
+  --a-ink: var(--accent-text, var(--cyan-ink, #00f0ff));
+  --a-line: var(--border-subtle, var(--bd, rgba(0, 240, 255, .12)));
+  --a-line-hi: var(--border-accent, var(--bd-a, rgba(0, 240, 255, .6)));
+  position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 16px;
+  background: var(--scrim, rgba(2, 3, 8, .66)); font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.acct-panel {
+  position: relative; width: min(420px, 100%); max-height: calc(100vh - 32px); overflow: auto;
+  padding: 28px 24px 24px; border-radius: 20px; border: 1px solid var(--a-line-hi); background: var(--a-bg);
+  color: var(--a-text); box-shadow: 0 16px 48px rgba(0, 0, 0, .5); display: flex; flex-direction: column; gap: 12px;
+}
+.acct-panel h2 { margin: 0; font: 700 22px 'Space Grotesk', Inter, sans-serif; }
+.acct-panel p { margin: 0; font-size: 14.5px; color: var(--a-soft); line-height: 1.5; }
+.acct-panel label { font-size: 13px; font-weight: 600; color: var(--a-soft); }
+.acct-panel input {
+  width: 100%; height: 46px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--a-line);
+  background: var(--a-card); color: var(--a-text); font: inherit; font-size: 15px;
+}
+.acct-panel form { display: flex; flex-direction: column; gap: 8px; }
+.acct-panel form[hidden] { display: none; }
+.acct-close {
+  position: absolute; top: 8px; right: 8px; width: 44px; height: 44px; border: 0; border-radius: 8px;
+  background: transparent; color: var(--a-soft); font-size: 26px; cursor: pointer;
+}
+.acct-btn {
+  min-height: 46px; padding: 0 16px; border-radius: 10px; border: 1px solid var(--a-line-hi);
+  background: transparent; color: var(--a-ink); font: 600 15px Inter, sans-serif; cursor: pointer;
+}
+.acct-btn.primary { background: var(--a-accent); border-color: var(--a-accent); color: #05060d; }
+.acct-link { align-self: flex-start; min-height: 44px; border: 0; background: transparent; color: var(--a-ink); font-weight: 600; cursor: pointer; }
+.acct-divider { display: flex; align-items: center; gap: 10px; color: var(--a-mute); font-size: 12px; }
+.acct-divider::before, .acct-divider::after { content: ''; flex: 1; height: 1px; background: var(--a-line); }
+.acct-google { display: flex; justify-content: center; }
+.acct-note { padding: 10px 12px; border-radius: 10px; border: 1px solid var(--a-line); background: var(--a-card); }
+.acct-message { min-height: 1.3em; font-size: 13.5px; }
+.acct-message.error { color: #ff6b8a; }
+.acct-message.ok { color: var(--a-ink); }
+.acct-badge { padding: 2px 8px; border-radius: 6px; background: rgba(255, 184, 0, .14); color: #ffb800; font: 700 11px 'Space Grotesk', sans-serif; letter-spacing: .06em; }
+.acct-plans { display: grid; gap: 10px; }
+.acct-plan {
+  position: relative; display: flex; justify-content: space-between; align-items: center; min-height: 56px; padding: 0 16px;
+  border-radius: 12px; border: 1px solid var(--a-line); background: var(--a-card); color: var(--a-text); font: 600 15px Inter, sans-serif; cursor: pointer;
+}
+.acct-plan.best { border-color: var(--a-line-hi); }
+.acct-plan:hover, .acct-plan:focus-visible { border-color: var(--a-accent); }
+.acct-plan small { font-weight: 500; color: var(--a-mute); }
+.acct-tag { position: absolute; top: -9px; right: 12px; padding: 1px 8px; border-radius: 999px; background: #b6ff3b; color: #05060d; font-size: 11px; font-weight: 700; }
+.acct-mock { display: flex; flex-direction: column; gap: 8px; }

@@ -1,11 +1,8 @@
 name: Deploy site
 
+# Manual only while the site is hosted on GitHub Pages (pages.yml). For the AWS launch, restore:
+#   push: { branches: [main] }  and  schedule: [{ cron: '30 1 * * *' }]  (daily rebuild ages "verified" labels)
 on:
-  push:
-    branches: [main]
-  schedule:
-    # Rebuild daily so "verified" labels go stale on their own if the weekly crawl stops.
-    - cron: '30 1 * * *'
   workflow_dispatch:
 
 permissions:

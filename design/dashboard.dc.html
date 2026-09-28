@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+:root{--bg-primary:#05060d;--bg-secondary:#0a0c17;--bg-card:#0d1020;--bg-card-hover:#131731;--bg-glass:rgba(10,12,26,.72);--bg-glass-light:rgba(0,240,255,.04);--bg-solid:#0a0c17;--text-primary:#eef6ff;--text-secondary:#a3b1d1;--text-muted:#7482a6;--accent-primary:#00f0ff;--accent-secondary:#b6ff3b;--accent-gold:#ffb800;--accent-pink:#ff2bd6;--accent-text:#00f0ff;--ltf-text:#b6ff3b;--gold-text:#ffb800;--pink-text:#ff6be3;--on-accent:#05060d;--border-subtle:rgba(0,240,255,.12);--border-accent:rgba(0,240,255,.6);--grid-line:rgba(0,240,255,.05);--mesh-a:rgba(0,240,255,.14);--mesh-b:rgba(255,43,214,.14);--shadow-md:0 8px 32px rgba(0,0,0,.5);--shadow-lg:0 16px 48px rgba(0,0,0,.6);--shadow-glow:0 0 0 1px rgba(0,240,255,.5),0 0 24px rgba(0,240,255,.35),0 0 60px rgba(255,43,214,.18);--glow-soft:0 0 16px rgba(0,240,255,.3);--accent-wash:rgba(0,240,255,.08);--ltf-wash:rgba(182,255,59,.1);--gold-wash:rgba(255,184,0,.1);--pink-wash:rgba(255,43,214,.1);--track:rgba(163,177,209,.12);--scrim:rgba(2,3,8,.66);--chart-1:#00f0ff;--chart-2:#00a9b8;--chart-3:#3f7d9c;--chart-4:#56608f;--chart-5:#7482a6;--status-verified:#00f0ff;--status-outdated:#ff6be3;--status-unverified:#7482a6;--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-xl:24px}
+[data-theme="light"]{--bg-primary:#f0f2f5;--bg-secondary:#fff;--bg-card:#fff;--bg-card-hover:#f8f9fc;--bg-glass:rgba(255,255,255,.85);--bg-glass-light:rgba(0,0,0,.03);--bg-solid:#fff;--text-primary:#1a1a2e;--text-secondary:#4a4a6a;--text-muted:#636380;--accent-text:#00717a;--ltf-text:#3b6e00;--gold-text:#8a5800;--pink-text:#a8008f;--on-accent:#fff;--border-subtle:rgba(0,0,0,.09);--border-accent:rgba(0,160,175,.55);--grid-line:rgba(0,120,140,.05);--mesh-a:rgba(0,240,255,.08);--mesh-b:rgba(255,43,214,.06);--shadow-md:0 8px 32px rgba(0,0,0,.08);--shadow-lg:0 16px 48px rgba(0,0,0,.12);--shadow-glow:0 0 0 1px rgba(0,160,175,.45),0 8px 28px rgba(0,160,175,.16);--glow-soft:0 0 0 3px rgba(0,160,175,.14);--accent-wash:rgba(0,160,175,.08);--ltf-wash:rgba(80,150,0,.1);--gold-wash:rgba(200,130,0,.1);--pink-wash:rgba(200,0,170,.08);--track:rgba(26,26,46,.08);--scrim:rgba(20,20,40,.4);--chart-1:#00818b;--chart-2:#2aa3ad;--chart-3:#5b8fa8;--chart-4:#8a93b8;--chart-5:#b5bccf;--status-verified:#00717a;--status-outdated:#a8008f;--status-unverified:#636380}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg-primary);color:var(--text-primary);font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased}
+button,input,select{font-family:inherit}
+:focus-visible{outline:2px solid var(--accent-primary);outline-offset:2px}
+a{color:var(--accent-text)}
+a:hover{color:var(--text-primary)}
+input[type=range]{accent-color:var(--accent-primary)}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background:var(--track);border-radius:10px}
+@keyframes cr-rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes cr-shimmer{0%{opacity:.45}50%{opacity:.8}100%{opacity:.45}}
+@keyframes cr-in-right{from{transform:translateX(24px);opacity:0}to{transform:none;opacity:1}}
+@keyframes cr-in-up{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+@keyframes cr-fade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div data-screen-label="Dashboard" style="min-height:100vh;background-color:var(--bg-primary);background-image:radial-gradient(circle at 15% 20%,var(--mesh-a),transparent 45%),radial-gradient(circle at 85% 30%,var(--mesh-b),transparent 45%),linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);background-size:auto,auto,48px 48px,48px 48px;background-attachment:fixed;color:var(--text-primary)">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></symbol>
+<symbol id="i-plane" viewBox="0 0 24 24"><path d="M21 15.5v-2l-8-5V4a1.5 1.5 0 0 0-3 0v4.5l-8 5v2l8-2.5v4.5l-2 1.5V21l3.5-1 3.5 1v-2l-2-1.5V13z"></path></symbol>
+<symbol id="i-train" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="14" rx="3"></rect><path d="M5 10h14M9 21l1.5-4M15 21l-1.5-4"></path><circle cx="9" cy="13.5" r=".6"></circle><circle cx="15" cy="13.5" r=".6"></circle></symbol>
+<symbol id="i-flag" viewBox="0 0 24 24"><path d="M7 21V3l10 4-10 4"></path><path d="M3 21h10"></path></symbol>
+<symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M9 8h6M9 11h6M12.5 8a3 3 0 0 1 0 6H9l5 3.5"></path></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"></path></symbol>
+<symbol id="i-fuel" viewBox="0 0 24 24"><path d="M5 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M3 21h14M8 7h4v4H8zM15 9l3 2v6.5a1.5 1.5 0 0 0 3 0V8l-3-3"></path></symbol>
+<symbol id="i-dine" viewBox="0 0 24 24"><path d="M6 3v6a2 2 0 0 0 4 0V3M8 11v10M17 21V3c-2.5 1.5-3.5 5-3.5 8h3.5"></path></symbol>
+<symbol id="i-film" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M7 5v14M17 5v14M3 9.5h4M3 14.5h4M17 9.5h4M17 14.5h4"></path></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l2 5.5L19.5 11 14 13l-2 5.5-2-5.5L4.5 11 10 8.5z"></path></symbol>
+<symbol id="i-crown" viewBox="0 0 24 24"><path d="M4 8l4 4 4-6 4 6 4-4-1.5 10h-13zM5.5 21h13"></path></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></symbol>
+<symbol id="i-compare" viewBox="0 0 24 24"><rect x="3" y="5" width="7" height="14" rx="1.5"></rect><rect x="14" y="5" width="7" height="14" rx="1.5"></rect><path d="M12 3v18"></path></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"></rect><rect x="13" y="4" width="7" height="7" rx="1.5"></rect><rect x="4" y="13" width="7" height="7" rx="1.5"></rect><rect x="13" y="13" width="7" height="7" rx="1.5"></rect></symbol>
+<symbol id="i-list" viewBox="0 0 24 24"><rect x="4" y="5" width="4" height="4" rx="1"></rect><rect x="4" y="15" width="4" height="4" rx="1"></rect><path d="M11 7h9M11 17h9"></path></symbol>
+<symbol id="i-table" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9.5h18M3 15h18M9 4v16"></path></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"></path></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path></symbol>
+<symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"></path></symbol>
+<symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></symbol>
+<symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></symbol>
+<symbol id="i-down" viewBox="0 0 24 24"><path d="M5 9l7 7 7-7"></path></symbol>
+<symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 5h16l-6 7.5V19l-4 1.5v-8z"></path></symbol>
+<symbol id="i-sort" viewBox="0 0 24 24"><path d="M7 4v16M3.5 16.5L7 20l3.5-3.5M17 20V4M13.5 7.5L17 4l3.5 3.5"></path></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5.5c0 4.5-3 7.7-7 9.5-4-1.8-7-5-7-9.5V6z"></path><path d="M9 12l2 2 4-4"></path></symbol>
+<symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 9.5L12 4l9 5.5M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20.5h18"></path></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"></path><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01"></path></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path></symbol>
+<symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"></path></symbol>
+<symbol id="i-flip" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3L20 9M20 4v5h-5M20 12a8 8 0 0 1-14 5.3L4 15M4 20v-5h5"></path></symbol>
+<symbol id="i-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><path d="M12 12l6-6"></path></symbol>
+<symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h.01"></path></symbol>
+</svg>
+
+<header style="position:sticky;top:0;z-index:40;background:var(--bg-glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border-subtle)">
+  <div style="max-width:1480px;margin:0 auto;padding:12px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px">
+    <a href="./" aria-label="CardRadar home" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text-primary);order:0;flex:none">
+      <img src="public/logo.svg" alt="" width="34" height="34" style="width:34px;height:34px;border-radius:8px">
+      <span style="display:flex;flex-direction:column;line-height:1.1">
+        <span style="font:700 18px 'Space Grotesk',Inter,sans-serif;letter-spacing:-.01em">CardRadar</span>
+        <span style="font-size:11px;color:var(--text-muted);letter-spacing:.04em">Indian Credit Card Guide</span>
+      </span>
+    </a>
+    <div style="position:relative;flex:{{ searchFlex }};order:{{ searchOrder }};min-width:0">
+      <label for="cr-search" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Search cards, banks and benefits</label>
+      <div style="display:flex;align-items:center;gap:8px;height:44px;padding:0 12px;border-radius:var(--radius-md);border:1px solid var(--border-subtle);background:var(--bg-card)">
+        <svg width="18" height="18" aria-hidden="true" style="flex:none;fill:none;stroke:var(--text-muted);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><use href="#i-search"></use></svg>
+        <input id="cr-search" ref="{{ searchRef }}" type="search" autocomplete="off" role="combobox" aria-expanded="{{ suggestExpanded }}" aria-controls="cr-suggest" placeholder="Search cards, banks, benefits" value="{{ qInput }}" onChange="{{ onQ }}" onFocus="{{ onQFocus }}" onBlur="{{ onQBlur }}" onKeyDown="{{ onQKey }}" style="flex:1;min-width:0;height:100%;border:0;outline:0;background:transparent;color:var(--text-primary);font-size:14px">
+        <kbd aria-hidden="true" style="flex:none;font:600 11px Inter;color:var(--text-muted);border:1px solid var(--border-subtle);border-radius:6px;padding:2px 7px">/</kbd>
+      </div>
+      <sc-if value="{{ suggestShow }}" hint-placeholder-val="{{ false }}">
+        <div id="cr-suggest" role="listbox" style="position:absolute;left:0;right:0;top:50px;z-index:50;background:var(--bg-solid);border:1px solid var(--border-subtle);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);padding:8px;display:flex;flex-direction:column;gap:2px;max-height:60vh;overflow:auto">
+          <sc-for list="{{ suggestions }}" as="sg" hint-placeholder-count="4">
+            <button type="button" role="option" aria-selected="false" onMouseDown="{{ sg.pick }}" style="display:flex;align-items:center;gap:10px;min-height:44px;padding:6px 10px;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--text-primary);text-align:left;cursor:pointer;font-size:14px" style-hover="background:var(--accent-wash)">
+              <svg width="18" height="18" aria-hidden="true" style="flex:none;fill:none;stroke:var(--accent-text);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><use href="#i-{{ sg.icon }}"></use></svg>
+              <span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ sg.label }}</span>
+              <span style="flex:none;font-size:12px;color:var(--text-muted)">{{ sg.kind }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;margin-left:auto;order:2">
+      <button type="button" onClick="{{ openQuiz }}" style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 14px;border-radius:var(--radius-sm);border:1px solid var(--accent-primary);background:var(--accent-wash);color:var(--accent-text);font-weight:600;font-size:14px;cursor:pointer;transition:box-shadow 200ms ease-out" style-hover="box-shadow:var(--glow-soft)">
+        <svg width="18" height="18" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round"><use href="#i-spark"></use></svg>
+        <sc-if value="{{ showLabels }}" hint-placeholder-val="{{ true }}"><span>Find my card</span></sc-if>
+      </button>
+      <button type="button" onClick="{{ openShort }}" aria-label="{{ shortAria }}" title="Shortlist" style="position:relative;width:44px;height:44px;display:grid;place-items:center;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);background:transparent;color:var(--text-primary);cursor:pointer" style-hover="border-color:var(--border-accent)">
+        <svg width="20" height="20" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round"><use href="#i-heart"></use></svg>
+        <sc-if value="{{ hasSaved }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:4px;right:4px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--accent-pink);color:#fff;font:700 11px/18px Inter;text-align:center">{{ savedCount }}</span></sc-if>
+      </button>
+      <button type="button" onClick="{{ toggleTheme }}" aria-label="{{ themeAria }}" title="{{ themeAria }}" style="width:44px;height:44px;display:grid;place-items:center;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);background:transparent;color:var(--text-primary);cursor:pointer" style-hover="border-color:var(--border-accent)">
+        <svg width="20" height="20" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><use href="#i-{{ themeIcon }}"></use></svg>
+      </button>
+      <button type="button" data-needs-server onClick="{{ toggleChat }}" aria-label="Ask CardRadar AI" title="Ask CardRadar AI" aria-expanded="{{ chatExpanded }}" style="width:44px;height:44px;display:grid;place-items:center;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);background:transparent;color:var(--text-primary);cursor:pointer" style-hover="border-color:var(--border-accent)">
+        <svg width="20" height="20" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><use href="#i-chat"></use></svg>
+      </button>
+      <button type="button" data-needs-server onClick="{{ openAccount }}" aria-label="{{ accountAria }}" style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 12px;border-radius:999px;border:1px solid {{ accountBorder }};background:transparent;color:var(--text-primary);cursor:pointer;font-size:13px;font-weight:600">
+        <svg width="18" height="18" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round"><use href="#i-user"></use></svg>
+        <sc-if value="{{ isPro }}" hint-placeholder-val="{{ false }}"><span style="padding:2px 7px;border-radius:6px;background:var(--gold-wash);color:var(--gold-text);font:700 11px 'Space Grotesk';letter-spacing:.06em">PRO</span></sc-if>
+        <sc-if value="{{ notProLabel }}" hint-placeholder-val="{{ true }}"><span>Account</span></sc-if>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div style="max-width:1480px;margin:0 auto;padding:24px;display:grid;grid-template-columns:{{ shellCols }};gap:24px;align-items:start">
+
+  <sc-if value="{{ sheetScrim }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeSheet }}" style="position:fixed;inset:0;z-index:55;background:var(--scrim);animation:cr-fade 180ms ease-out"></div>
+  </sc-if>
+
+  <aside ref="{{ railRef }}" aria-label="Filters" role="{{ railRole }}" aria-modal="{{ railModal }}" style="{{ railStyle }}">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 16px 12px;border-bottom:1px solid var(--border-subtle)">
+      <svg width="18" height="18" aria-hidden="true" style="fill:none;stroke:var(--accent-text);stroke-width:1.8;stroke-linejoin:round"><use href="#i-filter"></use></svg>
+      <h2 style="margin:0;font:600 16px 'Space Grotesk',Inter;flex:1">Filters</h2>
+      <sc-if value="{{ hasActive }}" hint-placeholder-val="{{ false }}">
+        <button type="button" onClick="{{ clearAll }}" style="height:32px;padding:0 10px;border:0;background:transparent;color:var(--accent-text);font-size:13px;font-weight:600;cursor:pointer;border-radius:6px" style-hover="background:var(--accent-wash)">Clear all</button>
+      </sc-if>
+      <sc-if value="{{ isSheet }}" hint-placeholder-val="{{ false }}">
+        <button type="button" onClick="{{ closeSheet }}" aria-label="Close filters" style="width:44px;height:44px;display:grid;place-items:center;border:0;background:transparent;color:var(--text-primary);cursor:pointer;border-radius:8px">
+          <svg width="20" height="20" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round"><use href="#i-close"></use></svg>
+        </button>
+      </sc-if>
+    </div>
+    <div style="flex:1;overflow:auto;padding:8px 16px 16px;display:flex;flex-direction:column;gap:20px">
+
+      <section aria-labelledby="f-ben" style="display:flex;flex-direction:column;gap:10px;padding-top:8px">
+        <h3 id="f-ben" style="margin:0;font:600 12px Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)">Benefits</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+          <sc-for list="{{ benefitOpts }}" as="b" hint-placeholder-count="10">
+            <button type="button" aria-pressed="{{ b.pressed }}" disabled="{{ b.disabled }}" onClick="{{ b.toggle }}" title="{{ b.title }}" style="display:flex;align-items:center;gap:6px;min-height:{{ rowH }}px;padding:6px 8px;border-radius:var(--radius-sm);border:1px solid {{ b.border }};background:{{ b.bg }};color:{{ b.color }};opacity:{{ b.opacity }};cursor:{{ b.cursor }};font-size:12.5px;font-weight:500;text-align:left;transition:border-color 150ms ease-out,background 150ms ease-out">
+              <svg width="16" height="16" aria-hidden="true" style="flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><use href="#i-{{ b.icon }}"></use></svg>
+              <span style="flex:1;min-width:0;line-height:1.2">{{ b.label }}</span>
+              <span style="flex:none;font:600 11px 'Space Grotesk';font-variant-numeric:tabular-nums;color:var(--text-muted)">{{ b.count }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </section>
+
+      <section aria-labelledby="f-fee" style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
+          <h3 id="f-fee" style="margin:0;font:600 12px Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)">Annual fee</h3>
+          <span style="font:600 13px 'Space Grotesk';font-variant-numeric:tabular-nums;color:var(--text-primary)">{{ feeReadout }}</span>
+        </div>
+        <label style="display:grid;grid-template-columns:34px 1fr;align-items:center;gap:8px;font-size:12px;color:var(--text-secondary)">Min
+          <input type="range" min="0" max="{{ feeMax }}" step="500" value="{{ feeLo }}" onChange="{{ onFeeLo }}" aria-valuetext="{{ feeLoText }}" style="width:100%;height:28px">
+        </label>
+        <label style="display:grid;grid-template-columns:34px 1fr;align-items:center;gap:8px;font-size:12px;color:var(--text-secondary)">Max
+          <input type="range" min="0" max="{{ feeMax }}" step="500" value="{{ feeHi }}" onChange="{{ onFeeHi }}" aria-valuetext="{{ feeHiText }}" style="width:100%;height:28px">
+        </label>
+      </section>
+
+      <section aria-labelledby="f-inc" style="display:flex;flex-direction:column;gap:8px">
+        <h3 id="f-inc" style="margin:0;font:600 12px Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)">Cards I can get</h3>
+        <label for="cr-income" style="font-size:13px;color:var(--text-secondary)">Your yearly income</label>
+        <div style="display:flex;align-items:center;gap:6px;height:44px;padding:0 12px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);background:var(--bg-card)">
+          <span style="color:var(--text-muted);font-weight:600">₹</span>
+          <input id="cr-income" type="text" inputmode="numeric" autocomplete="off" placeholder="e.g. 8,00,000" value="{{ incomeInput }}" onChange="{{ onIncome }}" aria-describedby="cr-income-note" style="flex:1;min-width:0;height:100%;border:0;outline:0;background:transparent;color:var(--text-primary);font:600 14px 'Space Grotesk';font-variant-numeric:tabular-nums">
+        </div>
+        <p id="cr-income-note" style="margin:0;font-size:12px;line-height:1.45;color:var(--text-muted)">{{ incomeNote }}</p>
+      </section>
+
+      <section aria-labelledby="f-bank" style="display:flex;flex-direction:column;gap:8px">
+        <h3 id="f-bank" style="margin:0;font:600 12px Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)">Banks</h3>
+        <input ref="{{ bankSearchRef }}" type="search" aria-label="Search banks" placeholder="Search 25 banks" value="{{ bankQ }}" onChange="{{ onBankQ }}" style="height:40px;padding:0 12px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);background:var(--bg-card);color:var(--text-primary);font-size:13px;outline:0">
+        <div role="group" aria-label="Banks" style="display:flex;flex-direction:column;gap:2px;max-height:252px;overflow:auto;margin:0 -6px;padding:0 6px">
+          <sc-for list="{{ bankOpts }}" as="o" hint-placeholder-count="8">
+            <button type="button" role="checkbox" aria-checked="{{ o.pressed }}" disabled="{{ o.disabled }}" onClick="{{ o.toggle }}" style="display:flex;align-items:center;gap:10px;min-height:{{ rowH }}px;padding:4px 6px;border:0;border-radius:6px;background:transparent;color:var(--text-primary);opacity:{{ o.opacity }};cursor:{{ o.cursor }};font-size:13px;text-align:left" style-hover="background:var(--bg-glass-light)">
+              <span aria-hidden="true" style="flex:none;width:16px;height:16px;border-radius:4px;border:1.5px solid {{ o.box }};background:{{ o.boxBg }};display:grid;place-items:center;color:var(--on-accent);font-size:11px;font-weight:800;line-height:1">{{ o.tick }}</span>
+              <span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ o.label }}</span>
+              <span style="flex:none;font:600 11px 'Space Grotesk';font-variant-numeric:tabular-nums;color:var(--text-muted)">{{ o.count }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </section>
+
+      <section aria-labelledby="f-net" style="display:flex;flex-direction:column;gap:8px">
+        <h3 id="f-net" style="margin:0;font:600 12px Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)">Network</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <sc-for list="{{ netOpts }}" as="o" hint-placeholder-count="5">
+            <button type="button" aria-pressed="{{ o.pressed }}" disabled="{{ o.disabled }}" onClick="{{ o.toggle }}" style="display:inline-flex;align-items:center;gap:6px;min-height:{{ rowH }}px;padding:0 10px;border-radius:999px;border:1px solid {{ o.border }};background:{{ o.bg }};color:{{ o.color }};opacity:{{ o.opacity }};cursor:{{ o.cursor }};font-size:12.5px;font-weight:500">
+              {{ o.label }}<span style="font:600 11px 'Space Grotesk';color:var(--text-muted)">{{ o.count }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </section>
+
+      <section aria-labelledby="f-tier" style="display:flex;flex-direction:column;gap:8px">
+        <h3 id="f-tier" style="margin:0;font:600 12px Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)">Tier</h3>
+        <div role="group" aria-label="Tier" style="display:flex;flex-direction:column;gap:2px;margin:0 -6px">
+          <sc-for list="{{ tierOpts }}" as="o" hint-placeholder-count="5">
+            <button type="button" role="checkbox" aria-checked="{{ o.pressed }}" disabled="{{ o.disabled }}" onClick="{{ o.toggle }}" style="display:flex;align-items:center;gap:10px;min-height:{{ rowH }}px;padding:4px 6px;border:0;border-radius:6px;background:transparent;color:var(--text-primary);opacity:{{ o.opacity }};cursor:{{ o.cursor }};font-size:13px;text-align:left" style-hover="background:var(--bg-glass-light)">
+              <span aria-hidden="true" style="flex:none;width:16px;height:16px;border-radius:4px;border:1.5px solid {{ o.box }};background:{{ o.boxBg }};display:grid;place-items:center;color:var(--on-accent);font-size:11px;font-weight:800;line-height:1">{{ o.tick }}</span>
+              <span style="flex:1">{{ o.label }}</span>
+              <span style="font:600 11px 'Space Grotesk';color:var(--text-muted)">{{ o.count }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </section>
+
+      <section aria-labelledby="f-data" style="display:flex;flex-direction:column;gap:4px">
+        <h3 id="f-data" style="margin:0 0 4px;font:600 12px Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)">Data</h3>
+        <sc-for list="{{ switchOpts }}" as="o" hint-placeholder-count="2">
+          <button type="button" role="switch" aria-checked="{{ o.pressed }}" disabled="{{ o.disabled }}" onClick="{{ o.toggle }}" style="display:flex;align-items:center;gap:10px;min-height:{{ rowH }}px;padding:4px 0;border:0;background:transparent;color:var(--text-primary);opacity:{{ o.opacity }};cursor:{{ o.cursor }};font-size:13px;text-align:left">
+            <span aria-hidden="true" style="flex:none;width:34px;height:20px;border-radius:10px;background:{{ o.trackBg }};border:1px solid {{ o.box }};position:relative;transition:background 150ms ease-out">
+              <span style="position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:{{ o.knob }};transform:translateX({{ o.knobX }}px);transition:transform 150ms ease-out"></span>
+            </span>
+            <span style="flex:1">{{ o.label }}</span>
+            <span style="font:600 11px 'Space Grotesk';color:var(--text-muted)">{{ o.count }}</span>
+          </button>
+        </sc-for>
+      </section>
+    </div>
+    <sc-if value="{{ isSheet }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:12px 16px;border-top:1px solid var(--border-subtle);display:flex;gap:8px">
+        <button type="button" onClick="{{ clearAll }}" style="height:48px;padding:0 16px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);background:transparent;color:var(--text-primary);font-weight:600;cursor:pointer">Clear</button>
+        <button type="button" onClick="{{ closeSheet }}" style="flex:1;height:48px;border-radius:var(--radius-sm);border:1px solid var(--accent-primary);background:var(--accent-primary);color:var(--on-accent);font-weight:700;font-size:15px;cursor:pointer">{{ applyLabel }}</button>
+      </div>
+    </sc-if>
+  </aside>
+
+  <main style="min-width:0;display:flex;flex-direction:column;gap:16px">
+
+    <section aria-labelledby="radar-title" style="background:var(--bg-glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden">
+      <div style="display:flex;align-items:center;gap:12px;padding:14px 16px">
+        <svg width="20" height="20" aria-hidden="true" style="flex:none;fill:none;stroke:var(--accent-text);stroke-width:1.8;stroke-linecap:round"><use href="#i-radar"></use></svg>
+        <div style="flex:1;min-width:0">
+          <h2 id="radar-title" style="margin:0;font:600 16px 'Space Grotesk',Inter">Radar</h2>
+          <p style="margin:2px 0 0;font-size:12.5px;color:var(--text-muted)">{{ radarSub }}</p>
+        </div>
+        <button type="button" onClick="{{ toggleRadar }}" aria-expanded="{{ radarExpanded }}" aria-controls="radar-body" style="display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);background:transparent;color:var(--text-secondary);font-size:13px;cursor:pointer" style-hover="border-color:var(--border-accent)">
+          {{ radarToggleLabel }}
+          <svg width="16" height="16" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;transform:rotate({{ radarChevron }}deg);transition:transform 200ms ease-out"><use href="#i-down"></use></svg>
+        </button>
+      </div>
+      <sc-if value="{{ radarOpen }}" hint-placeholder-val="{{ true }}">
+        <div id="radar-body" style="padding:0 16px 16px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:8px">
+            <sc-for list="{{ statTiles }}" as="t" hint-placeholder-count="7">
+              <button type="button" aria-pressed="{{ t.pressed }}" onClick="{{ t.onClick }}" title="{{ t.title }}" style="display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:12px;border-radius:var(--radius-md);border:1px solid {{ t.border }};background:{{ t.bg }};box-shadow:{{ t.shadow }};color:var(--text-primary);cursor:pointer;text-align:left;transition:border-color 150ms ease-out,box-shadow 200ms ease-out" style-hover="border-color:var(--border-accent)">
+                <span style="font:700 26px/1.1 'Space Grotesk',Inter;font-variant-numeric:tabular-nums;color:{{ t.color }}">{{ t.value }}</span>
+                <span style="font-size:12px;color:var(--text-secondary)">{{ t.label }}</span>
+              </button>
+            </sc-for>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px">
+
+            <figure style="margin:0;padding:14px;border-radius:var(--radius-md);border:1px solid var(--border-subtle);background:var(--bg-glass-light);display:flex;flex-direction:column;gap:10px;min-width:0">
+              <figcaption style="display:flex;justify-content:space-between;gap:8px;align-items:baseline">
+                <span style="font:600 13px 'Space Grotesk'">Annual fee distribution</span>
+                <span aria-live="polite" style="font-size:12px;color:var(--text-muted);text-align:right">{{ tipFee }}</span>
+              </figcaption>
+              <div role="group" aria-label="Annual fee distribution. Select a bar to filter by fee range." style="display:flex;align-items:flex-end;gap:8px;height:132px">
+                <sc-for list="{{ feeBars }}" as="bar" hint-placeholder-count="5">
+                  <button type="button" aria-pressed="{{ bar.pressed }}" aria-label="{{ bar.aria }}" onClick="{{ bar.onClick }}" onMouseEnter="{{ bar.onTip }}" onFocus="{{ bar.onTip }}" onMouseLeave="{{ bar.offTip }}" onBlur="{{ bar.offTip }}" style="flex:1;min-width:0;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:stretch;gap:4px;padding:0;border:0;background:transparent;cursor:pointer;color:var(--text-primary)">
+                    <span style="font:600 12px 'Space Grotesk';font-variant-numeric:tabular-nums;text-align:center">{{ bar.count }}</span>
+                    <span style="display:block;height:{{ bar.pct }}%;min-height:3px;border-radius:6px 6px 2px 2px;background:{{ bar.fill }};box-shadow:{{ bar.shadow }};transition:height 250ms ease-out"></span>
+                    <span style="font-size:11px;color:{{ bar.labelColor }};text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ bar.label }}</span>
+                  </button>
+                </sc-for>
+              </div>
+              <table style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">
+                <caption>Cards by annual fee</caption>
+                <thead><tr><th scope="col">Fee range</th><th scope="col">Cards</th></tr></thead>
+                <tbody><sc-for list="{{ feeBars }}" as="bar" hint-placeholder-count="0"><tr><td>{{ bar.label }}</td><td>{{ bar.count }}</td></tr></sc-for></tbody>
+              </table>
+            </figure>
+
+            <figure style="margin:0;padding:14px;border-radius:var(--radius-md);border:1px solid var(--border-subtle);background:var(--bg-glass-light);display:flex;flex-direction:column;gap:8px;min-width:0">
+              <figcaption style="display:flex;justify-content:space-between;gap:8px;align-items:baseline">
+                <span style="font:600 13px 'Space Grotesk'">Cards by bank</span>
+                <span aria-live="polite" style="font-size:12px;color:var(--text-muted);text-align:right">{{ tipBank }}</span>
+              </figcaption>
+              <div role="group" aria-label="Cards by bank, top 8. Select a bar to filter by that bank." style="display:flex;flex-direction:column;gap:3px">
+                <sc-for list="{{ bankBars }}" as="bar" hint-placeholder-count="8">
+                  <button type="button" aria-pressed="{{ bar.pressed }}" aria-label="{{ bar.aria }}" onClick="{{ bar.onClick }}" onMouseEnter="{{ bar.onTip }}" onFocus="{{ bar.onTip }}" onMouseLeave="{{ bar.offTip }}" onBlur="{{ bar.offTip }}" style="display:grid;grid-template-columns:minmax(0,108px) 1fr 26px;align-items:center;gap:8px;min-height:22px;padding:0;border:0;background:transparent;color:var(--text-secondary);cursor:pointer;font-size:12px;text-align:left">
+                    <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:{{ bar.labelColor }}">{{ bar.label }}</span>
+                    <span style="height:8px;border-radius:4px;background:var(--track);overflow:hidden"><span style="display:block;height:100%;width:{{ bar.pct }}%;border-radius:4px;background:{{ bar.fill }};transition:width 250ms ease-out"></span></span>
+                    <span style="font:600 12px 'Space Grotesk';font-variant-numeric:tabular-nums;text-align:right;color:var(--text-primary)">{{ bar.count }}</span>
+                  </button>
+                </sc-for>
+              </div>
+              <sc-if value="{{ hasMoreBanks }}" hint-placeholder-val="{{ false }}">
+                <button type="button" onClick="{{ openBankFilter }}" style="align-self:flex-start;height:32px;padding:0 10px;border-radius:6px;border:1px solid var(--border-subtle);background:transparent;color:var(--accent-text);font-size:12px;font-weight:600;cursor:pointer">{{ moreBanksLabel }}</button>
+              </sc-if>
+              <table style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">
+                <caption>Cards by bank</caption>
+                <thead><tr><th scope="col">Bank</th><th scope="col">Cards</th></tr></thead>
+                <tbody><sc-for list="{{ bankBars }}" as="bar" hint-placeholder-count="0"><tr><td>{{ bar.label }}</td><td>{{ bar.count }}</td></tr></sc-for></tbody>
+              </table>
+            </figure>
+
+            <figure style="margin:0;padding:14px;border-radius:var(--radius-md);border:1px solid var(--border-subtle);background:var(--bg-glass-light);display:flex;flex-direction:column;gap:10px;min-width:0">
+              <figcaption style="display:flex;justify-content:space-between;gap:8px;align-items:baseline">
+                <span style="font:600 13px 'Space Grotesk'">Network split</span>
+                <span aria-live="polite" style="font-size:12px;color:var(--text-muted);text-align:right">{{ tipNet }}</span>
+              </figcaption>
+              <div aria-hidden="true" style="display:flex;height:14px;border-radius:7px;overflow:hidden;background:var(--track);gap:2px">
+                <sc-for list="{{ netBars }}" as="bar" hint-placeholder-count="5"><span style="display:block;width:{{ bar.pct }}%;background:{{ bar.fill }};transition:width 250ms ease-out"></span></sc-for>
+              </div>
+              <div role="group" aria-label="Network split. Select a network to filter." style="display:flex;flex-wrap:wrap;gap:6px">
+                <sc-for list="{{ netBars }}" as="bar" hint-placeholder-count="5">
+                  <button type="button" aria-pressed="{{ bar.pressed }}" aria-label="{{ bar.aria }}" disabled="{{ bar.disabled }}" onClick="{{ bar.onClick }}" onMouseEnter="{{ bar.onTip }}" onFocus="{{ bar.onTip }}" onMouseLeave="{{ bar.offTip }}" onBlur="{{ bar.offTip }}" style="display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 10px;border-radius:999px;border:1px solid {{ bar.border }};background:transparent;color:var(--text-primary);opacity:{{ bar.opacity }};cursor:pointer;font-size:12px">
+                    <span aria-hidden="true" style="width:8px;height:8px;border-radius:2px;background:{{ bar.fill }}"></span>{{ bar.label }}<span style="font:600 12px 'Space Grotesk';color:var(--text-muted)">{{ bar.count }}</span>
+                  </button>
+                </sc-for>
+              </div>
+              <p style="margin:0;font-size:11.5px;color:var(--text-muted)">Some cards are issued on more than one network, so totals can exceed the card count.</p>
+              <table style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">
+                <caption>Cards by network</caption>
+                <thead><tr><th scope="col">Network</th><th scope="col">Cards</th></tr></thead>
+                <tbody><sc-for list="{{ netBars }}" as="bar" hint-placeholder-count="0"><tr><td>{{ bar.label }}</td><td>{{ bar.count }}</td></tr></sc-for></tbody>
+              </table>
+            </figure>
+
+            <figure style="margin:0;padding:14px;border-radius:var(--radius-md);border:1px solid var(--border-subtle);background:var(--bg-glass-light);display:flex;flex-direction:column;gap:10px;min-width:0">
+              <figcaption style="display:flex;justify-content:space-between;gap:8px;align-items:baseline">
+                <span style="font:600 13px 'Space Grotesk'">Verification</span>
+                <span aria-live="polite" style="font-size:12px;color:var(--text-muted);text-align:right">{{ tipVer }}</span>
+              </figcaption>
+              <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+                <div role="img" aria-label="{{ ringAria }}" style="flex:none;width:112px;height:112px;border-radius:50%;background:{{ ringBg }};display:grid;place-items:center">
+                  <div style="width:84px;height:84px;border-radius:50%;background:var(--bg-card);display:flex;flex-direction:column;align-items:center;justify-content:center">
+                    <span style="font:700 22px 'Space Grotesk';font-variant-numeric:tabular-nums">{{ verifiedPct }}</span>
+                    <span style="font-size:10.5px;color:var(--text-muted)">verified</span>
+                  </div>
+                </div>
+                <div role="group" aria-label="Verification status. Select one to filter." style="display:flex;flex-direction:column;gap:4px;flex:1;min-width:150px">
+                  <sc-for list="{{ verBars }}" as="bar" hint-placeholder-count="3">
+                    <button type="button" aria-pressed="{{ bar.pressed }}" aria-label="{{ bar.aria }}" disabled="{{ bar.disabled }}" onClick="{{ bar.onClick }}" onMouseEnter="{{ bar.onTip }}" onFocus="{{ bar.onTip }}" onMouseLeave="{{ bar.offTip }}" onBlur="{{ bar.offTip }}" style="display:flex;align-items:center;gap:8px;min-height:30px;padding:0 8px;border-radius:6px;border:1px solid {{ bar.border }};background:transparent;color:var(--text-primary);opacity:{{ bar.opacity }};cursor:{{ bar.cursor }};font-size:12.5px;text-align:left">
+                      <span aria-hidden="true" style="width:10px;height:10px;border-radius:50%;background:{{ bar.fill }}"></span>
+                      <span style="flex:1">{{ bar.label }}</span>
+                      <span style="font:600 12px 'Space Grotesk';font-variant-numeric:tabular-nums">{{ bar.count }}</span>
+                    </button>
+                  </sc-for>
+                </div>
+              </div>
+              <table style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">
+                <caption>Cards by verification status</caption>
+                <thead><tr><th scope="col">Status</th><th scope="col">Cards</th></tr></thead>
+                <tbody><sc-for list="{{ verBars }}" as="bar" hint-placeholder-count="0"><tr><td>{{ bar.label }}</td><td>{{ bar.count }}</td></tr></sc-for></tbody>
+              </table>
+            </figure>
+          </div>
+        </div>
+      </sc-if>
+    </section>
+
+    <section aria-label="Results" style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px">
+        <p aria-live="polite" style="margin:0;font-size:14px;color:var(--text-secondary);flex:1 1 auto;min-width:140px"><strong style="font:700 20px 'Space Grotesk';font-variant-numeric:tabular-nums;color:var(--text-primary)">{{ resultCount }}</strong> of {{ totalCount }} cards</p>
+        <sc-if value="{{ showFilterBtn }}" hint-placeholder-val="{{ false }}">
+          <button type="button" onClick="{{ openSheet }}" aria-haspopup="dialog" style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 14px;border-radius:var(--radius-sm);border:1px solid var(--border-accent);background:var(--accent-wash);color:var(--accent-text);font-weight:600;font-size:14px;cursor:pointer">
+            <svg width="18" height="18" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round"><use href="#i-filter"></use></svg>{{ filterBtnLabel }}
+          </button>
+        </sc-if>
+        <div role="radiogroup" aria-label="Card type" style="display:inline-flex;padding:3px;border-radius:10px;border:1px solid var(--border-subtle);background:var(--bg-card);gap:2px">
+          <sc-for list="{{ segOpts }}" as="o" hint-placeholder-count="3">
+            <button type="button" role="radio" aria-checked="{{ o.pressed }}" onClick="{{ o.onClick }}" style="height:38px;padding:0 12px;border-radius:7px;border:0;background:{{ o.bg }};color:{{ o.color }};font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap">{{ o.label }}</button>
+          </sc-for>
+        </div>
+        <label style="display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 10px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);background:var(--bg-card);color:var(--text-secondary);font-size:13px">
+          <svg width="16" height="16" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><use href="#i-sort"></use></svg>
+          <span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Sort by</span>
+          <select value="{{ sortVal }}" onChange="{{ onSort }}" style="border:0;outline:0;background:transparent;color:var(--text-primary);font-size:13px;font-weight:500;cursor:pointer;height:100%">
+            <option value="popularity">Popularity</option>
+            <option value="fee-low">Fee: low to high</option>
+            <option value="fee-high">Fee: high to low</option>
+            <option value="reward">Reward rate</option>
+            <option value="name">Name A–Z</option>
+            <option value="bank">Bank A–Z</option>
+            <option value="custom" disabled="{{ true }}">Table column</option>
+          </select>
+        </label>
+        <div role="radiogroup" aria-label="View" style="display:inline-flex;padding:3px;border-radius:10px;border:1px solid var(--border-subtle);background:var(--bg-card);gap:2px">
+          <sc-for list="{{ viewOpts }}" as="o" hint-placeholder-count="3">
+            <button type="button" role="radio" aria-checked="{{ o.pressed }}" aria-label="{{ o.label }}" title="{{ o.label }}" onClick="{{ o.onClick }}" style="width:40px;height:38px;display:grid;place-items:center;border-radius:7px;border:0;background:{{ o.bg }};color:{{ o.color }};cursor:pointer">
+              <svg width="18" height="18" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><use href="#i-{{ o.icon }}"></use></svg>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+      <sc-if value="{{ hasPills }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px">
+          <sc-for list="{{ pills }}" as="p" hint-placeholder-count="2">
+            <span style="display:inline-flex;align-items:center;gap:2px;height:32px;padding:0 4px 0 12px;border-radius:999px;border:1px solid var(--border-accent);background:var(--accent-wash);color:var(--text-primary);font-size:12.5px;font-weight:500">
+              {{ p.label }}
+              <button type="button" onClick="{{ p.remove }}" aria-label="{{ p.aria }}" style="width:28px;height:28px;display:grid;place-items:center;border:0;border-radius:50%;background:transparent;color:var(--text-secondary);cursor:pointer" style-hover="background:var(--accent-wash)">
+                <svg width="14" height="14" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round"><use href="#i-close"></use></svg>
+              </button>
+            </span>
+          </sc-for>
+          <button type="button" onClick="{{ clearAll }}" style="height:32px;padding:0 10px;border:0;background:transparent;color:var(--accent-text);font-size:13px;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Clear all</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showSkelGrid }}" hint-placeholder-val="{{ true }}">
+        <div aria-hidden="true" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px">
+          <sc-for list="{{ skel }}" as="k" hint-placeholder-count="6"><div style="height:392px;border-radius:var(--radius-lg);border:1px solid var(--border-subtle);background:var(--bg-card);animation:cr-shimmer 1.4s ease-in-out infinite"></div></sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{ showSkelRows }}" hint-placeholder-val="{{ false }}">
+        <div aria-hidden="true" style="display:flex;flex-direction:column;gap:8px">
+          <sc-for list="{{ skel }}" as="k" hint-placeholder-count="6"><div style="height:72px;border-radius:var(--radius-md);border:1px solid var(--border-subtle);background:var(--bg-card);animation:cr-shimmer 1.4s ease-in-out infinite"></div></sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showError }}" hint-placeholder-val="{{ false }}">
+        <div role="alert" style="padding:40px 24px;border-radius:var(--radius-lg);border:1px solid var(--border-subtle);background:var(--bg-card);display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+          <h3 style="margin:0;font:600 18px 'Space Grotesk'">Couldn’t load the card list</h3>
+          <p style="margin:0;color:var(--text-secondary);font-size:14px">{{ errorText }}</p>
+          <button type="button" onClick="{{ retry }}" style="height:44px;padding:0 20px;border-radius:var(--radius-sm);border:1px solid var(--accent-primary);background:var(--accent-wash);color:var(--accent-text);font-weight:600;cursor:pointer">Retry</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:40px 24px;border-radius:var(--radius-lg);border:1px dashed var(--border-accent);background:var(--bg-glass);display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+          <h3 style="margin:0;font:600 20px 'Space Grotesk'">No cards match</h3>
+          <p style="margin:0;color:var(--text-secondary);font-size:14px;max-width:44ch;text-wrap:pretty">These filters rule out every card. Loosen one of them:</p>
+          <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px">
+            <sc-for list="{{ emptySuggest }}" as="e" hint-placeholder-count="3">
+              <button type="button" onClick="{{ e.onClick }}" style="height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--border-accent);background:var(--accent-wash);color:var(--text-primary);font-size:13px;cursor:pointer">Remove <em style="font-style:italic;color:var(--accent-text)">{{ e.label }}</em> → {{ e.count }} cards</button>
+            </sc-for>
+          </div>
+          <button type="button" onClick="{{ clearAll }}" style="height:44px;padding:0 20px;border-radius:var(--radius-sm);border:1px solid var(--accent-primary);background:var(--accent-primary);color:var(--on-accent);font-weight:700;cursor:pointer">Clear all filters</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showGrid }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:16px">
+          <sc-for list="{{ items }}" as="c" hint-placeholder-count="6">
+            <article style="display:flex;flex-direction:column;border-radius:var(--radius-lg);border:1px solid var(--border-subtle);background:var(--bg-card);overflow:hidden;position:relative;content-visibility:auto;contain-intrinsic-size:auto 392px;animation:{{ c.anim }};transition:border-color 200ms ease-out,box-shadow 200ms ease-out" style-hover="border-color:var(--border-accent);box-shadow:var(--shadow-glow)">
+              <span aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:2px;background:{{ c.accentBar }};z-index:2"></span>
+              <div onPointerMove="{{ c.tilt }}" onPointerLeave="{{ c.untilt }}" style="position:relative;height:168px;padding:16px;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,rgba(0,240,255,.12),transparent 70%);border-bottom:1px solid var(--border-subtle);perspective:900px">
+                <div style="position:relative;width:100%;height:100%;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) rotateY({{ c.flipDeg }}deg);transition:transform 250ms ease-out">
+                  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;backface-visibility:hidden;-webkit-backface-visibility:hidden">
+                    <sc-if value="{{ c.hasImg }}" hint-placeholder-val="{{ true }}">
+                      <img src="{{ c.img }}" alt="{{ c.name }}" loading="lazy" decoding="async" width="216" height="136" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:8px;filter:drop-shadow(0 4px 14px rgba(0,240,255,.25))">
+                    </sc-if>
+                    <sc-if value="{{ c.noImg }}" hint-placeholder-val="{{ false }}">
+                      <div role="img" aria-label="{{ c.name }}" style="position:relative;height:100%;aspect-ratio:1.586;max-width:100%;border-radius:10px;background:linear-gradient(135deg,#0b0e1f 0%,#151a3a 55%,#0b0e1f 100%);border:1px solid {{ c.faceBorder }};box-shadow:0 0 14px {{ c.faceGlow }};color:#eef6ff;overflow:hidden">
+                        <span style="position:absolute;top:10px;left:14px;right:14px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#a3b1d1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.bank }}</span>
+                        <span style="position:absolute;top:38%;left:14px;width:30px;height:22px;border-radius:4px;background:linear-gradient(135deg,#ffe08a,#b8860b)"></span>
+                        <span style="position:absolute;left:14px;right:72px;bottom:10px;font:700 12.5px/1.2 'Space Grotesk',Inter;text-shadow:0 0 8px rgba(0,240,255,.5)">{{ c.faceName }}</span>
+                        <span style="position:absolute;right:14px;bottom:10px;font-size:10px;font-weight:800;font-style:italic;color:#00f0ff">{{ c.netShort }}</span>
+                      </div>
+                    </sc-if>
+                  </div>
+                  <div aria-hidden="{{ c.backHidden }}" style="position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px;border-radius:10px;border:1px solid var(--border-subtle);background:var(--bg-secondary);transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden">
+                    <sc-for list="{{ c.facts }}" as="fa" hint-placeholder-count="4">
+                      <div style="display:flex;flex-direction:column;justify-content:center;gap:2px;min-width:0"><span style="font-size:11px;color:var(--text-muted)">{{ fa.k }}</span><strong style="font:600 14px 'Space Grotesk';font-variant-numeric:tabular-nums;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ fa.v }}</strong></div>
+                    </sc-for>
+                  </div>
+                </div>
+                <span aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.10),transparent 45%)"></span>
+                <button type="button" onClick="{{ c.flip }}" aria-label="{{ c.flipLabel }}" aria-pressed="{{ c.flipped }}" style="position:absolute;right:8px;bottom:8px;width:32px;height:32px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--border-subtle);background:var(--bg-glass);color:var(--text-secondary);cursor:pointer;z-index:3" style-hover="color:var(--accent-text);border-color:var(--border-accent)">
+                  <svg width="15" height="15" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><use href="#i-flip"></use></svg>
+                </button>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:10px;padding:14px 16px 16px">
+                <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-height:22px">
+                  <span style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-right:auto">{{ c.bank }}</span>
+                  <span style="height:22px;padding:0 8px;border-radius:6px;display:inline-flex;align-items:center;font-size:11px;font-weight:700;background:{{ c.typeBg }};color:{{ c.typeColor }}">{{ c.typeLabel }}</span>
+                  <span style="height:22px;padding:0 8px;border-radius:6px;display:inline-flex;align-items:center;font-size:11px;font-weight:600;border:1px solid var(--border-subtle);color:var(--text-secondary)">{{ c.netShort }}</span>
+                </div>
+                <h3 style="margin:0;font:600 16px/1.3 'Space Grotesk',Inter;min-height:42px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ c.name }}</h3>
+                <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:{{ c.statusColor }}">
+                  <svg width="14" height="14" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round"><use href="#i-shield"></use></svg>{{ c.status }}
+                </span>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 0;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
+                  <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:11px;color:var(--text-muted)">Annual fee</span><strong style="font:600 15px 'Space Grotesk';font-variant-numeric:tabular-nums;color:{{ c.feeColor }}">{{ c.fee }}</strong></div>
+                  <div style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-size:11px;color:var(--text-muted)">Reward rate</span><strong style="font:600 15px 'Space Grotesk';font-variant-numeric:tabular-nums;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.reward }}</strong></div>
+                </div>
+                <div style="display:flex;gap:6px;min-height:34px;align-items:center">
+                  <sc-if value="{{ c.hasBen }}" hint-placeholder-val="{{ true }}">
+                    <sc-for list="{{ c.icons }}" as="ic" hint-placeholder-count="4">
+                      <span role="img" aria-label="{{ ic.aria }}" title="{{ ic.tip }}" style="width:34px;height:34px;display:grid;place-items:center;border-radius:8px;border:1px solid {{ ic.border }};background:{{ ic.bg }};color:{{ ic.color }}">
+                        <svg width="17" height="17" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><use href="#i-{{ ic.icon }}"></use></svg>
+                      </span>
+                    </sc-for>
+                  </sc-if>
+                  <sc-if value="{{ c.noBen }}" hint-placeholder-val="{{ false }}">
+                    <span style="font-size:12px;color:var(--text-muted);line-height:1.35">Benefits not verified yet. See the bank’s page.</span>
+                  </sc-if>
+                </div>
+                <div style="margin-top:auto;display:flex;gap:6px;padding-top:4px">
+                  <button type="button" onClick="{{ c.compare }}" aria-pressed="{{ c.cmpPressed }}" style="flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;height:40px;border-radius:var(--radius-sm);border:1px solid {{ c.cmpBorder }};background:{{ c.cmpBg }};color:{{ c.cmpColor }};font-size:13px;font-weight:600;cursor:pointer">
+                    <svg width="16" height="16" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round"><use href="#i-compare"></use></svg>{{ c.cmpLabel }}
+                  </button>
+                  <button type="button" onClick="{{ c.save }}" aria-pressed="{{ c.savedPressed }}" aria-label="{{ c.saveAria }}" title="{{ c.saveAria }}" style="width:40px;height:40px;display:grid;place-items:center;border-radius:var(--radius-sm);border:1px solid {{ c.saveBorder }};background:transparent;color:{{ c.saveColor }};cursor:pointer">
+                    <svg width="18" height="18" aria-hidden="true" style="fill:{{ c.heartFill }};stroke:currentColor;stroke-width:1.8;stroke-linejoin:round"><use href="#i-heart"></use></svg>
+                  </button>
+                  <button type="button" onClick="{{ c.open }}" style="flex:1;height:40px;border-radius:var(--radius-sm);border:1px solid var(--accent-primary);background:var(--accent-wash);color:var(--accent-text);font-size:13px;font-weight:600;cursor:pointer;transition:box-shadow 200ms ease-out" style-hover="box-shadow:var(--glow-soft)">Details</button>
+                </div>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showList }}" hint-placeholder-val="{{ false }}">
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px">
+          <sc-for list="{{ items }}" as="c" hint-placeholder-count="6">
+            <li style="display:grid;grid-template-columns:{{ listCols }};align-items:center;gap:10px 14px;padding:10px 12px;border-radius:var(--radius-md);border:1px solid var(--border-subtle);background:var(--bg-card);content-visibility:auto;contain-intrinsic-size:auto 72px;animation:{{ c.anim }}" style-hover="border-color:var(--border-accent)">
+              <button type="button" onClick="{{ c.open }}" style="display:flex;align-items:center;gap:12px;min-width:0;padding:0;border:0;background:transparent;color:var(--text-primary);cursor:pointer;text-align:left;grid-column:{{ listNameCol }}">
+                <span style="flex:none;width:72px;height:46px;display:grid;place-items:center;border-radius:6px;background:linear-gradient(135deg,#0b0e1f,#151a3a);border:1px solid {{ c.thumbBorder }};overflow:hidden">
+                  <sc-if value="{{ c.hasImg }}" hint-placeholder-val="{{ true }}"><img src="{{ c.img }}" alt="" loading="lazy" width="72" height="46" style="width:100%;height:100%;object-fit:contain"></sc-if>
+                  <sc-if value="{{ c.noImg }}" hint-placeholder-val="{{ false }}"><span style="font:800 italic 9px Inter;color:#00f0ff">{{ c.netShort }}</span></sc-if>
+                </span>
+                <span style="display:flex;flex-direction:column;gap:2px;min-width:0">
+                  <strong style="font:600 14.5px/1.25 'Space Grotesk',Inter;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.name }}</strong>
+                  <span style="font-size:12px;color:var(--text-muted)">{{ c.bank }} · {{ c.netShort }}</span>
+                </span>
+              </button>
+              <span style="display:flex;flex-direction:column;gap:1px"><span style="font-size:10.5px;color:var(--text-muted)">Fee</span><strong style="font:600 13.5px 'Space Grotesk';font-variant-numeric:tabular-nums;color:{{ c.feeColor }};white-space:nowrap">{{ c.fee }}</strong></span>
+              <span style="display:flex;flex-direction:column;gap:1px;min-width:0"><span style="font-size:10.5px;color:var(--text-muted)">Rewards</span><strong style="font:600 13.5px 'Space Grotesk';overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.reward }}</strong></span>
+              <sc-if value="{{ listWide }}" hint-placeholder-val="{{ true }}">
+                <span style="display:flex;gap:4px">
+                  <sc-for list="{{ c.icons }}" as="ic" hint-placeholder-count="4">
+                    <span role="img" aria-label="{{ ic.aria }}" title="{{ ic.tip }}" style="width:28px;height:28px;display:grid;place-items:center;border-radius:6px;border:1px solid {{ ic.border }};background:{{ ic.bg }};color:{{ ic.color }}"><svg width="15" height="15" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><use href="#i-{{ ic.icon }}"></use></svg></span>
+                  </sc-for>
+                </span>
+              </sc-if>
+              <sc-if value="{{ listWide }}" hint-placeholder-val="{{ true }}">
+                <span style="font-size:12px;color:{{ c.statusColor }};white-space:nowrap">{{ c.status }}</span>
+              </sc-if>
+              <span style="display:flex;gap:6px;justify-content:flex-end">
+                <button type="button" onClick="{{ c.compare }}" aria-pressed="{{ c.cmpPressed }}" aria-label="{{ c.cmpAria }}" title="{{ c.cmpAria }}" style="width:44px;height:44px;display:grid;place-items:center;border-radius:var(--radius-sm);border:1px solid {{ c.cmpBorder }};background:{{ c.cmpBg }};color:{{ c.cmpColor }};cursor:pointer"><svg width="17" height="17" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round"><use href="#i-compare"></use></svg></button>
+                <button type="button" onClick="{{ c.save }}" aria-pressed="{{ c.savedPressed }}" aria-label="{{ c.saveAria }}" title="{{ c.saveAria }}" style="width:44px;height:44px;display:grid;place-items:center;border-radius:var(--radius-sm);border:1px solid {{ c.saveBorder }};background:transparent;color:{{ c.saveColor }};cursor:pointer"><svg width="17" height="17" aria-hidden="true" style="fill:{{ c.heartFill }};stroke:currentColor;stroke-width:1.8;stroke-linejoin:round"><use href="#i-heart"></use></svg></button>
+              </span>
+            </li>
+          </sc-for>
+        </ul>
+      </sc-if>
+
+      <sc-if value="{{ showTable }}" hint-placeholder-val="{{ false }}">
+        <div role="region" aria-label="Cards table" tabindex="0" style="max-height:72vh;overflow:auto;border-radius:var(--radius-md);border:1px solid var(--border-subtle);background:var(--bg-card)">
+          <table style="border-collapse:separate;border-spacing:0;width:100%;min-width:1180px;font-size:13px">
+            <thead>
+              <tr>
+                <sc-for list="{{ tableCols }}" as="col" hint-placeholder-count="10">
+                  <th scope="col" aria-sort="{{ col.ariaSort }}" style="position:sticky;top:0;left:{{ col.left }};z-index:{{ col.z }};background:var(--bg-secondary);border-bottom:1px solid var(--border-subtle);padding:0;text-align:{{ col.align }};white-space:nowrap">
+                    <button type="button" onClick="{{ col.onClick }}" style="display:flex;align-items:center;justify-content:{{ col.justify }};gap:4px;width:100%;height:44px;padding:0 12px;border:0;background:transparent;color:{{ col.color }};font:600 12px Inter;letter-spacing:.03em;cursor:pointer">
+                      {{ col.label }}<span aria-hidden="true" style="font-size:10px;width:10px">{{ col.arrow }}</span>
+                    </button>
+                  </th>
+                </sc-for>
+              </tr>
+            </thead>
+            <tbody>
+              <sc-for list="{{ items }}" as="c" hint-placeholder-count="8">
+                <tr style-hover="background:var(--bg-card-hover)">
+                  <th scope="row" style="position:sticky;left:0;z-index:1;background:var(--bg-card);border-bottom:1px solid var(--border-subtle);border-right:1px solid var(--border-subtle);padding:0;text-align:left;font-weight:500;min-width:240px;max-width:280px">
+                    <button type="button" onClick="{{ c.open }}" style="display:block;width:100%;padding:10px 12px;border:0;background:transparent;color:var(--text-primary);font:600 13px/1.3 'Space Grotesk',Inter;text-align:left;cursor:pointer" style-hover="color:var(--accent-text)">{{ c.name }}</button>
+                  </th>
+                  <td style="padding:10px 12px;border-bottom:1px solid var(--border-subtle);color:var(--text-secondary);white-space:nowrap">{{ c.bank }}</td>
+                  <td style="padding:10px 12px;border-bottom:1px solid var(--border-subtle);text-align:right;font-family:'Space Grotesk';font-variant-numeric:tabular-nums;white-space:nowrap;color:{{ c.feeColor }}">{{ c.fee }}</td>
+                  <td style="padding:10px 12px;border-bottom:1px solid var(--border-subtle);text-align:right;font-family:'Space Grotesk';font-variant-numeric:tabular-nums;white-space:nowrap">{{ c.joining }}</td>
+                  <td style="padding:10px 12px;border-bottom:1px solid var(--border-subtle);text-align:right;font-family:'Space Grotesk';white-space:nowrap">{{ c.reward }}</td>
+                  <td style="padding:10px 12px;border-bottom:1px solid var(--border-subtle);text-align:right;font-family:'Space Grotesk';font-variant-numeric:tabular-nums">{{ c.dom }}</td>
+                  <td style="padding:10px 12px;border-bottom:1px solid var(--border-subtle);text-align:right;font-family:'Space Grotesk';font-variant-numeric:tabular-nums">{{ c.intl }}</td>
+                  <td style="padding:10px 12px;border-bottom:1px solid var(--border-subtle);text-align:right;font-family:'Space Grotesk';font-variant-numeric:tabular-nums">{{ c.forex }}</td>
+                  <td style="padding:10px 12px;border-bottom:1px solid var(--border-subtle);text-align:right;font-family:'Space Grotesk';font-variant-numeric:tabular-nums;white-space:nowrap">{{ c.income }}</td>
+                  <td style="padding:10px 12px;border-bottom:1px solid var(--border-subtle);white-space:nowrap;color:{{ c.statusColor }}">{{ c.status }}</td>
+                </tr>
+              </sc-for>
+            </tbody>
+          </table>
+        </div>
+      </sc-if>
+    </section>
+
+    <footer style="padding:24px 0 96px;color:var(--text-muted);font-size:12.5px;line-height:1.6;max-width:72ch">
+      <p style="margin:0 0 4px;color:var(--text-secondary)">CardRadar — Indian Credit Card Guide</p>
+      <p style="margin:0">Card details are checked against official bank pages but can change at any time. CardRadar is not a bank and this is not financial advice — confirm on the bank's website before you apply.</p>
+    </footer>
+  </main>
+</div>
+
+<sc-if value="{{ trayShow }}" hint-placeholder-val="{{ false }}">
+  <div role="region" aria-label="Compare tray" style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:45;width:min(760px,calc(100% - 24px));padding:10px 12px;border-radius:var(--radius-lg);border:1px solid var(--border-accent);background:var(--bg-solid);box-shadow:var(--shadow-lg);display:flex;flex-wrap:wrap;align-items:center;gap:10px;animation:cr-in-up 220ms ease-out">
+    <div style="display:flex;gap:6px;flex:1 1 300px;min-width:0;overflow-x:auto">
+      <sc-for list="{{ traySlots }}" as="sl" hint-placeholder-count="2">
+        <span style="flex:1 1 0;min-width:120px;display:flex;align-items:center;gap:8px;height:48px;padding:0 4px 0 8px;border-radius:var(--radius-sm);border:1px {{ sl.borderStyle }} var(--border-subtle);background:var(--bg-glass-light);font-size:12px;color:{{ sl.color }}">
+          <sc-if value="{{ sl.filled }}" hint-placeholder-val="{{ false }}">
+            <span style="flex:none;width:44px;height:28px;border-radius:4px;background:linear-gradient(135deg,#0b0e1f,#151a3a);overflow:hidden;display:grid;place-items:center"><sc-if value="{{ sl.hasImg }}" hint-placeholder-val="{{ false }}"><img src="{{ sl.img }}" alt="" width="44" height="28" style="width:100%;height:100%;object-fit:contain"></sc-if></span>
+          </sc-if>
+          <span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ sl.label }}</span>
+          <sc-if value="{{ sl.filled }}" hint-placeholder-val="{{ false }}">
+            <button type="button" onClick="{{ sl.remove }}" aria-label="{{ sl.aria }}" style="flex:none;width:32px;height:32px;display:grid;place-items:center;border:0;border-radius:6px;background:transparent;color:var(--text-secondary);cursor:pointer"><svg width="14" height="14" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round"><use href="#i-close"></use></svg></button>
+          </sc-if>
+        </span>
+      </sc-for>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <span aria-live="polite" style="font-size:12px;color:var(--text-secondary)">{{ trayLimit }}</span>
+      <button type="button" onClick="{{ clearCompare }}" style="height:40px;padding:0 10px;border:0;background:transparent;color:var(--text-secondary);font-size:13px;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Clear</button>
+      <button type="button" onClick="{{ openCompare }}" disabled="{{ compareDisabled }}" style="height:44px;padding:0 16px;border-radius:var(--radius-sm);border:1px solid var(--accent-primary);background:var(--accent-primary);color:var(--on-accent);font-weight:700;font-size:14px;cursor:pointer;opacity:{{ compareOpacity }}">{{ compareBtnLabel }}</button>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ drawerOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeDrawer }}" style="position:fixed;inset:0;z-index:70;background:var(--scrim);animation:cr-fade 180ms ease-out"></div>
+  <aside ref="{{ drawerRef }}" role="dialog" aria-modal="true" aria-labelledby="dr-title" style="position:fixed;top:0;right:0;bottom:0;z-index:71;width:{{ drawerW }};background:var(--bg-solid);border-left:1px solid var(--border-accent);box-shadow:var(--shadow-lg);display:flex;flex-direction:column;animation:cr-in-right 220ms ease-out">
+    <div style="display:flex;align-items:center;gap:6px;padding:10px 12px;border-bottom:1px solid var(--border-subtle)">
+      <button type="button" onClick="{{ prevCard }}" disabled="{{ prevDisabled }}" aria-label="Previous card" style="width:44px;height:44px;display:grid;place-items:center;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);background:transparent;color:var(--text-primary);cursor:pointer;opacity:{{ prevOpacity }}"><svg width="18" height="18" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><use href="#i-left"></use></svg></button>
+      <button type="button" onClick="{{ nextCard }}" disabled="{{ nextDisabled }}" aria-label="Next card" style="width:44px;height:44px;display:grid;place-items:center;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);background:transparent;color:var(--text-primary);cursor:pointer;opacity:{{ nextOpacity }}"><svg width="18" height="18" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><use href="#i-right"></use></svg></button>
+      <span style="flex:1;font:500 12.5px 'Space Grotesk';font-variant-numeric:tabular-nums;color:var(--text-muted);padding-left:4px">{{ dv.pos }}</span>
+      <button type="button" onClick="{{ closeDrawer }}" aria-label="Close details" style="width:44px;height:44px;display:grid;place-items:center;border-radius:var(--radius-sm);border:0;background:transparent;color:var(--text-primary);cursor:pointer"><svg width="20" height="20" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round"><use href="#i-close"></use></svg></button>
+    </div>
+    <div style="flex:1;overflow:auto;padding:16px 20px 24px;display:flex;flex-direction:column;gap:16px">
+      <div style="height:200px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-md);border:1px solid var(--border-subtle);background:radial-gradient(ellipse at center,rgba(0,240,255,.12),transparent 70%);padding:16px">
+        <sc-if value="{{ dv.hasImg }}" hint-placeholder-val="{{ false }}"><img src="{{ dv.img }}" alt="{{ dv.name }}" width="270" height="170" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:10px;filter:drop-shadow(0 6px 18px rgba(0,240,255,.25))"></sc-if>
+        <sc-if value="{{ dv.noImg }}" hint-placeholder-val="{{ false }}">
+          <div role="img" aria-label="{{ dv.name }}" style="position:relative;height:100%;aspect-ratio:1.586;max-width:100%;border-radius:12px;background:linear-gradient(135deg,#0b0e1f 0%,#151a3a 55%,#0b0e1f 100%);border:1px solid {{ dv.faceBorder }};box-shadow:0 0 14px {{ dv.faceGlow }};color:#eef6ff;overflow:hidden">
+            <span style="position:absolute;top:12px;left:16px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#a3b1d1">{{ dv.bank }}</span>
+            <span style="position:absolute;top:38%;left:16px;width:34px;height:25px;border-radius:4px;background:linear-gradient(135deg,#ffe08a,#b8860b)"></span>
+            <span style="position:absolute;left:16px;right:80px;bottom:12px;font:700 14px/1.2 'Space Grotesk';text-shadow:0 0 8px rgba(0,240,255,.5)">{{ dv.faceName }}</span>
+            <span style="position:absolute;right:16px;bottom:12px;font-size:11px;font-weight:800;font-style:italic;color:#00f0ff">{{ dv.netShort }}</span>
+          </div>
+        </sc-if>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <h2 id="dr-title" style="margin:0;font:700 22px/1.2 'Space Grotesk',Inter;text-wrap:pretty">{{ dv.name }}</h2>
+        <p style="margin:0;font-size:13px;color:var(--text-secondary)">{{ dv.sub }}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
+          <span style="height:24px;padding:0 9px;border-radius:6px;display:inline-flex;align-items:center;font-size:11.5px;font-weight:700;background:{{ dv.typeBg }};color:{{ dv.typeColor }}">{{ dv.typeLabel }}</span>
+          <span style="height:24px;padding:0 9px;border-radius:6px;display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;border:1px solid var(--border-subtle);color:{{ dv.statusColor }}"><svg width="13" height="13" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round"><use href="#i-shield"></use></svg>{{ dv.status }}</span>
+        </div>
+      </div>
+
+      <div role="tablist" aria-label="Card details" style="display:flex;gap:2px;overflow-x:auto;border-bottom:1px solid var(--border-subtle);margin:0 -4px;padding:0 4px">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+          <button type="button" role="tab" id="{{ t.id }}" aria-selected="{{ t.selected }}" aria-controls="dr-panel" tabindex="{{ t.tabindex }}" onClick="{{ t.onClick }}" onKeyDown="{{ onTabKey }}" style="flex:none;height:44px;padding:0 12px;border:0;border-bottom:2px solid {{ t.border }};background:transparent;color:{{ t.color }};font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap">{{ t.label }}</button>
+        </sc-for>
+      </div>
+
+      <div id="dr-panel" role="tabpanel" aria-labelledby="{{ tabLabelledBy }}" tabindex="0" style="display:flex;flex-direction:column;gap:16px;outline-offset:4px">
+        <sc-if value="{{ tabOverview }}" hint-placeholder-val="{{ true }}">
+          <div style="padding:12px 14px;border-radius:var(--radius-md);border:1px solid var(--border-subtle);background:var(--bg-glass-light);font-size:13px;line-height:1.5;color:var(--text-secondary)">{{ dv.note }}</div>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
+            <sc-for list="{{ dv.keyFacts }}" as="it" hint-placeholder-count="4">
+              <div style="padding:10px 12px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-size:11.5px;color:var(--text-muted)">{{ it.label }}</span><strong style="font:600 15px 'Space Grotesk';font-variant-numeric:tabular-nums;color:{{ it.color }}">{{ it.value }}</strong></div>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <h3 style="margin:0;font:600 12px Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)">Benefits</h3>
+            <sc-if value="{{ dv.hasBen }}" hint-placeholder-val="{{ true }}">
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px">
+                <sc-for list="{{ dv.benefits }}" as="ic" hint-placeholder-count="8">
+                  <div title="{{ ic.tip }}" style="display:flex;align-items:center;gap:8px;min-height:40px;padding:6px 10px;border-radius:var(--radius-sm);border:1px solid {{ ic.border }};background:{{ ic.bg }};color:{{ ic.color }};font-size:12.5px">
+                    <svg width="16" height="16" aria-hidden="true" style="flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><use href="#i-{{ ic.icon }}"></use></svg>
+                    <span style="flex:1;min-width:0">{{ ic.label }}</span><span style="font-size:11px">{{ ic.state }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ dv.noBen }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:13px;color:var(--text-muted)">Benefits for this card have not been verified yet. Check the bank's page for current rewards and perks.</p></sc-if>
+          </div>
+          <sc-if value="{{ dv.hasHighlights }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-wrap:wrap;gap:6px">
+              <sc-for list="{{ dv.highlights }}" as="h" hint-placeholder-count="3"><span style="padding:5px 10px;border-radius:999px;border:1px solid var(--border-subtle);background:var(--accent-wash);font-size:12px;color:var(--text-primary)">{{ h.text }}</span></sc-for>
+            </div>
+          </sc-if>
+        </sc-if>
+        <sc-if value="{{ tabFees }}" hint-placeholder-val="{{ false }}">
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
+            <sc-for list="{{ dv.feeItems }}" as="it" hint-placeholder-count="6">
+              <div style="padding:10px 12px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-size:11.5px;color:var(--text-muted)">{{ it.label }}</span><strong style="font:600 14.5px 'Space Grotesk';font-variant-numeric:tabular-nums;color:{{ it.color }}">{{ it.value }}</strong></div>
+            </sc-for>
+          </div>
+          <sc-if value="{{ dv.hasCashback }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <h3 style="margin:0;font:600 12px Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)">Cashback &amp; rewards</h3>
+              <p style="margin:0;font-size:14px;line-height:1.5">{{ dv.cashDesc }}</p>
+              <ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px;font-size:13.5px;line-height:1.45;color:var(--text-secondary)">
+                <sc-for list="{{ dv.cashDetails }}" as="d" hint-placeholder-count="3"><li>{{ d.text }}</li></sc-for>
+              </ul>
+            </div>
+          </sc-if>
+          <sc-if value="{{ dv.hasOther }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <h3 style="margin:0;font:600 12px Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)">Key highlights</h3>
+              <ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px;font-size:13.5px;line-height:1.45;color:var(--text-secondary)">
+                <sc-for list="{{ dv.other }}" as="d" hint-placeholder-count="3"><li>{{ d.text }}</li></sc-for>
+              </ul>
+            </div>
+          </sc-if>
+        </sc-if>
+        <sc-if value="{{ tabTravel }}" hint-placeholder-val="{{ false }}">
+          <sc-if value="{{ dv.noBen }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:13px;color:var(--text-muted)">Lounge and travel benefits for this card have not been verified yet.</p></sc-if>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <sc-for list="{{ dv.travelItems }}" as="it" hint-placeholder-count="5">
+              <div style="padding:10px 12px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:baseline"><span style="font-size:13px;color:var(--text-secondary)">{{ it.label }}</span><strong style="font:600 14.5px 'Space Grotesk';font-variant-numeric:tabular-nums;color:{{ it.color }};text-align:right">{{ it.value }}</strong><span style="grid-column:1 / -1;font-size:12px;color:var(--text-muted)">{{ it.desc }}</span></div>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{ tabElig }}" hint-placeholder-val="{{ false }}">
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
+            <sc-for list="{{ dv.eligItems }}" as="it" hint-placeholder-count="2">
+              <div style="padding:10px 12px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:2px"><span style="font-size:11.5px;color:var(--text-muted)">{{ it.label }}</span><strong style="font:600 15px 'Space Grotesk';font-variant-numeric:tabular-nums">{{ it.value }}</strong></div>
+            </sc-for>
+          </div>
+          <p style="margin:0;padding:12px 14px;border-radius:var(--radius-md);border:1px solid {{ dv.qualBorder }};background:var(--bg-glass-light);font-size:13px;line-height:1.5;color:var(--text-secondary)">{{ dv.qualify }}</p>
+        </sc-if>
+        <sc-if value="{{ tabSources }}" hint-placeholder-val="{{ false }}">
+          <p style="margin:0;font-size:13px;color:var(--text-secondary)">{{ dv.checkedText }}</p>
+          <sc-if value="{{ dv.hasQuotes }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <sc-for list="{{ dv.quotes }}" as="q" hint-placeholder-count="2">
+                <blockquote style="margin:0;padding:10px 14px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:4px">
+                  <span style="font-size:11.5px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em">{{ q.field }}</span>
+                  <span style="font-size:13.5px;line-height:1.5">“{{ q.quote }}”</span>
+                  <span style="font-size:12px;color:var(--text-muted)">Checked {{ q.date }} · <a href="{{ q.url }}" target="_blank" rel="noopener noreferrer">Source</a></span>
+                </blockquote>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ dv.noQuotes }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:0;padding:12px 14px;border-radius:var(--radius-md);border:1px dashed var(--border-subtle);font-size:13px;line-height:1.5;color:var(--text-muted)">No verified quotes yet. The weekly crawl adds quotes from the bank's page when it confirms a value.</p>
+          </sc-if>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <sc-for list="{{ dv.sourceLinks }}" as="s" hint-placeholder-count="1">
+              <a href="{{ s.url }}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;min-height:44px">Official card page<svg width="14" height="14" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><use href="#i-external"></use></svg></a>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+
+      <sc-if value="{{ dv.hasSimilar }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:8px;padding-top:8px;border-top:1px solid var(--border-subtle)">
+          <h3 style="margin:0;font:600 12px Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)">Similar cards</h3>
+          <sc-for list="{{ dv.similar }}" as="sm" hint-placeholder-count="3">
+            <button type="button" onClick="{{ sm.open }}" style="display:flex;align-items:center;gap:12px;min-height:56px;padding:6px 10px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);background:transparent;color:var(--text-primary);cursor:pointer;text-align:left" style-hover="border-color:var(--border-accent)">
+              <span style="flex:none;width:60px;height:38px;border-radius:5px;background:linear-gradient(135deg,#0b0e1f,#151a3a);overflow:hidden;display:grid;place-items:center"><sc-if value="{{ sm.hasImg }}" hint-placeholder-val="{{ false }}"><img src="{{ sm.img }}" alt="" loading="lazy" width="60" height="38" style="width:100%;height:100%;object-fit:contain"></sc-if></span>
+              <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><strong style="font:600 13.5px 'Space Grotesk';overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ sm.name }}</strong><span style="font-size:12px;color:var(--text-muted)">{{ sm.sub }}</span></span>
+              <svg width="16" height="16" aria-hidden="true" style="flex:none;fill:none;stroke:var(--text-muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><use href="#i-right"></use></svg>
+            </button>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+    <div style="padding:12px 16px;border-top:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;gap:8px">
+        <button type="button" onClick="{{ dv.save }}" aria-pressed="{{ dv.savedPressed }}" aria-label="{{ dv.saveAria }}" style="width:48px;height:48px;display:grid;place-items:center;border-radius:var(--radius-sm);border:1px solid {{ dv.saveBorder }};background:transparent;color:{{ dv.saveColor }};cursor:pointer"><svg width="20" height="20" aria-hidden="true" style="fill:{{ dv.heartFill }};stroke:currentColor;stroke-width:1.8;stroke-linejoin:round"><use href="#i-heart"></use></svg></button>
+        <button type="button" onClick="{{ dv.compare }}" aria-pressed="{{ dv.cmpPressed }}" style="height:48px;padding:0 14px;display:inline-flex;align-items:center;gap:6px;border-radius:var(--radius-sm);border:1px solid {{ dv.cmpBorder }};background:{{ dv.cmpBg }};color:{{ dv.cmpColor }};font-weight:600;font-size:14px;cursor:pointer"><svg width="17" height="17" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round"><use href="#i-compare"></use></svg>{{ dv.cmpLabel }}</button>
+        <sc-if value="{{ dv.hasApply }}" hint-placeholder-val="{{ false }}">
+          <a href="{{ dv.apply }}" target="_blank" rel="noopener noreferrer" style="flex:1;height:48px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:var(--radius-sm);background:var(--accent-primary);color:var(--on-accent);font-weight:700;font-size:14px;text-decoration:none;transition:box-shadow 200ms ease-out" style-hover="box-shadow:var(--shadow-glow);color:var(--on-accent)">Apply on bank's site<svg width="15" height="15" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><use href="#i-external"></use></svg></a>
+        </sc-if>
+      </div>
+      <p style="margin:0;font-size:11.5px;color:var(--text-muted)">You're leaving CardRadar. The application happens on {{ dv.bank }}'s own website.</p>
+    </div>
+  </aside>
+</sc-if>
+
+<sc-if value="{{ shortOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeShort }}" style="position:fixed;inset:0;z-index:70;background:var(--scrim);animation:cr-fade 180ms ease-out"></div>
+  <aside ref="{{ shortRef }}" role="dialog" aria-modal="true" aria-labelledby="sl-title" style="position:fixed;top:0;right:0;bottom:0;z-index:71;width:{{ shortW }};background:var(--bg-solid);border-left:1px solid var(--border-accent);box-shadow:var(--shadow-lg);display:flex;flex-direction:column;animation:cr-in-right 220ms ease-out">
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--border-subtle)">
+      <svg width="20" height="20" aria-hidden="true" style="fill:var(--accent-pink);stroke:var(--accent-pink);stroke-width:1.8;stroke-linejoin:round"><use href="#i-heart"></use></svg>
+      <h2 id="sl-title" style="margin:0;flex:1;font:600 18px 'Space Grotesk'">Shortlist <span style="color:var(--text-muted);font-weight:500">{{ savedCount }}</span></h2>
+      <button type="button" onClick="{{ closeShort }}" aria-label="Close shortlist" style="width:44px;height:44px;display:grid;place-items:center;border:0;border-radius:8px;background:transparent;color:var(--text-primary);cursor:pointer"><svg width="20" height="20" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round"><use href="#i-close"></use></svg></button>
+    </div>
+    <div style="flex:1;overflow:auto;padding:12px 16px;display:flex;flex-direction:column;gap:8px">
+      <sc-if value="{{ noSaved }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:24px 0;text-align:center;color:var(--text-muted);font-size:14px;line-height:1.5">Nothing saved yet. Use the heart on any card to keep it here. Your shortlist stays in this browser.</p>
+      </sc-if>
+      <sc-for list="{{ savedItems }}" as="c" hint-placeholder-count="0">
+        <div style="display:flex;align-items:center;gap:10px;padding:8px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle)">
+          <button type="button" onClick="{{ c.openFromShort }}" style="flex:1;min-width:0;display:flex;align-items:center;gap:10px;padding:0;border:0;background:transparent;color:var(--text-primary);cursor:pointer;text-align:left">
+            <span style="flex:none;width:64px;height:40px;border-radius:5px;background:linear-gradient(135deg,#0b0e1f,#151a3a);overflow:hidden;display:grid;place-items:center"><sc-if value="{{ c.hasImg }}" hint-placeholder-val="{{ false }}"><img src="{{ c.img }}" alt="" width="64" height="40" style="width:100%;height:100%;object-fit:contain"></sc-if></span>
+            <span style="min-width:0;display:flex;flex-direction:column;gap:2px"><strong style="font:600 13.5px 'Space Grotesk';overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.name }}</strong><span style="font-size:12px;color:var(--text-muted)">{{ c.bank }} · <span style="color:{{ c.feeColor }}">{{ c.fee }}</span></span></span>
+          </button>
+          <button type="button" onClick="{{ c.save }}" aria-label="{{ c.saveAria }}" style="flex:none;width:44px;height:44px;display:grid;place-items:center;border:0;border-radius:8px;background:transparent;color:var(--text-secondary);cursor:pointer"><svg width="16" height="16" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round"><use href="#i-close"></use></svg></button>
+        </div>
+      </sc-for>
+    </div>
+    <sc-if value="{{ hasSaved }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:12px 16px;border-top:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:6px">
+        <button type="button" onClick="{{ sendToCompare }}" style="height:48px;border-radius:var(--radius-sm);border:1px solid var(--accent-primary);background:var(--accent-primary);color:var(--on-accent);font-weight:700;font-size:14px;cursor:pointer">{{ sendLabel }}</button>
+        <p style="margin:0;font-size:12px;color:var(--text-muted);text-align:center">{{ limitNote }}</p>
+      </div>
+    </sc-if>
+  </aside>
+</sc-if>
+
+<sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeModal }}" style="position:fixed;inset:0;z-index:80;background:var(--scrim);display:grid;place-items:center;padding:16px;animation:cr-fade 180ms ease-out">
+    <div ref="{{ modalRef }}" role="dialog" aria-modal="true" aria-labelledby="md-title" onClick="{{ stop }}" style="width:min({{ modalMax }},100%);max-height:calc(100vh - 32px);overflow:auto;border-radius:var(--radius-xl);border:1px solid var(--border-accent);background:var(--bg-solid);box-shadow:var(--shadow-lg);display:flex;flex-direction:column;animation:cr-in-up 220ms ease-out">
+      <div style="display:flex;align-items:center;gap:10px;padding:14px 16px 14px 20px;border-bottom:1px solid var(--border-subtle);position:sticky;top:0;background:var(--bg-solid);z-index:2">
+        <h2 id="md-title" style="margin:0;flex:1;font:600 18px 'Space Grotesk'">{{ modalTitle }}</h2>
+        <button type="button" onClick="{{ closeModal }}" aria-label="Close" style="width:44px;height:44px;display:grid;place-items:center;border:0;border-radius:8px;background:transparent;color:var(--text-primary);cursor:pointer"><svg width="20" height="20" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round"><use href="#i-close"></use></svg></button>
+      </div>
+      <div style="padding:20px;display:flex;flex-direction:column;gap:14px">
+        <sc-if value="{{ mQuizQ }}" hint-placeholder-val="{{ false }}">
+          <div role="progressbar" aria-label="Quiz progress" aria-valuemin="1" aria-valuemax="4" aria-valuenow="{{ quizNow }}" style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px">
+            <sc-for list="{{ quizDots }}" as="d" hint-placeholder-count="4"><span style="height:4px;border-radius:2px;background:{{ d.bg }}"></span></sc-for>
+          </div>
+          <p style="margin:0;font-size:12.5px;color:var(--text-muted)">Question {{ quizNow }} of 4</p>
+          <h3 style="margin:0;font:600 20px 'Space Grotesk'">{{ quizQ }}</h3>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <sc-for list="{{ quizOpts }}" as="o" hint-placeholder-count="4">
+              <button type="button" onClick="{{ o.onClick }}" style="display:flex;align-items:center;gap:10px;min-height:52px;padding:0 16px;border-radius:var(--radius-md);border:1px solid var(--border-subtle);background:var(--bg-glass-light);color:var(--text-primary);font-size:15px;text-align:left;cursor:pointer;transition:border-color 150ms ease-out" style-hover="border-color:var(--accent-primary)">
+                <sc-if value="{{ o.hasIcon }}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" aria-hidden="true" style="flex:none;fill:none;stroke:var(--accent-text);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><use href="#i-{{ o.icon }}"></use></svg></sc-if>
+                {{ o.label }}
+              </button>
+            </sc-for>
+          </div>
+          <sc-if value="{{ quizBack }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ quizPrev }}" style="align-self:flex-start;height:40px;padding:0 8px;border:0;background:transparent;color:var(--accent-text);font-weight:600;cursor:pointer">← Back</button></sc-if>
+        </sc-if>
+        <sc-if value="{{ mQuizR }}" hint-placeholder-val="{{ false }}">
+          <p style="margin:0;font-size:13px;color:var(--text-secondary)">{{ quizResNote }}</p>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <sc-for list="{{ quizResults }}" as="r" hint-placeholder-count="3">
+              <button type="button" onClick="{{ r.open }}" style="display:flex;align-items:center;gap:12px;min-height:64px;padding:8px 12px;border-radius:var(--radius-md);border:1px solid var(--border-subtle);background:var(--bg-glass-light);color:var(--text-primary);text-align:left;cursor:pointer" style-hover="border-color:var(--accent-primary)">
+                <span style="flex:none;font:700 15px 'Space Grotesk';color:var(--accent-text);width:26px">#{{ r.rank }}</span>
+                <span style="flex:none;width:64px;height:40px;border-radius:5px;background:linear-gradient(135deg,#0b0e1f,#151a3a);overflow:hidden;display:grid;place-items:center"><sc-if value="{{ r.hasImg }}" hint-placeholder-val="{{ false }}"><img src="{{ r.img }}" alt="" width="64" height="40" style="width:100%;height:100%;object-fit:contain"></sc-if></span>
+                <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><strong style="font:600 14px 'Space Grotesk'">{{ r.name }}</strong><small style="font-size:12px;color:var(--text-muted)">{{ r.why }}</small></span>
+              </button>
+            </sc-for>
+          </div>
+          <div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap">
+            <button type="button" onClick="{{ openQuiz }}" style="height:44px;padding:0 10px;border:0;background:transparent;color:var(--accent-text);font-weight:600;cursor:pointer">Start over</button>
+            <button type="button" data-needs-server onClick="{{ quizToChat }}" style="height:44px;padding:0 16px;border-radius:var(--radius-sm);border:1px solid var(--accent-primary);background:var(--accent-wash);color:var(--accent-text);font-weight:600;cursor:pointer">Ask CardRadar AI about these</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ mCompare }}" hint-placeholder-val="{{ false }}">
+          <div role="region" aria-label="Comparison table" tabindex="0" style="overflow:auto;border:1px solid var(--border-subtle);border-radius:var(--radius-md)">
+            <table style="border-collapse:separate;border-spacing:0;width:100%;min-width:560px;font-size:13px">
+              <thead><tr>
+                <th scope="col" style="position:sticky;left:0;background:var(--bg-secondary);padding:10px 12px;text-align:left;border-bottom:1px solid var(--border-subtle);min-width:150px"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Feature</span></th>
+                <sc-for list="{{ cmpCards }}" as="cc" hint-placeholder-count="2">
+                  <th scope="col" style="background:var(--bg-secondary);padding:10px 12px;text-align:left;border-bottom:1px solid var(--border-subtle);vertical-align:bottom;min-width:170px">
+                    <span style="display:grid;place-items:center;height:80px;margin-bottom:6px;border-radius:8px;background:linear-gradient(135deg,#0b0e1f,#151a3a);overflow:hidden"><sc-if value="{{ cc.hasImg }}" hint-placeholder-val="{{ false }}"><img src="{{ cc.img }}" alt="" width="120" height="76" style="max-width:100%;max-height:100%;object-fit:contain"></sc-if><sc-if value="{{ cc.noImg }}" hint-placeholder-val="{{ false }}"><span style="font:800 italic 11px Inter;color:#00f0ff">{{ cc.netShort }}</span></sc-if></span>
+                    <button type="button" onClick="{{ cc.openFromCompare }}" style="padding:0;border:0;background:transparent;color:var(--text-primary);font:600 13.5px/1.3 'Space Grotesk';text-align:left;cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--border-accent)">{{ cc.name }}</button>
+                  </th>
+                </sc-for>
+              </tr></thead>
+              <tbody>
+                <sc-for list="{{ cmpRows }}" as="row" hint-placeholder-count="8">
+                  <tr>
+                    <th scope="row" style="position:sticky;left:0;background:var(--bg-solid);padding:9px 12px;text-align:left;font-weight:500;color:var(--text-secondary);border-bottom:1px solid var(--border-subtle)">{{ row.label }}</th>
+                    <sc-for list="{{ row.cells }}" as="cell" hint-placeholder-count="2">
+                      <td style="padding:9px 12px;border-bottom:1px solid var(--border-subtle);font-family:'Space Grotesk';font-variant-numeric:tabular-nums;color:{{ cell.color }};background:{{ cell.bg }};font-weight:{{ cell.weight }}">{{ cell.v }}</td>
+                    </sc-for>
+                  </tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin:0;font-size:12px;color:var(--text-muted)">Highlighted cells show the better value where it is clear-cut.</p>
+        </sc-if>
+        <sc-if value="{{ mAccount }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;align-items:center;gap:12px;padding:14px;border-radius:var(--radius-md);border:1px solid var(--border-subtle);background:var(--bg-glass-light)">
+            <svg width="28" height="28" aria-hidden="true" style="flex:none;fill:none;stroke:var(--accent-text);stroke-width:1.6;stroke-linecap:round"><use href="#i-user"></use></svg>
+            <div style="flex:1"><strong style="display:block;font:600 15px 'Space Grotesk'">{{ planTitle }}</strong><span style="font-size:13px;color:var(--text-secondary)">{{ planSub }}</span></div>
+          </div>
+          <sc-if value="{{ goProReason }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:10px 14px;border-radius:var(--radius-sm);border:1px solid var(--accent-gold);background:var(--gold-wash);color:var(--text-primary);font-size:13px">{{ goProText }}</p></sc-if>
+          <ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--text-secondary);line-height:1.45">
+            <li>Free: compare 2 cards side by side</li>
+            <li>PRO: compare up to 4 cards</li>
+          </ul>
+          <button type="button" onClick="{{ togglePro }}" style="height:48px;border-radius:var(--radius-sm);border:1px solid var(--accent-gold);background:{{ proBtnBg }};color:{{ proBtnColor }};font-weight:700;font-size:14px;cursor:pointer">{{ proBtnLabel }}</button>
+          <p style="margin:0;font-size:12px;color:var(--text-muted)">Prototype: sign-in and checkout are handled by account.js on the live site. This button only simulates the plan.</p>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ chatOpen }}" hint-placeholder-val="{{ false }}">
+  <div ref="{{ chatRef }}" role="dialog" aria-label="CardRadar AI chat" style="position:fixed;right:16px;bottom:16px;z-index:65;width:min(380px,calc(100% - 32px));height:min(540px,calc(100vh - 100px));border-radius:var(--radius-lg);border:1px solid var(--border-accent);background:var(--bg-solid);box-shadow:var(--shadow-lg);display:flex;flex-direction:column;overflow:hidden;animation:cr-in-up 220ms ease-out">
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--border-subtle)">
+      <img src="public/logo.svg" alt="" width="30" height="30" style="border-radius:8px">
+      <div style="flex:1"><div style="font:600 15px 'Space Grotesk'">CardRadar AI</div><div style="font-size:12px;color:var(--text-muted)">Credit Card Expert</div></div>
+      <button type="button" onClick="{{ toggleChat }}" aria-label="Close chat" style="width:44px;height:44px;display:grid;place-items:center;border:0;border-radius:8px;background:transparent;color:var(--text-primary);cursor:pointer"><svg width="20" height="20" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round"><use href="#i-close"></use></svg></button>
+    </div>
+    <div aria-live="polite" style="flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:10px">
+      <p style="margin:0;font-size:14px;line-height:1.5;color:var(--text-secondary)">Hi! I'm <strong style="color:var(--text-primary)">CardRadar AI</strong> — your personal credit card advisor. Ask me anything about Indian credit cards!</p>
+      <sc-if value="{{ noChatMsgs }}" hint-placeholder-val="{{ true }}">
+        <p style="margin:4px 0 0;font-size:12px;color:var(--text-muted)">Try asking:</p>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <sc-for list="{{ chatSuggest }}" as="cs" hint-placeholder-count="5">
+            <button type="button" onClick="{{ cs.onClick }}" style="min-height:40px;padding:6px 12px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);background:var(--bg-glass-light);color:var(--text-primary);font-size:13px;text-align:left;cursor:pointer" style-hover="border-color:var(--border-accent)">{{ cs.label }}</button>
+          </sc-for>
+        </div>
+      </sc-if>
+      <sc-for list="{{ chatMsgs }}" as="m" hint-placeholder-count="0">
+        <div style="align-self:{{ m.align }};max-width:85%;padding:9px 12px;border-radius:12px;background:{{ m.bg }};border:1px solid var(--border-subtle);font-size:13.5px;line-height:1.45;color:var(--text-primary)">{{ m.text }}</div>
+      </sc-for>
+    </div>
+    <form onSubmit="{{ sendChat }}" style="display:flex;gap:8px;padding:10px;border-top:1px solid var(--border-subtle)">
+      <input type="text" aria-label="Ask about credit cards" placeholder="Ask about credit cards..." value="{{ chatInput }}" onChange="{{ onChatInput }}" style="flex:1;min-width:0;height:44px;padding:0 12px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);background:var(--bg-card);color:var(--text-primary);font-size:14px;outline:0">
+      <button type="submit" aria-label="Send message" style="width:44px;height:44px;display:grid;place-items:center;border-radius:var(--radius-sm);border:1px solid var(--accent-primary);background:var(--accent-wash);color:var(--accent-text);cursor:pointer"><svg width="18" height="18" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><use href="#i-right"></use></svg></button>
+    </form>
+  </div>
+</sc-if>
+
+<div aria-live="polite" style="position:fixed;left:16px;bottom:16px;z-index:90;display:flex;flex-direction:column;gap:8px;pointer-events:none">
+  <sc-for list="{{ toasts }}" as="t" hint-placeholder-count="0">
+    <div style="padding:10px 14px;border-radius:var(--radius-sm);border:1px solid var(--border-accent);background:var(--bg-solid);box-shadow:var(--shadow-md);font-size:13px;color:var(--text-primary);animation:cr-in-up 200ms ease-out;max-width:320px">{{ t.text }}</div>
+  </sc-for>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;isPro&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Prototype&quot;},&quot;startView&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;grid&quot;,&quot;options&quot;:[&quot;grid&quot;,&quot;list&quot;,&quot;table&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Prototype&quot;},&quot;radarDefaultOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Prototype&quot;}}">
+const BEN = [
+  { key: 'ltf', label: 'Lifetime free', icon: 'spark', test: (c) => c.isLTF },
+  { key: 'premium', label: 'Premium', icon: 'crown', test: (c) => !c.isLTF },
+  { key: 'lounge', label: 'Airport lounge', icon: 'plane', test: (c) => Boolean(c.benefits?.lounges?.airport?.domestic || c.benefits?.lounges?.airport?.international) },
+  { key: 'railway', label: 'Railway lounge', icon: 'train', test: (c) => Boolean(c.benefits?.lounges?.railway?.count) },
+  { key: 'golf', label: 'Golf', icon: 'flag', test: (c) => c.benefits?.golf?.available === true },
+  { key: 'cashback', label: 'Cashback', icon: 'coin', test: (c) => c.category === 'Cashback' || /cashback/i.test(c.benefits?.cashback?.description || '') },
+  { key: 'forex', label: 'Zero forex', icon: 'globe', test: (c) => c.benefits?.forex?.markupFee === '0%' },
+  { key: 'fuel', label: 'Fuel waiver', icon: 'fuel', test: (c) => c.benefits?.fuel?.surchargeWaiver === true },
+  { key: 'dining', label: 'Dining', icon: 'dine', test: (c) => c.benefits?.dining?.available === true },
+  { key: 'movies', label: 'Movies', icon: 'film', test: (c) => c.benefits?.movies?.available === true },
+];
+const BENMAP = Object.fromEntries(BEN.map((b) => [b.key, b]));
+const TIERS = [['entry', 'Entry'], ['mid', 'Mid-range'], ['premium', 'Premium'], ['super_premium', 'Super premium'], ['private', 'Invite only']];
+const TIERMAP = Object.fromEntries(TIERS);
+const NETS = ['Visa', 'Mastercard', 'RuPay', 'Amex', 'Diners'];
+const NETFILL = ['var(--chart-1)', 'var(--chart-2)', 'var(--chart-3)', 'var(--chart-4)', 'var(--chart-5)'];
+const STATUS = {
+  verified: { label: 'Verified', color: 'var(--status-verified)' },
+  outdated: { label: 'May be outdated', color: 'var(--status-outdated)' },
+  unverified: { label: 'Unverified', color: 'var(--status-unverified)' },
+};
+const FEE_B = [
+  { k: 'free', label: 'Free', r: [0, 0] }, { k: '1k', label: '≤ ₹1,000', r: [1, 1000] },
+  { k: '5k', label: '≤ ₹5,000', r: [1001, 5000] }, { k: '10k', label: '≤ ₹10,000', r: [5001, 10000] },
+  { k: 'max', label: '> ₹10,000', r: [10001, Infinity] },
+];
+const ALIAS = { ltf: 'ltf', 'non-ltf': 'premium', lounge: 'lounge', railway: 'railway', golf: 'golf', cashback: 'cashback', forex: 'forex' };
+const SORT_ALIAS = { popularity: ['pop', 'desc'], 'fee-low': ['fee', 'asc'], 'fee-high': ['fee', 'desc'], reward: ['reward', 'desc'], name: ['name', 'asc'], bank: ['bank', 'asc'] };
+const QUIZ = [
+  { key: 'income', q: 'What is your yearly income?', options: [['Under ₹3 lakh', 250000], ['₹3–6 lakh', 500000], ['₹6–12 lakh', 1000000], ['₹12–25 lakh', 2000000], ['Over ₹25 lakh', 1e9]] },
+  { key: 'spend', q: 'Where do you spend the most?', options: [['Online shopping', 'online', 'coin'], ['Travel', 'travel', 'plane'], ['Dining & food delivery', 'dining', 'dine'], ['Fuel', 'fuel', 'fuel'], ['Everyday bills & groceries', 'everyday', 'spark']] },
+  { key: 'maxFee', q: 'How much annual fee is OK?', options: [['Only lifetime free', 0], ['Up to ₹1,000', 1000], ['Up to ₹5,000', 5000], ['Any, if the card is worth it', Infinity]] },
+  { key: 'lounge', q: 'Do airport lounges matter to you?', options: [['Yes, I fly often', true], ['Not really', false]] },
+];
+const COMPARE_FREE = 2, COMPARE_PRO = 4;
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const inrFmt = new Intl.NumberFormat('en-IN');
+const inr = (n) => `₹${inrFmt.format(n)}`;
+const safeUrl = (u) => (typeof u === 'string' && /^https:\/\//i.test(u) ? u : null);
+const monthYear = (d) => { const x = new Date(d); return `${MONTHS[x.getUTCMonth()]} ${x.getUTCFullYear()}`; };
+function verificationBadge(card) {
+  if (card.verificationStatus === 'stale' || card.hasPendingChanges) return { kind: 'outdated', text: 'May be outdated' };
+  if (card.verificationStatus === 'verified') return { kind: 'verified', text: `Verified · ${monthYear(card.lastVerifiedAt)}` };
+  return { kind: 'unverified', text: 'Unverified' };
+}
+const netsOf = (s) => {
+  const out = [];
+  if (/visa/i.test(s)) out.push('Visa');
+  if (/master/i.test(s)) out.push('Mastercard');
+  if (/rupay/i.test(s)) out.push('RuPay');
+  if (/amex|american express/i.test(s)) out.push('Amex');
+  if (/diners/i.test(s)) out.push('Diners');
+  return out;
+};
+const rewardNum = (s) => { if (!s || !s.includes('%')) return null; const m = s.match(/\d+(\.\d+)?/g); return m ? Math.max(...m.map(Number)) : null; };
+const lounge = (n) => (n === -1 ? 999 : n ?? null);
+const visits = (n) => (n === -1 ? 'Unlimited' : n ? String(n) : '0');
+const GET = {
+  name: (c) => c.name.toLowerCase(), bank: (c) => c.bank.toLowerCase(), fee: (c) => c._fee, joining: (c) => c.joiningFee,
+  reward: (c) => c._reward, dom: (c) => (c.benefits ? lounge(c.benefits.lounges?.airport?.domestic) : null),
+  intl: (c) => (c.benefits ? lounge(c.benefits.lounges?.airport?.international) : null),
+  forex: (c) => { const v = parseFloat(c.benefits?.forex?.markupFee); return Number.isNaN(v) ? null : v; },
+  income: (c) => c.eligibility?.minIncome ?? null, status: (c) => ({ verified: 0, outdated: 1, unverified: 2 })[c._status],
+};
+const parseSort = (s) => SORT_ALIAS[s] || (/^[a-z]+-(asc|desc)$/.test(s || '') && GET[s.split('-')[0]] ? s.split('-') : ['pop', 'desc']);
+const encodeSort = (k, d) => { for (const [n, [kk, dd]] of Object.entries(SORT_ALIAS)) if (kk === k && dd === d) return n; return `${k}-${d}`; };
+function sortCards(list, s) {
+  const [k, d] = parseSort(s);
+  if (k === 'pop') return list.sort((a, b) => ((a._status === 'verified' ? 0 : 1) - (b._status === 'verified' ? 0 : 1)) || b.popularityScore - a.popularityScore);
+  const g = GET[k] || GET.name, m = d === 'desc' ? -1 : 1;
+  return list.sort((a, b) => {
+    const x = g(a), y = g(b);
+    if (x == null && y == null) return a.name.localeCompare(b.name);
+    if (x == null) return 1; if (y == null) return -1;
+    return (x < y ? -1 : x > y ? 1 : 0) * m || a.name.localeCompare(b.name);
+  });
+}
+const F0 = () => ({ benefits: [], banks: [], networks: [], tiers: [], fee: null, income: '', status: '', hideCo: false, seg: 'all', q: '', sort: 'popularity', view: 'grid' });
+function stateToQuery(f) {
+  const p = new URLSearchParams();
+  for (const k of ['benefits', 'banks', 'networks', 'tiers']) if (f[k].length) p.set(k, f[k].join(','));
+  if (f.fee) p.set('fee', `${f.fee[0]}-${f.fee[1]}`);
+  if (f.status) p.set('status', f.status);
+  if (f.hideCo) p.set('cobranded', 'hide');
+  if (f.seg !== 'all') p.set('type', f.seg);
+  if (f.q) p.set('q', f.q);
+  if (f.sort !== 'popularity') p.set('sort', f.sort);
+  if (f.view !== 'grid') p.set('view', f.view);
+  return p.toString().replace(/\+/g, '%20');
+}
+function queryToState(str, base) {
+  const p = new URLSearchParams(str), f = { ...base };
+  const list = (k) => (p.get(k) ? p.get(k).split(',').map((s) => s.trim()).filter(Boolean) : []);
+  f.benefits = list('benefits').filter((k) => BENMAP[k]);
+  f.banks = list('banks'); f.networks = list('networks').filter((n) => NETS.includes(n)); f.tiers = list('tiers').filter((t) => TIERMAP[t]);
+  const fee = (p.get('fee') || '').match(/^(\d+)-(\d+)$/); f.fee = fee ? [+fee[1], +fee[2]] : null;
+  f.status = STATUS[p.get('status')] ? p.get('status') : '';
+  f.hideCo = p.get('cobranded') === 'hide';
+  f.seg = ['bank', 'co'].includes(p.get('type')) ? p.get('type') : 'all';
+  f.q = p.get('q') || '';
+  if (p.get('sort')) f.sort = p.get('sort');
+  if (['grid', 'list', 'table'].includes(p.get('view'))) f.view = p.get('view');
+  return f;
+}
+const reduceMotion = () => typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* storage blocked */ } },
+};
+const FOCUSABLE = 'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),[tabindex]:not([tabindex="-1"])';
+
+class Component extends DCLogic {
+  state = (() => {
+    let theme = 'dark';
+    try { theme = localStorage.getItem('cardradar-theme') === 'light' ? 'light' : 'dark'; } catch { }
+    const f = F0(); f.view = this.props.startView || 'grid';
+    return {
+      loading: true, error: null, f, qInput: '', qFocus: false, w: typeof window !== 'undefined' ? window.innerWidth : 1440, theme,
+      radarOpen: store.get('cardradar-radar-open', this.props.radarDefaultOpen ?? true), drawerId: null, tab: 'overview', sheetOpen: false, shortOpen: false,
+      modal: null, goPro: false, quizStep: 0, quizAns: {}, chatOpen: false, chatMsgs: [], chatInput: '',
+      saved: store.get('cardradar-shortlist', []), compare: store.get('cardradar-compare', []), flipped: {},
+      countP: 1, tips: {}, bankQ: '', isPro: Boolean(this.props.isPro), toasts: [], incomeInput: '',
+    };
+  })();
+  searchRef = React.createRef(); railRef = React.createRef(); drawerRef = React.createRef(); shortRef = React.createRef();
+  modalRef = React.createRef(); chatRef = React.createRef(); bankSearchRef = React.createRef();
+  cards = []; focusStack = []; h = {}; pushed = false;
+
+  componentDidMount() {
+    document.documentElement.setAttribute('data-theme', this.state.theme);
+    if (this.state.theme === 'dark') document.documentElement.removeAttribute('data-theme');
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onKeyG = (e) => this.handleKey(e);
+    this.onPop = () => this.readHash(false);
+    window.addEventListener('resize', this.onResize);
+    document.addEventListener('keydown', this.onKeyG);
+    window.addEventListener('popstate', this.onPop);
+    this.load();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    document.removeEventListener('keydown', this.onKeyG);
+    window.removeEventListener('popstate', this.onPop);
+  }
+  componentDidUpdate(pp) {
+    if (pp.isPro !== this.props.isPro) this.setState({ isPro: Boolean(this.props.isPro) });
+  }
+
+  load() {
+    this.setState({ loading: true, error: null });
+    fetch('data/cards.json').then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); }).then((raw) => {
+      raw.forEach((c) => {
+        const ever = Object.keys(c.verification || {}).length > 0;
+        c.verificationStatus = c.verificationStatus || (ever ? 'stale' : 'unverified');
+        c.lastVerifiedAt = c.lastVerifiedAt || null; c.lastCheckedAt = c.lastCheckedAt || null; c.hasPendingChanges = Boolean(c.hasPendingChanges);
+        c._fee = c.isLTF ? 0 : c.annualFee; c._nets = netsOf(c.network); c._reward = rewardNum(c.rewardRate);
+        c._badge = verificationBadge(c); c._status = c._badge.kind;
+        c._text = [c.name, c.bank, c.category, ...(c.highlights || [])].join(' ').toLowerCase();
+        c._ben = Object.fromEntries(BEN.map((b) => [b.key, b.test(c)]));
+        this.h[c.id] = this.makeHandlers(c.id);
+        c._vm = this.staticVm(c);
+      });
+      raw.sort((a, b) => b.popularityScore - a.popularityScore || a.name.localeCompare(b.name));
+      this.cards = raw; this.byId = Object.fromEntries(raw.map((c) => [c.id, c]));
+      this.feeMaxVal = Math.max(...raw.map((c) => c._fee));
+      this.bankList = [...new Set(raw.map((c) => c.bank))].sort();
+      let f = { ...this.state.f };
+      try { f = queryToState(location.search, f); } catch { }
+      const alias = (location.hash.match(/^#filter=([\w-]+)/) || [])[1];
+      if (alias && ALIAS[alias] && !f.benefits.includes(ALIAS[alias])) f.benefits = [...f.benefits, ALIAS[alias]];
+      f.banks = f.banks.filter((b) => this.bankList.includes(b));
+      const compare = this.state.compare.filter((id) => this.byId[id]);
+      const saved = this.state.saved.filter((id) => this.byId[id]);
+      this.setState({ loading: false, f, qInput: f.q, compare, saved, countP: reduceMotion() ? 1 : 0 }, () => {
+        this.syncUrl(); this.readHash(true); this.countUp();
+      });
+    }).catch((err) => this.setState({ loading: false, error: String(err.message || err) }));
+  }
+  countUp() {
+    if (this.state.countP >= 1) return;
+    const t0 = performance.now();
+    const step = (t) => { const p = Math.min((t - t0) / 800, 1); this.setState({ countP: 1 - Math.pow(1 - p, 3) }); if (p < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }
+  readHash(initial) {
+    const h = location.hash;
+    const m = h.match(/^#card=([\w-]+)/);
+    if (m && this.byId?.[m[1]]) { if (this.state.drawerId !== m[1]) this.openCard(m[1], false); }
+    else if (this.state.drawerId) { this.pushed = false; this.setState({ drawerId: null }, () => this.restoreFocus()); }
+    if (initial && h === '#quiz') this.openQuiz();
+  }
+  syncUrl() {
+    try {
+      const q = stateToQuery(this.state.f);
+      const hash = this.state.drawerId ? `#card=${this.state.drawerId}` : (location.hash === '#quiz' ? '#quiz' : '');
+      history.replaceState(history.state, '', `${location.pathname}${q ? `?${q}` : ''}${hash}`);
+    } catch { }
+  }
+  setF(patch) { this.setState((s) => ({ f: { ...s.f, ...patch } }), () => this.syncUrl()); }
+  toggleIn(key, v) { const cur = this.state.f[key]; this.setF({ [key]: cur.includes(v) ? cur.filter((x) => x !== v) : [...cur, v] }); }
+  toast(text) {
+    const id = Math.random();
+    this.setState((s) => ({ toasts: [...s.toasts, { id, text }] }));
+    setTimeout(() => this.setState((s) => ({ toasts: s.toasts.filter((t) => t.id !== id) })), 3200);
+  }
+
+  match(c, f, skip) {
+    if (skip !== 'benefits' && f.benefits.some((k) => !c._ben[k])) return false;
+    if (skip !== 'banks' && f.banks.length && !f.banks.includes(c.bank)) return false;
+    if (skip !== 'networks' && f.networks.length && !c._nets.some((n) => f.networks.includes(n))) return false;
+    if (skip !== 'tiers' && f.tiers.length && !f.tiers.includes(c.tier)) return false;
+    if (skip !== 'fee' && f.fee && (c._fee < f.fee[0] || c._fee > f.fee[1])) return false;
+    const inc = Number(f.income);
+    if (skip !== 'income' && inc > 0 && c.eligibility?.minIncome != null && c.eligibility.minIncome > inc) return false;
+    if (skip !== 'status' && f.status && c._status !== f.status) return false;
+    if (skip !== 'hideCo' && f.hideCo && c.isCoBranded) return false;
+    if (skip !== 'seg' && ((f.seg === 'bank' && c.isCoBranded) || (f.seg === 'co' && !c.isCoBranded))) return false;
+    const q = f.q.trim().toLowerCase();
+    if (skip !== 'q' && q && !c._text.includes(q)) return false;
+    return true;
+  }
+  query(f, skip) { return this.cards.filter((c) => this.match(c, f, skip)); }
+  results() {
+    const key = JSON.stringify(this.state.f);
+    if (this._rk !== key || this._rc !== this.cards) { this._rk = key; this._rc = this.cards; this._res = sortCards(this.query(this.state.f), this.state.f.sort); }
+    return this._res;
+  }
+
+  makeHandlers(id) {
+    return {
+      open: () => this.openCard(id, true),
+      openFromShort: () => { this.setState({ shortOpen: false }); this.openCard(id, true); },
+      openFromCompare: () => { this.setState({ modal: null }); this.openCard(id, true); },
+      save: () => this.toggleSave(id),
+      compare: () => this.toggleCompare(id),
+      flip: () => this.setState((s) => ({ flipped: { ...s.flipped, [id]: !s.flipped[id] } })),
+      tilt: (e) => {
+        if (reduceMotion() || e.pointerType === 'touch') return;
+        const el = e.currentTarget, r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+        el.style.setProperty('--ry', `${x * 16}deg`); el.style.setProperty('--rx', `${-y * 12}deg`);
+        el.style.setProperty('--gx', `${(x + 0.5) * 100}%`); el.style.setProperty('--gy', `${(y + 0.5) * 100}%`);
+      },
+      untilt: (e) => { const el = e.currentTarget; el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', '0deg'); },
+    };
+  }
+  staticVm(c) {
+    const b = c.benefits, st = STATUS[c._status], air = b?.lounges?.airport;
+    const icon = (key, on, tip) => ({ icon: BENMAP[key].icon, tip, aria: `${BENMAP[key].label}: ${on ? 'yes' : 'no'}. ${tip}`, border: on ? 'var(--border-accent)' : 'var(--border-subtle)', bg: on ? 'var(--accent-wash)' : 'transparent', color: on ? 'var(--accent-text)' : 'var(--text-muted)' });
+    return {
+      id: c.id, name: c.name, bank: c.bank, img: c.image || '', hasImg: Boolean(c.image), noImg: !c.image,
+      faceName: c.name.replace(/\s*credit card\s*$/i, ''), faceBorder: c.isLTF ? 'var(--accent-secondary)' : 'var(--accent-pink)',
+      faceGlow: c.isLTF ? 'rgba(182,255,59,.35)' : 'rgba(255,43,214,.4)', thumbBorder: 'var(--border-subtle)',
+      netShort: c.network, typeLabel: c.isLTF ? 'LTF' : 'Premium', typeColor: c.isLTF ? 'var(--ltf-text)' : 'var(--gold-text)', typeBg: c.isLTF ? 'var(--ltf-wash)' : 'var(--gold-wash)',
+      accentBar: c.isLTF ? 'var(--accent-secondary)' : 'linear-gradient(90deg,var(--accent-gold),var(--accent-pink))',
+      status: c._badge.text, statusColor: st.color,
+      fee: c.isLTF ? 'Lifetime free' : inr(c.annualFee), feeColor: c.isLTF ? 'var(--ltf-text)' : 'var(--text-primary)',
+      reward: c.rewardRate || '—', joining: c.joiningFee == null ? '—' : inr(c.joiningFee),
+      dom: b ? visits(air?.domestic) : '—', intl: b ? visits(air?.international) : '—', forex: b?.forex?.markupFee || '—',
+      income: c.eligibility?.minIncome == null ? '—' : inr(c.eligibility.minIncome),
+      hasBen: Boolean(b), noBen: !b,
+      icons: b ? [
+        icon('lounge', c._ben.lounge, air?.description || 'Airport lounge access'),
+        icon('golf', c._ben.golf, b.golf?.description || 'Golf'),
+        icon('cashback', Boolean(b.cashback), b.cashback?.description || 'Rewards'),
+        icon('forex', c._ben.forex, b.forex?.description || `Forex markup: ${b.forex?.markupFee || 'not verified'}`),
+      ] : [],
+      facts: [
+        { k: 'Annual fee', v: c.isLTF ? 'Lifetime free' : inr(c.annualFee) },
+        { k: 'Rewards', v: c.rewardRate || '—' },
+        { k: 'Lounges', v: air ? `${air.domestic === -1 ? 'Unl.' : air.domestic || 0} dom · ${air.international === -1 ? 'Unl.' : air.international || 0} intl` : '—' },
+        { k: 'Forex', v: b?.forex?.markupFee || '—' },
+      ],
+      ...this.h[c.id],
+    };
+  }
+  vm(c, i) {
+    const s = this.state, saved = s.saved.includes(c.id), cmp = s.compare.includes(c.id), fl = Boolean(s.flipped[c.id]);
+    return {
+      ...c._vm, savedPressed: String(saved), saveAria: saved ? `Remove ${c.name} from shortlist` : `Save ${c.name} to shortlist`,
+      saveColor: saved ? 'var(--accent-pink)' : 'var(--text-secondary)', saveBorder: saved ? 'var(--accent-pink)' : 'var(--border-subtle)', heartFill: saved ? 'currentColor' : 'none',
+      cmpPressed: String(cmp), cmpLabel: cmp ? 'Comparing' : 'Compare', cmpAria: cmp ? `Remove ${c.name} from compare` : `Add ${c.name} to compare`,
+      cmpBorder: cmp ? 'var(--accent-primary)' : 'var(--border-subtle)', cmpBg: cmp ? 'var(--accent-wash)' : 'transparent', cmpColor: cmp ? 'var(--accent-text)' : 'var(--text-primary)',
+      flipped: String(fl), flipDeg: fl ? 180 : 0, backHidden: String(!fl), flipLabel: fl ? 'Show card front' : 'Flip card to see key benefits',
+      anim: s.countP < 1 || reduceMotion() ? 'none' : `cr-rise 240ms ease-out ${Math.min(i, 12) * 30}ms both`,
+    };
+  }
+
+  // Layers
+  pushFocus() { this.focusStack.push(document.activeElement); }
+  restoreFocus() { const el = this.focusStack.pop(); setTimeout(() => { if (el && document.contains(el)) el.focus(); }, 0); }
+  focusInto(ref) { setTimeout(() => { const n = ref.current?.querySelector(FOCUSABLE); n?.focus(); }, 30); }
+  topLayer() {
+    const s = this.state;
+    if (s.modal) return 'modal'; if (s.drawerId) return 'drawer'; if (s.shortOpen) return 'short';
+    if (s.sheetOpen && s.w < 1024) return 'sheet'; if (s.chatOpen) return 'chat'; return null;
+  }
+  layerRef(n) { return { modal: this.modalRef, drawer: this.drawerRef, short: this.shortRef, sheet: this.railRef, chat: this.chatRef }[n]; }
+  closeTop() {
+    const t = this.topLayer();
+    if (this.state.qFocus && this.state.qInput) { this.setState({ qFocus: false }); return; }
+    if (t === 'modal') this.closeModal(); else if (t === 'drawer') this.closeDrawer(); else if (t === 'short') this.closeShort();
+    else if (t === 'sheet') this.closeSheet(); else if (t === 'chat') this.toggleChat();
+  }
+  handleKey(e) {
+    const tag = (e.target.tagName || '').toLowerCase();
+    const typing = tag === 'input' || tag === 'textarea' || tag === 'select' || e.target.isContentEditable;
+    if (e.key === '/' && !typing) { e.preventDefault(); this.searchRef.current?.focus(); return; }
+    if (e.key === 'Escape') { this.closeTop(); return; }
+    const top = this.topLayer();
+    if (top === 'drawer' && !typing && e.target.getAttribute?.('role') !== 'tab' && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) { e.preventDefault(); this.step(e.key === 'ArrowRight' ? 1 : -1); return; }
+    if (e.key === 'Tab' && top && top !== 'chat') {
+      const root = this.layerRef(top).current; if (!root) return;
+      const els = [...root.querySelectorAll(FOCUSABLE)].filter((n) => n.offsetParent !== null);
+      if (!els.length) return;
+      const first = els[0], last = els[els.length - 1];
+      if (!root.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+      else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  }
+  openCard(id, push) {
+    if (!this.byId[id]) return;
+    const already = Boolean(this.state.drawerId);
+    if (!already) this.pushFocus();
+    this.setState({ drawerId: id, tab: 'overview' }, () => {
+      try {
+        const url = `${location.pathname}${location.search}#card=${id}`;
+        if (push && !already) { history.pushState({ card: id }, '', url); this.pushed = true; } else history.replaceState(history.state, '', url);
+      } catch { }
+      if (!already) this.focusInto(this.drawerRef);
+    });
+  }
+  closeDrawer() {
+    if (this.pushed) { this.pushed = false; try { history.back(); } catch { } }
+    this.setState({ drawerId: null }, () => { this.syncUrl(); this.restoreFocus(); });
+  }
+  step(d) {
+    const list = this.results(), i = list.findIndex((c) => c.id === this.state.drawerId);
+    const n = list[i + d]; if (i < 0 || !n) return;
+    this.setState({ drawerId: n.id }, () => this.syncUrl());
+  }
+  closeShort() { this.setState({ shortOpen: false }, () => this.restoreFocus()); }
+  closeSheet() { const was = this.state.sheetOpen; this.setState({ sheetOpen: false }, () => { if (was) this.restoreFocus(); }); }
+  closeModal() { this.setState({ modal: null, goPro: false }, () => this.restoreFocus()); }
+  openModal(kind, extra = {}) { if (!this.state.modal) this.pushFocus(); this.setState({ modal: kind, ...extra }, () => this.focusInto(this.modalRef)); }
+  openQuiz() { this.openModal('quiz', { quizStep: 0, quizAns: {} }); }
+  toggleChat() {
+    const open = !this.state.chatOpen;
+    if (open) this.pushFocus();
+    this.setState({ chatOpen: open }, () => { if (open) this.focusInto(this.chatRef); else this.restoreFocus(); });
+  }
+
+  limit() { return this.state.isPro ? COMPARE_PRO : COMPARE_FREE; }
+  toggleCompare(id) {
+    const cur = this.state.compare;
+    if (cur.includes(id)) { const next = cur.filter((x) => x !== id); this.setState({ compare: next }); store.set('cardradar-compare', next); return; }
+    if (cur.length >= this.limit()) {
+      if (this.state.isPro) return this.toast(`You can compare up to ${COMPARE_PRO} cards`);
+      this.toast(`Go PRO to compare up to ${COMPARE_PRO} cards`);
+      return this.openModal('account', { goPro: true });
+    }
+    const next = [...cur, id]; this.setState({ compare: next }); store.set('cardradar-compare', next);
+  }
+  toggleSave(id) {
+    const cur = this.state.saved, on = !cur.includes(id), next = on ? [...cur, id] : cur.filter((x) => x !== id);
+    this.setState({ saved: next }); store.set('cardradar-shortlist', next);
+    this.toast(on ? 'Saved to shortlist' : 'Removed from shortlist');
+  }
+
+  renderVals() {
+    const s = this.state, f = s.f, w = s.w, desk = w >= 1024, mob = w < 640, cards = this.cards;
+    const ready = !s.loading && !s.error;
+    const res = ready ? this.results() : [];
+    const total = cards.length || 143;
+    const P = s.countP, cnt = (n) => Math.round(n * P);
+    const feeMax = this.feeMaxVal || 60000;
+    const tip = (k, text) => () => this.setState((st) => ({ tips: { ...st.tips, [k]: text } }));
+    const untip = (k) => () => this.setState((st) => ({ tips: { ...st.tips, [k]: '' } }));
+    const optStyle = (active, n) => ({
+      pressed: String(active), disabled: !active && n === 0, opacity: !active && n === 0 ? 0.4 : 1, cursor: !active && n === 0 ? 'not-allowed' : 'pointer',
+      border: active ? 'var(--accent-primary)' : 'var(--border-subtle)', bg: active ? 'var(--accent-wash)' : 'transparent', color: active ? 'var(--accent-text)' : 'var(--text-primary)',
+      box: active ? 'var(--accent-primary)' : 'var(--text-muted)', boxBg: active ? 'var(--accent-primary)' : 'transparent', tick: active ? '✓' : '',
+    });
+
+    // Facet counts
+    const benefitOpts = ready ? BEN.map((b) => {
+      const active = f.benefits.includes(b.key);
+      const n = active ? res.length : this.query({ ...f, benefits: [...f.benefits, b.key] }).length;
+      return { ...optStyle(active, n), key: b.key, label: b.label, icon: b.icon, count: n, title: `${b.label}: ${n} cards`, toggle: () => this.toggleIn('benefits', b.key) };
+    }) : [];
+    const baseBank = ready ? this.query(f, 'banks') : [];
+    const bq = s.bankQ.trim().toLowerCase();
+    const bankOpts = ready ? this.bankList.filter((b) => !bq || b.toLowerCase().includes(bq)).map((b) => {
+      const active = f.banks.includes(b), n = baseBank.filter((c) => c.bank === b).length;
+      return { ...optStyle(active, n), label: b, count: n, toggle: () => this.toggleIn('banks', b) };
+    }) : [];
+    const baseNet = ready ? this.query(f, 'networks') : [];
+    const netOpts = NETS.map((n) => { const active = f.networks.includes(n), k = baseNet.filter((c) => c._nets.includes(n)).length; return { ...optStyle(active, k), label: n, count: k, toggle: () => this.toggleIn('networks', n) }; });
+    const baseTier = ready ? this.query(f, 'tiers') : [];
+    const tierOpts = TIERS.map(([k, l]) => { const active = f.tiers.includes(k), n = baseTier.filter((c) => c.tier === k).length; return { ...optStyle(active, n), label: l, count: n, toggle: () => this.toggleIn('tiers', k) }; });
+    const baseSt = ready ? this.query(f, 'status') : [], baseCo = ready ? this.query(f, 'hideCo') : [];
+    const sw = (active, n, label, toggle) => ({ ...optStyle(active, n), label, count: n, toggle, trackBg: active ? 'var(--accent-primary)' : 'var(--track)', knob: active ? 'var(--on-accent)' : 'var(--text-secondary)', knobX: active ? 14 : 0 });
+    const vN = baseSt.filter((c) => c._status === 'verified').length;
+    const switchOpts = [
+      sw(f.status === 'verified', vN, 'Verified only', () => this.setF({ status: f.status === 'verified' ? '' : 'verified' })),
+      sw(f.hideCo, baseCo.filter((c) => !c.isCoBranded).length, 'Hide co-branded', () => this.setF({ hideCo: !f.hideCo })),
+    ];
+
+    // Pills
+    const pills = [];
+    const pill = (label, patch) => pills.push({ label, aria: `Remove filter: ${label}`, remove: () => this.setF(patch), patch });
+    f.benefits.forEach((k) => pill(BENMAP[k].label, { benefits: f.benefits.filter((x) => x !== k) }));
+    f.banks.forEach((b) => pill(b, { banks: f.banks.filter((x) => x !== b) }));
+    f.networks.forEach((n) => pill(n, { networks: f.networks.filter((x) => x !== n) }));
+    f.tiers.forEach((t) => pill(TIERMAP[t], { tiers: f.tiers.filter((x) => x !== t) }));
+    if (f.fee) pill(`Fee ${inr(f.fee[0])}–${inr(f.fee[1])}`, { fee: null });
+    if (Number(f.income) > 0) pill(`Income ${inr(Number(f.income))}`, { income: '' });
+    if (f.status) pill(STATUS[f.status].label, { status: '' });
+    if (f.hideCo) pill('No co-branded', { hideCo: false });
+    if (f.seg !== 'all') pill(f.seg === 'bank' ? 'Bank cards' : 'Co-branded', { seg: 'all' });
+    if (f.q) pill(`“${f.q}”`, { q: '' });
+    pills.forEach((p) => { if ('q' in p.patch) { const r = p.remove; p.remove = () => { this.setState({ qInput: '' }); r(); }; } });
+    const clearAll = () => { this.setState({ qInput: '', incomeInput: '', bankQ: '' }); this.setF({ ...F0(), sort: f.sort, view: f.view }); };
+    const emptySuggest = ready && !res.length ? pills.map((p) => ({ label: p.label, count: this.query({ ...f, ...p.patch }).length, onClick: p.remove })).filter((e) => e.count > 0).sort((a, b) => b.count - a.count).slice(0, 3) : [];
+
+    // Radar
+    const inView = res;
+    const tile = (label, value, active, onClick, color) => ({ label, value: cnt(value), pressed: String(active), onClick, title: `${label}: ${value}`, border: active ? 'var(--accent-primary)' : 'var(--border-subtle)', bg: active ? 'var(--accent-wash)' : 'var(--bg-glass-light)', shadow: active ? 'var(--glow-soft)' : 'none', color: color || 'var(--text-primary)' });
+    const tb = (k) => () => this.toggleIn('benefits', k);
+    const statTiles = [
+      tile('Cards in view', inView.length, false, clearAll),
+      tile('Lifetime free', inView.filter((c) => c._ben.ltf).length, f.benefits.includes('ltf'), tb('ltf'), 'var(--ltf-text)'),
+      tile('With lounge', inView.filter((c) => c._ben.lounge).length, f.benefits.includes('lounge'), tb('lounge')),
+      tile('With golf', inView.filter((c) => c._ben.golf).length, f.benefits.includes('golf'), tb('golf')),
+      tile('Cashback', inView.filter((c) => c._ben.cashback).length, f.benefits.includes('cashback'), tb('cashback')),
+      tile('Banks', new Set(inView.map((c) => c.bank)).size, f.banks.length > 0, () => this.openBankFilter()),
+      tile('Verified', inView.filter((c) => c._status === 'verified').length, f.status === 'verified', () => this.setF({ status: f.status === 'verified' ? '' : 'verified' })),
+    ];
+    const feeCounts = FEE_B.map((b) => inView.filter((c) => c._fee >= b.r[0] && c._fee <= b.r[1]).length);
+    const feeTop = Math.max(1, ...feeCounts);
+    const feeBars = FEE_B.map((b, i) => {
+      const r = [b.r[0], Math.min(b.r[1], feeMax)], active = Boolean(f.fee && f.fee[0] === r[0] && f.fee[1] === r[1]);
+      const pct = inView.length ? Math.round((feeCounts[i] / inView.length) * 100) : 0, text = `${b.label} · ${feeCounts[i]} cards · ${pct}%`;
+      return { label: b.label, count: feeCounts[i], pct: Math.round((feeCounts[i] / feeTop) * 100), pressed: String(active), aria: `${text}. ${active ? 'Active filter, select to clear' : 'Select to filter'}`,
+        fill: active ? 'var(--accent-primary)' : 'var(--chart-2)', shadow: active ? 'var(--glow-soft)' : 'none', labelColor: active ? 'var(--accent-text)' : 'var(--text-muted)',
+        onClick: () => this.setF({ fee: active ? null : r }), onTip: tip('fee', text), offTip: untip('fee') };
+    });
+    const bc = {}; inView.forEach((c) => { bc[c.bank] = (bc[c.bank] || 0) + 1; });
+    const banksSorted = Object.entries(bc).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+    const bTop = Math.max(1, ...banksSorted.map((x) => x[1]));
+    const bankBars = banksSorted.slice(0, 8).map(([name, n]) => {
+      const active = f.banks.includes(name), text = `${name} · ${n} cards`;
+      return { label: name, count: n, pct: Math.round((n / bTop) * 100), pressed: String(active), aria: `${text}. ${active ? 'Active filter' : 'Select to filter'}`, fill: active ? 'var(--accent-primary)' : 'var(--chart-2)', labelColor: active ? 'var(--accent-text)' : 'var(--text-secondary)', onClick: () => this.toggleIn('banks', name), onTip: tip('bank', text), offTip: untip('bank') };
+    });
+    const netCounts = NETS.map((n) => inView.filter((c) => c._nets.includes(n)).length), netSum = Math.max(1, netCounts.reduce((a, b) => a + b, 0));
+    const netBars = NETS.map((n, i) => {
+      const active = f.networks.includes(n), text = `${n} · ${netCounts[i]} cards`;
+      return { label: n, count: netCounts[i], pct: (netCounts[i] / netSum) * 100, fill: NETFILL[i], pressed: String(active), aria: `${text}. ${active ? 'Active filter' : 'Select to filter'}`, disabled: !active && !netCounts[i], opacity: !active && !netCounts[i] ? 0.45 : 1, border: active ? 'var(--accent-primary)' : 'var(--border-subtle)', onClick: () => this.toggleIn('networks', n), onTip: tip('net', text), offTip: untip('net') };
+    });
+    const vc = { verified: 0, outdated: 0, unverified: 0 }; inView.forEach((c) => { vc[c._status]++; });
+    const vt = Math.max(1, inView.length);
+    const a1 = (vc.verified / vt) * 360, a2 = a1 + (vc.outdated / vt) * 360;
+    const ringBg = `conic-gradient(var(--status-verified) 0deg ${a1}deg, var(--status-outdated) ${a1}deg ${a2}deg, var(--status-unverified) ${a2}deg 360deg)`;
+    const verBars = Object.keys(STATUS).map((k) => {
+      const active = f.status === k, n = vc[k], text = `${STATUS[k].label} · ${n} of ${inView.length}`;
+      return { label: STATUS[k].label, count: n, fill: STATUS[k].color, pressed: String(active), aria: `${text}. ${active ? 'Active filter' : 'Select to filter'}`, disabled: !active && !n, opacity: !active && !n ? 0.45 : 1, cursor: !active && !n ? 'not-allowed' : 'pointer', border: active ? 'var(--accent-primary)' : 'var(--border-subtle)', onClick: () => this.setF({ status: active ? '' : k }), onTip: tip('ver', text), offTip: untip('ver') };
+    });
+
+    // Table columns
+    const [sk, sd] = parseSort(f.sort);
+    const COLS = [['name', 'Card', 'asc'], ['bank', 'Bank', 'asc'], ['fee', 'Annual fee', 'asc'], ['joining', 'Joining fee', 'asc'], ['reward', 'Reward rate', 'desc'], ['dom', 'Dom. lounges', 'desc'], ['intl', 'Intl. lounges', 'desc'], ['forex', 'Forex markup', 'asc'], ['income', 'Min. income', 'asc'], ['status', 'Status', 'asc']];
+    const tableCols = COLS.map(([k, label, def], i) => {
+      const on = sk === k, num = i >= 2 && i <= 8;
+      return { label, ariaSort: on ? (sd === 'asc' ? 'ascending' : 'descending') : 'none', arrow: on ? (sd === 'asc' ? '▲' : '▼') : '', color: on ? 'var(--accent-text)' : 'var(--text-secondary)',
+        align: num ? 'right' : 'left', justify: num ? 'flex-end' : 'flex-start', left: i === 0 ? '0' : 'auto', z: i === 0 ? 3 : 2,
+        onClick: () => this.setF({ sort: encodeSort(k, on ? (sd === 'asc' ? 'desc' : 'asc') : def) }) };
+    });
+
+    // Suggestions
+    const q = s.qInput.trim().toLowerCase();
+    let suggestions = [];
+    if (ready && q) {
+      const pick = (fn) => (e) => { e.preventDefault(); fn(); this.setState({ qFocus: false }); };
+      cards.filter((c) => c.name.toLowerCase().includes(q)).slice(0, 5).forEach((c) => suggestions.push({ label: c.name, kind: 'Card', icon: 'compare', pick: pick(() => this.openCard(c.id, true)) }));
+      this.bankList.filter((b) => b.toLowerCase().includes(q)).slice(0, 3).forEach((b) => suggestions.push({ label: b, kind: 'Bank', icon: 'bank', pick: pick(() => { this.setState({ qInput: '' }); this.setF({ q: '', banks: f.banks.includes(b) ? f.banks : [...f.banks, b] }); }) }));
+      BEN.filter((b) => b.label.toLowerCase().includes(q)).slice(0, 3).forEach((b) => suggestions.push({ label: b.label, kind: 'Benefit', icon: b.icon, pick: pick(() => { this.setState({ qInput: '' }); this.setF({ q: '', benefits: f.benefits.includes(b.key) ? f.benefits : [...f.benefits, b.key] }); }) }));
+    }
+    const suggestShow = s.qFocus && suggestions.length > 0;
+
+    // Drawer
+    let dv = {}, prevDisabled = true, nextDisabled = true;
+    const dc = s.drawerId && this.byId?.[s.drawerId];
+    if (dc) {
+      const idx = res.findIndex((c) => c.id === dc.id);
+      prevDisabled = idx <= 0; nextDisabled = idx < 0 || idx >= res.length - 1;
+      const base = this.vm(dc, 0), b = dc.benefits, e = dc.eligibility || {}, v = dc.verification || {}, air = b?.lounges?.airport || {}, rail = b?.lounges?.railway || {};
+      const rupees = (n) => (n == null ? 'Not verified yet' : inr(n));
+      const vis = (n) => (n === -1 ? 'Unlimited' : n ? `${n} visits/year` : 'None');
+      const ben = (key, on, label, tipText) => ({ icon: BENMAP[key]?.icon || key, label, tip: tipText || '', state: on ? 'Yes' : 'No', border: on ? 'var(--border-accent)' : 'var(--border-subtle)', bg: on ? 'var(--accent-wash)' : 'transparent', color: on ? 'var(--text-primary)' : 'var(--text-muted)' });
+      const inc = Number(f.income);
+      const similar = cards.filter((c) => c.id !== dc.id && (c.tier === dc.tier || c.category === dc.category)).slice(0, 3).map((c) => ({ name: c.name, sub: `${c.bank} · ${c.isLTF ? 'Lifetime free' : inr(c.annualFee)}`, img: c.image || '', hasImg: Boolean(c.image), open: () => this.openCard(c.id, false) }));
+      const FIELD_LABEL = { annualFee: 'Annual fee', joiningFee: 'Joining fee', rewardRate: 'Reward rate', loungeDomestic: 'Domestic lounges', loungeInternational: 'International lounges', golf: 'Golf', forexMarkup: 'Forex markup', minIncome: 'Min. income', minAge: 'Min. age' };
+      const quotes = Object.entries(v).map(([k, x]) => ({ field: FIELD_LABEL[k] || k, quote: x.quote, date: x.verifiedAt, url: safeUrl(x.url) || '#' }));
+      const apply = safeUrl(dc.applyUrl);
+      dv = {
+        ...base, sub: `${dc.bank} · ${dc.network} · ${dc.category}`, pos: idx >= 0 ? `${idx + 1} of ${res.length}` : 'Not in current results',
+        note: `${dc._badge.text}. ${dc._status === 'verified' ? "Every fee, rate and benefit is quoted from the bank's own page." : dc._status === 'outdated' ? "These details were checked against the bank's page before, but not recently — they may have changed." : "Some details on this card have not been checked against the bank's page yet."} Always confirm on the bank's website before you apply.`,
+        keyFacts: [
+          { label: 'Annual fee', value: dc.isLTF ? 'Lifetime free' : inr(dc.annualFee), color: dc.isLTF ? 'var(--ltf-text)' : 'var(--gold-text)' },
+          { label: 'Reward rate', value: dc.rewardRate || 'Not verified yet', color: 'var(--text-primary)' },
+          { label: 'Airport lounges', value: b ? `${visits(air.domestic)} dom · ${visits(air.international)} intl` : '—', color: 'var(--text-primary)' },
+          { label: 'Forex markup', value: b?.forex?.markupFee || '—', color: b?.forex?.markupFee === '0%' ? 'var(--accent-text)' : 'var(--text-primary)' },
+        ],
+        benefits: b ? [
+          ben('lounge', dc._ben.lounge, 'Airport lounge', air.description), ben('railway', dc._ben.railway, 'Railway lounge', rail.description),
+          ben('golf', dc._ben.golf, 'Golf', b.golf?.description), ben('cashback', Boolean(b.cashback), 'Cashback / rewards', b.cashback?.description),
+          ben('forex', dc._ben.forex, 'Zero forex', b.forex?.description), ben('fuel', dc._ben.fuel, 'Fuel waiver', b.fuel?.description),
+          ben('dining', dc._ben.dining, 'Dining', b.dining?.description), ben('movies', dc._ben.movies, 'Movies', b.movies?.description),
+        ] : [],
+        highlights: (dc.highlights || []).map((t) => ({ text: t })), hasHighlights: (dc.highlights || []).length > 0,
+        feeItems: [
+          { label: 'Type', value: dc.isLTF ? 'Lifetime Free' : 'Annual Fee Card', color: dc.isLTF ? 'var(--ltf-text)' : 'var(--gold-text)' },
+          { label: 'Annual fee', value: rupees(dc.annualFee), color: dc.isLTF ? 'var(--ltf-text)' : 'var(--gold-text)' },
+          { label: 'Joining fee', value: rupees(dc.joiningFee), color: 'var(--text-primary)' },
+          { label: 'Reward rate', value: dc.rewardRate || 'Not verified yet', color: 'var(--text-primary)' },
+          { label: 'Network', value: dc.network, color: 'var(--text-primary)' },
+          { label: 'Category', value: dc.category, color: 'var(--text-primary)' },
+        ],
+        hasCashback: Boolean(b?.cashback), cashDesc: b?.cashback?.description || '', cashDetails: (b?.cashback?.details || []).map((t) => ({ text: t })),
+        hasOther: Boolean(b?.other?.length), other: (b?.other || []).map((t) => ({ text: t })),
+        travelItems: b ? [
+          { label: 'Domestic airport', value: vis(air.domestic), desc: '', color: air.domestic ? 'var(--accent-text)' : 'var(--text-muted)' },
+          { label: 'International airport', value: vis(air.international), desc: air.description || '', color: air.international ? 'var(--accent-text)' : 'var(--text-muted)' },
+          { label: 'Railway lounge', value: vis(rail.count), desc: rail.description || '', color: rail.count ? 'var(--accent-text)' : 'var(--text-muted)' },
+          { label: 'Forex markup', value: b.forex?.markupFee || 'Not verified yet', desc: b.forex?.description || '', color: b.forex?.markupFee === '0%' ? 'var(--accent-text)' : 'var(--text-primary)' },
+          { label: 'Golf', value: b.golf?.available ? 'Available' : 'None', desc: b.golf?.description || '', color: b.golf?.available ? 'var(--accent-text)' : 'var(--text-muted)' },
+        ] : [],
+        eligItems: [{ label: 'Min. annual income', value: rupees(e.minIncome) }, { label: 'Min. age', value: e.minAge == null ? 'Not verified yet' : `${e.minAge} years` }],
+        qualify: inc > 0 ? (e.minIncome == null ? `The minimum income for this card isn't listed, so we can't tell whether ${inr(inc)} qualifies. Check with ${dc.bank}.` : e.minIncome <= inc ? `Your income of ${inr(inc)} meets the listed minimum of ${inr(e.minIncome)}.` : `The listed minimum is ${inr(e.minIncome)}, above your ${inr(inc)}.`) : 'Enter your yearly income under "Cards I can get" to see whether you meet the listed minimum. It stays in your browser.',
+        qualBorder: inc > 0 && e.minIncome != null ? (e.minIncome <= inc ? 'var(--border-accent)' : 'var(--accent-pink)') : 'var(--border-subtle)',
+        quotes, hasQuotes: quotes.length > 0, noQuotes: quotes.length === 0,
+        checkedText: dc.lastCheckedAt ? `Bank page last checked ${dc.lastCheckedAt.slice(0, 10)}.` : 'The weekly crawl has not checked this card’s page yet.',
+        sourceLinks: (dc.sources || []).map((x) => ({ url: safeUrl(x.url) })).filter((x) => x.url),
+        similar, hasSimilar: similar.length > 0, apply: apply || '', hasApply: Boolean(apply),
+      };
+    }
+    const TABS = [['overview', 'Overview'], ['fees', 'Fees & rewards'], ['travel', 'Lounges & travel'], ['elig', 'Eligibility'], ['sources', 'Sources']];
+    const tabs = TABS.map(([k, l]) => ({ id: `tab-${k}`, label: l, selected: String(s.tab === k), tabindex: s.tab === k ? 0 : -1, border: s.tab === k ? 'var(--accent-primary)' : 'transparent', color: s.tab === k ? 'var(--accent-text)' : 'var(--text-secondary)', onClick: () => this.setState({ tab: k }) }));
+
+    // Compare
+    const lim = this.limit();
+    const cmpList = s.compare.map((id) => this.byId?.[id]).filter(Boolean);
+    const traySlots = [...cmpList.map((c) => ({ filled: true, label: c.name, img: c.image || '', hasImg: Boolean(c.image), aria: `Remove ${c.name} from compare`, remove: () => this.toggleCompare(c.id), color: 'var(--text-primary)', borderStyle: 'solid' })),
+      ...Array.from({ length: Math.max(0, lim - cmpList.length) }, () => ({ filled: false, label: 'Add a card', color: 'var(--text-muted)', borderStyle: 'dashed' }))];
+    const best = (score, dir) => { const vals = cmpList.map(score).filter((x) => typeof x === 'number' && !Number.isNaN(x)); if (vals.length < 2 || new Set(vals).size < 2) return null; return dir === 'low' ? Math.min(...vals) : Math.max(...vals); };
+    const yes = (on) => (on ? 'Yes' : '—');
+    const rowsDef = [
+      ['Annual fee', (c) => (c.isLTF ? 'Lifetime free' : inr(c.annualFee)), (c) => c._fee, 'low'],
+      ['Joining fee', (c) => (c.joiningFee == null ? '—' : inr(c.joiningFee)), (c) => c.joiningFee, 'low'],
+      ['Reward rate', (c) => c.rewardRate || '—'],
+      ['Domestic lounges', (c) => (c.benefits ? visits(c.benefits.lounges?.airport?.domestic) : '—'), (c) => lounge(c.benefits?.lounges?.airport?.domestic) ?? 0, 'high'],
+      ['International lounges', (c) => (c.benefits ? visits(c.benefits.lounges?.airport?.international) : '—'), (c) => lounge(c.benefits?.lounges?.airport?.international) ?? 0, 'high'],
+      ['Railway lounges', (c) => (c.benefits ? visits(c.benefits.lounges?.railway?.count) : '—')],
+      ['Golf', (c) => yes(c._ben.golf)],
+      ['Forex markup', (c) => c.benefits?.forex?.markupFee || '—', (c) => parseFloat(c.benefits?.forex?.markupFee), 'low'],
+      ['Fuel surcharge waiver', (c) => yes(c._ben.fuel)],
+      ['Min. income', (c) => (c.eligibility?.minIncome == null ? '—' : inr(c.eligibility.minIncome)), (c) => c.eligibility?.minIncome, 'low'],
+      ['Data status', (c) => c._badge.text],
+    ];
+    const cmpRows = s.modal === 'compare' ? rowsDef.map(([label, show, score, dir]) => {
+      const top = score ? best(score, dir) : null;
+      return { label, cells: cmpList.map((c) => { const hit = top !== null && score(c) === top; return { v: show(c), color: hit ? 'var(--accent-text)' : 'var(--text-primary)', bg: hit ? 'var(--accent-wash)' : 'transparent', weight: hit ? 700 : 500 }; }) };
+    }) : [];
+
+    // Quiz
+    const qs = QUIZ[Math.min(s.quizStep, 3)];
+    let quizResults = [];
+    if (s.modal === 'quiz' && s.quizStep >= 4) {
+      const a = { income: 0, spend: 'everyday', maxFee: Infinity, lounge: false, ...s.quizAns };
+      const txt = (c) => [c.name, c.category, ...(c.highlights || []), c.benefits?.cashback?.description || ''].join(' ').toLowerCase();
+      const SPEND = {
+        online: { test: (c) => /online|shopping|amazon|flipkart|myntra|e-?commerce|cashback/.test(txt(c)), why: 'Rewards online shopping' },
+        travel: { test: (c) => c._ben.lounge || /travel|miles|air|flight|hotel|forex/.test(txt(c)), why: 'Built for travel' },
+        dining: { test: (c) => c.benefits?.dining?.available === true || /dining|swiggy|zomato|food|restaurant/.test(txt(c)), why: 'Dining benefits' },
+        fuel: { test: (c) => c.benefits?.fuel?.surchargeWaiver === true || /fuel|petrol|bpcl|hpcl|indianoil|iocl/.test(txt(c)), why: 'Saves on fuel' },
+        everyday: { test: (c) => /cashback|rewards|everyday|all spends/.test(txt(c)), why: 'Good on everyday spends' },
+      };
+      quizResults = cards.filter((c) => c.eligibility?.minIncome == null || c.eligibility.minIncome <= a.income).filter((c) => (c.isLTF ? 0 : c.annualFee) <= a.maxFee).map((c) => {
+        const reasons = []; let score = (c.popularityScore || 0) / 10;
+        if (SPEND[a.spend]?.test(c)) { score += 10; reasons.push(SPEND[a.spend].why); }
+        if (a.lounge && c._ben.lounge) { score += 6; reasons.push('Airport lounge access'); }
+        if (c.isLTF) { score += 2; reasons.push('Lifetime free'); }
+        if (c.benefits?.forex?.markupFee === '0%' && a.spend === 'travel') { score += 3; reasons.push('Zero forex markup'); }
+        if (c._status === 'verified') { score += 2; reasons.push('Details verified'); }
+        return { card: c, score, reasons };
+      }).filter((r) => r.reasons.length > 0).sort((x, y) => y.score - x.score || x.card.name.localeCompare(y.card.name)).slice(0, 5)
+        .map(({ card, reasons }, i) => ({ rank: i + 1, name: card.name, img: card.image || '', hasImg: Boolean(card.image), why: `${card.isLTF ? 'Lifetime free' : `${inr(card.annualFee)}/yr`} · ${reasons.filter((r) => r !== 'Lifetime free').join(' · ')}`, open: () => { this.setState({ modal: null }); this.openCard(card.id, true); } }));
+    }
+
+    const hasActive = pills.length > 0;
+    const isSheet = !desk && s.sheetOpen;
+    const railStyle = desk
+      ? { position: 'sticky', top: 88, alignSelf: 'start', maxHeight: 'calc(100vh - 104px)', display: 'flex', flexDirection: 'column', background: 'var(--bg-glass)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-lg)', overflow: 'hidden' }
+      : { position: 'fixed', left: 0, right: 0, bottom: 0, zIndex: 60, maxHeight: '86vh', display: s.sheetOpen ? 'flex' : 'none', flexDirection: 'column', background: 'var(--bg-solid)', borderTop: '1px solid var(--border-accent)', borderRadius: '20px 20px 0 0', boxShadow: 'var(--shadow-lg)', animation: 'cr-in-up 220ms ease-out' };
+    const incNum = Number(f.income);
+    const hiddenByIncome = ready && incNum > 0 ? this.query(f, 'income').length - res.length : 0;
+    const wideList = w >= 900;
+    const modalTitle = { quiz: s.quizStep >= 4 ? 'Your best matches' : 'Find my card', compare: 'Compare cards', account: s.goPro ? 'Go PRO' : 'Your account' }[s.modal] || '';
+
+    return {
+      searchRef: this.searchRef, railRef: this.railRef, drawerRef: this.drawerRef, shortRef: this.shortRef, modalRef: this.modalRef, chatRef: this.chatRef, bankSearchRef: this.bankSearchRef,
+      searchFlex: w < 760 ? '1 1 100%' : '1 1 320px', searchOrder: w < 760 ? 3 : 1, showLabels: w >= 900,
+      qInput: s.qInput, suggestions, suggestShow, suggestExpanded: String(suggestShow),
+      onQ: (e) => { const v = e.target.value; this.setState({ qInput: v, qFocus: true }); clearTimeout(this.qT); this.qT = setTimeout(() => this.setF({ q: v.trim() }), 150); },
+      onQFocus: () => this.setState({ qFocus: true }), onQBlur: () => setTimeout(() => this.setState({ qFocus: false }), 120),
+      onQKey: (e) => { if (e.key === 'Enter') { clearTimeout(this.qT); this.setF({ q: s.qInput.trim() }); this.setState({ qFocus: false }); } if (e.key === 'ArrowDown') { const n = document.querySelector('#cr-suggest button'); if (n) { e.preventDefault(); n.focus(); } } },
+      openQuiz: () => this.openQuiz(), openShort: () => { this.pushFocus(); this.setState({ shortOpen: true }, () => this.focusInto(this.shortRef)); }, closeShort: () => this.closeShort(),
+      shortAria: `Shortlist, ${s.saved.length} saved`, hasSaved: s.saved.length > 0, noSaved: s.saved.length === 0, savedCount: s.saved.length,
+      toggleTheme: () => { const t = s.theme === 'light' ? 'dark' : 'light'; if (t === 'light') document.documentElement.setAttribute('data-theme', 'light'); else document.documentElement.removeAttribute('data-theme'); try { localStorage.setItem('cardradar-theme', t); } catch { } this.setState({ theme: t }); },
+      themeAria: s.theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme', themeIcon: s.theme === 'light' ? 'moon' : 'sun',
+      toggleChat: () => this.toggleChat(), chatOpen: s.chatOpen, chatExpanded: String(s.chatOpen),
+      openAccount: () => this.openModal('account', { goPro: false }), accountAria: s.isPro ? 'Account, PRO plan' : 'Account', accountBorder: s.isPro ? 'var(--accent-gold)' : 'var(--accent-pink)', isPro: s.isPro, notProLabel: !s.isPro && w >= 900,
+      shellCols: desk ? '280px minmax(0,1fr)' : 'minmax(0,1fr)', sheetScrim: isSheet, closeSheet: () => this.closeSheet(), isSheet,
+      railStyle, railRole: isSheet ? 'dialog' : undefined, railModal: isSheet ? 'true' : undefined, rowH: mob ? 44 : 36,
+      hasActive, clearAll, applyLabel: `Show ${res.length} cards`,
+      benefitOpts, bankOpts, netOpts, tierOpts, switchOpts, bankQ: s.bankQ, onBankQ: (e) => this.setState({ bankQ: e.target.value }),
+      feeMax, feeLo: f.fee ? f.fee[0] : 0, feeHi: f.fee ? f.fee[1] : feeMax, feeLoText: inr(f.fee ? f.fee[0] : 0), feeHiText: inr(f.fee ? f.fee[1] : feeMax),
+      feeReadout: `${inr(f.fee ? f.fee[0] : 0)} – ${inr(f.fee ? f.fee[1] : feeMax)}`,
+      onFeeLo: (e) => { const lo = Number(e.target.value), hi = Math.max(lo, f.fee ? f.fee[1] : feeMax); this.setF({ fee: lo === 0 && hi === feeMax ? null : [lo, hi] }); },
+      onFeeHi: (e) => { const hi = Number(e.target.value), lo = Math.min(hi, f.fee ? f.fee[0] : 0); this.setF({ fee: lo === 0 && hi === feeMax ? null : [lo, hi] }); },
+      incomeInput: s.incomeInput || (incNum > 0 ? inrFmt.format(incNum) : ''),
+      onIncome: (e) => { const digits = e.target.value.replace(/\D/g, '').slice(0, 10); this.setState({ incomeInput: digits ? inrFmt.format(Number(digits)) : '' }); clearTimeout(this.iT); this.iT = setTimeout(() => this.setF({ income: digits }), 150); },
+      incomeNote: incNum > 0 ? `Hiding ${hiddenByIncome} ${hiddenByIncome === 1 ? 'card' : 'cards'} that list a higher minimum income. Your income stays in this browser and is never sent anywhere.` : 'Cards that list a higher minimum income are hidden. Your income stays in this browser and is never sent anywhere.',
+      radarSub: ready ? `Live summary of the ${res.length} cards in view. Every tile and bar is also a filter.` : 'Loading the card list…',
+      toggleRadar: () => { const o = !s.radarOpen; store.set('cardradar-radar-open', o); this.setState({ radarOpen: o }); },
+      radarOpen: s.radarOpen, radarExpanded: String(s.radarOpen), radarToggleLabel: s.radarOpen ? 'Collapse' : 'Expand', radarChevron: s.radarOpen ? 180 : 0,
+      statTiles, feeBars, bankBars, netBars, verBars, ringBg, ringAria: `Verification: ${vc.verified} verified, ${vc.outdated} may be outdated, ${vc.unverified} unverified`,
+      verifiedPct: `${inView.length ? Math.round((vc.verified / inView.length) * 100) : 0}%`,
+      tipFee: s.tips.fee || 'Select a bar to filter', tipBank: s.tips.bank || 'Top 8 in view', tipNet: s.tips.net || 'Select to filter', tipVer: s.tips.ver || 'Checked weekly',
+      hasMoreBanks: banksSorted.length > 8, moreBanksLabel: `+${banksSorted.length - 8} more banks`, openBankFilter: () => this.openBankFilter(),
+      resultCount: ready ? res.length : '—', totalCount: total, showFilterBtn: !desk, openSheet: () => { this.pushFocus(); this.setState({ sheetOpen: true }, () => this.focusInto(this.railRef)); },
+      filterBtnLabel: hasActive ? `Filters · ${pills.length}` : 'Filters',
+      segOpts: [['bank', 'Bank cards'], ['co', 'Co-branded'], ['all', 'All']].map(([k, l]) => ({ label: l, pressed: String(f.seg === k), bg: f.seg === k ? 'var(--accent-wash)' : 'transparent', color: f.seg === k ? 'var(--accent-text)' : 'var(--text-secondary)', onClick: () => this.setF({ seg: k }) })),
+      sortVal: SORT_ALIAS[f.sort] ? f.sort : 'custom', onSort: (e) => this.setF({ sort: e.target.value }),
+      viewOpts: [['grid', 'Grid view', 'grid'], ['list', 'List view', 'list'], ['table', 'Table view', 'table']].map(([k, l, ic]) => ({ label: l, icon: ic, pressed: String(f.view === k), bg: f.view === k ? 'var(--accent-wash)' : 'transparent', color: f.view === k ? 'var(--accent-text)' : 'var(--text-secondary)', onClick: () => this.setF({ view: k }) })),
+      pills, hasPills: hasActive,
+      skel: [1, 2, 3, 4, 5, 6], showSkelGrid: s.loading && f.view === 'grid', showSkelRows: s.loading && f.view !== 'grid',
+      showError: Boolean(s.error), errorText: `The request for cards.json failed (${s.error || ''}). Check your connection and try again.`, retry: () => this.load(),
+      showEmpty: ready && res.length === 0, emptySuggest,
+      items: ready ? res.map((c, i) => this.vm(c, i)) : [],
+      showGrid: ready && res.length > 0 && f.view === 'grid', showList: ready && res.length > 0 && f.view === 'list', showTable: ready && res.length > 0 && f.view === 'table',
+      listCols: wideList ? 'minmax(0,1fr) 110px 90px auto 110px auto' : 'minmax(0,1fr) auto auto', listNameCol: wideList ? 'auto' : '1 / -1', listWide: wideList,
+      tableCols,
+      trayShow: cmpList.length > 0 && !s.modal, traySlots, clearCompare: () => { this.setState({ compare: [] }); store.set('cardradar-compare', []); },
+      trayLimit: s.isPro ? `${cmpList.length} of ${COMPARE_PRO}` : `${cmpList.length} of ${COMPARE_FREE} · PRO compares up to ${COMPARE_PRO}`,
+      openCompare: () => { if (cmpList.length < 2) return; if (cmpList.length > lim) { this.toast(`Go PRO to compare more than ${COMPARE_FREE} cards`); return this.openModal('account', { goPro: true }); } this.openModal('compare'); },
+      compareDisabled: cmpList.length < 2, compareOpacity: cmpList.length < 2 ? 0.45 : 1, compareBtnLabel: cmpList.length < 2 ? 'Pick 2 to compare' : `Compare ${cmpList.length}`,
+      drawerOpen: Boolean(dc), dv, closeDrawer: () => this.closeDrawer(), prevCard: () => this.step(-1), nextCard: () => this.step(1),
+      prevDisabled, nextDisabled, prevOpacity: prevDisabled ? 0.35 : 1, nextOpacity: nextDisabled ? 0.35 : 1, drawerW: mob ? '100%' : 'min(560px,100%)',
+      tabs, tabLabelledBy: `tab-${s.tab}`, tabOverview: s.tab === 'overview', tabFees: s.tab === 'fees', tabTravel: s.tab === 'travel', tabElig: s.tab === 'elig', tabSources: s.tab === 'sources',
+      onTabKey: (e) => {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft' && e.key !== 'Home' && e.key !== 'End') return;
+        e.preventDefault(); e.stopPropagation();
+        const i = TABS.findIndex(([k]) => k === s.tab);
+        const n = e.key === 'Home' ? 0 : e.key === 'End' ? TABS.length - 1 : (i + (e.key === 'ArrowRight' ? 1 : -1) + TABS.length) % TABS.length;
+        this.setState({ tab: TABS[n][0] }, () => document.getElementById(`tab-${TABS[n][0]}`)?.focus());
+      },
+      shortW: mob ? '100%' : 'min(420px,100%)', savedItems: s.saved.map((id) => this.byId?.[id]).filter(Boolean).map((c, i) => this.vm(c, i)),
+      sendLabel: `Send ${Math.min(s.saved.length, lim)} to Compare`,
+      limitNote: s.isPro ? `PRO compares up to ${COMPARE_PRO} cards.` : `Free compares ${COMPARE_FREE} cards. PRO compares up to ${COMPARE_PRO}.`,
+      sendToCompare: () => {
+        const ids = [...new Set([...s.compare, ...s.saved])].slice(0, lim), dropped = s.saved.filter((id) => !ids.includes(id)).length;
+        this.setState({ compare: ids, shortOpen: false }); store.set('cardradar-compare', ids);
+        this.toast(dropped ? `Added ${ids.length} of ${lim}. ${s.isPro ? '' : `PRO compares up to ${COMPARE_PRO}.`}` : `${ids.length} cards ready to compare`);
+      },
+      modalOpen: Boolean(s.modal), closeModal: () => this.closeModal(), stop: (e) => e.stopPropagation(), modalTitle, modalMax: s.modal === 'compare' ? '960px' : '520px',
+      mQuizQ: s.modal === 'quiz' && s.quizStep < 4, mQuizR: s.modal === 'quiz' && s.quizStep >= 4, mCompare: s.modal === 'compare', mAccount: s.modal === 'account',
+      quizNow: Math.min(s.quizStep, 3) + 1, quizQ: qs.q, quizDots: QUIZ.map((_, i) => ({ bg: i <= s.quizStep ? 'var(--accent-primary)' : 'var(--track)' })),
+      quizOpts: qs.options.map(([label, val, icon]) => ({ label, icon: icon || '', hasIcon: Boolean(icon), onClick: () => this.setState((st) => ({ quizAns: { ...st.quizAns, [qs.key]: val }, quizStep: st.quizStep + 1 }), () => this.focusInto(this.modalRef)) })),
+      quizBack: s.quizStep > 0 && s.quizStep < 4, quizPrev: () => this.setState((st) => ({ quizStep: st.quizStep - 1 })),
+      quizResults, quizResNote: quizResults.length ? "Based on your answers. Always check eligibility on the bank's site before applying." : 'No listed card fits all of those answers. Try a higher fee budget.',
+      quizToChat: () => { this.setState({ modal: null, chatOpen: true }); },
+      cmpCards: cmpList.map((c) => ({ name: c.name, img: c.image || '', hasImg: Boolean(c.image), noImg: !c.image, netShort: c.network, openFromCompare: this.h[c.id].openFromCompare })), cmpRows,
+      planTitle: s.isPro ? 'PRO plan' : 'Free plan', planSub: s.isPro ? `Compare up to ${COMPARE_PRO} cards` : `Compare ${COMPARE_FREE} cards side by side`,
+      goProReason: s.goPro, goProText: `You've picked ${COMPARE_FREE} cards, the most the free plan compares. PRO compares up to ${COMPARE_PRO}.`,
+      togglePro: () => { this.setState({ isPro: !s.isPro, modal: null, goPro: false }); this.toast(s.isPro ? 'Switched to the free plan (demo)' : 'PRO enabled (demo)'); },
+      proBtnLabel: s.isPro ? 'Switch to free (demo)' : 'Go PRO (demo)', proBtnBg: s.isPro ? 'transparent' : 'var(--accent-gold)', proBtnColor: s.isPro ? 'var(--gold-text)' : '#05060d',
+      noChatMsgs: s.chatMsgs.length === 0,
+      chatSuggest: ['What is your salary range?', 'What are you looking for in a card?', 'Which cards have zero forex markup?', 'Best LTF cards with lounge access?', 'Best cashback card for online shopping?'].map((t) => ({ label: t, onClick: () => this.sendChat(t) })),
+      chatMsgs: s.chatMsgs.map((m) => ({ text: m.text, align: m.me ? 'flex-end' : 'flex-start', bg: m.me ? 'var(--accent-wash)' : 'var(--bg-glass-light)' })),
+      chatInput: s.chatInput, onChatInput: (e) => this.setState({ chatInput: e.target.value }), sendChat: (e) => { e.preventDefault(); this.sendChat(s.chatInput); },
+      toasts: s.toasts,
+    };
+  }
+  sendChat(t) {
+    const text = (t || '').trim(); if (!text) return;
+    this.setState((s) => ({ chatInput: '', chatMsgs: [...s.chatMsgs, { me: true, text }, { me: false, text: 'In this prototype the chat is not connected. On the live site this message goes to CardRadar AI at /api/chat (sign-in required).' }] }));
+  }
+  openBankFilter() {
+    if (this.state.w < 1024) { this.pushFocus(); this.setState({ sheetOpen: true }, () => setTimeout(() => this.bankSearchRef.current?.focus(), 60)); }
+    else { const el = this.bankSearchRef.current; if (el) { const rail = this.railRef.current; if (rail) { const sc = rail.querySelector('div[style*="overflow: auto"]') || rail; sc.scrollTop = el.offsetTop - 60; } el.focus({ preventScroll: true }); } }
+  }
+}
+</script>
+</body>
+</html>

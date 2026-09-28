@@ -19,6 +19,10 @@ npm run dev   # http://localhost:3000
 
 The chat needs an LLM key. Put `LLM_API_KEY=...` in a `.env` file (never commit it).
 
+## Change the page design
+
+The landing page and the cards page are designed in Claude Design and exported to `design/*.dc.html`. `npm run design` compiles them into `public/<page>.tpl.js` and `public/<page>.css`; the page logic is in `public/landing.js` and `public/dashboard.js`. See `design/README.md` for the edits to reapply after a new export.
+
 ## Add or fix a card
 
 1. Create or edit `data/cards/<id>.json`. Copy an existing card; the file name must match `id`.
@@ -30,7 +34,9 @@ Leave `verification` empty for new values: the weekly crawl proposes verified va
 
 ## Deploy
 
-`main` deploys automatically through `.github/workflows/deploy.yml` (and once a day, so stale data is labelled even if nothing is pushed). AWS resources live in `infra/cardradar.yml` and are updated by hand.
+For now `main` deploys to **GitHub Pages** through `.github/workflows/pages.yml` (and once a day, so stale data is labelled even if nothing is pushed): https://rineshpatil.github.io/CardRadar-CreditCard-Scarper/. Pages has no `/api`, so the chat, sign-in and PRO buttons hide themselves there; cards, filters, compare and the quiz all work.
+
+The AWS deploy (`.github/workflows/deploy.yml`) is manual-only until launch; its header comment says which triggers to restore. AWS resources live in `infra/cardradar.yml` and are updated by hand.
 
 First time only, in `ap-south-1`:
 
@@ -51,7 +57,8 @@ aws cloudformation deploy --region ap-south-1 --stack-name cardradar --template-
 data/cards/         one JSON file per card (source of truth)
 data/status.json    weekly crawl state (written by the intake workflow)
 config/             allowed link domains
-public/             the website (public/data/ is generated)
+public/             the website (public/data/, *.tpl.js and landing.css / dashboard.css are generated)
+design/             landing and dashboard pages exported from Claude Design
 lambda/chat/        chat function
 scripts/            build, local preview, crawl intake
 n8n/                weekly crawl workflow and its container image

@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-09-28T10:00:24.609Z",
+        "reason": "Inter and Space Grotesk come from the user's Claude Design landing and dashboard projects; account.css must match the pages it overlays (not a user-confirmed change)"
+      }
+    ]
+  }
+}
