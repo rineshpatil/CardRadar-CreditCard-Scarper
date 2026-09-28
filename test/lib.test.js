@@ -63,3 +63,19 @@ test('renderMarkdown formats chat replies without letting HTML through', () => {
   assert.equal(lib.renderMarkdown('**Best:** <b>x</b>'), '<strong>Best:</strong> &lt;b&gt;x&lt;/b&gt;');
   assert.equal(lib.renderMarkdown('Cards:\n- One\n- Two'), 'Cards:<br><ul><li>One</li><li>Two</li></ul>');
 });
+
+test('recommend drops cards over budget or income, and ranks spend matches first', () => {
+  const cards = [
+    card({ id: 'travel', name: 'Travel Card', category: 'Travel', annualFee: 5000, eligibility: { minIncome: 1200000 },
+      benefits: { lounges: { airport: { domestic: 8, international: 4 } } } }),
+    card({ id: 'free', name: 'Free Cashback', category: 'Cashback', isLTF: true, annualFee: 0, eligibility: { minIncome: null } }),
+    card({ id: 'fuel', name: 'Fuel Card', category: 'Fuel', annualFee: 500, eligibility: { minIncome: 300000 }, benefits: { fuel: { surchargeWaiver: true } } }),
+  ];
+  const ids = (answers) => lib.recommend(cards, answers).map((r) => r.card.id);
+  assert.deepEqual(ids({ income: 600000, spend: 'travel', maxFee: 10000, lounge: true }), ['free'], 'travel card needs ₹12L income; fuel card has nothing for a traveller');
+  assert.equal(ids({ income: 1500000, spend: 'travel', maxFee: 10000, lounge: true })[0], 'travel');
+  assert.deepEqual(ids({ income: 1500000, spend: 'fuel', maxFee: 0 }), ['free'], 'only lifetime-free cards when budget is 0');
+  const [top] = lib.recommend(cards, { income: 1500000, spend: 'fuel', maxFee: 1000 });
+  assert.equal(top.card.id, 'fuel');
+  assert.ok(top.reasons.includes('Saves on fuel'));
+});

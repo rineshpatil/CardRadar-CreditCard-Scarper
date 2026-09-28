@@ -70,6 +70,36 @@ function verificationBadge(card) {
   return { kind: 'unverified', text: 'Unverified' };
 }
 
+// Card finder quiz. answers: { income (₹/year), spend: online|travel|dining|fuel|everyday, maxFee (₹), lounge (bool) }.
+// Drops cards the user can't get or doesn't want to pay for, then ranks by how well the card fits.
+const text = (c) => [c.name, c.category, ...(c.highlights || []), c.benefits?.cashback?.description || ''].join(' ').toLowerCase();
+const SPEND = {
+  online: { test: (c) => /online|shopping|amazon|flipkart|myntra|e-?commerce|cashback/.test(text(c)), why: 'Rewards online shopping' },
+  travel: { test: (c) => FILTERS.lounge(c) || /travel|miles|air|flight|hotel|forex/.test(text(c)), why: 'Built for travel' },
+  dining: { test: (c) => c.benefits?.dining?.available === true || /dining|swiggy|zomato|food|restaurant/.test(text(c)), why: 'Dining benefits' },
+  fuel: { test: (c) => c.benefits?.fuel?.surchargeWaiver === true || /fuel|petrol|bpcl|hpcl|indianoil|iocl/.test(text(c)), why: 'Saves on fuel' },
+  everyday: { test: (c) => /cashback|rewards|everyday|all spends/.test(text(c)), why: 'Good on everyday spends' },
+};
+
+function recommend(cards, { income = 0, spend = 'everyday', maxFee = Infinity, lounge = false } = {}, limit = 5) {
+  return cards
+    .filter((c) => c.eligibility?.minIncome == null || c.eligibility.minIncome <= income)
+    .filter((c) => (c.isLTF ? 0 : c.annualFee) <= maxFee)
+    .map((c) => {
+      const reasons = [];
+      let score = (c.popularityScore || 0) / 10;
+      if (SPEND[spend]?.test(c)) { score += 10; reasons.push(SPEND[spend].why); }
+      if (lounge && FILTERS.lounge(c)) { score += 6; reasons.push('Airport lounge access'); }
+      if (c.isLTF) { score += 2; reasons.push('Lifetime free'); }
+      if (c.benefits?.forex?.markupFee === '0%' && spend === 'travel') { score += 3; reasons.push('Zero forex markup'); }
+      if (c.verificationStatus === 'verified') { score += 2; reasons.push('Details verified'); }
+      return { card: c, score, reasons };
+    })
+    .filter((r) => r.reasons.length > 0)
+    .sort((a, b) => b.score - a.score || a.card.name.localeCompare(b.card.name))
+    .slice(0, limit);
+}
+
 // Chat replies: escape everything first, then allow **bold**, *italic* and "- " bullet lists.
 function renderMarkdown(text) {
   return escapeHtml(text)
@@ -81,5 +111,5 @@ function renderMarkdown(text) {
 }
 
 if (typeof module === 'object' && module.exports) {
-  module.exports = { escapeHtml, safeUrl, FILTERS, queryCards, computeStats, bankCounts, monthYear, verificationBadge, renderMarkdown };
+  module.exports = { escapeHtml, safeUrl, FILTERS, queryCards, computeStats, bankCounts, monthYear, verificationBadge, renderMarkdown, recommend };
 }

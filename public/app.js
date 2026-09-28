@@ -55,6 +55,7 @@ async function loadCards() {
     updateStats(computeStats(allCardsData));
     renderBankChips(bankCounts(allCardsData));
     applyQuery();
+    if (typeof onCardsLoaded === 'function') onCardsLoaded();
   } catch (err) {
     console.error('Failed to load cards:', err);
     showToast('Failed to load card data', 'error');
@@ -94,7 +95,7 @@ function renderCards(cards) {
 
   // Render Standard Cards
   if (standardCards.length > 0) {
-    standardGrid.innerHTML = standardCards.map(card => renderCardHTML(card)).join('');
+    standardGrid.innerHTML = standardCards.map(renderCardHTML).join('');
   } else {
     standardGrid.innerHTML = `
       <div class="empty-state" style="grid-column: 1 / -1;">
@@ -106,14 +107,14 @@ function renderCards(cards) {
   // Render Co-Branded Cards
   if (cobrandedCardsArray.length > 0) {
     cobrandedSection.style.display = 'block';
-    cobrandedGrid.innerHTML = cobrandedCardsArray.map(card => renderCardHTML(card)).join('');
+    cobrandedGrid.innerHTML = cobrandedCardsArray.map(renderCardHTML).join('');
     if (cobrandedCount) cobrandedCount.textContent = `${cobrandedCardsArray.length} cards`;
   } else {
     cobrandedSection.style.display = 'none';
   }
 }
 
-function renderCardHTML(card) {
+function renderCardHTML(card, index = 0) {
   const b = card.benefits;
   const badge = verificationBadge(card);
   const feeText = card.isLTF
@@ -131,8 +132,12 @@ function renderCardHTML(card) {
   ] : [];
 
   return `
-    <div class="credit-card ${card.isLTF ? 'ltf-card' : 'premium-card'}" onclick="openModal('${card.id}')">
+    <div class="credit-card ${card.isLTF ? 'ltf-card' : 'premium-card'}" style="--i:${index % 12}" onclick="openModal('${card.id}')">
       <div class="card-accent"></div>
+      ${renderCardVisual(card)}
+      <label class="compare-toggle" onclick="event.stopPropagation()">
+        <input type="checkbox" data-compare="${escapeHtml(card.id)}" ${compareIds.includes(card.id) ? 'checked' : ''} onchange="toggleCompare('${card.id}', this.checked)"> Compare
+      </label>
       <div class="card-body">
         <div class="card-top">
           <span class="card-bank">${escapeHtml(card.bank)}</span>
@@ -157,6 +162,37 @@ function renderCardHTML(card) {
       </div>
     </div>
   `;
+}
+
+// The bank's card photo, or a neon card face drawn from the card's details. Flips to show the headline benefits.
+function renderCardVisual(card) {
+  const front = card.image
+    ? `<img src="/${escapeHtml(card.image)}" alt="${escapeHtml(card.name)}" loading="lazy" decoding="async">`
+    : `<div class="card-face ${card.isLTF ? 'ltf' : 'premium'}" role="img" aria-label="${escapeHtml(card.name)}">
+        <span class="card-face-bank">${escapeHtml(card.bank)}</span>
+        <span class="card-face-chip"></span>
+        <span class="card-face-name">${escapeHtml(card.name.replace(/\s*credit card\s*$/i, ''))}</span>
+        <span class="card-face-network">${escapeHtml(card.network)}</span>
+      </div>`;
+  const lounge = card.benefits?.lounges?.airport;
+  const visits = (n) => (n === -1 ? 'Unlimited' : n || 0);
+  const facts = [
+    ['Annual fee', card.isLTF ? 'Lifetime free' : `₹${card.annualFee.toLocaleString('en-IN')}`],
+    ['Rewards', card.rewardRate || '—'],
+    ['Lounges', lounge ? `${visits(lounge.domestic)} dom · ${visits(lounge.international)} intl` : '—'],
+    ['Forex', card.benefits?.forex?.markupFee || '—'],
+  ];
+  return `
+    <div class="card-visual" onpointermove="tiltCard(event, this)" onpointerleave="untiltCard(this)">
+      <div class="card-flip">
+        <div class="card-side card-front">${front}</div>
+        <div class="card-side card-back">
+          ${facts.map(([k, v]) => `<div><span>${k}</span><strong>${escapeHtml(v)}</strong></div>`).join('')}
+        </div>
+      </div>
+      <button class="flip-btn" type="button" aria-label="Flip card to see key benefits"
+        onclick="event.stopPropagation(); this.closest('.card-visual').classList.toggle('flipped')">↻</button>
+    </div>`;
 }
 
 // ===== BANK CHIPS =====
@@ -324,7 +360,7 @@ function renderModalContent(card) {
     </div>`;
   const section = (title, body) => `<div class="detail-section"><div class="detail-section-title">${title}</div>${body}</div>`;
 
-  let html = `
+  let html = `${renderCardVisual(card)}
     <div class="detail-section verify-note verify-${badge.kind}">
       <strong>${escapeHtml(badge.text)}</strong>${card.lastCheckedAt ? ` · page last checked ${escapeHtml(card.lastCheckedAt.slice(0, 10))}` : ''}
       <p>${badge.kind === 'verified'
@@ -424,6 +460,7 @@ function toggleChat() {
     document.getElementById('chatbotInput').focus();
   } else {
     panel.classList.remove('active');
+    if (typeof hideChatGate === 'function') hideChatGate(); // reopening the chat starts at the conversation
   }
 }
 
@@ -440,6 +477,7 @@ async function sendChatMessage() {
   const message = inputEl.value.trim();
 
   if (!message) return;
+  if (!sessionToken()) return showChatGate('signin'); // keep the question in the box until they sign in
 
   // Add user message to UI
   addMessageToUI('user', message);
@@ -458,9 +496,7 @@ async function sendChatMessage() {
   try {
     const res = await fetch(`${API_BASE}/api/chat`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json', ...authHeaders() },
       body: JSON.stringify({ message, history: chatHistory })
     });
 
@@ -468,6 +504,15 @@ async function sendChatMessage() {
 
     // Remove typing indicator
     document.getElementById(typingId)?.remove();
+
+    if (data.account) setAccountInfo(data.account);
+    if (res.status === 401) {
+      setSessionToken(null);
+      setAccountInfo(null);
+      showChatGate('signin');
+    } else if (res.status === 402) {
+      showChatGate('paywall');
+    }
 
     if (res.ok) {
       addMessageToUI('bot', data.reply);
